@@ -44,18 +44,45 @@ class Model_tedagt extends CI_Model
                 'field' => 'password2',
                 'label' => 'Repeat Password',
                 'rules' => 'trim|required|matches[password]'
+            ],
+            [
+                'field' => 'agreement',
+                'label' => 'Persetujuan',
+                'rules' => 'required'
             ]
         ];
     }
 
     public function getAll()
     {
-        $this->db->order_by($this->tgl_gabung, 'DESC');
+        $this->db->order_by('tgl_gabung', 'DESC');
         return $this->db->get($this->_table);
     }
 
-    public function save()
+    public function jmlIdCabang($idcabang)
+    {
+        $this->db->like('idted', "$idcabang", 'before');
+        $this->db->order_by('tgl_gabung', 'DESC');
+        return $this->db->get($this->_table)->num_rows();
+    }
+
+    public function save($id = null, $level = null)
     {
         $post   = $this->input->post();
+        if ($id != null && $level != null) {
+            $this->idted        = $id;
+            $this->tgl_gabung   = date('Y-m-d');
+            $this->nama_lengkap = ucwords($post['nama']);
+            $this->nohp         = $post['nohp'];
+            $this->alamat       = "";
+            $this->email        = $post['email'];
+            $this->password     = password_hash($post['password'], PASSWORD_DEFAULT);
+            $this->level_user   = $level;
+            $this->scan_ktp     = "noimage.jpg";
+            $this->scan_npwp    = "noimage.jpg";
+            $this->foto_profil  = "noimage.jpg";
+
+            $this->db->insert($this->_table, $this);
+        }
     }
 }

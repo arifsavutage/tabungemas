@@ -14,15 +14,46 @@
     <div class="register-photo">
         <div class="form-container">
             <div class="image-holder"></div>
-            <form method="post">
+            <form method="post" action="">
+                <?php
+                if ($this->session->flashdata('info')) :
+                    echo $this->session->flashdata('info');
+                endif;
+                ?>
                 <h2 class="text-center"><strong>Buat</strong> akun baru.</h2>
-                <div class="form-group"><input class="form-control" type="text" name="nama" placeholder="Nama sesuai KTP"></div>
-                <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
-                <div class="form-group"><input class="form-control" type="text" name="nohp" placeholder="No. handphone"></div>
-                <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-                <div class="form-group"><input class="form-control" type="password" name="password-repeat" placeholder="Password (repeat)"></div>
                 <div class="form-group">
-                    <div class="form-check"><label class="form-check-label"><input class="form-check-input" name="agreement" type="checkbox" required="">Saya setuju dengan ketentuan yang berlaku.</label></div>
+                    <?php
+                    if ($this->session->userdata('refid') != null) {
+                        $refid  = $this->session->userdata('refid');
+                    } else {
+                        $refid = "";
+                    }
+                    ?>
+                    <input type="hidden" name="refid" value="<?= $refid ?>" />
+                    <input class="form-control" type="text" name="nama" value="<?= set_value('nama'); ?>" placeholder="Nama sesuai KTP">
+                    <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="email" name="email" value="<?= set_value('email'); ?>" placeholder="Email">
+                    <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="nohp" value="<?= set_value('email'); ?>" placeholder="No. handphone">
+                    <?= form_error('nohp', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+                    <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password2" placeholder="Password (repeat)">
+                    <?= form_error('password2', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <label class="form-check-label"><input class="form-check-input" name="agreement" type="checkbox" required="">Saya setuju dengan ketentuan yang berlaku.</label>
+                        <?= form_error('agreement', '<small class="text-danger pl-3">', '</small>'); ?>
+                    </div>
                 </div>
                 <div class="form-group"><button class="btn btn-primary btn-block" type="submit" name="daftar">Daftar</button></div>
                 <a href="<?= base_url(); ?>index.php/auth/login" class="already">Sudah memiliki akun? Login disini.</a>

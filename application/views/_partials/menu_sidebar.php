@@ -12,6 +12,10 @@
                 </li>
 
                 <li class="submenu">
+                    <a href="<?= base_url(); ?>"><i class="fa fa-fw fa-home"></i><span> Cabang </span> </a>
+                </li>
+
+                <li class="submenu">
                     <a href="#"><i class="fas fa-folder"></i> <span> Penempatan </span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled">
                         <li><a href="">Divisi</a></li>
