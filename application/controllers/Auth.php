@@ -8,11 +8,6 @@ class Auth extends CI_Controller
         parent::__construct();
     }
 
-    public function register()
-    {
-        $this->load->view('pages/register');
-    }
-
     public function login()
     {
         $this->load->view('pages/login');

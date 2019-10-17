@@ -19,6 +19,11 @@
                 if ($this->session->flashdata('info')) :
                     echo $this->session->flashdata('info');
                 endif;
+
+                if ($this->session->flashdata('sendmail')) :
+                    echo "<br/>";
+                    echo $this->session->flashdata('sendmail');
+                endif;
                 ?>
                 <h2 class="text-center"><strong>Buat</strong> akun baru.</h2>
                 <div class="form-group">

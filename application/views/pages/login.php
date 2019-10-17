@@ -18,13 +18,19 @@
 
 <body>
     <div class="login-clean">
-        <form method="post">
+
+        <form method="post" action="">
+            <?php
+            if ($this->session->flashdata('info')) :
+                echo $this->session->flashdata('info');
+            endif;
+            ?>
             <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><i class="icon ion-ios-navigate"></i></div>
             <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
             <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
             <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Log In</button></div>
-            <a href="<?= base_url(); ?>index.php/auth/register" class="forgot">Belum memiliki akun? daftar disini</a>
+            <a href="<?= base_url(); ?>index.php/register" class="forgot">Belum memiliki akun? daftar disini</a>
         </form>
     </div>
     <script src="<?= base_url(); ?>assets/login/assets/js/jquery.min.js"></script>

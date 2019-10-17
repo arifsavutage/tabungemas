@@ -20,7 +20,7 @@ class Model_jaringan extends CI_Model
 
     public function updateUpline($dataup)
     {
-        $this->db->update($this->_table, $dataup);
+        $this->db->update($this->_table, $dataup, ['idagt' => $dataup['idagt']]);
     }
     public function save($data)
     {

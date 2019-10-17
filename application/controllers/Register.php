@@ -8,9 +8,7 @@ class Register extends CI_Controller
         parent::__construct();
         $this->load->model('model_tedagt');
         $this->load->model('model_jaringan');
-
-        $this->load->helper('form', 'security');
-        $this->load->library('form_validation');
+        $this->load->model('model_verifikasi');
     }
 
     public function index()
@@ -53,7 +51,7 @@ class Register extends CI_Controller
             } else {
                 $panjangId  = $agtbaru->jmlIdCabang($cabang);
                 $updatejar  = $jaringan->cekUpline($refid);
-
+                //echo $panjangId;
                 if (strlen($panjangId) == 1) {
                     $panjangId = $panjangId + 1;
                     $newid  = $cabang . ".0000" . $panjangId;
@@ -75,10 +73,6 @@ class Register extends CI_Controller
                 $newposjar  = $updatejar['pos_jar'] . "" . $newdownline;
                 $newposlvl  = $updatejar['pos_level'] + 1;
 
-                $updateup   = [
-                    'jml_downline' => $newdownline
-                ];
-
                 $datajar    = [
                     'idagt' => "$newid",
                     'refid' => "$refid",
@@ -95,19 +89,152 @@ class Register extends CI_Controller
 
             $agtbaru->save($newid, $level);
             $jaringan->save($datajar);
-            $jaringan->updateUpline($updateup);
+
+            //update jaringan untuk refid
+            if ($jmlagt != 0) {
+                $updateup   = [
+                    'idagt'       => $refid,
+                    'jml_downline' => $newdownline
+                ];
+                $jaringan->updateUpline($updateup);
+            }
+
+            //prepare send mail
+            $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $idexpld    = explode(".", $newid);
+            $idimplode  = implode("", $idexpld);
+            $token = substr(str_shuffle($permitted_chars), 0, 16) . "" . $idimplode;
+
+            $dataemail = [
+                'mail'  => $this->input->post('email'),
+                'nama'  => ucwords($this->input->post('nama')),
+                'token' => $token
+            ];
+
+            //send email
+            $this->mailVerifikasi($dataemail);
+
+            //simpan ke tabel verifikasi email
+            $datasendmail   = [
+                'token' => "$token",
+                'idagt' => "$newid",
+                'status' => 'not verified'
+            ];
+            $this->model_verifikasi->save($datasendmail);
 
             $this->session->set_flashdata('info', '
                 <div class="alert alert-success" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
-                    <h4>success :</h4> Registrasi berhasil, cek email Anda...
+                    <h4>success :</h4> Registrasi berhasil.. 
                 </div>');
 
             redirect(base_url() . 'index.php/register');
         } else {
             $this->load->view('pages/register');
+        }
+    }
+
+    public function verify($token = null)
+    {
+        if ($token == null) {
+            $this->session->set_flashdata('info', '
+                <div class="alert alert-info" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>Opps, </h4> token verifikasi tidak di ketahui ... 
+                </div>');
+
+            redirect(base_url() . 'index.php/register');
+        } else {
+            $data = [
+                'token' => "$token",
+                'status' => 'verified'
+            ];
+
+            $verifiying = $this->model_verifikasi->verify($data);
+
+            if ($verifiying) {
+                $idactivated = $this->model_verifikasi->getID("$token");
+                $dataactive = [
+                    'idted' => $idactivated->idagt,
+                    'aktif' => 1
+                ];
+                //aktivasi akun
+                //echo $idactivated->idagt;
+                $this->model_tedagt->akunAktif($dataactive);
+
+                $this->session->set_flashdata('info', '
+                <div class="alert alert-info" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>Selamat, </h4> akun Anda sudah aktif ... 
+                </div>');
+
+                redirect(base_url() . 'index.php/auth/login');
+            } else {
+                $this->session->set_flashdata('info', '
+                <div class="alert alert-warning" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>Maaf, </h4> aktifasi akun gagal ... 
+                </div>');
+
+                redirect(base_url() . 'index.php/auth/login');
+            }
+        }
+    }
+
+    public function mailVerifikasi($mailver)
+    {
+        $to         = $mailver['mail'];
+        $subject    = "Verifikasi email akun tabung emas";
+        $message    = $this->load->view('email/email_verifikasi', $mailver, true);
+
+        $this->_sendmail($to, $subject, $message);
+    }
+
+    private function _sendmail($to, $subject, $message)
+    {
+
+        //konfigurasi
+
+        $config        = array(
+
+            'mailtype'   => 'html',
+            'charset'    => 'iso-8859-1',
+            'wordwrap'   => true
+        );
+
+        //$this->load->library('email');
+        $this->email->initialize($config);
+
+        $this->email->set_newline("\r\n");
+        $this->email->from('noreply@tabungemas.com', 'no-reply');
+        $this->email->to($to);
+        $this->email->subject($subject);
+        $this->email->message($message);
+
+        if ($this->email->send()) {
+            $this->session->set_flashdata('sendmail', '
+                <div class="alert alert-info" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>info :</h4> cek inbox email atau folder spam
+                </div>');
+        } else {
+            $this->session->set_flashdata('sendmail', '
+                <div class="alert alert-warning" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>warning :</h4> ' . show_error($this->email->print_debugger()) . '
+                </div>');
         }
     }
 }

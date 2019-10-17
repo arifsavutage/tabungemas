@@ -16,6 +16,7 @@ class Model_tedagt extends CI_Model
     public $scan_ktp;
     public $scan_npwp;
     public $foto_profil;
+    public $aktif;
 
     public function rules()
     {
@@ -61,9 +62,17 @@ class Model_tedagt extends CI_Model
 
     public function jmlIdCabang($idcabang)
     {
-        $this->db->like('idted', "$idcabang", 'before');
+        $this->db->like('idted', "$idcabang", 'after');
         $this->db->order_by('tgl_gabung', 'DESC');
         return $this->db->get($this->_table)->num_rows();
+
+        // $query  = $this->db->query("SELECT * FROM " . $this->_table . " WHERE idted LIKE '$idcabang%' ORDER BY tgl_gabung DESC");
+        // return $query->num_rows();
+    }
+
+    public function akunAktif($data)
+    {
+        $this->db->update($this->_table, $data, ['idted' => $data['idted']]);
     }
 
     public function save($id = null, $level = null)
@@ -81,6 +90,7 @@ class Model_tedagt extends CI_Model
             $this->scan_ktp     = "noimage.jpg";
             $this->scan_npwp    = "noimage.jpg";
             $this->foto_profil  = "noimage.jpg";
+            $this->aktif        = 0;
 
             $this->db->insert($this->_table, $this);
         }

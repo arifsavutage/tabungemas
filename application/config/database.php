@@ -73,6 +73,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+/*
+'username' => 'tabungem_aplikasi_root',
+	'password' => 'R00tAPPStabungemas',
+	'database' => 'tabungem_aplikasi',
+*/
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
