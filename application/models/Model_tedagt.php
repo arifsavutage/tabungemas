@@ -75,6 +75,12 @@ class Model_tedagt extends CI_Model
         $this->db->update($this->_table, $data, ['idted' => $data['idted']]);
     }
 
+    public function getAccountByEmail($email)
+    {
+        $this->db->where('email', "$email");
+        return $this->db->get($this->_table)->row_array();
+    }
+
     public function save($id = null, $level = null)
     {
         $post   = $this->input->post();

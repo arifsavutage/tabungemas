@@ -19,7 +19,7 @@
 <body>
     <div class="login-clean">
 
-        <form method="post" action="">
+        <form method="post" action="<?= base_url() . "index.php/auth"; ?>">
             <?php
             if ($this->session->flashdata('info')) :
                 echo $this->session->flashdata('info');
@@ -27,8 +27,14 @@
             ?>
             <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><i class="icon ion-ios-navigate"></i></div>
-            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
-            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+            <div class="form-group">
+                <input class="form-control" type="email" name="email" value="<?= set_value('email'); ?>" placeholder="Email">
+                <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" name="password" placeholder="Password">
+                <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+            </div>
             <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Log In</button></div>
             <a href="<?= base_url(); ?>index.php/register" class="forgot">Belum memiliki akun? daftar disini</a>
         </form>

@@ -3,7 +3,7 @@
 
      <!-- LOGO -->
      <div class="headerbar-left">
-         <a href="index.html" class="logo"><img alt="logo" src="<?= base_url(); ?>assets/images/logo.png" /> <span>Admin</span></a>
+         <a href="<?= base_url(); ?>" class="logo"><img alt="logo" src="<?= base_url(); ?>assets/images/logo.png" /> <span>Admin</span></a>
      </div>
 
      <nav class="navbar-custom">
@@ -159,7 +159,7 @@
                      </a>
 
                      <!-- item-->
-                     <a href="#" class="dropdown-item notify-item">
+                     <a href="<?= base_url(); ?>index.php/auth/logout" class="dropdown-item notify-item">
                          <i class="fa fa-power-off"></i> <span>Logout</span>
                      </a>
 

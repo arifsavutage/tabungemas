@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="form-group"><button class="btn btn-primary btn-block" type="submit" name="daftar">Daftar</button></div>
-                <a href="<?= base_url(); ?>index.php/auth/login" class="already">Sudah memiliki akun? Login disini.</a>
+                <a href="<?= base_url(); ?>index.php/auth" class="already">Sudah memiliki akun? Login disini.</a>
             </form>
         </div>
     </div>
