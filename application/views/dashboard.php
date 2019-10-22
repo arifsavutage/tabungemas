@@ -2,6 +2,7 @@
 $this->load->view('_partials/header');
 $this->load->view('_partials/menu_top');
 $this->load->view('_partials/menu_sidebar');
+
 ?>
 <div class="content-page">
 

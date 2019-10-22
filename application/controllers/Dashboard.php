@@ -6,15 +6,49 @@ class Dashboard extends CI_Controller
     function __construct()
     {
         parent::__construct();
+        $this->load->model('model_tedagt');
 
         not_login();
     }
 
     public function index()
     {
+        if ($this->session->userdata['role'] == 'member') {
+            $page = 'pages/member/member_dashboard';
+        } else {
+            $page = 'pages/dashboard_pages';
+        }
+
         $data = [
-            'page' => 'pages/dashboard_pages'
+            'page' => $page
         ];
         $this->load->view('dashboard', $data);
+    }
+
+    public function profile($id = null)
+    {
+        if ($id == null) {
+            redirect(base_url());
+        } else {
+
+            $data = [
+                'detail' => $this->model_tedagt->getAccountById($id),
+                'page' => 'pages/member/member_profile'
+            ];
+            $this->load->view('dashboard', $data);
+        }
+    }
+
+    public function edit_profile($id = null)
+    {
+        if ($id == null) {
+            redirect(base_url());
+        } else {
+            $data = [
+                'detail' => $this->model_tedagt->getAccountById($id),
+                'page' => 'pages/member/member_profile_edit'
+            ];
+            $this->load->view('dashboard', $data);
+        }
     }
 }

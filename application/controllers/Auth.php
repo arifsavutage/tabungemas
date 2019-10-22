@@ -39,8 +39,11 @@ class Auth extends CI_Controller
 
                 if (password_verify($pass, $user['password'])) {
 
+                    $exname = explode(" ", $user['nama_lengkap']);
+
                     $data = [
                         'id'    => $user['idted'],
+                        'nama'  => $exname[0],
                         'role'  => $user['level_user']
                     ];
 

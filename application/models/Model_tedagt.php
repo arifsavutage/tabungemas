@@ -81,6 +81,12 @@ class Model_tedagt extends CI_Model
         return $this->db->get($this->_table)->row_array();
     }
 
+    public function getAccountById($id)
+    {
+        $this->db->where('idted', "$id");
+        return $this->db->get($this->_table)->row_array();
+    }
+
     public function save($id = null, $level = null)
     {
         $post   = $this->input->post();

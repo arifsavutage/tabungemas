@@ -8,9 +8,33 @@
             <ul>
 
                 <li class="submenu">
-                    <a href="<?= base_url(); ?>"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
+                    <a href="<?= base_url(); ?>"><i class="fa fa-fw fa-home"></i><span> Dashboard </span> </a>
                 </li>
 
+                <li class="submenu">
+                    <a href="#"><i class="fas fa-user"></i> <span> Akun Saya </span> <span class="menu-arrow"></span></a>
+                    <ul class="list-unstyled">
+                        <li><a href="<?= base_url(); ?>index.php/dashboard/profile/<?= $this->session->userdata('id'); ?>">Profile</a></li>
+                        <li><a href="">Upload Foto</a></li>
+                        <li><a href="">Berkas</a></li>
+                        <li><a href="">Ubah Password</a></li>
+                        <li><a href="">Histori Keanggotaan</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#"><i class="fas fa-retweet"></i> <span> Transaksi </span> <span class="menu-arrow"></span></a>
+                    <ul class="list-unstyled">
+                        <li><a href="">Beli Emas</a></li>
+                        <li><a href="">Jual Emas</a></li>
+                        <li><a href="">Tarik Saldo</a></li>
+                        <li><a href="">Tarik barang</a></li>
+                        <li><a href="">Transfer Emas</a></li>
+                        <li><a href="">Histori Transaksi</a></li>
+                    </ul>
+                </li>
+
+                <!--
                 <li class="submenu">
                     <a href="<?= base_url(); ?>"><i class="fa fa-fw fa-home"></i><span> Cabang </span> </a>
                 </li>
@@ -42,6 +66,7 @@
                         <li><a href="">Data Warganegara</a></li>
                     </ul>
                 </li>
+-->
 
             </ul>
 

@@ -7,6 +7,8 @@
 
     <title>Tabung Emas</title>
 
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="<?= base_url(); ?>assets/images/favicon.ico">
 
