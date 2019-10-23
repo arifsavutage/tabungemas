@@ -190,7 +190,7 @@ class Register extends CI_Controller
                     <h4>Selamat, </h4> akun Anda sudah aktif ... 
                 </div>');
 
-                redirect(base_url() . 'index.php/auth/login');
+                redirect(base_url() . 'index.php/auth');
             } else {
                 $this->session->set_flashdata('info', '
                 <div class="alert alert-warning" role="alert">

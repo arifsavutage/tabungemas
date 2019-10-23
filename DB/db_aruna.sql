@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Okt 2019 pada 09.35
+-- Waktu pembuatan: 22 Okt 2019 pada 10.53
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.0
 
@@ -80,9 +80,11 @@ CREATE TABLE `tb_agt_ted` (
 
 INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `nohp`, `alamat`, `email`, `password`, `level_user`, `scan_ktp`, `scan_npwp`, `foto_profil`, `aktif`) VALUES
 ('01.00001', '2019-10-16', 'Juniar Arif Wicaksono', '083927', '', 'arifsavutage@gmail.com', '$2y$10$ijGtW/Eed.9uKT8j/.fNZOkzo.6VE/BLPovpa.qfMibziUYai3uyG', 'super', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 1),
-('01.00002', '2019-10-17', 'Perusahaan', '081390123456', '', 'arifsavutage@gmail.com', '$2y$10$6K4ENM.YUW7SWeY6UYU6Fem4a6syCEUFanfZ.8.o98qUFDePPGmU6', 'member', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 1),
-('01.00003', '2019-10-17', 'Yuridisat Ilham', '08576871216', '', 'yuridistailahm@gmail.com', '$2y$10$S8OD07hpTgGcMtOkSZUS0eXKx0WcOHIGuR6sfL6s91FJfaIELIIq.', 'member', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 0),
-('01.00004', '2019-10-17', 'Yuridisat Ilham', '08576871216', '', 'yuridistailahm@gmail.com', '$2y$10$89omTfD5Etayft.KdUcz2eDNSA2RJrajmhyz7mOwTIPhI5nZuzBWi', 'member', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 0);
+('01.00002', '2019-10-17', 'Perusahaan', '081390123456', '', 'arifokbgt@gmail.com', '$2y$10$6K4ENM.YUW7SWeY6UYU6Fem4a6syCEUFanfZ.8.o98qUFDePPGmU6', 'member', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 1),
+('01.00003', '2019-10-17', 'Yuridisat Ilham', '08576871216', '', 'yuridistailham@gmail.com', '$2y$10$S8OD07hpTgGcMtOkSZUS0eXKx0WcOHIGuR6sfL6s91FJfaIELIIq.', 'member', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 0),
+('01.00004', '2019-10-17', 'Yuridisat Ilham', '08576871216', '', 'yuridista@gmail.com', '$2y$10$89omTfD5Etayft.KdUcz2eDNSA2RJrajmhyz7mOwTIPhI5nZuzBWi', 'member', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 0),
+('01.00005', '2019-10-18', 'Subagyo Suprapto', '081342526116', 'Jl. Candi Penataran XII Rt. 006 Rw. 004, Kel. Kalipancur, Kec. Ngaliyan, Semarang', 'subagyo.studio97@gmail.com', '$2y$10$yOnqrBpMQhlAIPaE9x./muRH/OdFPfxYzBHuBP95.uWR6wxenEy2C', 'member', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 1),
+('01.00006', '2019-10-18', 'Coba', '08923637', '', 'coba@gmail.com', '$2y$10$rQb/8.zVotkpd2MaZUpVOu5tSJv9n/ZXpMRGhAgKb2Myb7ZgxBAda', 'member', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -120,10 +122,12 @@ CREATE TABLE `tb_jaringan` (
 --
 
 INSERT INTO `tb_jaringan` (`idagt`, `idreferal`, `idupline`, `jml_downline`, `pos_jar`, `pos_level`, `tgl_proses`) VALUES
-('01.00001', '0', '0', 3, '1', 1, '0000-00-00'),
+('01.00001', '0', '0', 5, '1', 1, '0000-00-00'),
 ('01.00002', '01.00001', '01.00001', 0, '11', 2, '0000-00-00'),
 ('01.00003', '01.00001', '01.00001', 0, '12', 2, '0000-00-00'),
-('01.00004', '01.00001', '01.00001', 0, '13', 2, '0000-00-00');
+('01.00004', '01.00001', '01.00001', 0, '13', 2, '0000-00-00'),
+('01.00005', '01.00001', '01.00001', 0, '14', 2, '0000-00-00'),
+('01.00006', '01.00001', '01.00001', 0, '15', 2, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -143,7 +147,9 @@ CREATE TABLE `tb_verifikasi_email` (
 --
 
 INSERT INTO `tb_verifikasi_email` (`idx`, `token`, `idagt`, `status`) VALUES
-(1, 'VPtuygrBcA68I1xR01.00004', '01.00004', 'not verified');
+(1, 'VPtuygrBcA68I1xR01.00004', '01.00004', 'not verified'),
+(2, 'sDLZTjwgN1HXWx0M0100005', '01.00005', 'verified'),
+(3, '3S8cbMWusrPL42vA0100006', '01.00006', 'not verified');
 
 -- --------------------------------------------------------
 
@@ -255,7 +261,7 @@ ALTER TABLE `t_update_ubs`
 -- AUTO_INCREMENT untuk tabel `tb_verifikasi_email`
 --
 ALTER TABLE `tb_verifikasi_email`
-  MODIFY `idx` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idx` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_update_ubs`
