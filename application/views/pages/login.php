@@ -36,7 +36,7 @@
                 <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
             </div>
             <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Log In</button></div>
-            <a href="<?= base_url(); ?>index.php/register" class="forgot">Belum memiliki akun? daftar disini</a>
+            <a href="<?= base_url(); ?>index.php/register/new_member" class="forgot">Belum memiliki akun? daftar disini</a>
         </form>
     </div>
     <script src="<?= base_url(); ?>assets/login/assets/js/jquery.min.js"></script>

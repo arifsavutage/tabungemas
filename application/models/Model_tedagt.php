@@ -60,6 +60,17 @@ class Model_tedagt extends CI_Model
         return $this->db->get($this->_table);
     }
 
+    public function getAllByCabang($idcabang)
+    {
+        $query  = $this->db->query("SELECT 
+        `idted`, `tgl_gabung`, `nama_lengkap`, `nohp`, 
+        `alamat`, `email`, `password`, `level_user`, `scan_ktp`, 
+        `scan_npwp`, `foto_profil`, `aktif` 
+        FROM `tb_agt_ted` 
+        WHERE idted LIKE '$idcabang%'");
+
+        return $query->num_rows();
+    }
     public function jmlIdCabang($idcabang)
     {
         $this->db->like('idted', "$idcabang", 'after');

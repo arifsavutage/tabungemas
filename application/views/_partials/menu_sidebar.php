@@ -34,6 +34,19 @@
                     </ul>
                 </li>
 
+                <?php
+                if ($this->session->userdata('role') == 'super') :
+                    ?>
+                    <li class="submenu">
+                        <a href="#"><i class="fas fa-retweet"></i> <span> Super Admin </span> <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled">
+                            <li><a href="<?= base_url() . 'index.php/member/member_baru'; ?>">Member Baru</a></li>
+                        </ul>
+                    </li>
+                <?php
+                endif;
+                ?>
+
                 <!--
                 <li class="submenu">
                     <a href="<?= base_url(); ?>"><i class="fa fa-fw fa-home"></i><span> Cabang </span> </a>

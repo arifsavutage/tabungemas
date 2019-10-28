@@ -9,13 +9,21 @@ class Register extends CI_Controller
         $this->load->model('model_tedagt');
         $this->load->model('model_jaringan');
         $this->load->model('model_verifikasi');
+
+        $this->load->model('model_tmpagt');
+        $this->load->model('model_uang');
     }
 
     public function index()
     {
+        redirect(base_url() . 'index.php/register/new_member');
+    }
+
+    public function konfirm()
+    {
         $validation     = $this->form_validation;
 
-        $agtbaru        = $this->model_tedagt;
+        $agtbaru        = $this->model_tmpagt;
         $jaringan       = $this->model_jaringan;
 
         $validation->set_rules($agtbaru->rules());
@@ -30,15 +38,22 @@ class Register extends CI_Controller
             $cekuser   = $agtbaru->getAccountByEmail($mailregis);
 
             if ($mailregis != $cekuser['email']) {
+
                 if (!empty($refid)) {
+                    //ambil kode cabang pada ID's
                     $explode    = explode(".", $refid);
                     $cabang     = $explode[0];
                 } else {
+
+                    //cabang defautl jika tidak ada yg mereferalkan
                     $cabang = "01";
                     $refid  = "01.00001";
                 }
 
+                //start create new ID's
+                //cek jumlah terdaftar
                 $jmlagt = $agtbaru->getAll()->num_rows();
+                $jmlagt = $agtbaru->getAllByCabang($cabang);
 
                 if ($jmlagt == 0) {
                     $newid = $cabang . ".00001";
@@ -56,7 +71,9 @@ class Register extends CI_Controller
                 } else {
                     $panjangId  = $agtbaru->jmlIdCabang($cabang);
                     $updatejar  = $jaringan->cekUpline($refid);
+
                     //echo $panjangId;
+
                     if (strlen($panjangId) == 1) {
                         $panjangId = $panjangId + 1;
                         $newid  = $cabang . ".0000" . $panjangId;
@@ -152,6 +169,128 @@ class Register extends CI_Controller
         }
     }
 
+    public function new_member()
+    {
+        $validation     = $this->form_validation;
+        $agtbaru        = $this->model_tmpagt;
+
+        $validation->set_rules($agtbaru->rules());
+
+        if ($validation->run()) {
+
+            $refid      = $this->input->post('refid');
+            $mailregis  = $this->input->post('email');
+            $nameregis  = $this->input->post('nama');
+
+            $cekjmlagt  = $this->model_tedagt->getAll()->num_rows();
+            if ($cekjmlagt > 0) {
+                $cekuser   = $agtbaru->getAccountByEmail($mailregis);
+
+                if ($mailregis != $cekuser['email']) {
+
+                    if (!empty($refid)) {
+                        $ref  = $refid;
+                    } else {
+                        $ref  = "01.00001";
+                    }
+
+                    $nominalregis   = $this->model_uang->getValueById(1);
+
+                    $randnom    = "";
+                    for ($i = 0; $i < 3; $i++) {
+                        $randnom  .= rand(1, 3);
+                    }
+
+                    $nomtransfer    = $nominalregis['registrasi'] + $randnom;
+
+                    //prepare send mail
+                    $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    $token = substr(str_shuffle($permitted_chars), 0, 16);
+
+                    $data   = [
+                        'referal'   => "$ref",
+                        'nominal'   => $nomtransfer,
+                        'status'    => 0,
+                        'token'     => $token
+                    ];
+
+                    //save to tmp data
+                    $agtbaru->save($data);
+
+                    $dataemail = [
+                        'mail'  => $mailregis,
+                        'nama'  => ucwords($nameregis),
+                        'token' => $token,
+                        'nominal' => $data['nominal']
+                    ];
+
+                    //send email
+                    $this->mailVerifikasi($dataemail);
+
+                    $this->session->set_flashdata('info', '
+                    <div class="alert alert-success" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4>success :</h4> Registrasi berhasil.. 
+                    </div>');
+
+                    redirect(base_url() . 'index.php/register/new_member');
+                } else {
+                    $this->session->set_flashdata('info', '
+                <div class="alert alert-warning" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>Maaf, </h4> Email sudah terdaftar ...
+                </div>');
+
+                    redirect(base_url() . 'index.php/register/new_member');
+                }
+            } else {
+
+                //kondisi dimana belumada samasekali member
+                //create top level atau top perusahaan
+
+                //prepare send mail
+                $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                $token = substr(str_shuffle($permitted_chars), 0, 16);
+
+                $data   = [
+                    'referal'   => "",
+                    'nominal'   => 0,
+                    'status'    => 0,
+                    'token'     => $token
+                ];
+
+                //save to tmp data
+                $agtbaru->save($data);
+
+                $dataemail = [
+                    'mail'  => $mailregis,
+                    'nama'  => ucwords($nameregis),
+                    'token' => $token,
+                    'npminal' => $data['nominal']
+                ];
+
+                //send email
+                $this->mailVerifikasi($dataemail);
+
+                $this->session->set_flashdata('info', '
+                <div class="alert alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>success :</h4> Registrasi berhasil.. 
+                </div>');
+
+                redirect(base_url() . 'index.php/register');
+            }
+        } else {
+            $this->load->view('pages/register');
+        }
+    }
+
     public function verify($token = null)
     {
         if ($token == null) {
@@ -163,44 +302,60 @@ class Register extends CI_Controller
                     <h4>Opps, </h4> token verifikasi tidak di ketahui ... 
                 </div>');
 
-            redirect(base_url() . 'index.php/register');
+            redirect(base_url() . 'index.php/register/new_member');
         } else {
-            $data = [
+            /*$data = [
                 'token' => "$token",
-                'status' => 'verified'
-            ];
+                'status' => 1
+            ];*/
 
-            $verifiying = $this->model_verifikasi->verify($data);
+            //$verifiying = $this->model_verifikasi->verify($data);
 
-            if ($verifiying) {
-                $idactivated = $this->model_verifikasi->getID("$token");
-                $dataactive = [
-                    'idted' => $idactivated->idagt,
-                    'aktif' => 1
-                ];
-                //aktivasi akun
-                //echo $idactivated->idagt;
-                $this->model_tedagt->akunAktif($dataactive);
+            $validation = $this->form_validation;
+            $temporary  = $this->model_tmpagt;
 
-                $this->session->set_flashdata('info', '
-                <div class="alert alert-info" role="alert">
+            if ($validation->run()) {
+                //upload image ke server
+                $breakname  = explode(".", $_FILES['struk']['name']);
+                $newname    = $token . "." . $breakname[1];
+
+                $config['upload_path']      = base_url() . '/assets/images/bukti/';
+                $config['allowed_types']    = 'jpg|jpeg';
+                $config['max_size']         = 100;
+                $config['max_width']        = 1024;
+                $config['max_height']       = 768;
+                $config['file_name']        = $newname;
+
+                $this->load->library('upload', $config);
+
+                $this->upload->initialize($config);
+
+                if (!$this->upload->do_upload('struk')) {
+                    //jika gagal upload
+                    $this->session->set_flashdata('info', '<div class="alert alert-info" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
-                    <h4>Selamat, </h4> akun Anda sudah aktif ... 
+                    <h4>Opps, </h4> gagal konfirmasi, ' . $this->upload->display_errors() . ' 
                 </div>');
 
-                redirect(base_url() . 'index.php/auth');
+                    redirect(base_url() . 'index.php/verify/' . $token);
+                } else {
+                    //jika berhasil
+                    $this->upload->data();
+                }
+
+                //kirim ke email billing
+                $data['temporary'] = $temporary->getByToken($token);
+
+                $to         = "billing@tabungemas.com";
+                $subject    = "Bukti transfer $data[temporary][nama_lengkap]";
+                $message    = $this->load->view('email/email_verifikasi', $data, true);
+                $attach     = base_url() . '/assets/images/bukti/' . $newname;
+
+                $this->_sendmail($to, $subject, $message, $attach);
             } else {
-                $this->session->set_flashdata('info', '
-                <div class="alert alert-warning" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                    <h4>Maaf, </h4> aktifasi akun gagal ... 
-                </div>');
-
-                redirect(base_url() . 'index.php/auth/login');
+                $this->load->view('pages/konfirmasi', $data);
             }
         }
     }
@@ -210,11 +365,12 @@ class Register extends CI_Controller
         $to         = $mailver['mail'];
         $subject    = "Verifikasi email akun tabung emas";
         $message    = $this->load->view('email/email_verifikasi', $mailver, true);
+        $attach     = "";
 
-        $this->_sendmail($to, $subject, $message);
+        $this->_sendmail($to, $subject, $message, $attach);
     }
 
-    private function _sendmail($to, $subject, $message)
+    private function _sendmail($to, $subject, $message, $attach)
     {
 
         //konfigurasi
@@ -234,6 +390,7 @@ class Register extends CI_Controller
         $this->email->to($to);
         $this->email->subject($subject);
         $this->email->message($message);
+        $this->email->attach($attach);
 
         if ($this->email->send()) {
             $this->session->set_flashdata('sendmail', '

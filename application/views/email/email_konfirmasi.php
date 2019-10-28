@@ -23,46 +23,34 @@
                     </tr>
                     <tr>
                         <td style="padding: 40px 30px 40px 30px;">
-                            <h3 style="color:#5f1d80;border-bottom: thin solid #cccccc;border-collapse: collapse;padding-bottom:30px;">Hallo, <?= $nama; ?></h3>
+                            <h3 style="color:#5f1d80;border-bottom: thin solid #cccccc;border-collapse: collapse;padding-bottom:30px;">Konfirmasi pembayaran</h3>
 
-                            <p style="margin-bottom:50px;color:#6e6e6e;">Kami telah menerima pendaftaran akun baru milik Anda.
-                                Silahkan transfer biaya pendaftaran anggota baru sebesar <strong>Rp. <?= number_format($nominal, 0, ',', '.'); ?></strong> ke nomor rekening yang tertera di bawah,
-                                dan konfirmasi pembayaran Anda dengan menekan tombol <strong>konfirm</strong>.
-                            </p>
-
-                            <a href="<?= base_url(); ?>index.php/register/verify/<?= $token; ?>" target="_blank" style="margin:auto;display:block;padding: 15px 10px;background-color:#2aa371;text-decoration:none;color:#ffffff;width:120px;text-align:center;border-radius:5px;">Konfirm</a>
-                            <p style="margin-top:50px;margin-bottom: 20px;color:#6e6e6e;">
-                                Jika tidak berhasil silahkan copy & paste url berikut :
-                            </p>
-                            <p style="display:block;padding:30px 20px;background-color:#f2f2f2;color:#877b8c;">
-                                <?= base_url(); ?>index.php/register/verify/<?= $token; ?>
-                            </p>
+                            <p style="margin-bottom:50px;color:#6e6e6e;">Berikut detail member baru :</p>
 
                             <table align="center" border="1" cellpadding="0" cellspacing="0" width="300">
                                 <tr>
-                                    <th>No.</th>
-                                    <th>Nama Bank</th>
-                                    <th>No. Rek</th>
-                                    <th>An.</th>
+                                    <td>Nama Lengkap</td>
+                                    <td>:</td>
+                                    <td><?= ucwords($temporary['nama_lengkap']); ?></td>
                                 </tr>
                                 <tr>
-                                    <th>1</th>
-                                    <th>BCA</th>
-                                    <th>009 4680 561</th>
-                                    <th>Cipto Purnomo</th>
+                                    <td>Email</td>
+                                    <td>:</td>
+                                    <td><?= $temporary['email']; ?></td>
                                 </tr>
                                 <tr>
-                                    <th>2</th>
-                                    <th>BRI</th>
-                                    <th>3036 0104 1826 532</th>
-                                    <th>Susiloningsih</th>
+                                    <td>No. HP</td>
+                                    <td>:</td>
+                                    <td><?= $temporary['nohp']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Ref. ID</td>
+                                    <td>:</td>
+                                    <td><?= $temporary['idreferal']; ?></td>
                                 </tr>
                             </table>
 
-                            <p style="margin-top:65px;color:#6e6e6e;">
-                                Salam hangat,<br />
-                                Account center
-                            </p>
+                            <p style="margin-bottom:50px;color:#6e6e6e;">Segera lakukan check data transfer ke bank terkait.</p>
                         </td>
                     </tr>
                     <tr>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Okt 2019 pada 10.53
+-- Waktu pembuatan: 28 Okt 2019 pada 10.06
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.0
 
@@ -79,12 +79,59 @@ CREATE TABLE `tb_agt_ted` (
 --
 
 INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `nohp`, `alamat`, `email`, `password`, `level_user`, `scan_ktp`, `scan_npwp`, `foto_profil`, `aktif`) VALUES
-('01.00001', '2019-10-16', 'Juniar Arif Wicaksono', '083927', '', 'arifsavutage@gmail.com', '$2y$10$ijGtW/Eed.9uKT8j/.fNZOkzo.6VE/BLPovpa.qfMibziUYai3uyG', 'super', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 1),
-('01.00002', '2019-10-17', 'Perusahaan', '081390123456', '', 'arifokbgt@gmail.com', '$2y$10$6K4ENM.YUW7SWeY6UYU6Fem4a6syCEUFanfZ.8.o98qUFDePPGmU6', 'member', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 1),
-('01.00003', '2019-10-17', 'Yuridisat Ilham', '08576871216', '', 'yuridistailham@gmail.com', '$2y$10$S8OD07hpTgGcMtOkSZUS0eXKx0WcOHIGuR6sfL6s91FJfaIELIIq.', 'member', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 0),
-('01.00004', '2019-10-17', 'Yuridisat Ilham', '08576871216', '', 'yuridista@gmail.com', '$2y$10$89omTfD5Etayft.KdUcz2eDNSA2RJrajmhyz7mOwTIPhI5nZuzBWi', 'member', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 0),
-('01.00005', '2019-10-18', 'Subagyo Suprapto', '081342526116', 'Jl. Candi Penataran XII Rt. 006 Rw. 004, Kel. Kalipancur, Kec. Ngaliyan, Semarang', 'subagyo.studio97@gmail.com', '$2y$10$yOnqrBpMQhlAIPaE9x./muRH/OdFPfxYzBHuBP95.uWR6wxenEy2C', 'member', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 1),
-('01.00006', '2019-10-18', 'Coba', '08923637', '', 'coba@gmail.com', '$2y$10$rQb/8.zVotkpd2MaZUpVOu5tSJv9n/ZXpMRGhAgKb2Myb7ZgxBAda', 'member', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 0);
+('01.00001', '2019-10-28', 'Top Perusahaan', '0', 'Semarang', 'info@tabungemas.com', '$2y$10$yOnqrBpMQhlAIPaE9x./muRH/OdFPfxYzBHuBP95.uWR6wxenEy2C', 'super', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_agt_tmp`
+--
+
+CREATE TABLE `tb_agt_tmp` (
+  `idtmp` int(5) NOT NULL,
+  `tgl_daftar` date NOT NULL,
+  `nama_lengkap` varchar(150) NOT NULL,
+  `nohp` varchar(20) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(256) NOT NULL,
+  `idreferal` varchar(8) NOT NULL,
+  `nominal` int(9) NOT NULL,
+  `konfirm_status` int(2) NOT NULL,
+  `token` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tb_agt_tmp`
+--
+
+INSERT INTO `tb_agt_tmp` (`idtmp`, `tgl_daftar`, `nama_lengkap`, `nohp`, `email`, `password`, `idreferal`, `nominal`, `konfirm_status`, `token`) VALUES
+(1, '2019-10-28', 'Juniar Arif Wicaksono', '081390559997', 'arifokbgt@gmail.com', '$2y$10$f0wJQw32a3p5QKjOXLdJ1Ovpu9GshSuGazVI2c2HsWXTs.1QSMhai', '01.00001', 970332, 0, 'QKYZVB4XH0beysN3');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_bonus`
+--
+
+CREATE TABLE `tb_bonus` (
+  `id` int(3) NOT NULL,
+  `registrasi` int(9) NOT NULL,
+  `referal` int(9) NOT NULL,
+  `royalti` int(9) NOT NULL,
+  `royalti_target` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tb_bonus`
+--
+
+INSERT INTO `tb_bonus` (`id`, `registrasi`, `referal`, `royalti`, `royalti_target`) VALUES
+(1, 970000, 15000, 10000, 10),
+(2, 0, 5000, 9000, 15),
+(3, 0, 4000, 6000, 20),
+(4, 0, 1500, 5000, 30),
+(5, 0, 1500, 4000, 25),
+(6, 0, 1000, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -100,6 +147,13 @@ CREATE TABLE `tb_cabang` (
   `idpemilik` varchar(8) NOT NULL,
   `status` enum('enable','disable') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tb_cabang`
+--
+
+INSERT INTO `tb_cabang` (`idcabang`, `nama_cabang`, `alamat_cabang`, `kotakab`, `idpemilik`, `status`) VALUES
+('01', 'PUSAT', '-', 'SEMARANG', '01.00001', 'enable');
 
 -- --------------------------------------------------------
 
@@ -122,12 +176,7 @@ CREATE TABLE `tb_jaringan` (
 --
 
 INSERT INTO `tb_jaringan` (`idagt`, `idreferal`, `idupline`, `jml_downline`, `pos_jar`, `pos_level`, `tgl_proses`) VALUES
-('01.00001', '0', '0', 5, '1', 1, '0000-00-00'),
-('01.00002', '01.00001', '01.00001', 0, '11', 2, '0000-00-00'),
-('01.00003', '01.00001', '01.00001', 0, '12', 2, '0000-00-00'),
-('01.00004', '01.00001', '01.00001', 0, '13', 2, '0000-00-00'),
-('01.00005', '01.00001', '01.00001', 0, '14', 2, '0000-00-00'),
-('01.00006', '01.00001', '01.00001', 0, '15', 2, '0000-00-00');
+('01.00001', '0', '0', 0, '1', 1, '2019-10-28');
 
 -- --------------------------------------------------------
 
@@ -141,15 +190,6 @@ CREATE TABLE `tb_verifikasi_email` (
   `idagt` varchar(8) NOT NULL,
   `status` enum('not verified','verified') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `tb_verifikasi_email`
---
-
-INSERT INTO `tb_verifikasi_email` (`idx`, `token`, `idagt`, `status`) VALUES
-(1, 'VPtuygrBcA68I1xR01.00004', '01.00004', 'not verified'),
-(2, 'sDLZTjwgN1HXWx0M0100005', '01.00005', 'verified'),
-(3, '3S8cbMWusrPL42vA0100006', '01.00006', 'not verified');
 
 -- --------------------------------------------------------
 
@@ -236,6 +276,18 @@ ALTER TABLE `tb_agt_ted`
   ADD PRIMARY KEY (`idted`);
 
 --
+-- Indeks untuk tabel `tb_agt_tmp`
+--
+ALTER TABLE `tb_agt_tmp`
+  ADD PRIMARY KEY (`idtmp`);
+
+--
+-- Indeks untuk tabel `tb_bonus`
+--
+ALTER TABLE `tb_bonus`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `tb_cabang`
 --
 ALTER TABLE `tb_cabang`
@@ -258,10 +310,22 @@ ALTER TABLE `t_update_ubs`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `tb_agt_tmp`
+--
+ALTER TABLE `tb_agt_tmp`
+  MODIFY `idtmp` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_bonus`
+--
+ALTER TABLE `tb_bonus`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT untuk tabel `tb_verifikasi_email`
 --
 ALTER TABLE `tb_verifikasi_email`
-  MODIFY `idx` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idx` bigint(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_update_ubs`
