@@ -365,6 +365,13 @@ class Register extends CI_Controller
 
                         $this->_sendmail($to, $subject, $message, $attach);
 
+                        //update table, status konfirmasi
+                        $datakonfirm = [
+                            'token' => "$token",
+                            'konfirm_status' => $status
+                        ];
+                        $temporary->konfirm($datakonfirm);
+
                         $this->session->set_flashdata('info', '<div class="alert alert-info" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">×</span>
