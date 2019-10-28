@@ -304,58 +304,86 @@ class Register extends CI_Controller
 
             redirect(base_url() . 'index.php/register/new_member');
         } else {
-            /*$data = [
+            $datakonfirm = [
                 'token' => "$token",
                 'status' => 1
-            ];*/
+            ];
+            $this->load->view('pages/konfirmasi', $datakonfirm);
+        }
+    }
 
-            //$verifiying = $this->model_verifikasi->verify($data);
+    public function post_confirmation()
+    {
 
-            $validation = $this->form_validation;
-            $temporary  = $this->model_tmpagt;
+        $temporary  = $this->model_tmpagt;
 
-            if ($validation->run()) {
-                //upload image ke server
-                $breakname  = explode(".", $_FILES['struk']['name']);
-                $newname    = $token . "." . $breakname[1];
+        $this->form_validation->set_rules('token', 'Token', 'required');
 
-                $config['upload_path']      = base_url() . '/assets/images/bukti/';
-                $config['allowed_types']    = 'jpg|jpeg';
-                $config['max_size']         = 100;
-                $config['max_width']        = 1024;
-                $config['max_height']       = 768;
-                $config['file_name']        = $newname;
+        $token  = $this->input->post('token');
+        $status = $this->input->post('status');
 
-                $this->load->library('upload', $config);
+        if ($this->form_validation->run()) {
+            //upload image ke server
+            $this->load->library('upload');
 
-                $this->upload->initialize($config);
+            $breakname  = explode(".", $_FILES['struk']['name']);
+            $newname    = $token . "." . $breakname[1];
 
+            $config['file_name']        = $newname;
+            $config['upload_path']      = './assets/images/bukti/';
+            $config['allowed_types']    = 'jpg|jpeg';
+            $config['max_size']         = 100;
+            $config['max_width']        = 2048;
+            $config['max_height']       = 2048;
+
+            $this->upload->initialize($config);
+
+            if ($_FILES['struk']['name']) {
                 if (!$this->upload->do_upload('struk')) {
-                    //jika gagal upload
-                    $this->session->set_flashdata('info', '<div class="alert alert-info" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                    <h4>Opps, </h4> gagal konfirmasi, ' . $this->upload->display_errors() . ' 
-                </div>');
 
-                    redirect(base_url() . 'index.php/verify/' . $token);
+                    //jika gagal upload
+                    $this->session->set_flashdata('info', '<div class="alert alert-warning" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4>Opps, </h4> gagal konfirmasi, ' . $this->upload->display_errors() . ' 
+                    </div>');
+
+                    redirect(base_url() . 'index.php/register/verify/' . $token);
                 } else {
                     //jika berhasil
-                    $this->upload->data();
+                    $uploaded = $this->upload->data();
+
+                    if ($uploaded) {
+                        //kirim ke email billing
+                        $data['temporary'] = $temporary->getByToken($token);
+
+                        $to         = "billing@tabungemas.com";
+                        $subject    = "Bukti transfer " . $data['temporary']['nama_lengkap'];
+                        $message    = $this->load->view('email/email_konfirmasi', $data, true);
+                        $attach     = './assets/images/bukti/' . $newname;
+
+                        $this->_sendmail($to, $subject, $message, $attach);
+
+                        $this->session->set_flashdata('info', '<div class="alert alert-info" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4>Success, </h4> konfirmasi berhasil ...
+                        </div>');
+
+                        redirect(base_url() . 'index.php/register/verify/' . $token);
+                    } else {
+                        $this->session->set_flashdata('info', '<div class="alert alert-warning" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4>Oops, </h4> gagal mengirim email ...
+                        </div>');
+
+                        redirect(base_url() . 'index.php/register/verify/' . $token);
+                    }
                 }
-
-                //kirim ke email billing
-                $data['temporary'] = $temporary->getByToken($token);
-
-                $to         = "billing@tabungemas.com";
-                $subject    = "Bukti transfer $data[temporary][nama_lengkap]";
-                $message    = $this->load->view('email/email_verifikasi', $data, true);
-                $attach     = base_url() . '/assets/images/bukti/' . $newname;
-
-                $this->_sendmail($to, $subject, $message, $attach);
-            } else {
-                $this->load->view('pages/konfirmasi', $data);
             }
         }
     }

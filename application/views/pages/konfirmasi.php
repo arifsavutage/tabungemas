@@ -17,12 +17,12 @@
             echo $this->session->flashdata('info');
         }
         ?>
-        <form method="post" action="" enctype="multipart/form-data">
+        <form name="konfirmasi" method="post" action="<?= base_url() . "index.php/register/post_confirmation"; ?>" enctype="multipart/form-data">
             <h2 class="text-center">Konfirmasi Transfer</h2>
             <div class="form-group">
                 <input type="hidden" name="token" value="<?= $token; ?>" />
                 <input type="hidden" name="status" value="<?= $status; ?>" />
-                <input class="form-control is-invalid" type="file" name="struk" required=""><small class="form-text text-danger">Silahkan lampirkan bukti transfer.</small>
+                <input class="form-control" type="file" name="struk" required=""><small class="form-text text-danger">Silahkan lampirkan bukti transfer.</small>
             </div>
             <div class="form-group"><button class="btn btn-primary" type="submit">Kirim </button></div>
         </form>
