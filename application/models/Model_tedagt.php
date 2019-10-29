@@ -60,25 +60,11 @@ class Model_tedagt extends CI_Model
         return $this->db->get($this->_table);
     }
 
-    public function getAllByCabang($idcabang)
-    {
-        $query  = $this->db->query("SELECT 
-        `idted`, `tgl_gabung`, `nama_lengkap`, `nohp`, 
-        `alamat`, `email`, `password`, `level_user`, `scan_ktp`, 
-        `scan_npwp`, `foto_profil`, `aktif` 
-        FROM `tb_agt_ted` 
-        WHERE idted LIKE '$idcabang%'");
-
-        return $query->num_rows();
-    }
     public function jmlIdCabang($idcabang)
     {
         $this->db->like('idted', "$idcabang", 'after');
         $this->db->order_by('tgl_gabung', 'DESC');
         return $this->db->get($this->_table)->num_rows();
-
-        // $query  = $this->db->query("SELECT * FROM " . $this->_table . " WHERE idted LIKE '$idcabang%' ORDER BY tgl_gabung DESC");
-        // return $query->num_rows();
     }
 
     public function akunAktif($data)
@@ -108,12 +94,12 @@ class Model_tedagt extends CI_Model
             $this->nohp         = $post['nohp'];
             $this->alamat       = "";
             $this->email        = $post['email'];
-            $this->password     = password_hash($post['password'], PASSWORD_DEFAULT);
+            $this->password     = $post['password'];
             $this->level_user   = $level;
             $this->scan_ktp     = "noimage.jpg";
             $this->scan_npwp    = "noimage.jpg";
             $this->foto_profil  = "noimage.jpg";
-            $this->aktif        = 0;
+            $this->aktif        = 1;
 
             $this->db->insert($this->_table, $this);
         }

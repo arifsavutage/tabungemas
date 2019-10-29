@@ -19,154 +19,116 @@ class Register extends CI_Controller
         redirect(base_url() . 'index.php/register/new_member');
     }
 
-    public function konfirm()
+    public function add_to_jaringan()
     {
-        $validation     = $this->form_validation;
-
-        $agtbaru        = $this->model_tmpagt;
+        $agtbaru        = $this->model_tedagt;
         $jaringan       = $this->model_jaringan;
 
-        $validation->set_rules($agtbaru->rules());
+        //membuat id agt baru
+        $refid      = $this->input->post('refid');
+        $mailregis  = $this->input->post('email');
+        $nameregis  = $this->input->post('nama');
+        $idtmp      = $this->input->post('idtmp');
 
-        if ($validation->run()) {
-
-            //membuat id agt baru
-            $refid      = $this->input->post('refid');
-            $mailregis  = $this->input->post('email');
-            $nameregis  = $this->input->post('nama');
-
-            $cekuser   = $agtbaru->getAccountByEmail($mailregis);
-
-            if ($mailregis != $cekuser['email']) {
-
-                if (!empty($refid)) {
-                    //ambil kode cabang pada ID's
-                    $explode    = explode(".", $refid);
-                    $cabang     = $explode[0];
-                } else {
-
-                    //cabang defautl jika tidak ada yg mereferalkan
-                    $cabang = "01";
-                    $refid  = "01.00001";
-                }
-
-                //start create new ID's
-                //cek jumlah terdaftar
-                $jmlagt = $agtbaru->getAll()->num_rows();
-                $jmlagt = $agtbaru->getAllByCabang($cabang);
-
-                if ($jmlagt == 0) {
-                    $newid = $cabang . ".00001";
-                    $datajar    = [
-                        'idagt' => "$newid",
-                        'refid' => "0",
-                        'uplineid' => "0",
-                        'jmldown' => 0,
-                        'posjar' => '1',
-                        'poslvl' => 1,
-                        'tglproses' => '0000-00-00'
-                    ];
-
-                    $level = "super";
-                } else {
-                    $panjangId  = $agtbaru->jmlIdCabang($cabang);
-                    $updatejar  = $jaringan->cekUpline($refid);
-
-                    //echo $panjangId;
-
-                    if (strlen($panjangId) == 1) {
-                        $panjangId = $panjangId + 1;
-                        $newid  = $cabang . ".0000" . $panjangId;
-                    } else if (strlen($panjangId) == 2) {
-                        $panjangId = $panjangId + 1;
-                        $newid  = $cabang . ".000" . $panjangId;
-                    } else if (strlen($panjangId) == 3) {
-                        $panjangId = $panjangId + 1;
-                        $newid  = $cabang . ".00" . $panjangId;
-                    } else if (strlen($panjangId) == 4) {
-                        $panjangId = $panjangId + 1;
-                        $newid  = $cabang . ".0" . $panjangId;
-                    } else {
-                        $panjangId = $panjangId + 1;
-                        $newid  = $cabang . "." . $panjangId;
-                    }
-
-                    $newdownline = $updatejar['jml_downline'] + 1;
-                    $newposjar  = $updatejar['pos_jar'] . "" . $newdownline;
-                    $newposlvl  = $updatejar['pos_level'] + 1;
-
-                    $datajar    = [
-                        'idagt' => "$newid",
-                        'refid' => "$refid",
-                        'uplineid' => "$refid",
-                        'jmldown' => 0,
-                        'posjar' => "$newposjar",
-                        'poslvl' => $newposlvl,
-                        'tglproses' => '0000-00-00'
-                    ];
-
-                    $level  = "member";
-                }
-
-
-                $agtbaru->save($newid, $level);
-                $jaringan->save($datajar);
-
-                //update jaringan untuk refid
-                if ($jmlagt != 0) {
-                    $updateup   = [
-                        'idagt'       => $refid,
-                        'jml_downline' => $newdownline
-                    ];
-                    $jaringan->updateUpline($updateup);
-                }
-
-                //prepare send mail
-                $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                $idexpld    = explode(".", $newid);
-                $idimplode  = implode("", $idexpld);
-                $token = substr(str_shuffle($permitted_chars), 0, 16) . "" . $idimplode;
-
-                $dataemail = [
-                    'mail'  => $mailregis,
-                    'nama'  => ucwords($nameregis),
-                    'token' => $token
-                ];
-
-                //send email
-                $this->mailVerifikasi($dataemail);
-
-                //simpan ke tabel verifikasi email
-                $datasendmail   = [
-                    'token' => "$token",
-                    'idagt' => "$newid",
-                    'status' => 'not verified'
-                ];
-                $this->model_verifikasi->save($datasendmail);
-
-                $this->session->set_flashdata('info', '
-                    <div class="alert alert-success" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                        <h4>success :</h4> Registrasi berhasil.. 
-                    </div>');
-
-                redirect(base_url() . 'index.php/register');
-            } else {
-                $this->session->set_flashdata('info', '
-                    <div class="alert alert-warning" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                        <h4>Maaf, </h4> Email sudah terdaftar ...
-                    </div>');
-
-                redirect(base_url() . 'index.php/register');
-            }
+        if (!empty($refid)) {
+            //ambil kode cabang pada ID's
+            $explode    = explode(".", $refid);
+            $cabang     = $explode[0];
         } else {
-            $this->load->view('pages/register');
+
+            //cabang defautl jika tidak ada yg mereferalkan
+            $cabang = "01";
+            $refid  = "01.00001";
         }
+
+        //start create new ID's
+        //cek jumlah terdaftar
+        $jmlagt = $agtbaru->getAll()->num_rows();
+
+        if ($jmlagt == 0) {
+            $newid = $cabang . ".00001";
+            $datajar    = [
+                'idagt' => "$newid",
+                'refid' => "0",
+                'uplineid' => "0",
+                'jmldown' => 0,
+                'posjar' => '1',
+                'poslvl' => 1,
+                'tglproses' => '0000-00-00'
+            ];
+
+            $level = "super";
+        } else {
+            $panjangId  = $agtbaru->jmlIdCabang($cabang);
+            $updatejar  = $jaringan->cekUpline($refid);
+
+            //echo $panjangId;
+            $panjangId = $panjangId + 1;
+            if (strlen($panjangId) == 1) {
+                $newid  = $cabang . ".0000" . $panjangId;
+            } else if (strlen($panjangId) == 2) {
+                $newid  = $cabang . ".000" . $panjangId;
+            } else if (strlen($panjangId) == 3) {
+                $newid  = $cabang . ".00" . $panjangId;
+            } else if (strlen($panjangId) == 4) {
+                $newid  = $cabang . ".0" . $panjangId;
+            } else {
+                $newid  = $cabang . "." . $panjangId;
+            }
+
+            $newdownline = $updatejar['jml_downline'] + 1;
+            $newposjar  = $updatejar['pos_jar'] . "" . $newdownline;
+            $newposlvl  = $updatejar['pos_level'] + 1;
+
+            $datajar    = [
+                'idagt' => "$newid",
+                'refid' => "$refid",
+                'uplineid' => "$refid",
+                'jmldown' => 0,
+                'posjar' => "$newposjar",
+                'poslvl' => $newposlvl,
+                'tglproses' => '0000-00-00'
+            ];
+
+            $level  = "member";
+        }
+
+
+        $agtbaru->save($newid, $level);
+        $jaringan->save($datajar);
+
+        //update jaringan untuk refid
+        if ($jmlagt != 0) {
+            $updateup   = [
+                'idagt'       => $refid,
+                'jml_downline' => $newdownline
+            ];
+            $jaringan->updateUpline($updateup);
+        }
+
+        //prepare send mail
+        $dataemail = [
+            'mail'  => $mailregis,
+            'nama'  => ucwords($nameregis)
+        ];
+
+        //send email
+        $this->mailAkunAktif($dataemail);
+
+        //hapus data di table tmp
+        //echo $idtmp;
+        $this->model_tmpagt->delete($idtmp);
+
+
+        $this->session->set_flashdata('info', '
+            <div class="alert alert-success" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4>Success :</h4> Penambahan member ke jaringan berhasil.. 
+            </div>');
+
+        redirect(base_url() . 'index.php/member/member_baru');
     }
 
     public function new_member()
@@ -393,6 +355,16 @@ class Register extends CI_Controller
                 }
             }
         }
+    }
+
+    public function mailAkunAktif($mailver)
+    {
+        $to         = $mailver['mail'];
+        $subject    = "Akun sudah aktif";
+        $message    = $this->load->view('email/email_active', $mailver, true);
+        $attach     = "";
+
+        $this->_sendmail($to, $subject, $message, $attach);
     }
 
     public function mailVerifikasi($mailver)

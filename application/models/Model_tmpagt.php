@@ -7,10 +7,10 @@ class Model_tmpagt extends CI_Model
     private $_table = 'tb_agt_tmp';
 
     public $tgl_daftar;
-    public $nama_lengkap;
-    public $nohp;
-    public $email;
-    public $password;
+    public $nm_tmp;
+    public $nohp_tmp;
+    public $email_tmp;
+    public $password_tmp;
     public $idreferal;
     public $nominal;
     public $konfirm_status;
@@ -57,10 +57,10 @@ class Model_tmpagt extends CI_Model
         $post = $this->input->post();
 
         $this->tgl_daftar   = date('Y-m-d');
-        $this->nama_lengkap = $post['nama'];
-        $this->nohp         = $post['nohp'];
-        $this->email        = $post['email'];
-        $this->password     = password_hash($post['password'], PASSWORD_DEFAULT);
+        $this->nm_tmp       = $post['nama'];
+        $this->nohp_tmp     = $post['nohp'];
+        $this->email_tmp    = $post['email'];
+        $this->password_tmp = password_hash($post['password'], PASSWORD_DEFAULT);
         $this->idreferal    = "$data[referal]";
         $this->nominal      = $data['nominal'];
         $this->konfirm_status = $data['status'];
@@ -72,6 +72,14 @@ class Model_tmpagt extends CI_Model
     public function getAll()
     {
         return $this->db->get($this->_table)->result_array();
+    }
+
+    public function getRelationAll()
+    {
+        $this->db->select('tb_agt_tmp.*, tb_agt_ted.*');
+        $this->db->from($this->_table);
+        $this->db->join('tb_agt_ted', 'tb_agt_ted.idted = tb_agt_tmp.idreferal');
+        return $this->db->get()->result_array();
     }
 
     public function konfirm($data)
@@ -87,7 +95,13 @@ class Model_tmpagt extends CI_Model
 
     public function getAccountByEmail($email)
     {
-        $this->db->where('email', "$email");
+        $this->db->where('email_tmp', "$email");
         return $this->db->get($this->_table)->row_array();
+    }
+
+    public function delete($id)
+    {
+        $this->db->where('idtmp', $id);
+        return $this->db->delete($this->_table);
     }
 }

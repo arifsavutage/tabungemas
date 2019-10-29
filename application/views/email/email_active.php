@@ -23,34 +23,21 @@
                     </tr>
                     <tr>
                         <td style="padding: 40px 30px 40px 30px;">
-                            <h3 style="color:#5f1d80;border-bottom: thin solid #cccccc;border-collapse: collapse;padding-bottom:30px;">Konfirmasi pembayaran</h3>
+                            <h3 style="color:#5f1d80;border-bottom: thin solid #cccccc;border-collapse: collapse;padding-bottom:30px;">Hallo, <?= $nama; ?></h3>
 
-                            <p style="margin-bottom:50px;color:#6e6e6e;">Berikut detail member baru :</p>
+                            <p style="margin-bottom:50px;color:#6e6e6e;">
+                                Selamat, akun <strong>tabungemas.com</strong> Anda sudah aktif, silahkan lakukan update data diri Anda untuk kelengkapan data pribadi.
+                            </p>
 
-                            <table align="center" border="1" cellpadding="10" cellspacing="0" width="450">
-                                <tr>
-                                    <td>Nama Lengkap</td>
-                                    <td>:</td>
-                                    <td><?= ucwords($temporary['nama_lengkap']); ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Email</td>
-                                    <td>:</td>
-                                    <td><?= $temporary['email']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td>No. HP</td>
-                                    <td>:</td>
-                                    <td><?= $temporary['nohp']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Ref. ID</td>
-                                    <td>:</td>
-                                    <td><?= $temporary['idreferal']; ?></td>
-                                </tr>
-                            </table>
+                            <a href="<?= base_url(); ?>" target="_blank" style="margin:auto;display:block;padding: 15px 10px;background-color:#2aa371;text-decoration:none;color:#ffffff;width:120px;text-align:center;border-radius:5px;">Login Sekarang</a>
 
-                            <p style="margin-bottom:50px;color:#6e6e6e;">Segera lakukan check data transfer ke bank terkait.</p>
+
+                            <p style="margin-top:65px;color:#6e6e6e;">
+                                Salam hangat,
+                                <br />
+                                <br />
+                                Account center
+                            </p>
                         </td>
                     </tr>
                     <tr>

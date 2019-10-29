@@ -12,11 +12,6 @@
 
 <body>
     <div class="contact-clean" style="min-height:700px;">
-        <?php
-        if ($this->session->flashdata('info')) {
-            echo $this->session->flashdata('info');
-        }
-        ?>
         <form name="konfirmasi" method="post" action="<?= base_url() . "index.php/register/post_confirmation"; ?>" enctype="multipart/form-data">
             <h2 class="text-center">Konfirmasi Transfer</h2>
             <div class="form-group">
@@ -25,6 +20,12 @@
                 <input class="form-control" type="file" name="struk" required=""><small class="form-text text-danger">Silahkan lampirkan bukti transfer.</small>
             </div>
             <div class="form-group"><button class="btn btn-primary" type="submit">Kirim </button></div>
+
+            <?php
+            if ($this->session->flashdata('info')) {
+                echo $this->session->flashdata('info');
+            }
+            ?>
         </form>
     </div>
     <script src="<?= base_url(); ?>assets/konfirmasi/assets/js/jquery.min.js"></script>

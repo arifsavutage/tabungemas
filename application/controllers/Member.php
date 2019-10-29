@@ -14,7 +14,7 @@ class Member extends CI_Controller
     {
         $data   = [
             'page'  => 'pages/admin/member_baru',
-            'list'  => $this->model_tmpagt->getAll()
+            'list'  => $this->model_tmpagt->getRelationAll()
         ];
 
         $this->load->view('dashboard', $data);
