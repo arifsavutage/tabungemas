@@ -14,11 +14,19 @@
                 <li class="submenu">
                     <a href="#"><i class="fas fa-user"></i> <span> Akun Saya </span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="<?= base_url(); ?>index.php/dashboard/profile/<?= $this->session->userdata('id'); ?>">Profile</a></li>
-                        <li><a href="">Upload Foto</a></li>
-                        <li><a href="">Berkas</a></li>
-                        <li><a href="">Ubah Password</a></li>
-                        <li><a href="">Histori Keanggotaan</a></li>
+                        <li><a href="<?= base_url(); ?>index.php/member/profile/<?= $this->session->userdata('id'); ?>">Profile</a></li>
+                        <li><a href="<?= base_url(); ?>index.php/member/photo_profile/<?= $this->session->userdata('id'); ?>">Upload Foto</a></li>
+
+                        <li class="submenu">
+                            <a href="#"><span>Berkas</span> <span class="menu-arrow"></span> </a>
+                            <ul style="">
+                                <li><a href="<?= base_url(); ?>index.php/member/berkas_ktp/<?= $this->session->userdata('id'); ?>"><span>Upload KTP</span></a></li>
+                                <li><a href="<?= base_url(); ?>index.php/member/berkas_npwp/<?= $this->session->userdata('id'); ?>"><span>Upload NPWP</span></a></li>
+                            </ul>
+                        </li>
+
+                        <li><a href="<?= base_url(); ?>index.php/member/update_pass/<?= $this->session->userdata('id'); ?>">Ubah Password</a></li>
+                        <li><a href="<?= base_url(); ?>index.php/member/pohon_jaringan/<?= $this->session->userdata('id'); ?>">Pohon Jaringan</a></li>
                     </ul>
                 </li>
 

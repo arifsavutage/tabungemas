@@ -294,7 +294,7 @@ class Register extends CI_Controller
             $config['file_name']        = $newname;
             $config['upload_path']      = './assets/images/bukti/';
             $config['allowed_types']    = 'jpg|jpeg';
-            $config['max_size']         = 100;
+            $config['max_size']         = 5120;
             $config['max_width']        = 2048;
             $config['max_height']       = 2048;
 
@@ -321,7 +321,7 @@ class Register extends CI_Controller
                         $data['temporary'] = $temporary->getByToken($token);
 
                         $to         = "billing@tabungemas.com";
-                        $subject    = "Bukti transfer " . $data['temporary']['nama_lengkap'];
+                        $subject    = "Bukti transfer " . $data['temporary']['nm_tmp'];
                         $message    = $this->load->view('email/email_konfirmasi', $data, true);
                         $attach     = './assets/images/bukti/' . $newname;
 

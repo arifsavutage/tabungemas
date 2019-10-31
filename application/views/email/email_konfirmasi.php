@@ -31,17 +31,17 @@
                                 <tr>
                                     <td>Nama Lengkap</td>
                                     <td>:</td>
-                                    <td><?= ucwords($temporary['nama_lengkap']); ?></td>
+                                    <td><?= ucwords($temporary['nm_tmp']); ?></td>
                                 </tr>
                                 <tr>
                                     <td>Email</td>
                                     <td>:</td>
-                                    <td><?= $temporary['email']; ?></td>
+                                    <td><?= $temporary['email_tmp']; ?></td>
                                 </tr>
                                 <tr>
                                     <td>No. HP</td>
                                     <td>:</td>
-                                    <td><?= $temporary['nohp']; ?></td>
+                                    <td><?= $temporary['nohp_tmp']; ?></td>
                                 </tr>
                                 <tr>
                                     <td>Ref. ID</td>

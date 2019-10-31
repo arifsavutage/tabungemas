@@ -12,7 +12,7 @@
 
              <li class="list-inline-item dropdown notif">
                  <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                     <img src="<?= base_url(); ?>assets/images/avatars/cesar-rincon.jpg" alt="Profile image" class="avatar-rounded">
+                     <img src="<?= base_url() . "assets/images/avatars/" . $this->session->userdata('foto'); ?>" alt="Profile image" class="avatar-rounded">
                  </a>
                  <div class="dropdown-menu dropdown-menu-right profile-dropdown">
                      <!-- item-->
@@ -21,7 +21,7 @@
                      </div>
 
                      <!-- item-->
-                     <a href="<?= base_url(); ?>index.php/dashboard/profile/<?= $this->session->userdata('id'); ?>" class="dropdown-item notify-item">
+                     <a href="<?= base_url(); ?>index.php/member/profile/<?= $this->session->userdata('id'); ?>" class="dropdown-item notify-item">
                          <i class="fa fa-user"></i> <span>Profile</span>
                      </a>
 

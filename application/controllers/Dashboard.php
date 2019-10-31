@@ -24,31 +24,4 @@ class Dashboard extends CI_Controller
         ];
         $this->load->view('dashboard', $data);
     }
-
-    public function profile($id = null)
-    {
-        if ($id == null) {
-            redirect(base_url());
-        } else {
-
-            $data = [
-                'detail' => $this->model_tedagt->getAccountById($id),
-                'page' => 'pages/member/member_profile'
-            ];
-            $this->load->view('dashboard', $data);
-        }
-    }
-
-    public function edit_profile($id = null)
-    {
-        if ($id == null) {
-            redirect(base_url());
-        } else {
-            $data = [
-                'detail' => $this->model_tedagt->getAccountById($id),
-                'page' => 'pages/member/member_profile_edit'
-            ];
-            $this->load->view('dashboard', $data);
-        }
-    }
 }

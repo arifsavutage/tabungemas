@@ -44,7 +44,8 @@ class Auth extends CI_Controller
                     $data = [
                         'id'    => $user['idted'],
                         'nama'  => $exname[0],
-                        'role'  => $user['level_user']
+                        'role'  => $user['level_user'],
+                        'foto'  => $user['foto_profil']
                     ];
 
                     $this->session->set_userdata($data);
