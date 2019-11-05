@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 29 Okt 2019 pada 10.14
+-- Waktu pembuatan: 05 Nov 2019 pada 15.46
 -- Versi server: 10.3.18-MariaDB
 -- Versi PHP: 7.2.7
 
@@ -79,7 +79,18 @@ CREATE TABLE `tb_agt_ted` (
 --
 
 INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `nohp`, `alamat`, `email`, `password`, `level_user`, `scan_ktp`, `scan_npwp`, `foto_profil`, `aktif`) VALUES
-('01.00001', '2019-10-28', 'Top Perusahaan', '0', 'Semarang', 'info@tabungemas.com', '$2y$10$yOnqrBpMQhlAIPaE9x./muRH/OdFPfxYzBHuBP95.uWR6wxenEy2C', 'super', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 1);
+('01.00001', '2019-10-28', 'Top Perusahaan', '08123635427', 'Semarang', 'info@tabungemas.com', '$2y$10$yOnqrBpMQhlAIPaE9x./muRH/OdFPfxYzBHuBP95.uWR6wxenEy2C', 'super', 'noimage.jpg', 'noimage.jpg', '01_00001.jpg', 1),
+('01.00002', '2019-10-29', '', '081390559997', '', 'arifokbgt@gmail.com', '$2y$10$f0wJQw32a3p5QKjOXLdJ1Ovpu9GshSuGazVI2c2HsWXTs.1QSMhai', 'member', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 1),
+('01.00003', '2019-10-29', 'Dian Ayu', '081325123456', '', 'dianayoe.wicaksono@gmail.com', '$2y$10$2bbrD1PMvHykvc2e14poXOn5Tterp9oCxQVS24YGAggLjNJNWjJde', 'member', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 1),
+('01.00004', '2019-10-29', 'Rufaidah Layla Cetta', '081325123456', '', 'rufaidahbinwicaksono@gmail.com', '$2y$10$2bbrD1PMvHykvc2e14poXOn5Tterp9oCxQVS24YGAggLjNJNWjJde', 'member', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 1),
+('01.00005', '2019-10-29', 'Yahya', '081325123456', '', 'yahya@gmail.com', '$2y$10$2bbrD1PMvHykvc2e14poXOn5Tterp9oCxQVS24YGAggLjNJNWjJde', 'member', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 1),
+('01.00006', '2019-10-29', 'Wahyu', '081325123456', '', 'wahyu@gmail.com', '$2y$10$2bbrD1PMvHykvc2e14poXOn5Tterp9oCxQVS24YGAggLjNJNWjJde', 'member', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 1),
+('01.00007', '2019-10-29', 'Bagus', '081325123456', '', 'bagus@gmail.com', '$2y$10$2bbrD1PMvHykvc2e14poXOn5Tterp9oCxQVS24YGAggLjNJNWjJde', 'member', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 1),
+('01.00008', '2019-10-29', 'Kumala', '081325123456', '', 'kumala@gmail.com', '$2y$10$2bbrD1PMvHykvc2e14poXOn5Tterp9oCxQVS24YGAggLjNJNWjJde', 'member', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 1),
+('01.00009', '2019-10-29', 'Bayu Sudarsono', '085640321654', '', 'bayoe@yahoo.com', '$2y$10$1EXgb46vH2UeGidUP/bCgOgywI5ZGYdfCQJzSZ5ilYow0NLfKfxdy', 'member', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 1),
+('01.00010', '2019-10-29', 'Babah', '0896781234', 'Jl. Srikandi lama no.08 Semarang barat', 'babah@gmail.com', '$2y$10$HeJvQifcpMU0zAPd4l9oN.YhtcJKWXO43kUPTpJazUmPTOiW9wM5u', 'member', 'ktp_01_00010.jpg', 'npwp_01_00010.jpg', '01_00010.jpg', 1),
+('01.00011', '2019-10-31', 'Ariandaru Kusuma Yudha', '08112888470', '', 'kog434@gmail.com', '$2y$10$ehqxPp5GCLRyjs.WMDKO1Owzp.lGGeVXkv9M1yHL15m4gpnW6Ag1m', 'member', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 1),
+('01.00012', '2019-10-31', 'Susiloningsih', '082136368828', '', 'kopikukopika@gmail.com', '$2y$10$GaW96.N4lFMbtOx0ICV.qOznk1V1p.edVURCE381JyPgcemktl1L6', 'member', 'noimage.jpg', 'noimage.jpg', 'noimage.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -90,22 +101,15 @@ INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `nohp`, `alamat
 CREATE TABLE `tb_agt_tmp` (
   `idtmp` int(5) NOT NULL,
   `tgl_daftar` date NOT NULL,
-  `nama_lengkap` varchar(150) NOT NULL,
-  `nohp` varchar(20) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(256) NOT NULL,
+  `nm_tmp` varchar(150) NOT NULL,
+  `nohp_tmp` varchar(20) NOT NULL,
+  `email_tmp` varchar(100) NOT NULL,
+  `password_tmp` varchar(256) NOT NULL,
   `idreferal` varchar(8) NOT NULL,
   `nominal` int(9) NOT NULL,
   `konfirm_status` int(2) NOT NULL,
   `token` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `tb_agt_tmp`
---
-
-INSERT INTO `tb_agt_tmp` (`idtmp`, `tgl_daftar`, `nama_lengkap`, `nohp`, `email`, `password`, `idreferal`, `nominal`, `konfirm_status`, `token`) VALUES
-(2, '2019-10-28', 'Juniar Arif Wicaksono', '081390559997', 'arifokbgt@gmail.com', '$2y$10$JAFJ7LDv4aKOyWrGEFBm.uUtdVNokZHLvjW3mldBsJsX2DBcSQws.', '01.00001', 970232, 1, 'AIUfvk62nW78BxK4');
 
 -- --------------------------------------------------------
 
@@ -176,7 +180,18 @@ CREATE TABLE `tb_jaringan` (
 --
 
 INSERT INTO `tb_jaringan` (`idagt`, `idreferal`, `idupline`, `jml_downline`, `pos_jar`, `pos_level`, `tgl_proses`) VALUES
-('01.00001', '0', '0', 0, '1', 1, '2019-10-28');
+('01.00001', '0', '0', 3, '1', 1, '2019-10-28'),
+('01.00002', '01.00001', '01.00001', 3, '11', 2, '0000-00-00'),
+('01.00003', '01.00001', '01.00001', 1, '12', 2, '0000-00-00'),
+('01.00004', '01.00003', '01.00003', 2, '121', 3, '0000-00-00'),
+('01.00005', '01.00002', '01.00002', 0, '111', 3, '0000-00-00'),
+('01.00006', '01.00002', '01.00002', 0, '112', 3, '0000-00-00'),
+('01.00007', '01.00002', '01.00002', 0, '113', 3, '0000-00-00'),
+('01.00008', '01.00004', '01.00004', 0, '1211', 4, '0000-00-00'),
+('01.00009', '01.00001', '01.00001', 0, '13', 2, '0000-00-00'),
+('01.00010', '01.00004', '01.00004', 2, '1212', 4, '0000-00-00'),
+('01.00011', '01.00010', '01.00010', 0, '12121', 5, '0000-00-00'),
+('01.00012', '01.00010', '01.00010', 0, '12122', 5, '0000-00-00');
 
 -- --------------------------------------------------------
 

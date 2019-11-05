@@ -88,6 +88,7 @@ class Model_tedagt extends CI_Model
     {
         return $this->db->update($this->_table, $data, ['idted' => "$data[idted]"]);
     }
+
     public function save($id = null, $level = null)
     {
         $post   = $this->input->post();

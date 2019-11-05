@@ -26,7 +26,7 @@
                         </li>
 
                         <li><a href="<?= base_url(); ?>index.php/member/update_pass/<?= $this->session->userdata('id'); ?>">Ubah Password</a></li>
-                        <li><a href="<?= base_url(); ?>index.php/member/pohon_jaringan/<?= $this->session->userdata('id'); ?>">Pohon Jaringan</a></li>
+                        <li><a href="<?= base_url(); ?>index.php/member/pohon_jaringan/<?= $this->session->userdata('id'); ?>">Anggota Referal</a></li>
                     </ul>
                 </li>
 

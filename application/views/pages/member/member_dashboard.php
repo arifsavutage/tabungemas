@@ -7,21 +7,69 @@
             </div>
             <div class="card-body">
                 <div class="row">
+                    <?php
+                    $new    = [];
+                    $old    = [];
+
+                    $x = 1;
+                    foreach ($harga_emas as $update_emas) :
+                        if ($x == 1) {
+                            array_push($new, $update_emas);
+                        } else {
+                            array_push($old, $update_emas);
+                        }
+                        $x++;
+                    endforeach;
+
+                    $xnewbeli   = explode(",", $new[0]['HRG_BELI']);
+                    $xnewjual   = explode(",", $new[0]['HRG_JUAL']);
+                    $newbeli    = implode("", $xnewbeli);
+                    $newjual    = implode("", $xnewjual);
+                    $newupdate  = date('d M Y', strtotime($new[0]['UPDATE_AT']));
+
+                    $xoldbeli   = explode(",", $old[0]['HRG_BELI']);
+                    $xoldjual   = explode(",", $old[0]['HRG_JUAL']);
+                    $oldbeli    = implode("", $xoldbeli);
+                    $oldjual    = implode("", $xoldjual);
+                    $oldupdate  = date('d M Y', strtotime($old[0]['UPDATE_AT']));
+
+                    //beli
+                    if ($newbeli < $oldbeli) {
+                        $iconbeli   = '<i class="fa fa-arrow-down float-right text-white"></i>';
+                        $ketbeli    = "Turun";
+                        $persenbeli = ($oldbeli - $newbeli) / $newbeli;
+                    } else {
+                        $iconbeli   = '<i class="fa fa-arrow-up float-right text-white"></i>';
+                        $ketbeli    = "Naik";
+                        $persenbeli = ($newbeli - $oldbeli) / $oldbeli;
+                    }
+
+                    //jual
+                    if ($newjual < $oldjual) {
+                        $iconjual   = '<i class="fa fa-arrow-down float-right text-white"></i>';
+                        $ketjual    = "Turun";
+                        $persenjual = ($oldjual - $newjual) / $newjual;
+                    } else {
+                        $iconjual   = '<i class="fa fa-arrow-up float-right text-white"></i>';
+                        $ketjual    = "Naik";
+                        $persenjual = ($newjual - $oldjual) / $oldjual;
+                    }
+                    ?>
                     <div class="col-xs-4 col-md-6 col-lg-6 col-xl-6">
                         <div class="card-box noradius noborder bg-default">
-                            <i class="fa fa-arrow-up float-right text-white"></i>
+                            <?= $iconbeli; ?>
                             <h6 class="text-white text-uppercase m-b-20">Harga Beli</h6>
-                            <h1 class="m-b-20 text-white counter">760.750 /gr</h1>
-                            <span class="text-white">Naik 0,15% update at 21 Oct 2019</span>
+                            <h1 class="m-b-20 text-white counter"><?= number_format($newbeli, 0, ',', '.'); ?> /gr</h1>
+                            <span class="text-white"><?= $ketbeli; ?> <?= round($persenbeli, 3); ?>% update at <?= $newupdate; ?></span>
                         </div>
                     </div>
 
                     <div class="col-xs-4 col-md-6 col-lg-6 col-xl-6">
                         <div class="card-box noradius noborder bg-success">
-                            <i class="fa fa-arrow-down float-right text-white"></i>
+                            <?= $iconjual ?>
                             <h6 class="text-white text-uppercase m-b-20">Harga Jual</h6>
-                            <h1 class="m-b-20 text-white counter">735.980</h1>
-                            <span class="text-white">Turun 1,5% update at 21 Oct 2019</span>
+                            <h1 class="m-b-20 text-white counter"><?= number_format($newjual, 0, ',', '.'); ?> /gr</h1>
+                            <span class="text-white"><?= $ketjual; ?> <?= round($persenjual, 3); ?>% update at <?= $newupdate; ?></span>
                         </div>
                     </div>
                 </div>
@@ -32,10 +80,24 @@
             <div class="col-xs-12 col-md-12 text-center">
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-warning btn-lg">
-                        <input type="radio" name="options" id="option1" autocomplete="off"> Emas Saya <br /> 1,5 gr
+                        <input type="radio" name="options" id="option1" autocomplete="off"> Emas Saya <br />
+                        <?php
+                        if (empty($saldo_emas['saldo'])) {
+                            echo "0 gr";
+                        } else {
+                            echo number_format($saldo_rp['saldo'], 3, ',', '.') . " gr";
+                        }
+                        ?> gr
                     </label>
                     <label class="btn btn-secondary btn-lg">
-                        <input type="radio" name="options" id="option2" autocomplete="off"> Saldo Saya <br /> Rp. 1.103.970
+                        <input type="radio" name="options" id="option2" autocomplete="off"> Saldo Saya <br />
+                        <?php
+                        if (empty($saldo_rp['saldo'])) {
+                            echo "Rp. 0";
+                        } else {
+                            echo "Rp. " . number_format($saldo_rp['saldo'], 0, ',', '.');
+                        }
+                        ?>
                     </label>
                 </div>
             </div>

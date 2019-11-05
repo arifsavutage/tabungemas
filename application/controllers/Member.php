@@ -9,6 +9,8 @@ class Member extends CI_Controller
         parent::__construct();
         $this->load->model('model_tmpagt');
         $this->load->model('model_tedagt');
+        $this->load->model('model_jaringan');
+        $this->load->model('model_transaksi');
 
         not_login();
     }
@@ -31,6 +33,8 @@ class Member extends CI_Controller
 
             $data = [
                 'detail' => $this->model_tedagt->getAccountById($id),
+                'saldo_rp'  => $this->model_transaksi->getLastTranById($id, 'uang'),
+                'saldo_emas'  => $this->model_transaksi->getLastTranById($id, 'emas'),
                 'page' => 'pages/member/member_profile'
             ];
             $this->load->view('dashboard', $data);
@@ -49,11 +53,15 @@ class Member extends CI_Controller
                 $idted  = $this->input->post('idted');
                 $nohp   = $this->input->post('nohp');
                 $alamat = $this->input->post('alamat');
+                $norek  = $this->input->post('norek');
+                $bank   = $this->input->post('bank');
 
                 $data = [
                     'idted' => "$idted",
                     'nohp'  => "$nohp",
-                    'alamat' => "$alamat"
+                    'alamat' => "$alamat",
+                    'norek ' => "$norek",
+                    'bank'  => "$bank"
                 ];
 
                 $update = $this->model_tedagt->update($data);
@@ -390,11 +398,49 @@ class Member extends CI_Controller
         if ($id == null) {
             redirect(base_url());
         } else {
+            $ambilposjar    = $this->model_jaringan->ambilPosJar($id);
+
             $data = [
+                'jaringan'  => $this->model_jaringan->ambilJaringan($ambilposjar['pos_jar'], $id, $ambilposjar['pos_level']),
                 'page' => 'pages/member/member_pohon_jaringan'
             ];
 
             $this->load->view('dashboard', $data);
+        }
+    }
+
+    public function upgrade($id = null)
+    {
+        if ($id == null) {
+            redirect(base_url());
+        } else {
+
+            $data   = [
+                'idted' => "$id",
+                'jenis' => 'agen'
+            ];
+
+            $upgrade = $this->model_tedagt->update($data);
+
+            if ($upgrade) {
+                $this->session->set_flashdata('info', '<div class="alert alert-info" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4>Selamat! </h4> Anda sudah menjadi Agen TED ...
+                        </div>');
+
+                redirect(base_url() . 'index.php/member/profile/' . $id);
+            } else {
+                $this->session->set_flashdata('info', '<div class="alert alert-warning" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4>Oops, </h4> Upgrade gagal ...
+                        </div>');
+
+                redirect(base_url() . 'index.php/member/profile/' . $id);
+            }
         }
     }
 }

@@ -22,6 +22,7 @@ class Model_jaringan extends CI_Model
     {
         $this->db->update($this->_table, $dataup, ['idagt' => $dataup['idagt']]);
     }
+
     public function save($data)
     {
         $this->idagt        = $data['idagt'];
@@ -33,5 +34,28 @@ class Model_jaringan extends CI_Model
         $this->tgl_proses   = $data['tglproses'];
 
         $this->db->insert($this->_table, $this);
+    }
+
+    public function ambilPosJar($id)
+    {
+        $this->db->where('idagt', "$id");
+        return $this->db->get($this->_table)->row_array();
+    }
+
+    public function ambilJaringan($posjar, $id, $poslvl)
+    {
+        $query  = $this->db->query("SELECT tb_agt_ted.idted, tb_agt_ted.nama_lengkap, 
+        tb_jaringan.pos_jar, (tb_jaringan.pos_level - $poslvl) AS new_lvl 
+        FROM tb_agt_ted, tb_jaringan
+        WHERE
+        tb_agt_ted.idted = tb_jaringan.idagt
+        AND
+        tb_jaringan.pos_jar LIKE '$posjar%'
+        AND
+        tb_agt_ted.idted <> '$id'
+        ORDER BY tb_jaringan.pos_level ASC
+        ");
+
+        return $query->result_array();
     }
 }

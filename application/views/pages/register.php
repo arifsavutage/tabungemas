@@ -26,6 +26,7 @@
                 endif;
                 ?>
                 <h2 class="text-center"><strong>Buat</strong> akun baru.</h2>
+
                 <div class="form-group">
                     <?php
                     if ($this->session->userdata('refid') != null) {

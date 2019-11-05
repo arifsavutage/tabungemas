@@ -50,7 +50,7 @@
                                 </tr>
                             </table>
 
-                            <p style="margin-bottom:50px;color:#6e6e6e;">Segera lakukan check data transfer ke bank terkait.</p>
+                            <p style="margin-bottom:50px;color:#6e6e6e;">Segera lakukan check data transfer ke bank terkait & cek data anggota baru apakah sudah terdaftar.</p>
                         </td>
                     </tr>
                     <tr>

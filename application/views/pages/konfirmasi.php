@@ -18,6 +18,9 @@
                 <input type="hidden" name="token" value="<?= $token; ?>" />
                 <input type="hidden" name="status" value="<?= $status; ?>" />
                 <input class="form-control" type="file" name="struk" required=""><small class="form-text text-danger">Silahkan lampirkan bukti transfer.</small>
+                <!--
+                <input class="form-control" type="file" name="ktp" required=""><small class="form-text text-danger">Silahkan lampirkan ktp.</small>
+-->
             </div>
             <div class="form-group"><button class="btn btn-primary" type="submit">Kirim </button></div>
 

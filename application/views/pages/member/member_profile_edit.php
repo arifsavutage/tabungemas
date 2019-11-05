@@ -20,11 +20,15 @@
                         <label for="nohp">Alamat</label>
                         <textarea class="form-control" name="alamat"><?= $detail['alamat']; ?></textarea>
                     </div>
-                    <?php
-                    if (empty($detail['alamat']) || (empty($detail['nohp']) && $detail['nohp'] == '0')) {
-                        echo '<button type="submit" class="btn btn-secondary btn-lg btn-block">Edit</button>';
-                    }
-                    ?>
+                    <div class="form-group">
+                        <label for="norek">No. Rekening</label>
+                        <input type="text" class="form-control" id="norek" name="norek" value="<?= $detail['norek'] ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="bank">Bank</label>
+                        <input type="text" class="form-control" id="bank" name="bank" value="<?= $detail['bank'] ?>">
+                    </div>
+                    <button type="submit" class="btn btn-secondary btn-lg btn-block">Edit</button>
 
                 </form>
             </div>
