@@ -312,22 +312,7 @@ class Register extends CI_Controller
             $config['max_width']        = 3072;
             $config['max_height']       = 3072;
 
-            //$this->upload->initialize($config);
-
-            //configurasi upload ktp
-            /*$breakktp  = explode(".", $_FILES['ktp']['name']);
-            $tgl       = date('dmy');
-            $newktp    = "ktp_" . $tgl . "_" . $token . "." . $breakktp[1];
-
-            $conf['file_name']        = $newktp;
-            $conf['upload_path']      = './assets/images/berkas/';
-            $conf['allowed_types']    = 'jpg|jpeg|png';
-            $conf['max_size']         = 5120;
-            $conf['max_width']        = 3072;
-            $conf['max_height']       = 3072;*/
-
             $this->upload->initialize($config);
-            //$this->upload->initialize($conf);
 
             if ($_FILES['struk']['name']) {
                 if (!$this->upload->do_upload('struk')) {
@@ -344,65 +329,37 @@ class Register extends CI_Controller
                 } else {
                     //jika berhasil
                     $upstruk = $this->upload->data();
-                    //jika berhasil
-                    //$upktpcv = $this->upload->data();
-                }
-            }
 
-            /*if ($_FILES['ktp']['name']) {
-                if (!$this->upload->do_upload('ktp')) {
-                    //jika gagal upload
-                    $this->session->set_flashdata('info', '<div class="alert alert-warning" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                        <h4>Opps, </h4> gagal kirim ktp, ' . $this->upload->display_errors() . ' 
-                    </div>');
 
-                    redirect(base_url() . 'index.php/register/verify/' . $token);
-                } else {
-                    //jika berhasil
-                    $upktpcv = $this->upload->data();
-                }
-            }*/
+                    //kirim ke email billing
+                    $data['temporary'] = $temporary->getByToken($token);
 
-            if (!empty($newname) && !empty($newktp)) {
-                //kirim ke email billing
-                $data['temporary'] = $temporary->getByToken($token);
+                    $to         = "billing@tabungemas.com";
+                    $subject    = "Bukti transfer " . $data['temporary']['nm_tmp'];
+                    $message    = $this->load->view('email/email_konfirmasi', $data, true);
+                    $attach1    = './assets/images/bukti/' . $newname;
+                    //$attach2    = './assets/images/berkas/' . $newktp;
+                    $attach2    = "";
 
-                $to         = "billing@tabungemas.com";
-                $subject    = "Bukti transfer " . $data['temporary']['nm_tmp'];
-                $message    = $this->load->view('email/email_konfirmasi', $data, true);
-                $attach1    = './assets/images/bukti/' . $newname;
-                //$attach2    = './assets/images/berkas/' . $newktp;
-                $attach2    = "";
+                    $this->_sendmail($to, $subject, $message, $attach1, $attach2);
 
-                $this->_sendmail($to, $subject, $message, $attach1, $attach2);
+                    //update table, status konfirmasi
+                    $datakonfirm = [
+                        'token' => "$token",
+                        'konfirm_status' => $status
+                    ];
 
-                //update table, status konfirmasi
-                $datakonfirm = [
-                    'token' => "$token",
-                    'konfirm_status' => $status
-                ];
-                $temporary->konfirm($datakonfirm);
+                    $temporary->konfirm($datakonfirm);
 
-                $this->session->set_flashdata('info', '<div class="alert alert-info" role="alert">
+                    $this->session->set_flashdata('info', '<div class="alert alert-info" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
                             <h4>Success, </h4> konfirmasi berhasil ...
                         </div>');
 
-                redirect(base_url() . 'index.php/register/verify/' . $token);
-            } else {
-                $this->session->set_flashdata('info', '<div class="alert alert-warning" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                            <h4>Oops, </h4> gagal mengirim email ...
-                        </div>');
-
-                redirect(base_url() . 'index.php/register/verify/' . $token);
+                    redirect(base_url() . 'index.php/register/verify/' . $token);
+                }
             }
         }
     }

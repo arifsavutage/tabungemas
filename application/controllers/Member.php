@@ -25,6 +25,33 @@ class Member extends CI_Controller
         $this->load->view('dashboard', $data);
     }
 
+    public function delRegistration($id = null)
+    {
+        if ($id == null) {
+            redirect(base_url() . 'index.php/member/member_baru');
+        } else {
+            $delete = $this->model_tmpagt->delete($id);
+
+            if ($delete) {
+                $this->session->set_flashdata('info', '<div class="alert alert-success" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4>Success :</h4> Hapus data member berhasil ... 
+            </div>');
+                redirect(base_url() . 'index.php/member/member_baru');
+            } else {
+                $this->session->set_flashdata('info', '<div class="alert alert-warning" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4>Oops :</h4> Hapus data member gagal ... 
+            </div>');
+                redirect(base_url() . 'index.php/member/member_baru');
+            }
+        }
+    }
+
     public function profile($id = null)
     {
         if ($id == null) {
