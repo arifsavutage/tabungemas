@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 09 Nov 2019 pada 08.45
+-- Waktu pembuatan: 11 Nov 2019 pada 16.29
 -- Versi server: 10.3.20-MariaDB
 -- Versi PHP: 7.2.7
 
@@ -93,7 +93,10 @@ INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `nohp`, `alamat
 ('01.00009', '2019-11-05', 'Yayan Supardi', '081325123353', 'Slukatan RT 07/ RW 02', 'yayansupardi46@gmail.com', '$2y$10$C2WO.itDbDadBrTVATm5k.K1dn4DRf1deVWv3/p6sBPKnECDZiqeW', 'member', 'noimage.jpg', 'noimage.jpg', '8030322925', 'BCA', '01_00009.jpg', 'agen', 1),
 ('01.00010', '2019-11-05', 'Sudarto', 'sudartosw@gmail.com', 'jl kradenan lama no 7 RT 08 RW 05 Kelurahan Sukorejo Kecamatan Gunungpati Semarang', 'sudartosw@gmail.com', '$2y$10$CH2eYl2j98pxhBSCAXTff.oldpRTes0wzvJNLd9cBCSnPIzn130oC', 'member', 'noimage.jpg', 'noimage.jpg', '2465191960', 'BCA', 'noimage.jpg', 'agen', 1),
 ('01.00011', '2019-11-05', 'Ummy Mubarokah', 'ummyrobaei@yahoo.com', '', 'ummyrobaei@yahoo.com', '$2y$10$PjGHcAXEJ5L1XSlsDWJhH.vcR3.Gk4ILjhn5zVfcBQi0ARBnU7.9G', 'member', 'noimage.jpg', 'noimage.jpg', '', '', 'noimage.jpg', 'agen', 1),
-('01.00012', '2019-11-06', 'Thoriq Diaz Pahlevi Daeng Matarane', '085799448908', '', 'thoriqdiaz07@gmail.com', '$2y$10$d0WYOlqAc07qfrj2bmzB.eJM6BDMWRsy4TUO9p.AK2270/s9jiC3q', 'member', 'noimage.jpg', 'noimage.jpg', '', '', 'noimage.jpg', 'basic', 1);
+('01.00012', '2019-11-06', 'Thoriq Diaz Pahlevi Daeng Matarane', '085799448908', '', 'thoriqdiaz07@gmail.com', '$2y$10$d0WYOlqAc07qfrj2bmzB.eJM6BDMWRsy4TUO9p.AK2270/s9jiC3q', 'member', 'noimage.jpg', 'noimage.jpg', '', '', 'noimage.jpg', 'basic', 1),
+('01.00013', '2019-11-10', 'Fatmasari', '081325374500', '', 'fsari.chani@gmail.com', '$2y$10$ZID/5ylgGg4/wb9WKrzUj.Hs1/6fjeyTSorOFsDeRjL4nv4kkP.u.', 'member', 'noimage.jpg', 'noimage.jpg', '', '', 'noimage.jpg', 'agen', 1),
+('01.00014', '2019-11-11', 'Arief Nurcahyo', '081355236115', '', 'riefrief1135@gmail.com', '$2y$10$X5VNFLrRaWwUea3ocjgiIuLpCLLZhhOhSG5j2HA/xtEgYEO8jrSxe', 'member', 'noimage.jpg', 'noimage.jpg', '', '', 'noimage.jpg', 'agen', 1),
+('01.00015', '2019-11-11', 'Juniar Arif Wicaksono', '081390559997', 'Dusun Gentan Lor Rt. 04 Rw. 03, Kec. Boja, Kab. Kendal', 'arifsavutage@gmail.com', '$2y$10$ca0pp55yIoQa7ktPaU20nOlApQit2dmHalQkGlaL1bX/ZYB6k/bZO', 'member', 'noimage.jpg', 'noimage.jpg', '333 222 111', 'Bank Toyib', 'noimage.jpg', 'agen', 1);
 
 -- --------------------------------------------------------
 
@@ -128,6 +131,27 @@ INSERT INTO `tb_agt_tmp` (`idtmp`, `tgl_daftar`, `nm_tmp`, `nohp_tmp`, `email_tm
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tb_bank`
+--
+
+CREATE TABLE `tb_bank` (
+  `id` int(2) NOT NULL,
+  `nm_bank` varchar(150) NOT NULL,
+  `norek` varchar(300) NOT NULL,
+  `an` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tb_bank`
+--
+
+INSERT INTO `tb_bank` (`id`, `nm_bank`, `norek`, `an`) VALUES
+(1, 'BCA', '009 4680 561', 'Cipto Purnomo'),
+(2, 'BRI', '3036 0104 1826 532', 'Susiloningsih');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tb_bonus`
 --
 
@@ -136,20 +160,22 @@ CREATE TABLE `tb_bonus` (
   `registrasi` int(9) NOT NULL,
   `referal` int(9) NOT NULL,
   `royalti` int(9) NOT NULL,
-  `royalti_target` int(3) NOT NULL
+  `royalti_target` int(3) NOT NULL,
+  `gram_pokok` int(2) NOT NULL,
+  `selisih_hrg_emas` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tb_bonus`
 --
 
-INSERT INTO `tb_bonus` (`id`, `registrasi`, `referal`, `royalti`, `royalti_target`) VALUES
-(1, 970000, 15000, 10000, 10),
-(2, 0, 5000, 9000, 15),
-(3, 0, 4000, 6000, 20),
-(4, 0, 1500, 5000, 30),
-(5, 0, 1500, 4000, 25),
-(6, 0, 1000, 0, 0);
+INSERT INTO `tb_bonus` (`id`, `registrasi`, `referal`, `royalti`, `royalti_target`, `gram_pokok`, `selisih_hrg_emas`) VALUES
+(1, 970000, 15000, 10000, 10, 1, 40000),
+(2, 0, 5000, 9000, 15, 0, 0),
+(3, 0, 4000, 6000, 20, 0, 0),
+(4, 0, 1500, 5000, 30, 0, 0),
+(5, 0, 1500, 4000, 25, 0, 0),
+(6, 0, 1000, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -176,6 +202,28 @@ INSERT INTO `tb_cabang` (`idcabang`, `nama_cabang`, `alamat_cabang`, `kotakab`, 
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tb_history`
+--
+
+CREATE TABLE `tb_history` (
+  `tgl` date NOT NULL,
+  `idted` varchar(8) NOT NULL,
+  `ket` text NOT NULL,
+  `nominal_uang` int(11) NOT NULL,
+  `nominal_gram` float NOT NULL,
+  `status` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tb_history`
+--
+
+INSERT INTO `tb_history` (`tgl`, `idted`, `ket`, `nominal_uang`, `nominal_gram`, `status`) VALUES
+('2019-11-11', '01.00015', 'pembelian emas ', 5000000, 6.966, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tb_jaringan`
 --
 
@@ -194,9 +242,9 @@ CREATE TABLE `tb_jaringan` (
 --
 
 INSERT INTO `tb_jaringan` (`idagt`, `idreferal`, `idupline`, `jml_downline`, `pos_jar`, `pos_level`, `tgl_proses`) VALUES
-('01.00001', '0', '0', 1, '1', 1, '2019-10-28'),
+('01.00001', '0', '0', 2, '1', 1, '2019-10-28'),
 ('01.00002', '01.00001', '01.00001', 1, '11', 2, '0000-00-00'),
-('01.00003', '01.00002', '01.00002', 5, '111', 3, '0000-00-00'),
+('01.00003', '01.00002', '01.00002', 7, '111', 3, '0000-00-00'),
 ('01.00004', '01.00003', '01.00003', 1, '1111', 4, '0000-00-00'),
 ('01.00005', '01.00004', '01.00004', 1, '11111', 5, '0000-00-00'),
 ('01.00006', '01.00005', '01.00005', 0, '111111', 6, '0000-00-00'),
@@ -205,7 +253,10 @@ INSERT INTO `tb_jaringan` (`idagt`, `idreferal`, `idupline`, `jml_downline`, `po
 ('01.00009', '01.00003', '01.00003', 0, '1113', 4, '0000-00-00'),
 ('01.00010', '01.00003', '01.00003', 0, '1114', 4, '0000-00-00'),
 ('01.00011', '01.00003', '01.00003', 1, '1115', 4, '0000-00-00'),
-('01.00012', '01.00011', '01.00011', 0, '11151', 5, '0000-00-00');
+('01.00012', '01.00011', '01.00011', 0, '11151', 5, '0000-00-00'),
+('01.00013', '01.00003', '01.00003', 0, '1116', 4, '0000-00-00'),
+('01.00014', '01.00003', '01.00003', 0, '1117', 4, '0000-00-00'),
+('01.00015', '01.00001', '01.00001', 0, '12', 2, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -218,11 +269,21 @@ CREATE TABLE `tb_transaksi` (
   `tgl` date NOT NULL,
   `idted` varchar(8) NOT NULL,
   `uraian` text NOT NULL,
-  `masuk` int(10) NOT NULL,
-  `keluar` int(10) NOT NULL,
-  `saldo` int(10) NOT NULL,
+  `masuk` float NOT NULL,
+  `keluar` float NOT NULL,
+  `saldo` float NOT NULL,
   `jenis` enum('uang','emas') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tb_transaksi`
+--
+
+INSERT INTO `tb_transaksi` (`id`, `tgl`, `idted`, `uraian`, `masuk`, `keluar`, `saldo`, `jenis`) VALUES
+(1, '2019-11-05', '01.00001', 'topup deposit', 5000000, 0, 5000000, 'uang'),
+(2, '2019-11-09', '01.00014', 'simp. pokok & simp. wajib', 1, 0, 1, 'emas'),
+(3, '2019-11-11', '01.00015', 'simp. pokok & simp. wajib', 1, 0, 1, 'emas'),
+(4, '2019-11-11', '01.00015', 'beli emas', 6.966, 0, 7.966, 'emas');
 
 -- --------------------------------------------------------
 
@@ -328,6 +389,12 @@ ALTER TABLE `tb_agt_tmp`
   ADD PRIMARY KEY (`idtmp`);
 
 --
+-- Indeks untuk tabel `tb_bank`
+--
+ALTER TABLE `tb_bank`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `tb_bonus`
 --
 ALTER TABLE `tb_bonus`
@@ -365,7 +432,13 @@ ALTER TABLE `t_update_ubs`
 -- AUTO_INCREMENT untuk tabel `tb_agt_tmp`
 --
 ALTER TABLE `tb_agt_tmp`
-  MODIFY `idtmp` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `idtmp` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_bank`
+--
+ALTER TABLE `tb_bank`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_bonus`
@@ -377,7 +450,7 @@ ALTER TABLE `tb_bonus`
 -- AUTO_INCREMENT untuk tabel `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_verifikasi_email`
