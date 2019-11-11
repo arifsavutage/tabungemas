@@ -12,6 +12,8 @@ class Register extends CI_Controller
 
         $this->load->model('model_tmpagt');
         $this->load->model('model_uang');
+        $this->load->model('model_transaksi');
+        $this->load->model('model_bank');
     }
 
     public function index()
@@ -96,6 +98,21 @@ class Register extends CI_Controller
 
         $agtbaru->save($newid, $level);
         $jaringan->save($datajar);
+
+        //tambah saldo emas
+        $emaspokok  = $this->model_uang->getValueById(1);
+
+        $dt_trans   = [
+            'tgl'   => date('Y-m-d'),
+            'idted' => "$newid",
+            'uraian' => "simp. pokok & simp. wajib",
+            'masuk' => $emaspokok['gram_pokok'],
+            'keluar' => 0,
+            'saldo' => $emaspokok['gram_pokok'],
+            'jenis' => 'emas'
+        ];
+
+        $this->model_transaksi->save($dt_trans);
 
         //update jaringan untuk refid
         if ($jmlagt != 0) {
@@ -195,7 +212,8 @@ class Register extends CI_Controller
                             'mail'  => $mailregis,
                             'nama'  => ucwords($nameregis),
                             'token' => $token,
-                            'nominal' => $data['nominal']
+                            'nominal' => $data['nominal'],
+                            'bank'  => $this->model_bank->getAll()
                         ];
 
                         //send email
@@ -244,7 +262,8 @@ class Register extends CI_Controller
                         'mail'  => $mailregis,
                         'nama'  => ucwords($nameregis),
                         'token' => $token,
-                        'npminal' => $data['nominal']
+                        'npminal' => $data['nominal'],
+                        'bank'  => $this->model_bank->getAll()
                     ];
 
                     //send email

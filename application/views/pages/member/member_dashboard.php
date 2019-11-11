@@ -23,14 +23,14 @@
 
                     $xnewbeli   = explode(",", $new[0]['HRG_BELI']);
                     $xnewjual   = explode(",", $new[0]['HRG_JUAL']);
-                    $newbeli    = implode("", $xnewbeli);
-                    $newjual    = implode("", $xnewjual);
+                    $newbeli    = implode("", $xnewbeli) - $selisih['selisih_hrg_emas'];
+                    $newjual    = implode("", $xnewjual) - $selisih['selisih_hrg_emas'];
                     $newupdate  = date('d M Y', strtotime($new[0]['UPDATE_AT']));
 
                     $xoldbeli   = explode(",", $old[0]['HRG_BELI']);
                     $xoldjual   = explode(",", $old[0]['HRG_JUAL']);
-                    $oldbeli    = implode("", $xoldbeli);
-                    $oldjual    = implode("", $xoldjual);
+                    $oldbeli    = implode("", $xoldbeli) - $selisih['selisih_hrg_emas'];
+                    $oldjual    = implode("", $xoldjual) - $selisih['selisih_hrg_emas'];
                     $oldupdate  = date('d M Y', strtotime($old[0]['UPDATE_AT']));
 
                     //beli
@@ -83,9 +83,9 @@
                         <input type="radio" name="options" id="option1" autocomplete="off"> Emas Saya <br />
                         <?php
                         if (empty($saldo_emas['saldo'])) {
-                            echo "0 gr";
+                            echo "0";
                         } else {
-                            echo number_format($saldo_rp['saldo'], 3, ',', '.') . " gr";
+                            echo number_format($saldo_emas['saldo'], 3, ',', '.');
                         }
                         ?> gr
                     </label>
@@ -105,7 +105,7 @@
 
         <div class="row">
             <div class="col text-center">
-                <a href="">
+                <a href="<?= base_url(); ?>index.php/transaksi/beli_emas/<?= $this->session->userdata('id'); ?>">
                     <img src="<?= base_url(); ?>assets/images/menu-beli.png" class="img-fluid img-thumbnail rounded mx-auto d-block" alt="">
                     <p>Beli Emas</p>
                 </a>

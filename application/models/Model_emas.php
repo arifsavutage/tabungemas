@@ -16,4 +16,11 @@ class Model_emas extends CI_Model
         $this->db->limit(2);
         return $this->db->get($this->_table)->result_array();
     }
+
+    public function getLastUpdate()
+    {
+        $this->db->order_by('UPDATE_AT', 'DESC');
+        $this->db->limit(1);
+        return $this->db->get($this->_table)->row_array();
+    }
 }

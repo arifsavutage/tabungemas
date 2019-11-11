@@ -42,4 +42,9 @@ class Model_transaksi extends CI_Model
         $this->db->limit(1);
         return $this->db->get($this->_table)->row_array();
     }
+
+    public function save($data)
+    {
+        $this->db->insert($this->_table, $data);
+    }
 }

@@ -11,6 +11,9 @@ class Member extends CI_Controller
         $this->load->model('model_tedagt');
         $this->load->model('model_jaringan');
         $this->load->model('model_transaksi');
+        $this->load->model('model_history');
+        $this->load->model('model_emas');
+        $this->load->model('model_uang');
 
         not_login();
     }

@@ -33,7 +33,7 @@
                 <li class="submenu">
                     <a href="#"><i class="fas fa-retweet"></i> <span> Transaksi </span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="">Beli Emas</a></li>
+                        <li><a href="<?= base_url(); ?>index.php/transaksi/beli_emas/<?= $this->session->userdata('id'); ?>">Beli Emas</a></li>
                         <li><a href="">Jual Emas</a></li>
                         <li><a href="">Tarik Saldo</a></li>
                         <li><a href="">Tarik barang</a></li>
@@ -48,7 +48,29 @@
                     <li class="submenu">
                         <a href="#"><i class="fas fa-users"></i> <span> Super Admin </span> <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
-                            <li><a href="<?= base_url() . 'index.php/member/member_baru'; ?>">Member Baru</a></li>
+
+                            <li class="submenu">
+                                <a href="#" class="subdrop"><span>Keanggotaan</span> <span class="menu-arrow"></span> </a>
+                                <ul style="display: block;">
+                                    <li><a href="<?= base_url() . 'index.php/member/member_baru'; ?>">Anggota Baru</a></li>
+                                    <li><a href="#"><span>Anggota Aktif</span></a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="#" class="subdrop"><span>Transaksi</span> <span class="menu-arrow"></span> </a>
+                                <ul style="display: block;">
+                                    <li><a href="<?= base_url() . 'index.php/transaksi/daftar_beli_emas'; ?>">Beli Emas</a></li>
+                                    <li><a href="#"><span>Jual Emas</span></a></li>
+                                    <li><a href="#"><span>Laporan Transaksi</span></a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="#" class="subdrop"><span>Cabang</span> <span class="menu-arrow"></span> </a>
+                                <ul style="display: block;">
+                                    <li><a href="#"><span>Daftar Cabang</span></a></li>
+                                    <li><a href="#"><span>Laporan Cabang</span></a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                 <?php

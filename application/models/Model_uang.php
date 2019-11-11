@@ -9,6 +9,8 @@ class Model_uang extends CI_Model
     public $referal;
     public $royalti;
     public $royalti_target;
+    public $gram_pokok;
+    public $selisih_hrg_emas;
 
     public function getAll()
     {

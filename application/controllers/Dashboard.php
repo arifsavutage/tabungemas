@@ -9,6 +9,7 @@ class Dashboard extends CI_Controller
         $this->load->model('model_tedagt');
         $this->load->model('model_emas');
         $this->load->model('model_transaksi');
+        $this->load->model('model_uang');
 
         not_login();
     }
@@ -24,6 +25,7 @@ class Dashboard extends CI_Controller
         }
 
         $data = [
+            'selisih'   => $this->model_uang->getValueById(1),
             'harga_emas' => $this->model_emas->getNewHarga(),
             'saldo_rp'  => $this->model_transaksi->getLastTranById($id, 'uang'),
             'saldo_emas'  => $this->model_transaksi->getLastTranById($id, 'emas'),

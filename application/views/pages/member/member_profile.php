@@ -45,7 +45,7 @@
                         if (empty($saldo_emas['saldo'])) {
                             $emas = 0;
                         } else {
-                            $emas = number_format($saldo_rp['saldo'], 3, ',', '.');
+                            $emas = number_format($saldo_emas['saldo'], 3, ',', '.');
                         }
                         ?>
                         Saldo <span class="badge badge-primary"><?= $uang ?> K</span> | Emas <span class="badge badge-warning"><?= $emas; ?> gr</span>

@@ -31,6 +31,8 @@
     <link href="<?= base_url(); ?>assets/plugins/trumbowyg/ui/trumbowyg.min.css" rel="stylesheet">
     <!-- END CSS for this page -->
 
+    <!-- SCRIPT -->
+    <script src="<?= base_url(); ?>assets/js/jquery.min.js"></script>
 </head>
 
 <body class="adminbody">

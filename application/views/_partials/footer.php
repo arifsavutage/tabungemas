@@ -9,9 +9,7 @@
 
 </div>
 <!-- END main -->
-
 <script src="<?= base_url(); ?>assets/js/modernizr.min.js"></script>
-<script src="<?= base_url(); ?>assets/js/jquery.min.js"></script>
 <script src="<?= base_url(); ?>assets/js/moment.min.js"></script>
 
 <script src="<?= base_url(); ?>assets/js/popper.min.js"></script>
@@ -36,6 +34,16 @@
 
 <script src="<?= base_url(); ?>assets/plugins/trumbowyg/trumbowyg.min.js"></script>
 
+<script>
+    $('#nominaluang').keyup(function() {
+        var hrgjual = parseInt($('#hrgjual').val());
+        var beli = parseInt($(this).val());
+
+        var gramemas = beli / hrgjual;
+
+        $('#nominalgram').val(gramemas.toFixed(3));
+    });
+</script>
 <script>
     $(document).ready(function() {
         $('#example1').DataTable();

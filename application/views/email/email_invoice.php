@@ -25,17 +25,13 @@
                         <td style="padding: 40px 30px 40px 30px;">
                             <h3 style="color:#5f1d80;border-bottom: thin solid #cccccc;border-collapse: collapse;padding-bottom:30px;">Hallo, <?= $nama; ?></h3>
 
-                            <p style="margin-bottom:50px;color:#6e6e6e;">Kami telah menerima pendaftaran akun baru milik Anda.
-                                Silahkan transfer biaya pendaftaran anggota baru sebesar <strong>Rp. <?= number_format($nominal, 0, ',', '.'); ?></strong> ke nomor rekening yang tertera di bawah,
-                                dan konfirmasi pembayaran Anda dengan menekan tombol <strong>konfirm</strong>.
+                            <p style="margin-bottom:50px;color:#6e6e6e;">Anggota Tabung Emas Yth,
+                                Silahkan transfer uang pembelian emas sebesar <strong>Rp. <?= number_format($uang, 0, ',', '.'); ?></strong> ke nomor rekening yang tertera di bawah,
+                                dan konfirmasi pembayaran Anda dengan mengirimkan bukti transfer ke <strong>billing@tabungemas.com</strong> dengan mengisi subjek email dengan <strong>Konfirmasi transfer beli emas ID [no_id_Anda]</strong>.
                             </p>
 
-                            <a href="<?= base_url(); ?>index.php/register/verify/<?= $token; ?>" target="_blank" style="margin:auto;display:block;padding: 15px 10px;background-color:#2aa371;text-decoration:none;color:#ffffff;width:120px;text-align:center;border-radius:5px;">Konfirm</a>
-                            <p style="margin-top:50px;margin-bottom: 20px;color:#6e6e6e;">
-                                Jika tidak berhasil silahkan copy & paste url berikut :
-                            </p>
-                            <p style="display:block;padding:30px 20px;background-color:#f2f2f2;color:#877b8c;">
-                                <?= base_url(); ?>index.php/register/verify/<?= $token; ?>
+                            <p style="margin-bottom:50px;color:#6e6e6e;">
+                                Jangan lupa untuk memberikan file attachment struk bukti transfer.
                             </p>
 
                             <table align="center" border="1" cellpadding="0" cellspacing="0" width="300">
@@ -63,6 +59,7 @@
 
                             <p style="margin-top:65px;color:#6e6e6e;">
                                 Salam hangat,<br />
+                                <br />
                                 Account center
                             </p>
                         </td>
