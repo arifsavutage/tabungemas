@@ -48,7 +48,7 @@
                             $emas = number_format($saldo_emas['saldo'], 3, ',', '.');
                         }
                         ?>
-                        Saldo <span class="badge badge-primary"><?= $uang ?> K</span> | Emas <span class="badge badge-warning"><?= $emas; ?> gr</span>
+                        Saldo <span class="badge badge-primary"><?= number_format($uang, 2, ',', '.'); ?> K</span> | Emas <span class="badge badge-warning"><?= $emas; ?> gr</span>
                     </div>
                 </div>
                 <ul class="list-group mt-4">

@@ -137,8 +137,177 @@ class Transaksi extends CI_Controller
             $newjual = $hrgbeli - $selisih['selisih_hrg_emas'];
 
             $data   = [
-                'jual'  => $newjual,
+                'beli'  => $newjual,
                 'page'  => 'pages/member/member_beli_emas'
+            ];
+
+            $this->load->view('dashboard', $data);
+        }
+    }
+
+    public function jual_emas($id = null)
+    {
+        if ($id == null) {
+            redirect(base_url());
+        } else {
+
+            $this->form_validation->set_rules("gram", "Gram emas", "required");
+            //$this->form_validation->set_rules("nominalgram", "Gram emas", "required");
+
+            if ($this->form_validation->run()) {
+
+                $tgl    = $this->input->post('tgl');
+                $id     = $this->input->post('idted');
+                $ket    = $this->input->post('keterangan');
+                $uang   = $this->input->post('uang');
+                $gram   = $this->input->post('gram');
+                $status = $this->input->post('status');
+                $saldo  = $this->input->post('saldo');
+
+                //cek untuk basic
+                $emas_basic = $saldo - $gram;
+
+                if ($gram > $saldo || $gram < 0.001) {
+                    $this->session->set_flashdata('info', '<div class="alert alert-warning" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4>Oops, </h4> Pastikan jumlah gram emas yang di masukkan benar ...
+                    </div>');
+
+                    redirect(base_url() . 'index.php/transaksi/jual_emas/' . $id);
+                } else {
+
+                    //ambil jenis keanggotaan
+                    $cekjenis = $this->model_tedagt->getAccountById($id);
+
+                    if ($cekjenis['jenis'] == 'basic' && $emas_basic == 0) {
+                        $this->session->set_flashdata('info', '<div class="alert alert-warning" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4>Oops, </h4> silahkan upgrade jenis keanggotaan Anda menjadi <strong>agen</strong> agar dapat menjual seluruh saldo emas Anda ...
+                    </div>');
+
+                        redirect(base_url() . 'index.php/transaksi/jual_emas/' . $id);
+                    } else {
+                        $datas = [
+                            'tgl' => $tgl,
+                            'idted' => $id,
+                            'ket' => $ket,
+                            'nominal_uang' => $uang,
+                            'nominal_gram' => $gram,
+                            'status' => $status
+                        ];
+
+                        //simpan ke history transaksi
+                        $history = $this->model_history->save($datas);
+
+                        if ($history) {
+
+                            //ambil saldo uang terakhir
+                            $saldo_uang = $this->model_transaksi->getLastTranById($id, 'uang');
+                            $newuang    = $saldo_uang['saldo'] + $uang;
+
+                            $datarp = [
+                                'idted' => $id,
+                                'tgl'   => $tgl,
+                                'uraian' => 'pencairan jual emas',
+                                'masuk' => $uang,
+                                'keluar' => 0,
+                                'saldo' => $newuang,
+                                'jenis' => 'uang'
+                            ];
+
+                            //update saldo rupiah
+                            $this->model_transaksi->save($datarp);
+
+                            //update saldo emas
+                            $newsaldoemas = $saldo - $gram;
+                            $dataemas = [
+                                'idted' => $id,
+                                'tgl'   => $tgl,
+                                'uraian' => 'jual emas',
+                                'masuk' => 0,
+                                'keluar' => $gram,
+                                'saldo' => $newsaldoemas,
+                                'jenis' => 'emas'
+                            ];
+                            //update saldo emas
+                            $this->model_transaksi->save($dataemas);
+
+
+                            /**
+                             * 
+                             * Update history transaksi
+                             * 
+                             */
+
+                            $dataup = [
+                                'idted' => $id,
+                                'tgl'   => $tgl,
+                                'status' => 1
+                            ];
+
+                            $this->model_history->update($dataup);
+
+                            /**
+                             * 
+                             * Kirim email pemberitahuan
+                             * 
+                             */
+                            $anggota = $this->model_tedagt->getAccountById($id);
+
+                            $data = [
+                                'nama'  => $anggota['nama_lengkap'],
+                                'uang'  => $uang,
+                                'gram'  => $gram
+
+                            ];
+
+                            $to      = $anggota['email'];
+                            $subject = "Bukti Transaksi Jual Emas";
+                            $message = $this->load->view('email/email_bukti_jual', $data, true);
+                            $attach  = "";
+
+                            $this->_sendmail($to, $subject, $message, $attach);
+
+                            $this->session->set_flashdata('info', '<div class="alert alert-success" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                    <h4>Success, </h4> Transaksi tersimpan ...
+                                </div>');
+
+                            redirect(base_url() . 'index.php/transaksi/jual_emas/' . $id);
+                        } else {
+                            $this->session->set_flashdata('info', '<div class="alert alert-warning" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4>Oops, </h4> Transaksi gagal tersimpan ...
+                        </div>');
+
+                            redirect(base_url() . 'index.php/transaksi/jual_emas/' . $id);
+                        }
+                    }
+                }
+            }
+
+            //ambil harga jual terbaru
+            $update_emas = $this->model_emas->getLastUpdate();
+
+            $xjual  = explode(",", $update_emas['HRG_JUAL']);
+            $hrgjual = implode("", $xjual);
+
+            //ambil selisih dari ted
+            $selisih = $this->model_uang->getValueById(1);
+            $newjual = $hrgjual - $selisih['selisih_hrg_emas'];
+
+            $data   = [
+                'saldo_emas' => $this->model_transaksi->getLastTranById($id, 'emas'),
+                'jual'  => $newjual,
+                'page'  => 'pages/member/member_jual_emas'
             ];
 
             $this->load->view('dashboard', $data);

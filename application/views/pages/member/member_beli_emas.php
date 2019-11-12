@@ -11,7 +11,7 @@
                 }
                 ?>
                 <form name="beliemas" method="post" action="">
-                    <input type="hidden" name="hrgjual" id="hrgjual" value="<?= $jual; ?> " />
+                    <input type="hidden" name="hrgbeli" id="hrgbeli" value="<?= $beli; ?> " />
                     <input type="hidden" name="tgl" value="<?= date('Y-m-d'); ?> " />
                     <input type="hidden" name="keterangan" value="<?= "pembelian emas" ?> " />
                     <input type="hidden" name="idted" value="<?= $this->session->userdata('id'); ?> " />

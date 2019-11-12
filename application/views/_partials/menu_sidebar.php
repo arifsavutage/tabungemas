@@ -34,7 +34,7 @@
                     <a href="#"><i class="fas fa-retweet"></i> <span> Transaksi </span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled">
                         <li><a href="<?= base_url(); ?>index.php/transaksi/beli_emas/<?= $this->session->userdata('id'); ?>">Beli Emas</a></li>
-                        <li><a href="">Jual Emas</a></li>
+                        <li><a href="<?= base_url(); ?>index.php/transaksi/jual_emas/<?= $this->session->userdata('id'); ?>">Jual Emas</a></li>
                         <li><a href="">Tarik Saldo</a></li>
                         <li><a href="">Tarik barang</a></li>
                         <li><a href="">Transfer Emas</a></li>

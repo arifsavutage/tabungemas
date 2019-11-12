@@ -111,7 +111,7 @@
                 </a>
             </div>
             <div class="col text-center">
-                <a href="">
+                <a href="<?= base_url(); ?>index.php/transaksi/jual_emas/<?= $this->session->userdata('id'); ?>">
                     <img src="<?= base_url(); ?>assets/images/menu-jual.png" class="img-fluid img-thumbnail rounded mx-auto d-block" alt="">
                     <p>Jual Emas</p>
                 </a>

@@ -36,12 +36,31 @@
 
 <script>
     $('#nominaluang').keyup(function() {
-        var hrgjual = parseInt($('#hrgjual').val());
+        var hrgbeli = parseInt($('#hrgbeli').val());
         var beli = parseInt($(this).val());
 
-        var gramemas = beli / hrgjual;
+        var gramemas = beli / hrgbeli;
 
         $('#nominalgram').val(gramemas.toFixed(3));
+    });
+</script>
+<script>
+    $('#gram').keyup(function() {
+        var saldo = parseFloat($('#saldo').val());
+        var hrgjual = parseInt($('#hrgjual').val());
+        var jual = parseFloat($(this).val());
+
+        if ((jual > saldo) || (jual < 0.001)) {
+            alert("Pastikan jumlah gram emas yang di masukkan benar");
+            var pendapatan = jual * 0;
+
+            $('#uang').val(pendapatan);
+        } else {
+            var pendapatan = jual * hrgjual;
+
+            $('#uang').val(pendapatan);
+        }
+
     });
 </script>
 <script>
