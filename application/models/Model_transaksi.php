@@ -54,6 +54,19 @@ class Model_transaksi extends CI_Model
         return $this->db->get($this->_table)->row_array();
     }
 
+    public function allTransaction()
+    {
+        $this->db->order_by('tgl', 'DESC');
+        return $this->db->get($this->_table);
+    }
+
+    public function topTransaction()
+    {
+        $this->db->order_by('tgl', 'DESC');
+        $this->db->limit(20);
+        return $this->db->get($this->_table);
+    }
+
     public function save($data)
     {
         $this->db->insert($this->_table, $data);

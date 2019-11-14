@@ -29,6 +29,11 @@ class Dashboard extends CI_Controller
             'harga_emas' => $this->model_emas->getNewHarga(),
             'saldo_rp'  => $this->model_transaksi->getLastTranById($id, 'uang'),
             'saldo_emas'  => $this->model_transaksi->getLastTranById($id, 'emas'),
+            'emas'  => $this->model_emas->getHargaEmas(),
+            'transaksi' => $this->model_transaksi->allTransaction()->num_rows(),
+            'toptransaksi' => $this->model_transaksi->topTransaction()->num_rows(),
+            'users' => $this->model_tedagt->getAll()->num_rows(),
+            'newusers' => $this->model_tedagt->newUser()->num_rows(),
             'page' => $page
         ];
         $this->load->view('dashboard', $data);

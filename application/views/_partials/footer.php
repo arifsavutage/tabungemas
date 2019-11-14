@@ -69,6 +69,16 @@
     });
 </script>
 <script>
+    $(document).ready(function() {
+        $('#examples').DataTable({
+            "order": [
+                //angka adalah nomor kolom
+                [0, "desc"]
+            ]
+        });
+    });
+</script>
+<script>
     $(function() {
         $('input[name="tgllahir"]').daterangepicker({
             singleDatePicker: true,

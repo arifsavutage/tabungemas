@@ -60,6 +60,13 @@ class Model_tedagt extends CI_Model
         return $this->db->get($this->_table);
     }
 
+    public function newUser()
+    {
+        $this->db->order_by('tgl_gabung', 'DESC');
+        $this->db->limit(20);
+        return $this->db->get($this->_table);
+    }
+
     public function jmlIdCabang($idcabang)
     {
         $this->db->like('idted', "$idcabang", 'after');
