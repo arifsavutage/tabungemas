@@ -23,36 +23,36 @@
 
                     $xnewbeli   = explode(",", $new[0]['HRG_BELI']);
                     $xnewjual   = explode(",", $new[0]['HRG_JUAL']);
-                    $newbeli    = implode("", $xnewbeli) - $selisih['selisih_hrg_emas'];
-                    $newjual    = implode("", $xnewjual) - $selisih['selisih_hrg_emas'];
+                    $newbeli    = implode("", $xnewbeli) + $selisih['selisih_beli'];
+                    $newjual    = implode("", $xnewjual) - $selisih['selisih_jual'];
                     $newupdate  = date('d M Y', strtotime($new[0]['UPDATE_AT']));
 
                     $xoldbeli   = explode(",", $old[0]['HRG_BELI']);
                     $xoldjual   = explode(",", $old[0]['HRG_JUAL']);
-                    $oldbeli    = implode("", $xoldbeli) - $selisih['selisih_hrg_emas'];
-                    $oldjual    = implode("", $xoldjual) - $selisih['selisih_hrg_emas'];
+                    $oldbeli    = implode("", $xoldbeli) + $selisih['selisih_beli'];
+                    $oldjual    = implode("", $xoldjual) - $selisih['selisih_jual'];
                     $oldupdate  = date('d M Y', strtotime($old[0]['UPDATE_AT']));
 
                     //beli
                     if ($newbeli < $oldbeli) {
                         $iconbeli   = '<i class="fa fa-arrow-down float-right text-white"></i>';
                         $ketbeli    = "Turun";
-                        $persenbeli = ($oldbeli - $newbeli) / $newbeli;
+                        $persenbeli = (($newbeli - $oldbeli) / $oldbeli) * 100;
                     } else {
                         $iconbeli   = '<i class="fa fa-arrow-up float-right text-white"></i>';
                         $ketbeli    = "Naik";
-                        $persenbeli = ($newbeli - $oldbeli) / $oldbeli;
+                        $persenbeli = (($newbeli - $oldbeli) / $oldbeli) * 100;
                     }
 
                     //jual
                     if ($newjual < $oldjual) {
                         $iconjual   = '<i class="fa fa-arrow-down float-right text-white"></i>';
                         $ketjual    = "Turun";
-                        $persenjual = ($oldjual - $newjual) / $newjual;
+                        $persenjual = (($newjual - $oldjual) / $oldjual) * 100;
                     } else {
                         $iconjual   = '<i class="fa fa-arrow-up float-right text-white"></i>';
                         $ketjual    = "Naik";
-                        $persenjual = ($newjual - $oldjual) / $oldjual;
+                        $persenjual = (($newjual - $oldjual) / $oldjual) * 100;
                     }
                     ?>
                     <div class="col-xs-4 col-md-6 col-lg-6 col-xl-6">
@@ -60,7 +60,7 @@
                             <?= $iconbeli; ?>
                             <h6 class="text-white text-uppercase m-b-20">Harga Beli</h6>
                             <h1 class="m-b-20 text-white counter"><?= number_format($newbeli, 0, ',', '.'); ?> /gr</h1>
-                            <span class="text-white"><?= $ketbeli; ?> <?= round($persenbeli, 3); ?>% update at <?= $newupdate; ?></span>
+                            <span class="text-white"><?= $ketbeli; ?> <?= round($persenbeli, 2); ?>%, update at <?= $newupdate; ?></span>
                         </div>
                     </div>
 
@@ -69,7 +69,7 @@
                             <?= $iconjual ?>
                             <h6 class="text-white text-uppercase m-b-20">Harga Jual</h6>
                             <h1 class="m-b-20 text-white counter"><?= number_format($newjual, 0, ',', '.'); ?> /gr</h1>
-                            <span class="text-white"><?= $ketjual; ?> <?= round($persenjual, 3); ?>% update at <?= $newupdate; ?></span>
+                            <span class="text-white"><?= $ketjual; ?> <?= round($persenjual, 2); ?>%, update at <?= $newupdate; ?></span>
                         </div>
                     </div>
                 </div>

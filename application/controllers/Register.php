@@ -14,6 +14,7 @@ class Register extends CI_Controller
         $this->load->model('model_uang');
         $this->load->model('model_transaksi');
         $this->load->model('model_bank');
+        $this->load->model('model_emas');
     }
 
     public function index()
@@ -99,16 +100,24 @@ class Register extends CI_Controller
         $agtbaru->save($newid, $level);
         $jaringan->save($datajar);
 
-        //tambah saldo emas
-        $emaspokok  = $this->model_uang->getValueById(1);
+        //ambil nominal uang untuk pembanding dengan harga beli emas terbaru
+        $nomvar  = $this->model_uang->getValueById(3);
+        $emasnow = $this->model_emas->getLastUpdate();
+        $vselisih = $this->model_uang->getValueById(1);
+
+        $xemas   = explode(",", $emasnow['HRG_BELI']);
+        $inemas  = implode("", $xemas);
+        $hargaemasbarucuy = $inemas - $vselisih['selisih_beli'];
+
+        $emaspokok = $nomvar['registrasi'] / $hargaemasbarucuy;
 
         $dt_trans   = [
             'tgl'   => date('Y-m-d'),
             'idted' => "$newid",
             'uraian' => "simp. pokok & simp. wajib",
-            'masuk' => $emaspokok['gram_pokok'],
+            'masuk' => number_format($emaspokok, 3, '.', ''),
             'keluar' => 0,
-            'saldo' => $emaspokok['gram_pokok'],
+            'saldo' => number_format($emaspokok, 3, '.', ''),
             'jenis' => 'emas'
         ];
 

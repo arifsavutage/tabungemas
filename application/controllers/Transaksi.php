@@ -76,7 +76,7 @@ class Transaksi extends CI_Controller
                 $status = $this->input->post('status');
 
                 $datas = [
-                    'tgl' => $tgl,
+                    //'tgl' => $tgl,
                     'idted' => $id,
                     'ket' => $ket,
                     'nominal_uang' => $uang,
@@ -110,7 +110,7 @@ class Transaksi extends CI_Controller
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
-                            <h4>Success, </h4> Transaksi tersimpan ...
+                            <h4>Success, </h4> Transaksi berhasil, silahkan cek <strong>invoice</strong> Anda di email ...
                         </div>');
 
                     redirect(base_url() . 'index.php/transaksi/beli_emas/' . $id);
@@ -134,7 +134,7 @@ class Transaksi extends CI_Controller
 
             //ambil selisih dari ted
             $selisih = $this->model_uang->getValueById(1);
-            $newjual = $hrgbeli - $selisih['selisih_hrg_emas'];
+            $newjual = $hrgbeli - $selisih['selisih_beli'];
 
             $data   = [
                 'beli'  => $newjual,
@@ -164,10 +164,11 @@ class Transaksi extends CI_Controller
                 $status = $this->input->post('status');
                 $saldo  = $this->input->post('saldo');
 
-                //cek untuk basic
+                //Ambil saldo emas pokok
+                $simpokok = $this->model_transaksi->getFirstTransaction($id, 'emas');
                 $emas_basic = $saldo - $gram;
 
-                if ($gram > $saldo || $gram < 0.001) {
+                if ($gram > $saldo) {
                     $this->session->set_flashdata('info', '<div class="alert alert-warning" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
@@ -178,21 +179,18 @@ class Transaksi extends CI_Controller
                     redirect(base_url() . 'index.php/transaksi/jual_emas/' . $id);
                 } else {
 
-                    //ambil jenis keanggotaan
-                    $cekjenis = $this->model_tedagt->getAccountById($id);
-
-                    if ($cekjenis['jenis'] == 'basic' && $emas_basic == 0) {
+                    if ($emas_basic < $simpokok['saldo']) {
                         $this->session->set_flashdata('info', '<div class="alert alert-warning" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
-                        <h4>Oops, </h4> silahkan upgrade jenis keanggotaan Anda menjadi <strong>agen</strong> agar dapat menjual seluruh saldo emas Anda ...
+                        <h4>Oops, </h4> Simpanan pokok sebesar <strong>' . $simpokok['saldo'] . ' gr</strong> tidak dapat di jual atau di tarik, silahkan sesuaikan kembali jumlah gram ...
                     </div>');
 
                         redirect(base_url() . 'index.php/transaksi/jual_emas/' . $id);
                     } else {
                         $datas = [
-                            'tgl' => $tgl,
+                            //'tgl' => $tgl,
                             'idted' => $id,
                             'ket' => $ket,
                             'nominal_uang' => $uang,
@@ -302,7 +300,7 @@ class Transaksi extends CI_Controller
 
             //ambil selisih dari ted
             $selisih = $this->model_uang->getValueById(1);
-            $newjual = $hrgjual - $selisih['selisih_hrg_emas'];
+            $newjual = $hrgjual + $selisih['selisih_jual'];
 
             $data   = [
                 'saldo_emas' => $this->model_transaksi->getLastTranById($id, 'emas'),
@@ -376,7 +374,7 @@ class Transaksi extends CI_Controller
         } else {
             $data = [
                 'page' => 'pages/admin/daftar_beli_emas',
-                'datas' => $this->model_history->getAll()
+                'datas' => $this->model_history->getAllBeli()
             ];
 
             $this->load->view('dashboard', $data);
@@ -413,5 +411,16 @@ class Transaksi extends CI_Controller
 
             redirect(base_url() . "index.php/transaksi/daftar_beli_emas");
         }
+    }
+
+    public function daftar_jual_emas()
+    {
+
+        $data = [
+            'page' => 'pages/admin/daftar_jual_emas',
+            'datas' => $this->model_history->getAllJual()
+        ];
+
+        $this->load->view('dashboard', $data);
     }
 }

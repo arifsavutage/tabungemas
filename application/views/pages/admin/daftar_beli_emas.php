@@ -21,7 +21,7 @@
                                 <th>Nom. Uang</th>
                                 <th>Nom. Gram</th>
                                 <th>Status Byr.</th>
-                                <th><i class="fas fa-sitemap"></i></th>
+                                <th><i class="fas fa-cog"></i></th>
                             </tr>
                         </thead>
                         <tbody>

@@ -41,7 +41,7 @@
                     <div class="form-row">
                         <p>
                             * minimal penjualan <strong>0,001 gr</strong><br />
-                            ** penjualan emas <strong>Tidak Bisa</strong> di batalkan.
+                            ** penjualan emas <strong>Tidak Bisa</strong> di batalkan.<br />
                             *** pecahan (angka di belakang koma) <strong>menggunakan titik</strong>.
                         </p>
                     </div>

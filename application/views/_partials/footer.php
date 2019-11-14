@@ -50,7 +50,7 @@
         var hrgjual = parseInt($('#hrgjual').val());
         var jual = parseFloat($(this).val());
 
-        if ((jual > saldo) || (jual < 0.001)) {
+        if (jual > saldo) {
             alert("Pastikan jumlah gram emas yang di masukkan benar");
             var pendapatan = jual * 0;
 
