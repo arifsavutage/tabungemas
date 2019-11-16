@@ -105,7 +105,7 @@
                                                 $disabled = "";
                                             }
                                             ?>
-                                        <a href="<?= base_url() . "index.php/transaksi/hapus_beli_emas/$detail[idted]/$detail[tgl]"; ?>" class="btn btn-danger btn-sm <?= $disabled; ?>" tabindex="-1" role="button" onclick="return valdel()" <?= $status; ?>><i class="fa fa-times"></i></a>
+                                        <a href="<?= base_url() . "index.php/transaksi/hapus_beli_emas/$detail[idx]"; ?>" class="btn btn-danger btn-sm <?= $disabled; ?>" tabindex="-1" role="button" onclick="return valdel()" <?= $status; ?>><i class="fa fa-times"></i></a>
                                         <script>
                                             function valdel() {
                                                 var conf = confirm("Apakah yakin data akan dihapus?");

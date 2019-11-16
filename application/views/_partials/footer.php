@@ -1,6 +1,6 @@
 <footer class="footer">
     <span class="text-right">
-        Copyright <a target="_blank" href="#">Your Website</a>
+        Copyright <a target="_blank" href="https://www.tabungemas.com">tabungemas.com</a>
     </span>
     <span class="float-right">
         Powered by <a target="_blank" href="https://www.pikeadmin.com"><b>Pike Admin</b></a>
@@ -61,6 +61,23 @@
             $('#uang').val(pendapatan);
         }
 
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $("form input:text[name=saldowallet]").attr('readonly', true);
+        $("#bank").attr('disabled', true);
+
+        $("form input:radio[name=metode]").change(function() {
+
+            if ($(this).val() == 'transfer') {
+                $("form input:text[name=saldowallet]").attr('disabled', true);
+                $("#bank").attr('disabled', false);
+            } else {
+                $("#bank").attr('disabled', true);
+                $("form input:text[name=saldowallet]").attr('disabled', false);
+            }
+        });
     });
 </script>
 <script>

@@ -29,6 +29,47 @@
                             <?= form_error('nominalgram', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                     </div>
+                    <br />
+                    <span class="d-block p-2 bg-dark text-white">
+                        <h6>Pilih Cara Bayar</h6>
+                    </span>
+
+                    <br />
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="metode" id="metode1" value="wallet" checked>
+                                <label class="form-check-label" for="metode1">Dari Wallet</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="metode" id="metode2" value="transfer">
+                                <label class="form-check-label" for="metode">Transfer Bank</label>
+                            </div>
+                            <?= form_error('metode', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="saldowallet">Saldo Wallet</label>
+                            <input type="text" class="form-control" name="saldowallet" id="saldowallet" value="<?= $wallet; ?>">
+                            <?= form_error('saldowallet', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="bank">Daftar Bank</label>
+                            <select name="bank" id="bank" class="form-control">
+                                <option value="">: Pilih</option>
+                                <?php
+                                foreach ($bank as $transfer) :
+                                    ?>
+                                    <option value="<?= $transfer['id']; ?>"><?= $transfer['nm_bank']; ?></option>
+                                <?php
+                                endforeach;
+                                ?>
+                            </select>
+                            <?= form_error('bank', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                    </div>
 
                     <button type="submit" class="btn btn-primary btn-lg btn-block">Beli</button>
 

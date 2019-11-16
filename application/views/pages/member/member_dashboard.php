@@ -23,14 +23,14 @@
 
                     $xnewbeli   = explode(",", $new[0]['HRG_BELI']);
                     $xnewjual   = explode(",", $new[0]['HRG_JUAL']);
-                    $newbeli    = implode("", $xnewbeli) + $selisih['selisih_beli'];
-                    $newjual    = implode("", $xnewjual) - $selisih['selisih_jual'];
+                    $newbeli    = implode("", $xnewbeli) - $selisih['selisih_beli'];
+                    $newjual    = implode("", $xnewjual) + $selisih['selisih_jual'];
                     $newupdate  = date('d M Y', strtotime($new[0]['UPDATE_AT']));
 
                     $xoldbeli   = explode(",", $old[0]['HRG_BELI']);
                     $xoldjual   = explode(",", $old[0]['HRG_JUAL']);
-                    $oldbeli    = implode("", $xoldbeli) + $selisih['selisih_beli'];
-                    $oldjual    = implode("", $xoldjual) - $selisih['selisih_jual'];
+                    $oldbeli    = implode("", $xoldbeli) - $selisih['selisih_beli'];
+                    $oldjual    = implode("", $xoldjual) + $selisih['selisih_jual'];
                     $oldupdate  = date('d M Y', strtotime($old[0]['UPDATE_AT']));
 
                     //beli
@@ -80,7 +80,7 @@
             <div class="col-xs-12 col-md-12 text-center">
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-warning btn-lg">
-                        <input type="radio" name="options" id="option1" autocomplete="off"> Emas Saya <br />
+                        <input type="radio" name="options" id="option1" autocomplete="off"><i class="fas fa-coins"></i> Emas Saya <br />
                         <?php
                         if (empty($saldo_emas['saldo'])) {
                             echo "0";
@@ -90,7 +90,7 @@
                         ?> gr
                     </label>
                     <label class="btn btn-secondary btn-lg">
-                        <input type="radio" name="options" id="option2" autocomplete="off"> Saldo Saya <br />
+                        <input type="radio" name="options" id="option2" autocomplete="off"><i class="fas fa-wallet"></i> Wallet <br />
                         <?php
                         if (empty($saldo_rp['saldo'])) {
                             echo "Rp. 0";

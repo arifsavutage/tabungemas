@@ -18,10 +18,9 @@ class Model_history extends CI_Model
         return $this->db->update($this->_table, $data);
     }
 
-    public function delete($data)
+    public function delete($idx)
     {
-        $this->db->where('idted', "$data[idted]");
-        $this->db->where('tgl', "$data[tgl]");
+        $this->db->where('idx', $idx);
         return $this->db->delete($this->_table);
     }
 
@@ -36,7 +35,7 @@ class Model_history extends CI_Model
 
     public function getAllBeli()
     {
-        $this->db->select("tb_agt_ted.idted, tb_agt_ted.nama_lengkap, tb_agt_ted.nohp, tb_history.`tgl`, 
+        $this->db->select("tb_agt_ted.idted, tb_agt_ted.nama_lengkap, tb_agt_ted.nohp, tb_history.idx, tb_history.`tgl`, 
         tb_history.`idted`, tb_history.`ket`, tb_history.`nominal_uang`, tb_history.`nominal_gram`, tb_history.`status`");
         $this->db->from($this->_table);
         $this->db->join('tb_agt_ted', 'tb_agt_ted.idted = tb_history.idted');

@@ -28,6 +28,16 @@ class Member extends CI_Controller
         $this->load->view('dashboard', $data);
     }
 
+    public function member_list()
+    {
+        $data   = [
+            'page'  => 'pages/admin/member_list',
+            'list'  => $this->model_tedagt->getAll()->result_array()
+        ];
+
+        $this->load->view('dashboard', $data);
+    }
+
     public function delRegistration($id = null)
     {
         if ($id == null) {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 14 Nov 2019 pada 11.59
+-- Waktu pembuatan: 16 Nov 2019 pada 12.37
 -- Versi server: 10.3.20-MariaDB
 -- Versi PHP: 7.2.7
 
@@ -97,7 +97,8 @@ INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `nohp`, `alamat
 ('01.00013', '2019-11-10', 'Fatmasari', '081325374500', '', 'fsari.chani@gmail.com', '$2y$10$ZID/5ylgGg4/wb9WKrzUj.Hs1/6fjeyTSorOFsDeRjL4nv4kkP.u.', 'member', 'noimage.jpg', 'noimage.jpg', '', '', 'noimage.jpg', 'agen', 1),
 ('01.00014', '2019-11-11', 'Arief Nurcahyo', '081355236115', '', 'riefrief1135@gmail.com', '$2y$10$X5VNFLrRaWwUea3ocjgiIuLpCLLZhhOhSG5j2HA/xtEgYEO8jrSxe', 'member', 'noimage.jpg', 'noimage.jpg', '', '', 'noimage.jpg', 'agen', 1),
 ('01.00015', '2019-11-11', 'Juniar Arif Wicaksono', '081390559997', 'Dusun Gentan Lor Rt. 04 Rw. 03, Kec. Boja, Kab. Kendal', 'arifsavutage@gmail.com', '$2y$10$ca0pp55yIoQa7ktPaU20nOlApQit2dmHalQkGlaL1bX/ZYB6k/bZO', 'member', 'noimage.jpg', 'noimage.jpg', '333 222 111', 'Bank Toyib', '01_00015.jpg', 'agen', 1),
-('01.00016', '2019-11-13', 'Sri Rahayu Puji Astuti', 'hildasabrinadyra@gma', '', 'hildasabrinadyra@gmail.com', '$2y$10$eNjAXmAAxLZJB2w1UssBVuK9nkT2KYOXaPPd1.98UBYw2poRXoVkC', 'member', 'noimage.jpg', 'noimage.jpg', '', '', 'noimage.jpg', 'agen', 1);
+('01.00016', '2019-11-13', 'Sri Rahayu Puji Astuti', 'hildasabrinadyra@gma', '', 'hildasabrinadyra@gmail.com', '$2y$10$eNjAXmAAxLZJB2w1UssBVuK9nkT2KYOXaPPd1.98UBYw2poRXoVkC', 'member', 'noimage.jpg', 'noimage.jpg', '', '', 'noimage.jpg', 'agen', 1),
+('01.00017', '2019-11-14', 'Ajik Prasetyo', '0895605369334', 'Jl. Gaharu barat dalam VI / 378 RT 03 RW 09 srondol wetan banyumanik, semarang', 'ajikprasetyoo@gmail.com', '$2y$10$6D0TsoKe38PQydP05HOl6eXaS/qYgkzDET2dIHpHu2sWBULV/.XhS', 'member', 'noimage.jpg', 'noimage.jpg', '2521100861', 'BCA', 'noimage.jpg', 'agen', 1);
 
 -- --------------------------------------------------------
 
@@ -128,7 +129,9 @@ INSERT INTO `tb_agt_tmp` (`idtmp`, `tgl_daftar`, `nm_tmp`, `nohp_tmp`, `email_tm
 (19, '2019-11-06', 'Dhevan Muhamad Anthareza', '081226292132', 'dhevanmuhamad@gmail.com', '', '$2y$10$8sNMFl/9sjhTYfNG8HWGYeFLjapWlVsCgyvK32upeMsLJTB5pyavu', '01.00005', 970311, 0, 'V6m9S7CUJfsH2ayT'),
 (20, '2019-11-07', 'Galih Saputra', '085712247539', 'gatra881@gmail.com', '', '$2y$10$yRN8sWF0YMtD7b65tp7w8ej6JrxrMDkIw9JuORZkxgMTii.9kkT2O', '01.00005', 970321, 0, 'gRCyG0AcdFbSpeWU'),
 (21, '2019-11-07', 'dwianto wiryawan herwindo', '085866671900', 'dwiyantowiryawan@gmail.com', '', '$2y$10$eyRCS9eAtw/.ILJ0DuMd5.mu/nskTySJYuFND.Pqdzst0o1v9D/g.', '01.00003', 970133, 0, 'onaHOq84B5SGEQfx'),
-(25, '2019-11-13', 'Muhammad arif efendi', '081392761799', 'muhammadarifefendi6@gmail.com', '', '$2y$10$VxJWiJZfWiGO3yRBdSsr8e1rtdDprpPeYCZ0vHivJ45lrnWiQP50m', '01.00016', 970131, 0, 'zXsmnokTiZAdwghO');
+(25, '2019-11-13', 'Muhammad arif efendi', '081392761799', 'muhammadarifefendi6@gmail.com', '', '$2y$10$VxJWiJZfWiGO3yRBdSsr8e1rtdDprpPeYCZ0vHivJ45lrnWiQP50m', '01.00016', 970131, 0, 'zXsmnokTiZAdwghO'),
+(27, '2019-11-14', 'Titik ikha purbiyanti', '081229929291', 'bundatikarosa@gmail.com', '', '$2y$10$rE1fEJ7H7yp2oihj5VSpme6lKfqIXyLUsLHr..cRa9gzGNeTfHnRG', '01.00003', 970323, 0, 'MZBsb07owrt8Szy1'),
+(28, '2019-11-16', 'Andika latif kurniawan', '0895367355591', 'dika.latif.99@gmail.com', '', '$2y$10$/q2ZHRPl8NfwTqFuRoR2oO/8juQS4VIY0fryGYtGqV0Fxv8BqlxB6', '01.00006', 970123, 0, 'uJLM5By4mjUdYXP2');
 
 -- --------------------------------------------------------
 
@@ -209,6 +212,7 @@ INSERT INTO `tb_cabang` (`idcabang`, `nama_cabang`, `alamat_cabang`, `kotakab`, 
 --
 
 CREATE TABLE `tb_history` (
+  `idx` bigint(20) NOT NULL,
   `tgl` timestamp NOT NULL DEFAULT current_timestamp(),
   `idted` varchar(8) NOT NULL,
   `ket` text NOT NULL,
@@ -221,13 +225,14 @@ CREATE TABLE `tb_history` (
 -- Dumping data untuk tabel `tb_history`
 --
 
-INSERT INTO `tb_history` (`tgl`, `idted`, `ket`, `nominal_uang`, `nominal_gram`, `status`) VALUES
-('2019-11-10 16:00:00', '01.00015', 'pembelian emas ', 5000000, 6.966, 1),
-('2019-11-11 16:00:00', '01.00007', 'pembelian emas ', 100000, 0.139, 0),
-('2019-11-11 16:00:00', '01.00015', 'jual emas ', 1282000, 2, 1),
-('2019-11-11 16:00:00', '01.00001', 'pembelian emas ', 10000, 0.014, 0),
-('2019-11-12 16:00:00', '01.00003', 'pembelian emas ', 10000, 0.014, 1),
-('2019-11-12 16:00:00', '01.00003', 'pembelian emas ', 10000, 0.013, 0);
+INSERT INTO `tb_history` (`idx`, `tgl`, `idted`, `ket`, `nominal_uang`, `nominal_gram`, `status`) VALUES
+(1, '2019-11-10 16:00:00', '01.00015', 'pembelian emas ', 5000000, 6.966, 1),
+(3, '2019-11-11 16:00:00', '01.00015', 'jual emas ', 1282000, 2, 1),
+(4, '2019-11-11 16:00:00', '01.00001', 'pembelian emas ', 10000, 0.014, 1),
+(5, '2019-11-12 16:00:00', '01.00003', 'pembelian emas ', 10000, 0.014, 1),
+(6, '2019-11-12 16:00:00', '01.00003', 'pembelian emas ', 10000, 0.013, 1),
+(7, '2019-11-14 10:04:59', '01.00003', 'pembelian emas ', 567890, 0.815, 1),
+(8, '2019-11-14 16:07:42', '01.00003', 'jual emas ', 330000, 0.5, 0);
 
 -- --------------------------------------------------------
 
@@ -253,7 +258,7 @@ INSERT INTO `tb_jaringan` (`idagt`, `idreferal`, `idupline`, `jml_downline`, `po
 ('01.00001', '0', '0', 2, '1', 1, '2019-10-28'),
 ('01.00002', '01.00001', '01.00001', 1, '11', 2, '0000-00-00'),
 ('01.00003', '01.00002', '01.00002', 8, '111', 3, '0000-00-00'),
-('01.00004', '01.00003', '01.00003', 1, '1111', 4, '0000-00-00'),
+('01.00004', '01.00003', '01.00003', 2, '1111', 4, '0000-00-00'),
 ('01.00005', '01.00004', '01.00004', 1, '11111', 5, '0000-00-00'),
 ('01.00006', '01.00005', '01.00005', 0, '111111', 6, '0000-00-00'),
 ('01.00007', '01.00003', '01.00003', 1, '1112', 4, '0000-00-00'),
@@ -265,7 +270,8 @@ INSERT INTO `tb_jaringan` (`idagt`, `idreferal`, `idupline`, `jml_downline`, `po
 ('01.00013', '01.00003', '01.00003', 0, '1116', 4, '0000-00-00'),
 ('01.00014', '01.00003', '01.00003', 0, '1117', 4, '0000-00-00'),
 ('01.00015', '01.00001', '01.00001', 0, '12', 2, '0000-00-00'),
-('01.00016', '01.00003', '01.00003', 0, '1118', 4, '0000-00-00');
+('01.00016', '01.00003', '01.00003', 0, '1118', 4, '0000-00-00'),
+('01.00017', '01.00004', '01.00004', 0, '11112', 5, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -296,7 +302,13 @@ INSERT INTO `tb_transaksi` (`id`, `tgl`, `idted`, `uraian`, `masuk`, `keluar`, `
 (5, '2019-11-12', '01.00015', 'pencairan jual emas', 1282000, 0, 1282000, 'uang'),
 (6, '2019-11-12', '01.00015', 'jual emas', 0, 2, 5.966, 'emas'),
 (7, '2019-11-13', '01.00003', 'beli emas', 0.014, 0, 0.014, 'emas'),
-(8, '2019-11-13', '01.00016', 'simp. pokok & simp. wajib', 1.035, 0, 1.035, 'emas');
+(8, '2019-11-13', '01.00016', 'simp. pokok & simp. wajib', 1.035, 0, 1.035, 'emas'),
+(9, '2019-11-14', '01.00017', 'simp. pokok & simp. wajib', 1.136, 0, 1.136, 'emas'),
+(10, '2019-11-14', '01.00003', 'beli emas', 0.815, 0, 0.829, 'emas'),
+(11, '2019-11-13', '01.00003', 'beli emas', 0.013, 0, 0.842, 'emas'),
+(12, '2019-11-12', '01.00001', 'beli emas', 0.014, 0, 0.014, 'emas'),
+(13, '2019-11-14', '01.00003', 'pencairan jual emas', 330000, 0, 330000, 'uang'),
+(14, '2019-11-14', '01.00003', 'jual emas', 0, 0.5, 0.342, 'emas');
 
 -- --------------------------------------------------------
 
@@ -435,7 +447,9 @@ INSERT INTO `t_update_ubs` (`IDX`, `UPDATE_AT`, `HRG_BELI`, `HRG_JUAL`) VALUES
 (109, '2019-11-07 20:00:03', '735,561', '659,000'),
 (110, '2019-11-10 20:05:03', '736,570', '660,000'),
 (111, '2019-11-11 20:00:02', '734,552', '658,000'),
-(112, '2019-11-12 20:25:02', '735,561', '659,000');
+(112, '2019-11-12 20:25:02', '735,561', '659,000'),
+(113, '2019-11-14 04:00:02', '736,570', '660,000'),
+(114, '2019-11-15 04:00:03', '736,066', '659,500');
 
 --
 -- Indexes for dumped tables
@@ -478,6 +492,12 @@ ALTER TABLE `tb_cabang`
   ADD PRIMARY KEY (`idcabang`);
 
 --
+-- Indeks untuk tabel `tb_history`
+--
+ALTER TABLE `tb_history`
+  ADD PRIMARY KEY (`idx`);
+
+--
 -- Indeks untuk tabel `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
@@ -503,7 +523,7 @@ ALTER TABLE `t_update_ubs`
 -- AUTO_INCREMENT untuk tabel `tb_agt_tmp`
 --
 ALTER TABLE `tb_agt_tmp`
-  MODIFY `idtmp` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `idtmp` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_bank`
@@ -518,10 +538,16 @@ ALTER TABLE `tb_bonus`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT untuk tabel `tb_history`
+--
+ALTER TABLE `tb_history`
+  MODIFY `idx` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT untuk tabel `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_verifikasi_email`
@@ -533,7 +559,7 @@ ALTER TABLE `tb_verifikasi_email`
 -- AUTO_INCREMENT untuk tabel `t_update_ubs`
 --
 ALTER TABLE `t_update_ubs`
-  MODIFY `IDX` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `IDX` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -55,7 +55,7 @@
                                 <a href="#" class="subdrop"><span>Keanggotaan</span> <span class="menu-arrow"></span> </a>
                                 <ul style="display: block;">
                                     <li><a href="<?= base_url() . 'index.php/member/member_baru'; ?>">Anggota Baru</a></li>
-                                    <li><a href="#"><span>Anggota Aktif</span></a></li>
+                                    <li><a href="<?= base_url() . 'index.php/member/member_list'; ?>"><span>Anggota Aktif</span></a></li>
                                 </ul>
                             </li>
                             <li class="submenu">

@@ -36,25 +36,17 @@
 
                             <table align="center" border="1" cellpadding="0" cellspacing="0" width="300">
                                 <tr>
-                                    <th>No.</th>
                                     <th>Nama Bank</th>
                                     <th>No. Rek</th>
                                     <th>An.</th>
                                 </tr>
-                                <?php
-                                $no = 1;
-                                foreach ($bank as $rek) :
-                                    ?>
-                                    <tr>
-                                        <th><?= $no; ?></th>
-                                        <th><?= $rek['nm_bank']; ?></th>
-                                        <th><?= $rek['norek']; ?></th>
-                                        <th><?= $rek['an']; ?></th>
-                                    </tr>
-                                <?php
-                                    $no++;
-                                endforeach;
-                                ?>
+
+                                <tr>
+                                    <th><?= $bank['nm_bank']; ?></th>
+                                    <th><?= $bank['norek']; ?></th>
+                                    <th><?= $bank['an']; ?></th>
+                                </tr>
+
                             </table>
 
                             <p style="margin-top:65px;color:#6e6e6e;">

@@ -74,55 +74,126 @@ class Transaksi extends CI_Controller
                 $uang   = $this->input->post('nominaluang');
                 $gram   = $this->input->post('nominalgram');
                 $status = $this->input->post('status');
+                $metode = $this->input->post('metode');
 
-                $datas = [
-                    //'tgl' => $tgl,
-                    'idted' => $id,
-                    'ket' => $ket,
-                    'nominal_uang' => $uang,
-                    'nominal_gram' => $gram,
-                    'status' => $status
-                ];
+                if ($metode == 'transfer') {
 
-                $history = $this->model_history->save($datas);
-                //echo $this->db->last_query();
+                    $bank      = $this->input->post('bank');
+                    $bank_data = $this->model_bank->getByID($bank);
 
-                if ($history) {
-
-                    //kirim email
-                    $anggota = $this->model_tedagt->getAccountById($id);
-
-                    $data = [
-                        'nama'  => $anggota['nama_lengkap'],
-                        'uang'  => $uang,
-                        'bank'  => $this->model_bank->getAll()
-
+                    $datas = [
+                        //'tgl' => $tgl,
+                        'idted' => $id,
+                        'ket' => $ket,
+                        'nominal_uang' => $uang,
+                        'nominal_gram' => $gram,
+                        'status' => $status
                     ];
 
-                    $to      = $anggota['email'];
-                    $subject = "Invoice Pembelian Emas";
-                    $message = $this->load->view('email/email_invoice', $data, true);
-                    $attach  = "";
+                    $history = $this->model_history->save($datas);
+                    //echo $this->db->last_query();
 
-                    $this->_sendmail($to, $subject, $message, $attach);
+                    if ($history) {
 
-                    $this->session->set_flashdata('info', '<div class="alert alert-success" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                            <h4>Success, </h4> Transaksi berhasil, silahkan cek <strong>invoice</strong> Anda di email ...
-                        </div>');
+                        //kirim email
+                        $anggota = $this->model_tedagt->getAccountById($id);
 
-                    redirect(base_url() . 'index.php/transaksi/beli_emas/' . $id);
+                        $data = [
+                            'nama'  => $anggota['nama_lengkap'],
+                            'uang'  => $uang,
+                            'bank'  => $bank_data
+
+                        ];
+
+                        $to      = $anggota['email'];
+                        $subject = "Invoice Pembelian Emas";
+                        $message = $this->load->view('email/email_invoice', $data, true);
+                        $attach  = "";
+
+                        $this->_sendmail($to, $subject, $message, $attach);
+
+                        $this->session->set_flashdata('info', '<div class="alert alert-success" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <h4>Success, </h4> Transaksi berhasil, silahkan cek <strong>invoice</strong> Anda di email untuk melakukan pentransferan ...
+                            </div>');
+
+                        redirect(base_url() . 'index.php/transaksi/beli_emas/' . $id);
+                    } else {
+                        $this->session->set_flashdata('info', '<div class="alert alert-warning" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4>Oops, </h4> Transaksi gagal tersimpan ...
+                    </div>');
+
+                        redirect(base_url() . 'index.php/transaksi/beli_emas/' . $id);
+                    }
                 } else {
-                    $this->session->set_flashdata('info', '<div class="alert alert-warning" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                    <h4>Oops, </h4> Transaksi gagal tersimpan ...
-                </div>');
 
-                    redirect(base_url() . 'index.php/transaksi/beli_emas/' . $id);
+                    $wallet = $this->input->post('saldowallet');
+
+                    if ($wallet < $uang) {
+                        $this->session->set_flashdata('info', '<div class="alert alert-warning" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <h4>Oops, </h4> Saldo wallet Anda kurang, pembelian emas batal ...
+                            </div>');
+
+                        redirect(base_url() . 'index.php/transaksi/beli_emas/' . $id);
+                    } else {
+                        $datas = [
+                            //'tgl' => $tgl,
+                            'idted' => $id,
+                            'ket' => $ket,
+                            'nominal_uang' => $uang,
+                            'nominal_gram' => $gram,
+                            'status' => 1
+                        ];
+
+                        $history = $this->model_history->save($datas);
+
+                        if ($history) {
+                            $new_saldo_wallet = $wallet - $uang;
+
+                            $data = [
+                                'tgl' => $tgl,
+                                'idted' => $id,
+                                'uraian' => "bayar beli emas $gram gr",
+                                'masuk' => 0,
+                                'keluar' => $uang,
+                                'saldo' => $new_saldo_wallet,
+                                'jenis' => 'uang'
+                            ];
+                            $this->model_transaksi->save($data);
+
+                            //update saldo gram
+                            $saldo_emas_akhir = $this->model_transaksi->getLastTranById($id, 'emas');
+                            $new_saldo_emas = $saldo_emas_akhir['saldo'] + $gram;
+
+                            $data_emas = [
+                                'tgl' => $tgl,
+                                'idted' => $id,
+                                'uraian' => "beli emas",
+                                'masuk' => $gram,
+                                'keluar' => 0,
+                                'saldo' => $new_saldo_emas,
+                                'jenis' => 'emas'
+                            ];
+                            $this->model_transaksi->save($data_emas);
+
+                            $this->session->set_flashdata('info', '<div class="alert alert-success" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <h4>Success, </h4> Pembayaran menggunakan saldo wallet berhasil, cek saldo emas & wallet Anda ...
+                            </div>');
+
+                            redirect(base_url() . 'index.php/transaksi/beli_emas/' . $id);
+                        }
+                    }
                 }
             }
 
@@ -136,8 +207,15 @@ class Transaksi extends CI_Controller
             $selisih = $this->model_uang->getValueById(1);
             $newjual = $hrgbeli - $selisih['selisih_beli'];
 
+            //ambil uang wallet
+            $getwallet = $this->model_transaksi->getLastTranById($id, 'uang');
+
+            //ambil data bank
+
             $data   = [
                 'beli'  => $newjual,
+                'wallet' => $getwallet['saldo'],
+                'bank'  => $this->model_bank->getAll(),
                 'page'  => 'pages/member/member_beli_emas'
             ];
 
@@ -381,14 +459,9 @@ class Transaksi extends CI_Controller
         }
     }
 
-    public function hapus_beli_emas($id, $tgl)
+    public function hapus_beli_emas($idx)
     {
-        $data = [
-            'idted' => $id,
-            'tgl'   => $tgl
-        ];
-
-        $delete = $this->model_history->update($data);
+        $delete = $this->model_history->delete($idx);
 
         if ($delete) {
             $this->session->set_flashdata('info', '
