@@ -12,6 +12,7 @@ class Transaksi extends CI_Controller
         $this->load->model('model_uang');
         $this->load->model('model_tedagt');
         $this->load->model('model_bank');
+        $this->load->model('model_biayacetak');
 
         not_login();
     }
@@ -495,5 +496,216 @@ class Transaksi extends CI_Controller
         ];
 
         $this->load->view('dashboard', $data);
+    }
+
+    public function tarik_fisik_emas($id = null)
+    {
+        if ($id == null) {
+            redirect(base_url());
+        } else {
+
+            $this->form_validation->set_rules('pilih', 'Pilih Gram', 'required');
+
+            if ($this->form_validation->run()) {
+
+                $pilih  = $this->input->post('pilih');
+                $xpilih = explode("-", $pilih);
+
+                $ket    = $this->input->post('keterangan');
+                $idted  = $this->input->post('idted');
+                $status = $this->input->post('status');
+                $pokok  = $this->input->post('pokok');
+                $saldo  = $this->input->post('saldo');
+
+
+                $jml = $saldo -  $xpilih[1];
+
+                if (($$xpilih[1] > $saldo) || ($jml < $pokok)) {
+                    $this->session->set_flashdata('info', '<div class="alert alert-warning" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>Oops, </h4> Anda harus menyisakan simpanan pokok emas sebesar ' . $pokok . ' gram ...
+                </div>');
+
+                    redirect(base_url() . 'index.php/transaksi/tarik_fisik_emas/' . $id);
+                } else {
+
+                    $data = [
+                        'idted' => $idted,
+                        'ket' => $ket,
+                        'nominal_uang' => $xpilih[0],
+                        'nominal_gram' => $xpilih[1],
+                        'status' => $status
+                    ];
+                    $this->model_history->save($data);
+
+                    $data['bank'] = $this->model_bank->getAll();
+                    $anggota = $this->model_tedagt->getAccountById($id);
+                    //kirim ke email
+                    $to      = $anggota['email'];
+                    $subject = "Invoice Tarik Fisik";
+                    $message = $this->load->view('email/email_tarik_fisik', $data, true);
+                    $attach  = "";
+
+                    $this->_sendmail($to, $subject, $message, $attach);
+
+                    $this->session->set_flashdata('info', '<div class="alert alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>Success, </h4> Silahkan cek invoice pembayaran Anda di email, lakukan transfer biaya cetak & konfirmasi via email atau Whatsapp Customer Service ...
+                </div>');
+
+                    redirect(base_url() . 'index.php/transaksi/tarik_fisik_emas/' . $id);
+                }
+            }
+
+            $data = [
+                'emas' => $this->model_transaksi->getLastTranById($id, 'emas'),
+                'pokok' => $this->model_transaksi->getFirstTransaction($id, 'emas'),
+                'biaya' => $this->model_biayacetak->getAll(),
+                'page' => 'pages/member/member_tarik_fisik'
+            ];
+
+            $this->load->view('dashboard', $data);
+        }
+    }
+
+    public function daftar_tarik_fisik()
+    {
+
+        $this->form_validation->set_rules('idted', 'ID Anggota', 'required');
+        $this->form_validation->set_rules('tgltrans', 'Tgl Transaksi', 'required');
+
+        if ($this->form_validation->run()) {
+
+            $tgl    = $this->input->post('tgltrans');
+            $idted  = $this->input->post('idted');
+            $gram   = $this->input->post('gram');
+
+            $data = [
+                'tgl'   => "$tgl",
+                'idted' => "$idted",
+                'status' => 1
+            ];
+
+            $update = $this->model_history->update($data);
+
+            if ($update) {
+                $saldo_emas = $this->model_transaksi->getLastTranById($idted, 'emas');
+
+                $emas = $saldo_emas['saldo'] - $gram;
+                $data_saldo = [
+                    'tgl' => date('Y-m-d'),
+                    'idted' => "$idted",
+                    'uraian' => 'tarik fisik emas',
+                    'masuk' => 0,
+                    'keluar' => $gram,
+                    'saldo' => $emas,
+                    'jenis' => 'emas'
+                ];
+
+                $this->model_transaksi->save($data_saldo);
+
+
+                $this->session->set_flashdata('info', '<div class="alert alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>Success, </h4> data tersimpan
+                </div>');
+
+                redirect(base_url() . 'index.php/transaksi/daftar_tarik_fisik/');
+            } else {
+                $this->session->set_flashdata('info', '<div class="alert alert-warning" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>Oops, </h4> data gagal di update
+                </div>');
+
+                redirect(base_url() . 'index.php/transaksi/daftar_tarik_fisik/');
+            }
+        }
+
+        $data = [
+            'page' => 'pages/admin/daftar_tarik_fisik',
+            'datas' => $this->model_history->getAllTarik()
+        ];
+
+        $this->load->view('dashboard', $data);
+    }
+
+    public function batal_tarik_fisik($idx)
+    {
+        $delete = $this->model_history->delete($idx);
+
+        if ($delete) {
+            $this->session->set_flashdata('info', '
+            <div class="alert alert-success" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4>Success :</h4> Pembatalan tarik fisik berhasil ...
+            </div>');
+
+            redirect(base_url() . "index.php/transaksi/daftar_tarik_fisik");
+        } else {
+            $this->session->set_flashdata('info', '
+            <div class="alert alert-warning" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4>Oops, </h4> Hapus pembelian emas gagal ...
+            </div>');
+
+            redirect(base_url() . "index.php/transaksi/daftar_tarik_fisik");
+        }
+    }
+
+    public function transfer($id = null)
+    {
+        if ($id == null) {
+            redirect(base_url());
+        } else {
+            $data = [
+                'saldo_emas' => $this->model_transaksi->getLastTranById($id, 'emas'),
+                'saldo_wallet' => $this->model_transaksi->getLastTranById($id, 'uang'),
+                'page' => 'pages/member/member_transfer'
+            ];
+
+            $this->load->view('dashboard', $data);
+        }
+    }
+
+    public function widraw($id = null)
+    {
+        if ($id == null) {
+            redirect(base_url());
+        } else {
+
+            $data = [
+                'saldo_wallet' => $this->model_transaksi->getLastTranById($id, 'uang'),
+                'page' => 'pages/member/member_widraw'
+            ];
+
+            $this->load->view('dashboard', $data);
+        }
+    }
+
+    public function history($id = null)
+    {
+        if ($id == null) {
+            redirect(base_url());
+        } else {
+            $data = [
+                'history_uang' => $this->model_transaksi->getTransactionById($id, 'uang'),
+                'history_emas' => $this->model_transaksi->getTransactionById($id, 'emas'),
+                'page' => 'pages/member/member_history'
+            ];
+
+            $this->load->view('dashboard', $data);
+        }
     }
 }

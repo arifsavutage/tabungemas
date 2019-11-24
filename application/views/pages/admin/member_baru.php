@@ -11,7 +11,7 @@
                 }
                 ?>
                 <div class="table-responsive">
-                    <table class="table" id="example1">
+                    <table class="table" id="examples">
                         <thead>
                             <tr>
                                 <th>No.</th>
@@ -38,7 +38,7 @@
                                 ?>
                                 <tr>
                                     <td scope="row"><?= $no; ?></td>
-                                    <td><?= date('d-m-Y', strtotime($detail['tgl_daftar'])); ?></td>
+                                    <td><?= date('Y-m-d', strtotime($detail['tgl_daftar'])); ?></td>
                                     <td><?= ucwords($detail['nm_tmp']); ?></td>
                                     <td><?= $detail['nohp_tmp']; ?></td>
                                     <td><?= $detail['email_tmp']; ?></td>

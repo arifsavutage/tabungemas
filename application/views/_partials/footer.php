@@ -82,12 +82,36 @@
 </script>
 <script>
     $(document).ready(function() {
+        $('#saldowallet').hide();
+        $('#saldoemas').hide();
+
+        $('form input:radio[name=mode]').change(function() {
+
+            if ($(this).val() == 'uang') {
+                $('#saldoemas').hide();
+                $('#saldowallet').show();
+            } else {
+                $('#saldowallet').hide();
+                $('#saldoemas').show();
+            }
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
         $('#example1').DataTable();
     });
 </script>
 <script>
     $(document).ready(function() {
         $('#examples').DataTable({
+            "order": [
+                //angka adalah nomor kolom
+                [0, "desc"]
+            ]
+        });
+        $('#examples2').DataTable({
             "order": [
                 //angka adalah nomor kolom
                 [0, "desc"]
