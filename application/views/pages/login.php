@@ -14,6 +14,7 @@
             background-color: #f1f7fc !important;
         }
     </style>
+    <script src="<?= base_url(); ?>assets/login/assets/js/jquery.min.js"></script>
 </head>
 
 <body>
@@ -32,15 +33,37 @@
                 <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
             </div>
             <div class="form-group">
-                <input class="form-control" type="password" name="password" placeholder="Password">
-                <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+                <div class="input-group" id="show_hide_password">
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+                    <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" name="showpass" id="showpass">
+                    <label class="form-check-label" for="showpass">
+                        Show Password
+                    </label>
+                </div>
             </div>
             <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Log In</button></div>
             <a href="<?= base_url(); ?>index.php/register/new_member" class="forgot">Belum memiliki akun? daftar disini</a>
         </form>
     </div>
-    <script src="<?= base_url(); ?>assets/login/assets/js/jquery.min.js"></script>
     <script src="<?= base_url(); ?>assets/login/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        //show hide pass login
+        $(document).ready(function() {
+            $('#showpass').change(function(event) {
+                event.preventDefault();
+                if ($('#show_hide_password input').attr("type") == "text") {
+                    $('#show_hide_password input').attr('type', 'password');
+                } else if ($('#show_hide_password input').attr("type") == "password") {
+                    $('#show_hide_password input').attr('type', 'text');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="<?= base_url(); ?>assets/register/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= base_url(); ?>assets/register/assets/css/Registration-Form-with-Photo.css">
     <link rel="stylesheet" href="<?= base_url(); ?>assets/register/assets/css/styles.css">
+
+    <script src="<?= base_url(); ?>assets/register/assets/js/jquery.min.js"></script>
 </head>
 
 <body>
@@ -48,12 +50,39 @@
                     <?= form_error('nohp', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="password" name="password" placeholder="Password">
-                    <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <div class="form-row">
+                        <div class="col-md-8" id="show_pass_1">
+                            <input class="form-control" type="password" name="password" placeholder="Password">
+                            <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" name="showpass1" id="showpass1">
+                                <label class="form-check-label" for="showpass1">
+                                    Show
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="password" name="password2" placeholder="Password (repeat)">
-                    <?= form_error('password2', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <div class="form-row">
+                        <div class="col-md-8" id="show_pass_2">
+                            <input class="form-control" type="password" name="password2" placeholder="Password (repeat)">
+                            <?= form_error('password2', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" name="showpass2" id="showpass2">
+                                <label class="form-check-label" for="showpass2">
+                                    Show
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="form-group">
                     <div class="form-check">
@@ -66,8 +95,32 @@
             </form>
         </div>
     </div>
-    <script src="<?= base_url(); ?>assets/register/assets/js/jquery.min.js"></script>
+
     <script src="<?= base_url(); ?>assets/register/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        //show hide pass login
+        $(document).ready(function() {
+            $('#showpass1').change(function(event) {
+                event.preventDefault();
+                if ($('#show_pass_1 input').attr("type") == "text") {
+                    $('#show_pass_1 input').attr('type', 'password');
+                } else if ($('#show_pass_1 input').attr("type") == "password") {
+                    $('#show_pass_1 input').attr('type', 'text');
+                }
+            });
+        });
+
+        $(document).ready(function() {
+            $('#showpass2').change(function(event) {
+                event.preventDefault();
+                if ($('#show_pass_2 input').attr("type") == "text") {
+                    $('#show_pass_2 input').attr('type', 'password');
+                } else if ($('#show_pass_2 input').attr("type") == "password") {
+                    $('#show_pass_2 input').attr('type', 'text');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
