@@ -26,7 +26,7 @@
                     </div>
                     <div class="form-group">
                         <label for="bank">Bank</label>
-                        <input type="text" class="form-control" id="bank" name="bank" value="<?= $detail['bank'] ?>">
+                        <input type="text" class="form-control" id="bankid" name="bank" value="<?= $detail['bank'] ?>">
                     </div>
                     <button type="submit" class="btn btn-secondary btn-lg btn-block">Edit</button>
 

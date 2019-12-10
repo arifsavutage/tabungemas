@@ -75,13 +75,13 @@
                 $("#bank").attr('disabled', false);
             } else {
                 $("#bank").attr('disabled', true);
-                $("form input:text[name=saldowallet]").attr('disabled', false);
+                //$("form input:text[name=saldowallet]").attr('disabled', false);
             }
         });
     });
 </script>
 <script>
-    $(document).ready(function() {
+    /*$(document).ready(function() {
         $('#saldowallet').hide();
         $('#saldoemas').hide();
 
@@ -95,7 +95,7 @@
                 $('#saldoemas').show();
             }
         });
-    });
+    });*/
 </script>
 
 <script>

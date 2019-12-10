@@ -83,11 +83,19 @@
                         <input type="radio" name="options" id="option1" autocomplete="off"><i class="fas fa-coins"></i> Emas Saya <br />
                         <?php
                         if (empty($saldo_emas['saldo'])) {
-                            echo "0";
+                            $emas = 0;
                         } else {
-                            echo number_format($saldo_emas['saldo'], 3, ',', '.');
+                            $emas = $saldo_emas['saldo'];
                         }
+                        echo number_format($emas, 3, ',', '.');
                         ?> gr
+                    </label>
+                    <label class="btn btn-info btn-lg">
+                        <input type="radio" name="options" id="option1" autocomplete="off"><i class="far fa-chart-bar"></i> Estimasi <br />
+                        <?php
+                        $nilai_invest = $emas * $newjual;
+                        echo "Rp. " . number_format($nilai_invest, 0, ',', '.');
+                        ?>
                     </label>
                     <label class="btn btn-secondary btn-lg">
                         <input type="radio" name="options" id="option2" autocomplete="off"><i class="fas fa-wallet"></i> Wallet <br />
