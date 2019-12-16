@@ -26,7 +26,7 @@
                             <?php
                             $no = 1;
                             foreach ($list as $detail) :
-                                ?>
+                            ?>
                                 <tr>
                                     <td scope="row"><?= $no; ?></td>
                                     <td><?= date('d-m-Y', strtotime($detail['tgl_gabung'])); ?></td>
@@ -35,7 +35,8 @@
                                     <td><?= $detail['email']; ?></td>
                                     <td>
 
-                                        <a href="<?= base_url() . "index.php/member/profile/$detail[idted]"; ?>" class="btn btn-primary btn-sm" title="Lihat Profil" role="button"><i class="fas fa-user"></i></a>
+                                        <a href="<?= base_url() . "index.php/member/profil_anggota/$detail[idted]"; ?>" class="btn btn-primary btn-sm" title="Lihat Profil" role="button"><i class="fas fa-user"></i></a>
+                                        <a href="<?= base_url() . "index.php/member/update_pass_anggota/$detail[idted]"; ?>" class="btn btn-danger btn-sm" title="Update Password" role="button"><i class="fas fa-lock"></i></a>
 
                                         <!--
                                         <a href="<?= base_url() . "index.php/member/delRegistration/$detail[idtmp]"; ?>" class="btn btn-danger btn-sm" role="button" onclick="return valdel()"><i class="fas fa-user-times"></i></a>
@@ -54,8 +55,8 @@
                                     </td>
                                 </tr>
                             <?php
-                                $no++;
-                            endforeach;
+                                                    $no++;
+                                                endforeach;
                             ?>
                         </tbody>
                     </table>
