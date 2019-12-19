@@ -12,7 +12,8 @@
                     <br />
                     <br />
                     <h4 class="card-title" style="font-family: 'Pacifico', cursive;color:dimgray;"><?= $detail['nama_lengkap']; ?>
-                        <a href="<?= base_url(); ?>index.php/member/edit_profil_anggota/<?= $detail['idted']; ?>" style="color:darkgrey;"><i class="fas fa-user-edit float-right"></i></a>
+                        <a href="" title="edit profil anggota" style="color:darkgrey;"></a>
+                        <a href="" title="edit foto anggota" style="color:darkgrey;"></a>
                     </h4>
                     <br />
                     <div class="text-center">
@@ -28,6 +29,8 @@
                                                                                                     }
                         ?>
                         <h6><span class="badge <?= $class; ?>"><?= $keanggotaan; ?></span></h6>
+                        <a role="button" href="<?= base_url(); ?>index.php/member/edit_profil_anggota/<?= $detail['idted']; ?>" class="btn btn-primary"><span class="btn-label"><i class="fas fa-user-edit"></i></span>Edit Profil</a>
+                        <a role="button" href="<?= base_url(); ?>index.php/member/edit_photo_anggota/<?= $detail['idted']; ?>" class="btn btn-warning"><span class="btn-label"><i class="far fa-file-image"></i></span>Edit Foto</a>
                     </div>
                     <hr>
                     <div style="font-size: 18px;color:darkgrey;">
