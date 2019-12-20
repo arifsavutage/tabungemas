@@ -39,6 +39,7 @@
                         <li><a href="<?= base_url(); ?>index.php/transaksi/tarik_fisik_emas/<?= $this->session->userdata('id'); ?>">Tarik Fisik</a></li>
                         <li><a href="<?= base_url(); ?>index.php/transaksi/transfer/<?= $this->session->userdata('id'); ?>">Transfer Emas</a></li>
                         <li><a href="<?= base_url(); ?>index.php/transaksi/widraw/<?= $this->session->userdata('id'); ?>">Tarik Saldo Wallet</a></li>
+                        <li><a href="<?= base_url(); ?>index.php/transaksi/deposit/<?= $this->session->userdata('id'); ?>">Deposit</a></li>
 
                         <li><a href="<?= base_url(); ?>index.php/transaksi/history/<?= $this->session->userdata('id'); ?>">Histori Transaksi</a></li>
 
@@ -65,6 +66,8 @@
                                     <li><a href="<?= base_url() . 'index.php/transaksi/daftar_beli_emas'; ?>">Daftar Beli Emas</a></li>
                                     <li><a href="<?= base_url() . 'index.php/transaksi/daftar_jual_emas'; ?>"><span>Daftar Jual Emas</span></a></li>
                                     <li><a href="<?= base_url() . 'index.php/transaksi/daftar_tarik_fisik'; ?>"><span>Daftar Tarik Fisik</span></a></li>
+                                    <li><a href="<?= base_url() . 'index.php/transaksi/daftar_tarik_fisik'; ?>"><span>Daftar Tarik Fisik</span></a></li>
+                                    <li><a href="<?= base_url() . 'index.php/transaksi/daftar_deposit'; ?>"><span>Daftar Deposit</span></a></li>
                                     <li><a href="#"><span>Laporan Transaksi</span></a></li>
                                 </ul>
                             </li>

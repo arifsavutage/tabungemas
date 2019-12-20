@@ -90,7 +90,7 @@
                         echo number_format($emas, 3, ',', '.');
                         ?> gr
                     </label>
-                    <label class="btn btn-info btn-lg">
+                    <label class="btn btn-success btn-lg">
                         <input type="radio" name="options" id="option1" autocomplete="off"><i class="far fa-chart-bar"></i> Estimasi <br />
                         <?php
                         $nilai_invest = $emas * $newjual;

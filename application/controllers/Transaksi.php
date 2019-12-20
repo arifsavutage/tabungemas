@@ -13,6 +13,7 @@ class Transaksi extends CI_Controller
         $this->load->model('model_tedagt');
         $this->load->model('model_bank');
         $this->load->model('model_biayacetak');
+        $this->load->model('model_deposit');
 
         not_login();
     }
@@ -706,6 +707,168 @@ class Transaksi extends CI_Controller
             ];
 
             $this->load->view('dashboard', $data);
+        }
+    }
+
+    public function deposit($id = null){
+        if($id == null){
+            redirect(base_url());
+        }else{
+            $this->form_validation->set_rules('idted','ID Anggota', 'required');
+
+            if($this->form_validation->run()){
+                $idted  = $this->input->post('idted');
+                $nominal= $this->input->post('nominal');
+                $bank   = $this->input->post('banktrf');
+                $status = 'tunggu';
+
+                $data = [
+                    'idted' => $idted,
+                    'nom_deposit' => $nominal,
+                    'banktrf' => $bank,
+                    'status' => $status
+                ];
+
+                $save = $this->model_deposit->save($data);
+
+                if($save){
+                    $bank_trf = $this->model_bank->getByID($bank);
+
+                    $this->session->set_flashdata('info', '
+                    <div class="card border-success mb-3">
+                        <div class="card-header">
+                            <h4>Invoice</h4>
+                        </div>
+                        <div class="card-body text-success">
+                            <h4 class="card-title">Success</h4>
+                            <p class="card-text">Segera transfer sesuai dengan nominal deposit ke rekening tujuan</p>
+                        
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                    <th>Nominal</th>
+                                    <th>Transfer Ke</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                    <td>'.number_format($nominal,0,',', '.').'</td>
+                                    <td>'.$bank_trf['nm_bank'].'<br/>'.$bank_trf['norek'].'<br /> An. '.$bank_trf['an'].'</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p class="card-text">Konfirmasi ke whatsapp admin kami atau email ke <strong>billing@tabungemas.com</strong> dengan melampirkan bukti transfer </p>
+                        </div>
+                    </div>
+                    ');
+                    redirect(base_url().'index.php/transaksi/deposit/'.$id);
+                }else{
+                    $this->session->set_flashdata('info', '<div class="alert alert-success" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4>Oops, </h4> tambah deposit gagal ...
+                    </div>');
+                    redirect(base_url().'index.php/transaksi/deposit/'.$id);
+                }
+            }else{
+                $data = [
+                    'bank' => $this->model_bank->getAll(),
+                    'page' => 'pages/member/member_deposit'
+                ];
+    
+                $this->load->view('dashboard', $data);
+            }
+        }
+    }
+
+    public function daftar_deposit(){
+        $this->form_validation->set_rules('idted', 'ID Anggota', 'required');
+        $this->form_validation->set_rules('tgltrans', 'Tgl Transaksi', 'required');
+
+        if ($this->form_validation->run()) {
+
+            $tgl    = $this->input->post('tgltrans');
+            $idx    = $this->input->post('idx');
+            $idted  = $this->input->post('idted');
+            $uang   = $this->input->post('uang');
+
+            $data = [
+                'idx'   => $idx,
+                'status' => 'aproved'
+            ];
+
+            $update = $this->model_deposit->update($data);
+
+            if ($update) {
+                $saldo_uang = $this->model_transaksi->getLastTranById($idted, 'uang');
+
+                $new_saldo = $saldo_uang['saldo'] + $uang;
+                $data_saldo = [
+                    'tgl' => date('Y-m-d'),
+                    'idted' => "$idted",
+                    'uraian' => 'deposit',
+                    'masuk' => $uang,
+                    'keluar' => 0,
+                    'saldo' => $new_saldo,
+                    'jenis' => 'uang'
+                ];
+
+                $this->model_transaksi->save($data_saldo);
+
+
+                $this->session->set_flashdata('info', '<div class="alert alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>Success, </h4> data tersimpan
+                </div>');
+
+                redirect(base_url() . 'index.php/transaksi/daftar_deposit/');
+            } else {
+                $this->session->set_flashdata('info', '<div class="alert alert-warning" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>Oops, </h4> data gagal di update
+                </div>');
+
+                redirect(base_url() . 'index.php/transaksi/daftar_deposit/');
+            }
+        }
+
+        $data = [
+            'page' => 'pages/admin/daftar_deposit',
+            'datas' => $this->model_deposit->getAll()
+        ];
+
+        $this->load->view('dashboard', $data);
+    }
+
+    public function batal_deposit($idx){
+        $delete = $this->model_deposit->delete($idx);
+
+        if ($delete) {
+            $this->session->set_flashdata('info', '
+            <div class="alert alert-success" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4>Success :</h4> Pembatalan deposit berhasil ...
+            </div>');
+
+            redirect(base_url() . "index.php/transaksi/daftar_deposit");
+        } else {
+            $this->session->set_flashdata('info', '
+            <div class="alert alert-warning" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4>Oops, </h4> Hapus deposit gagal ...
+            </div>');
+
+            redirect(base_url() . "index.php/transaksi/daftar_deposit");
         }
     }
 }
