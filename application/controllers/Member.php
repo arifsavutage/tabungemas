@@ -680,4 +680,23 @@ class Member extends CI_Controller
             }
         }
     }
+
+    public function anggotaAjax($id = null)
+    {
+        if ($id == null) {
+            redirect(base_url());
+        } else {
+
+            $data = ['member' => $this->model_tedagt->getAccountById($id)];
+
+            if ($data['member'] == null) {
+                $data['status'] = 404;
+            } else {
+                $data['status'] = 200;
+            }
+
+            $encode = json_encode($data, JSON_PRETTY_PRINT);
+            echo $encode;
+        }
+    }
 }

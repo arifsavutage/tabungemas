@@ -20,13 +20,14 @@
                                 <th>No. HP</th>
                                 <th>Nom. Uang</th>
                                 <th>Nom. Gram</th>
+                                <th>Ket.</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             $no = 1;
                             foreach ($datas as $detail) :
-                                ?>
+                            ?>
                                 <tr>
                                     <td scope="row"><?= $no; ?></td>
                                     <td><?= date('d-m-Y', strtotime($detail['tgl'])); ?></td>
@@ -34,6 +35,7 @@
                                     <td><?= $detail['nohp']; ?></td>
                                     <td><?= "Rp. " . number_format($detail['nominal_uang'], 0, ',', '.'); ?></td>
                                     <td><?= $detail['nominal_gram'] . " gr"; ?></td>
+                                    <td><?= $detail['ket']; ?></td>
                                 </tr>
                             <?php
                                 $no++;

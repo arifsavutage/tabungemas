@@ -46,7 +46,7 @@
                     <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="nohp" value="<?= set_value('email'); ?>" placeholder="No. handphone">
+                    <input class="form-control" type="text" name="nohp" value="<?= set_value('nohp'); ?>" placeholder="No. handphone">
                     <?= form_error('nohp', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">

@@ -141,6 +141,50 @@
 </script>
 <!-- END Java Script for this page -->
 
+<!-- AJAX Jual Emas Ke Anggota-->
+<script>
+    $(document).ready(function() {
+        $('#idtujuan').on('change', function(event) {
+            event.preventDefault();
+
+            var idanggota = $(this).val();
+            var idsendiri = $('#idted').val();
+
+            $.getJSON("<?= base_url(); ?>" + "index.php/member/anggotaAjax/" + idanggota, function(data) {
+
+
+                if (data.status == 200) {
+                    if (idanggota == idsendiri) {
+                        $('#namatujuan').val('');
+                        $('#hp').val('');
+                        $('#email').val('');
+                        $('#alamat').val('');
+                        $('#imgid').append('');
+
+                        $('#imgid').append('<div class="alert alert-warning" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><h4>Oops, </h4> Maaf ' + data.member.nama_lengkap + ' transaksi ini tidak bisa menjual ke akun Anda sendiri. <br /> Pastika <strong>ID Anggota</strong> yang Anda input benar</div>');
+                    } else {
+                        $('#namatujuan').val(data.member.nama_lengkap);
+                        $('#hp').val(data.member.nohp);
+                        $('#email').val(data.member.email);
+                        $('#alamat').val(data.member.alamat);
+                        $('#imgid').append('<img src="<?= base_url(); ?>assets/images/avatars/' + data.member.foto_profil + '" class="img-fluid img-thumbnail w-50" alt="member profile">');
+                    }
+
+                } else {
+                    $('#namatujuan').val('');
+                    $('#hp').val('');
+                    $('#email').val('');
+                    $('#alamat').val('');
+                    $('#imgid').append('');
+
+                    $('#imgid').append('<div class="alert alert-warning" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><h4>Oops, </h4> Anggota tidak ditemukan</div>');
+                }
+
+            });
+        });
+    });
+</script>
+<!-- AJAX Jual Emas Ke Anggota-->
 </body>
 
 </html>
