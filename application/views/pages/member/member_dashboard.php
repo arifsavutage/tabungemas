@@ -111,6 +111,132 @@
             </div>
         </div>
 
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Info Transaksi</h3>
+                    </div>
+                    <div class="card-body">
+                        <?php
+                        foreach ($jual_id as $rowid) :
+                        ?>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="alert alert-info" role="alert">
+                                        <h4 class="alert-heading">Hi,</h4>
+                                        <p>Kami informasikan bahwa <strong><?= ucwords($rowid['nama_lengkap']); ?></strong> mengajukan penjualan emas seberat <strong><?= $rowid['nominal_gram'] ?> gr</strong> dengan harga <strong>Rp. <?= number_format($rowid['nominal_uang'], 0, ',', '.'); ?> /gr</strong> kepada Anda.</p>
+                                        <p>Silahkan lakukan pembayaran jika Anda menghendaki transaksi ini.</p>
+                                        <hr>
+                                        <p class="mb-0">Catatan :<br />Pihak <strong>Tabung Emas Digital (TED)</strong> tidak bertanggungjawab atas transaksi yang dilakukan di luar sistem kami.</p>
+
+                                        <!--<br />
+                                        <a name="" id="" class="btn btn-warning" href="#" role="button">Bayar</a>
+                                        <a name="" id="" class="btn btn-danger" href="#" role="button">Batalkan Transaksi</a>-->
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Pilih Cara Bayar</h4>
+                                            <form name="beliemas" method="post" action="">
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-12">
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="metode" id="metode1" value="wallet" checked>
+                                                            <label class="form-check-label" for="metode1">Dari Wallet</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="metode" id="metode2" value="transfer">
+                                                            <label class="form-check-label" for="metode">Transfer Bank</label>
+                                                        </div>
+                                                        <?= form_error('metode', '<small class="text-danger pl-3">', '</small>'); ?>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="saldowallet">Saldo Wallet</label>
+                                                        <input type="text" class="form-control" name="saldowallet" id="saldowallet" value="<?= $saldo_rp['saldo']; ?>">
+                                                        <?= form_error('saldowallet', '<small class="text-danger pl-3">', '</small>'); ?>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="bank">Daftar Bank</label>
+                                                        <select name="bank" id="bank" class="form-control">
+                                                            <option value="">: Pilih</option>
+                                                            <?php
+                                                            foreach ($banks as $transfer) :
+                                                            ?>
+                                                                <option value="<?= $transfer['id']; ?>"><?= $transfer['nm_bank']; ?></option>
+                                                            <?php
+                                                            endforeach;
+                                                            ?>
+                                                        </select>
+                                                        <?= form_error('bank', '<small class="text-danger pl-3">', '</small>'); ?>
+                                                    </div>
+                                                </div>
+
+                                                <button type="submit" class="btn btn-primary btn-lg btn-block">Bayar</button>
+                                                <br />
+                                                <a name="" id="" class="btn btn-warning btn-lg btn-block" href="#" role="button">Batalkan Transasksi</a>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php
+                        endforeach;
+                        ?>
+
+                        <?php
+                        $jml    = count($jualan);
+                        //echo $jml;
+
+                        if ($jml > 0) :
+                        ?>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>ID.</th>
+                                            <th>Nama Anggota</th>
+                                            <th>Jml Gram</th>
+                                            <th>Harga / gr</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $n = 1;
+                                        foreach ($jualan as $rowss) :
+                                        ?>
+                                            <tr>
+                                                <td><?= $n; ?></td>
+                                                <td><?= $rowss['tujuan_jual']; ?></td>
+                                                <td><?= $rowss['nama_lengkap']; ?></td>
+                                                <td><?= $rowss['nominal_gram']; ?></td>
+                                                <td><?= number_format($rowss['nominal_uang'], 0, ',', '.'); ?></td>
+                                                <td><?= $rowss['status']; ?></td>
+                                            </tr>
+                                        <?php
+                                            $n++;
+                                        endforeach;
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <?php
+                        endif;
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col text-center">
                 <a href="<?= base_url(); ?>index.php/transaksi/beli_emas/<?= $this->session->userdata('id'); ?>">
