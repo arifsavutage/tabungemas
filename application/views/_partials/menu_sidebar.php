@@ -19,7 +19,7 @@
 
                         <li class="submenu">
                             <a href="#"><span>Berkas</span> <span class="menu-arrow"></span> </a>
-                            <ul style="">
+                            <ul class="list-unstyled">
                                 <li><a href="<?= base_url(); ?>index.php/member/berkas_ktp/<?= $this->session->userdata('id'); ?>"><span>Upload KTP</span></a></li>
                                 <li><a href="<?= base_url(); ?>index.php/member/berkas_npwp/<?= $this->session->userdata('id'); ?>"><span>Upload NPWP</span></a></li>
                             </ul>
@@ -48,7 +48,7 @@
 
                 <?php
                 if ($this->session->userdata('role') == 'super') :
-                    ?>
+                ?>
                     <li class="submenu">
                         <a href="#"><i class="fas fa-users"></i> <span> Super Admin </span> <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
