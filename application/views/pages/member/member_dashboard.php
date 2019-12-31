@@ -119,7 +119,13 @@
                     </div>
                     <div class="card-body">
                         <?php
+                        if ($this->session->flashdata('info')) {
+                            echo $this->session->flashdata('info');
+                        }
+                        ?>
+                        <?php
                         foreach ($jual_id as $rowid) :
+                            $totalbyr = $rowid['nominal_gram'] * $rowid['nominal_uang'];
                         ?>
                             <div class="row">
                                 <div class="col-sm-12 col-md-6">
@@ -129,52 +135,45 @@
                                         <p>Silahkan lakukan pembayaran jika Anda menghendaki transaksi ini.</p>
                                         <hr>
                                         <p class="mb-0">Catatan :<br />Pihak <strong>Tabung Emas Digital (TED)</strong> tidak bertanggungjawab atas transaksi yang dilakukan di luar sistem kami.</p>
-
-                                        <!--<br />
-                                        <a name="" id="" class="btn btn-warning" href="#" role="button">Bayar</a>
-                                        <a name="" id="" class="btn btn-danger" href="#" role="button">Batalkan Transaksi</a>-->
-
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-6">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h4 class="card-title">Pilih Cara Bayar</h4>
-                                            <form name="beliemas" method="post" action="">
+                                            <h4 class="card-title">Payment</h4>
+                                            <form name="jualkeid" method="post" action="<?= base_url() . "index.php/transaksi/payment"; ?>">
+                                                <input type="hidden" name="idx" value="<?= $rowid['idx']; ?>" />
+                                                <input type="hidden" name="gram" value="<?= $rowid['nominal_gram'] ?>" />
+                                                <input type="hidden" name="keterangan" value="<?= "bayar emas dari ID " . $rowid['idted'] . " " . $rowid['nominal_gram'] . "gr, @ Rp. " . number_format($rowid['nominal_uang'], 0, ',', '.'); ?> " />
+                                                <input type="hidden" name="idted" id="idted" value="<?= $this->session->userdata('id'); ?> " />
+                                                <input type="hidden" name="idpenjual" value="<?= $rowid['idted'] ?>" />
 
                                                 <div class="form-row">
-                                                    <div class="form-group col-md-12">
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="metode" id="metode1" value="wallet" checked>
-                                                            <label class="form-check-label" for="metode1">Dari Wallet</label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="metode" id="metode2" value="transfer">
-                                                            <label class="form-check-label" for="metode">Transfer Bank</label>
-                                                        </div>
-                                                        <?= form_error('metode', '<small class="text-danger pl-3">', '</small>'); ?>
+                                                    <div class="form-group col-md-3">
+                                                        <label for="walletku">Saldo Wallet</label>
+                                                        <input type="text" class="form-control" name="walletku" id="walletku" value="<?= $saldo_rp['saldo']; ?>" readonly="true">
+                                                        <?= form_error('walletku', '<small class="text-danger pl-3">', '</small>'); ?>
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <label for="gr">Jml Gram</label>
+                                                        <input type="text" class="form-control" name="gr" id="gr" value="<?= number_format($rowid['nominal_gram'], 3, '.', ','); ?>" readonly="true" />
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <label for="hrgsatuan">Hrg / gr</label>
+                                                        <input type="text" class="form-control" name="hrgsatuan" id="hrgsatuan" value="<?= $rowid['nominal_uang']; ?>" readonly="true" />
+                                                        <?= form_error('hrgsatuan', '<small class="text-danger pl-3">', '</small>'); ?>
+                                                    </div>
+                                                    <div class="form-group col-md-3">
+                                                        <label for="totalbayar">Total Bayar</label>
+                                                        <input type="text" class="form-control" name="totalbayar" id="totalbayar" value="<?= $totalbyr; ?>" readonly="true" />
+                                                        <?= form_error('totalbayar', '<small class="text-danger pl-3">', '</small>'); ?>
                                                     </div>
                                                 </div>
-
                                                 <div class="form-row">
-                                                    <div class="form-group col-md-6">
-                                                        <label for="saldowallet">Saldo Wallet</label>
-                                                        <input type="text" class="form-control" name="saldowallet" id="saldowallet" value="<?= $saldo_rp['saldo']; ?>">
-                                                        <?= form_error('saldowallet', '<small class="text-danger pl-3">', '</small>'); ?>
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="bank">Daftar Bank</label>
-                                                        <select name="bank" id="bank" class="form-control">
-                                                            <option value="">: Pilih</option>
-                                                            <?php
-                                                            foreach ($banks as $transfer) :
-                                                            ?>
-                                                                <option value="<?= $transfer['id']; ?>"><?= $transfer['nm_bank']; ?></option>
-                                                            <?php
-                                                            endforeach;
-                                                            ?>
-                                                        </select>
-                                                        <?= form_error('bank', '<small class="text-danger pl-3">', '</small>'); ?>
+                                                    <div class="form-group col-md-12">
+                                                        <small class="form-text text-muted">
+                                                            Lakukan penambahan deposit jika saldo wallet Anda tidak mencukupi.
+                                                        </small>
                                                     </div>
                                                 </div>
 
@@ -220,7 +219,17 @@
                                                 <td><?= $rowss['nama_lengkap']; ?></td>
                                                 <td><?= $rowss['nominal_gram']; ?></td>
                                                 <td><?= number_format($rowss['nominal_uang'], 0, ',', '.'); ?></td>
-                                                <td><?= $rowss['status']; ?></td>
+                                                <td>
+                                                    <?php
+                                                    if ($rowss['status'] == 0) {
+                                                        echo "<span class='badge badge-warning'>menunggu</span>";
+                                                    } else if ($rowss['status'] == 1) {
+                                                        echo "<span class='badge badge-success'>terbayar</span>";
+                                                    } else {
+                                                        echo "<span class='badge badge-secondary'>batal</span>";
+                                                    }
+                                                    ?>
+                                                </td>
                                             </tr>
                                         <?php
                                             $n++;

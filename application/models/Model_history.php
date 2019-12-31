@@ -18,6 +18,12 @@ class Model_history extends CI_Model
         return $this->db->update($this->_table, $data);
     }
 
+    public function updatebyID($data)
+    {
+        $this->db->where('idx', "$data[idx]");
+        return $this->db->update($this->_table, $data);
+    }
+
     public function delete($idx)
     {
         $this->db->where('idx', $idx);
@@ -69,7 +75,7 @@ class Model_history extends CI_Model
     public function getJualAntarID($id)
     {
         $this->db->select("tb_agt_ted.idted, tb_agt_ted.nama_lengkap, tb_agt_ted.nohp, tb_history.`tgl`, 
-        tb_history.`idted`, tb_history.`ket`, tb_history.`nominal_uang`, tb_history.`nominal_gram`, tb_history.`status`");
+        tb_history.`idted`, tb_history.`ket`, tb_history.`nominal_uang`, tb_history.`nominal_gram`, tb_history.`status`, tb_history.idx");
         $this->db->from($this->_table);
         $this->db->join('tb_agt_ted', 'tb_agt_ted.idted = tb_history.idted');
         $this->db->where('tb_history.tujuan_jual', $id);
@@ -80,14 +86,19 @@ class Model_history extends CI_Model
 
     public function jualanID($id)
     {
-        $this->db->select("tb_agt_ted.nama_lengkap, tb_agt_ted.nohp, tb_history.`tgl`, 
-        tb_history.`tujuan_jual`, tb_history.`ket`, tb_history.`nominal_uang`, tb_history.`nominal_gram`, tb_history.`status`");
+        /*$this->db->select("tb_agt_ted.nama_lengkap, tb_agt_ted.nohp, tb_history.`tgl`, 
+        tb_history.`tujuan_jual`, tb_history.`ket`, tb_history.`nominal_uang`, 
+        tb_history.`nominal_gram`, tb_history.`status`, tb_history.idx");
+
         $this->db->from($this->_table);
-        $this->db->join('tb_agt_ted', 'tb_agt_ted.idted = tb_history.idted');
-        $this->db->where('tb_history.idted', $id);
-        $this->db->where('tb_history.status', '0');
+        $this->db->join('tb_agt_ted', 'tb_agt_ted.idted = tb_history.tujuan_jual', 'left');
         $this->db->where('tb_history.tujuan_jual !=', 'TED');
+        $this->db->where('tb_agt_ted.idted', $id);
         $this->db->order_by('tb_history.tgl', 'DESC');
-        return $this->db->get()->result_array();
+        return $this->db->get()->result_array();*/
+
+        $qry = $this->db->query("SELECT tb_history.tgl, tb_history.idted, tb_history.tujuan_jual, tb_agt_ted.nama_lengkap, tb_history.nominal_uang, tb_history.nominal_gram, tb_history.status FROM `tb_history` LEFT JOIN tb_agt_ted ON tb_agt_ted.idted = tb_history.tujuan_jual WHERE tb_history.tujuan_jual != 'TED' AND tb_history.idted = '$id' ORDER BY tb_history.tgl DESC");
+
+        return $qry->result_array();
     }
 }

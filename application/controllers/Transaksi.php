@@ -404,7 +404,7 @@ class Transaksi extends CI_Controller
                                 'idted' => $id,
                                 'tujuan_jual' => "$idtujuan",
                                 'ket' => $ket . " ID " . $idtujuan . " dgn hrg /gr " . $hrgbaru,
-                                'nominal_uang' => $uang,
+                                'nominal_uang' => $hrgbaru,
                                 'nominal_gram' => $gram,
                                 'status' => $status
                             ];
@@ -923,6 +923,113 @@ class Transaksi extends CI_Controller
             </div>');
 
             redirect(base_url() . "index.php/transaksi/daftar_deposit");
+        }
+    }
+
+    public function payment()
+    {
+        $this->form_validation->set_rules('idx', 'ID Transaction', 'required');
+
+        if ($this->form_validation->run()) {
+
+            $idtrans    = $this->input->post('idx');
+            $gram       = $this->input->post('gram');
+            $wallet     = $this->input->post('walletku');
+            $totalbyr   = $this->input->post('totalbayar');
+            $idted      = $this->input->post('idted');
+            $ket        = $this->input->post('keterangan');
+            $satuan     = $this->input->post('hrgsatuan');
+
+            $penjual    = $this->input->post('idpenjual');
+
+            if ($totalbyr > $wallet) {
+                $this->session->set_flashdata('info', '
+                <div class="alert alert-warning" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>Oops, </h4> Saldo rupaih di wallet Anda tidak mencukupi, silahkan lakukan deposit untuk membayar tagihan ini ...
+                </div>');
+
+                redirect(base_url());
+            } else {
+                //melakukan potongan saldo wallet di pembeli
+                $sisawallet = $wallet - $totalbyr;
+                //echo "$totalbyr, $wallet";
+                $data_wallet = [
+                    'tgl'   => date('Y-m-d'),
+                    'idted' => $idted,
+                    'uraian' => $ket,
+                    'masuk' => 0,
+                    'keluar' => $totalbyr,
+                    'saldo' => $sisawallet,
+                    'jenis' => 'uang'
+                ];
+
+                $this->model_transaksi->save($data_wallet);
+
+                //menambah jumlah gram emas
+                $emasku = $this->model_transaksi->getLastTranById($idted, 'emas');
+                $saldoemas = $emasku['saldo'] + $gram;
+
+                $data_gram = [
+                    'tgl'   => date('Y-m-d'),
+                    'idted' => $idted,
+                    'uraian' => 'beli emas',
+                    'masuk' => $gram,
+                    'keluar' => 0,
+                    'saldo' => $saldoemas,
+                    'jenis' => 'emas'
+                ];
+                $this->model_transaksi->save($data_gram);
+
+                //tambah saldo wallet penjual
+                $walletpenjual = $this->model_transaksi->getLastTranById($penjual, 'uang');
+                $saldopenjual = $walletpenjual['saldo'] + $totalbyr;
+
+                $wallet_penjual = [
+                    'tgl'   => date('Y-m-d'),
+                    'idted' => $penjual,
+                    'uraian' => "trf. bayar emas" . $gram . " gr dari " . $idted,
+                    'masuk' => $totalbyr,
+                    'keluar' => 0,
+                    'saldo' => $saldopenjual,
+                    'jenis' => 'uang'
+                ];
+                $this->model_transaksi->save($wallet_penjual);
+
+                //kurangi saldo emas penual
+                $emaspenjual = $this->model_transaksi->getLastTranById($penjual, 'emas');
+                $emasnyapenjual = $emaspenjual['saldo'];
+
+                $emas_penjual = [
+                    'tgl'   => date('Y-m-d'),
+                    'idted' => $penjual,
+                    'uraian' => "jual emas ke ID" . $idted . ", " . $gram . " gr, hrg Rp. " . $satuan . " /gr",
+                    'masuk' => 0,
+                    'keluar' => $gram,
+                    'saldo' => $emasnyapenjual,
+                    'jenis' => 'emas'
+                ];
+                $this->model_transaksi->save($emas_penjual);
+
+                //Update table history
+                $uphistory = [
+                    'idx' => $idtrans,
+                    'status' => 1
+                ];
+                $this->model_history->updatebyID($uphistory);
+
+                $this->session->set_flashdata('info', '
+                <div class="alert alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>SUCCESS: </h4> Payment berhasil ...
+                </div>');
+
+                redirect(base_url());
+            }
         }
     }
 }

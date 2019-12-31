@@ -68,7 +68,7 @@
                         <form name="jualkeanggota" method="post" action="">
                             <input type="hidden" name="hrgjual" id="hrgjual" value="<?= $jual; ?> " />
                             <input type="hidden" name="tgl" value="<?= date('Y-m-d'); ?> " />
-                            <input type="hidden" name="keterangan" value="<?= "jual emas ke" ?> " />
+                            <input type="hidden" name="keterangan" value="<?= "jual emas ke"; ?> " />
                             <input type="hidden" name="idted" id="idted" value="<?= $this->session->userdata('id'); ?> " />
                             <input type="hidden" name="status" value="0" />
                             <input type="hidden" name="tujuan" value="anggota" />
@@ -85,7 +85,14 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="gram">Jumlah Gram</label>
-                                    <input type="text" maxlength="5" class="form-control" name="gram" id="gram" value="" placeholder="gr">
+                                    <!--<input type="text" maxlength="5" class="form-control" name="gram" id="gram" value="" placeholder="gr">-->
+                                    <select name="gram" id="gram" class="form-control">
+                                        <?php
+                                        for ($i = 1; $i <= 10; $i++) {
+                                            echo "<option value='$i'>$i gram</option>";
+                                        }
+                                        ?>
+                                    </select>
                                     <?= form_error('gram', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                                 <div class="form-group col-md-6">
