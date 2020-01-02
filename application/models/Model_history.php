@@ -74,8 +74,8 @@ class Model_history extends CI_Model
 
     public function getJualAntarID($id)
     {
-        $this->db->select("tb_agt_ted.idted, tb_agt_ted.nama_lengkap, tb_agt_ted.nohp, tb_history.`tgl`, 
-        tb_history.`idted`, tb_history.`ket`, tb_history.`nominal_uang`, tb_history.`nominal_gram`, tb_history.`status`, tb_history.idx");
+        $this->db->select("tb_history.idx, tb_agt_ted.idted, tb_agt_ted.nama_lengkap, tb_agt_ted.nohp, tb_history.`tgl`, 
+        tb_history.`idted`, tb_history.`ket`, tb_history.`nominal_uang`, tb_history.`nominal_gram`, tb_history.`status`");
         $this->db->from($this->_table);
         $this->db->join('tb_agt_ted', 'tb_agt_ted.idted = tb_history.idted');
         $this->db->where('tb_history.tujuan_jual', $id);
@@ -97,8 +97,13 @@ class Model_history extends CI_Model
         $this->db->order_by('tb_history.tgl', 'DESC');
         return $this->db->get()->result_array();*/
 
-        $qry = $this->db->query("SELECT tb_history.tgl, tb_history.idted, tb_history.tujuan_jual, tb_agt_ted.nama_lengkap, tb_history.nominal_uang, tb_history.nominal_gram, tb_history.status FROM `tb_history` LEFT JOIN tb_agt_ted ON tb_agt_ted.idted = tb_history.tujuan_jual WHERE tb_history.tujuan_jual != 'TED' AND tb_history.idted = '$id' ORDER BY tb_history.tgl DESC");
+        $qry = $this->db->query("SELECT tb_history.idx, tb_history.tgl, tb_history.idted, tb_history.tujuan_jual, tb_agt_ted.nama_lengkap, tb_history.nominal_uang, tb_history.nominal_gram, tb_history.status FROM `tb_history` LEFT JOIN tb_agt_ted ON tb_agt_ted.idted = tb_history.tujuan_jual WHERE tb_history.tujuan_jual != 'TED' AND tb_history.idted = '$id' ORDER BY tb_history.tgl DESC");
 
         return $qry->result_array();
+    }
+
+    public function getjualanByIdx($idx)
+    {
+        return $this->db->get_where($this->_table, ['idx' => $idx])->row_array();
     }
 }

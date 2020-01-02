@@ -398,7 +398,7 @@ class Transaksi extends CI_Controller
                             redirect(base_url() . 'index.php/transaksi/jual_emas/' . $id);
                         } else {
 
-                            $uang = $gram * $hrgbaru;
+                            //$uang = $gram * $hrgbaru;
                             $datas = [
                                 //'tgl' => $tgl,
                                 'idted' => $id,
@@ -1026,6 +1026,43 @@ class Transaksi extends CI_Controller
                         <span aria-hidden="true">×</span>
                     </button>
                     <h4>SUCCESS: </h4> Payment berhasil ...
+                </div>');
+
+                redirect(base_url());
+            }
+        }
+    }
+
+    public function paymentcancel($idx = null)
+    {
+        if ($idx == null) {
+            redirect(base_url());
+        } else {
+
+            $data = [
+                'idx'   => $idx,
+                'status' => 2
+            ];
+
+            $jual_beli = $this->model_history->updatebyID($data);
+
+            if ($jual_beli) {
+                $this->session->set_flashdata('info', '
+                <div class="alert alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>Success: </h4> Payment dibatalkan ...
+                </div>');
+
+                redirect(base_url());
+            } else {
+                $this->session->set_flashdata('info', '
+                <div class="alert alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>ERROR: </h4> Error pembatalan payment ...
                 </div>');
 
                 redirect(base_url());

@@ -110,7 +110,7 @@
 
                                                 <button type="submit" class="btn btn-primary btn-lg btn-block">Bayar</button>
                                                 <br />
-                                                <a name="" id="" class="btn btn-warning btn-lg btn-block" href="#" role="button">Batalkan Transasksi</a>
+                                                <a href="<?= base_url() . "index.php/transaksi/paymentcancel/" . $rowid['idx']; ?>" class="btn btn-warning btn-lg btn-block" role="button">Batalkan Transasksi</a>
 
                                             </form>
                                         </div>
