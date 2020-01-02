@@ -18,15 +18,15 @@
                     <br />
                     <div class="text-center">
                         <?php
-                                                                                                    if ($detail['jenis'] == 'basic') {
-                                                                                                        $keanggotaan    = "Basic Anggota";
-                                                                                                        $class          = "badge-info";
-                                                                                                        $upgrade        = '<a href="' . base_url('index.php/member/upgrade/') . $this->session->userdata('id') . '" class="btn btn-danger btn-block btn-lg mt-4">Upgrade to premium</a>';
-                                                                                                    } else {
-                                                                                                        $keanggotaan    = "Agen TED";
-                                                                                                        $class          = "badge-danger";
-                                                                                                        $upgrade        = "";
-                                                                                                    }
+                        if ($detail['jenis'] == 'basic') {
+                            $keanggotaan    = "Basic Anggota";
+                            $class          = "badge-info";
+                            $upgrade        = '<a href="' . base_url('index.php/member/upgrade/') . $this->session->userdata('id') . '" class="btn btn-danger btn-block btn-lg mt-4">Upgrade to premium</a>';
+                        } else {
+                            $keanggotaan    = "Agen TED";
+                            $class          = "badge-danger";
+                            $upgrade        = "";
+                        }
                         ?>
                         <h6><span class="badge <?= $class; ?>"><?= $keanggotaan; ?></span></h6>
                         <a role="button" href="<?= base_url(); ?>index.php/member/edit_profil_anggota/<?= $detail['idted']; ?>" class="btn btn-primary"><span class="btn-label"><i class="fas fa-user-edit"></i></span>Edit Profil</a>
@@ -35,21 +35,21 @@
                     <hr>
                     <div style="font-size: 18px;color:darkgrey;">
                         <?php
-                                                                                                    //uang
-                                                                                                    if (empty($saldo_rp['saldo'])) {
-                                                                                                        $uang = 0;
-                                                                                                    } else {
-                                                                                                        $uang   = $saldo_rp['saldo'] / 1000;
-                                                                                                    }
+                        //uang
+                        if (empty($saldo_rp['saldo'])) {
+                            $uang = 0;
+                        } else {
+                            $uang   = $saldo_rp['saldo'] / 1000;
+                        }
                         ?>
 
                         <?php
-                                                                                                    //emas
-                                                                                                    if (empty($saldo_emas['saldo'])) {
-                                                                                                        $emas = 0;
-                                                                                                    } else {
-                                                                                                        $emas = number_format($saldo_emas['saldo'], 3, ',', '.');
-                                                                                                    }
+                        //emas
+                        if (empty($saldo_emas['saldo'])) {
+                            $emas = 0;
+                        } else {
+                            $emas = number_format($saldo_emas['saldo'], 3, ',', '.');
+                        }
                         ?>
                         Saldo <span class="badge badge-primary"><?= number_format($uang, 2, ',', '.'); ?> K</span> | Emas <span class="badge badge-warning"><?= $emas; ?> gr</span>
                     </div>
@@ -66,7 +66,7 @@
                     <li class="list-group-item disabled">
                         <i class="fas fa-map-marker"></i> <?= $detail['alamat']; ?>
                     </li>
-                    <li class="list-group-item disabled"><i class="fas fa-university"></i> <?= $detail['norek'] . " | " . $detail['bank']; ?></li>
+                    <li class="list-group-item disabled"><i class="fas fa-university"></i> <?= $detail['norek'] . " | " . $detail['bank'] . " | an. " . $detail['an']; ?></li>
                 </ul>
                 <?= $upgrade; ?>
             </div>

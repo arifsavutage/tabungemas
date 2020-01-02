@@ -95,13 +95,15 @@ class Member extends CI_Controller
                 $alamat = $this->input->post('alamat');
                 $norek  = $this->input->post('norek');
                 $bank   = $this->input->post('bank');
+                $an     = $this->input->post('an');
 
                 $data = [
                     'idted' => "$idted",
                     'nohp'  => "$nohp",
                     'alamat' => "$alamat",
                     'norek ' => "$norek",
-                    'bank'  => "$bank"
+                    'bank'  => "$bank",
+                    'an'    => "$an"
                 ];
 
                 $update = $this->model_tedagt->update($data);
@@ -158,13 +160,15 @@ class Member extends CI_Controller
                 $alamat = $this->input->post('alamat');
                 $norek  = $this->input->post('norek');
                 $bank   = $this->input->post('bank');
+                $an     = $this->input->post('an');
 
                 $data = [
                     'idted' => "$idted",
                     'nohp'  => "$nohp",
                     'alamat' => "$alamat",
                     'norek ' => "$norek",
-                    'bank'  => "$bank"
+                    'bank'  => "$bank",
+                    'an'    => "$an"
                 ];
 
                 $update = $this->model_tedagt->update($data);

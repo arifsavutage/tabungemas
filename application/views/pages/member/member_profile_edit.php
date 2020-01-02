@@ -28,6 +28,10 @@
                         <label for="bank">Bank</label>
                         <input type="text" class="form-control" id="bankid" name="bank" value="<?= $detail['bank'] ?>">
                     </div>
+                    <div class="form-group">
+                        <label for="an">Atas Nama</label>
+                        <input type="text" class="form-control" id="anid" name="an" value="<?= $detail['an'] ?>">
+                    </div>
                     <button type="submit" class="btn btn-secondary btn-lg btn-block">Edit</button>
 
                 </form>

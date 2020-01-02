@@ -14,6 +14,7 @@ class Transaksi extends CI_Controller
         $this->load->model('model_bank');
         $this->load->model('model_biayacetak');
         $this->load->model('model_deposit');
+        $this->load->model('model_widraw');
 
         not_login();
     }
@@ -791,8 +792,39 @@ class Transaksi extends CI_Controller
             redirect(base_url());
         } else {
 
+            $this->form_validation->set_rules($this->model_widraw->rules());
+
+            if ($this->form_validation->run()) {
+
+                $wallet    = $this->input->post('walletku');
+                $nominal   = $this->input->post('nominal');
+
+                if ($nominal > $wallet) {
+                    $this->session->set_flashdata('info', '<div class="alert alert-warning" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4>Oops, </h4> Saldo wallet Anda tidak mencukupi, isi nominal lebih kecil ...
+                        </div>');
+
+                    redirect(base_url() . 'index.php/transaksi/widraw/' . $id);
+                } else {
+                    $this->model_widraw->save();
+
+                    $this->session->set_flashdata('info', '<div class="alert alert-success" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4>Success </h4> Pengajuan pencairan sukses ...
+                        </div>');
+
+                    redirect(base_url() . 'index.php/transaksi/widraw/' . $id);
+                }
+            }
+
             $data = [
                 'saldo_wallet' => $this->model_transaksi->getLastTranById($id, 'uang'),
+                'detail'    => $this->model_tedagt->getAccountById($id),
                 'page' => 'pages/member/member_widraw'
             ];
 

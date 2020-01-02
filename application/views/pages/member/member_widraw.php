@@ -32,6 +32,28 @@
                         </div>
                     </div>
 
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="bankagt">Bank Transfer</label>
+                            <input type="text" class="form-control" name="bankagt" id="bankagt" value="<?= $detail['bank']; ?>" readonly="true">
+                            <?= form_error('bankagt', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="nrkagt">No. Rek</label>
+                            <input type="text" class="form-control" name="nrkagt" id="nrkagt" value="<?= $detail['norek']; ?>" readonly="true">
+                            <?= form_error('nrkagt', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="anagt">An.</label>
+                            <input type="text" class="form-control" name="anagt" id="anagt" value="<?= $detail['norek']; ?>" readonly="true">
+                            <?= form_error('anagt', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                    </div>
+
                     <button type="submit" id="widraw" class="btn btn-primary btn-lg btn-block">Tarik Dana</button>
 
                 </form>

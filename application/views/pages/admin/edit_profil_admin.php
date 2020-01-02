@@ -7,9 +7,9 @@
             <div class="card-body">
                 <a href="<?= base_url() . "index.php/member/profil_anggota/$detail[idted]"; ?>" class="btn btn-danger">Kembali</a>
                 <?php
-                            if ($this->session->flashdata('info')) {
-                                echo $this->session->flashdata('info');
-                            }
+                if ($this->session->flashdata('info')) {
+                    echo $this->session->flashdata('info');
+                }
                 ?>
                 <form method="post" action="">
                     <div class="form-group">
@@ -28,6 +28,10 @@
                     <div class="form-group">
                         <label for="bank">Bank</label>
                         <input type="text" class="form-control" id="bankid" name="bank" value="<?= $detail['bank'] ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="an">Atas Nama</label>
+                        <input type="text" class="form-control" id="anid" name="an" value="<?= $detail['an'] ?>">
                     </div>
                     <button type="submit" class="btn btn-secondary btn-lg btn-block">Edit</button>
 
