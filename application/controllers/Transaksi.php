@@ -721,6 +721,60 @@ class Transaksi extends CI_Controller
         if ($id == null) {
             redirect(base_url());
         } else {
+
+            $this->form_validation->set_rules('gramtrf', 'Jumlah Gram', 'required');
+            $this->form_validation->set_rules('idtujuan', 'ID Tujuan', 'required');
+
+            if ($this->form_validation->run()) {
+
+                $tujuan = $this->input->post('idtujuan');
+                $gram   = round($this->input->post('gramtrf'), 3);
+                $pengirim = $this->input->post('idted');
+                $ket    = $this->input->post('keterangan') . "" . $tujuan;
+                $nama_tj = $this->input->post('namatujuan');
+
+                //Kirim emas ke tujuan
+                $emastujuan = $this->model_transaksi->getLastTranById($tujuan, 'emas');
+                $saldotujuan = $emastujuan['saldo'] + $gram;
+
+                $data_gram = [
+                    'tgl'   => date('Y-m-d'),
+                    'idted' => $tujuan,
+                    'uraian' => 'trf. dari ID ' . $pengirim,
+                    'masuk' => $gram,
+                    'keluar' => 0,
+                    'saldo' => $saldotujuan,
+                    'jenis' => 'emas'
+                ];
+                $this->model_transaksi->save($data_gram);
+
+                //melakukan potongan saldo emas di pntransfer
+                $emaspengirim = $this->model_transaksi->getLastTranById($pengirim, 'emas');
+                $emaspengirim = $emaspengirim['saldo'] - $gram;
+
+                $data_pengirim = [
+                    'tgl'   => date('Y-m-d'),
+                    'idted' => $pengirim,
+                    'uraian' => $ket,
+                    'masuk' => 0,
+                    'keluar' => $gram,
+                    'saldo' => $emaspengirim,
+                    'jenis' => 'emas'
+                ];
+
+                $this->model_transaksi->save($data_pengirim);
+
+                $this->session->set_flashdata('info', '
+                <div class="alert alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>SUCCESS: </h4> Transfer emas ke ID ' . $tujuan . ' an ' . ucwords($nama_tj) . ' berhasil ...
+                </div>');
+
+                redirect(base_url() . 'index.php/transaksi/transfer/' . $id);
+            }
+
             $data = [
                 'saldo_emas' => $this->model_transaksi->getLastTranById($id, 'emas'),
                 'saldo_wallet' => $this->model_transaksi->getLastTranById($id, 'uang'),

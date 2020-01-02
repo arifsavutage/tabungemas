@@ -185,6 +185,17 @@
     });
 </script>
 <!-- AJAX Jual Emas Ke Anggota-->
+<script>
+    function valtrf() {
+        var i = confirm("Pastikan data sudah benar. \n Yakin akan ditransfer ?");
+
+        if (i) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
 </body>
 
 </html>
