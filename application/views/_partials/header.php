@@ -27,7 +27,10 @@
 
     <!-- BEGIN CSS for this page -->
     <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-    <link href="<?= base_url(); ?>assets/plugins/datetimepicker/css/daterangepicker.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
+
+    <link href=" <?= base_url(); ?>assets/plugins/datetimepicker/css/daterangepicker.css" rel="stylesheet" />
     <link href="<?= base_url(); ?>assets/plugins/trumbowyg/ui/trumbowyg.min.css" rel="stylesheet">
     <!-- END CSS for this page -->
 

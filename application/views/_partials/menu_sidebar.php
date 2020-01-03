@@ -68,6 +68,7 @@
                                     <li><a href="<?= base_url() . 'index.php/transaksi/daftar_tarik_fisik'; ?>"><span>Daftar Tarik Fisik</span></a></li>
                                     <li><a href="<?= base_url() . 'index.php/transaksi/daftar_tarik_fisik'; ?>"><span>Daftar Tarik Fisik</span></a></li>
                                     <li><a href="<?= base_url() . 'index.php/transaksi/daftar_deposit'; ?>"><span>Daftar Deposit</span></a></li>
+                                    <li><a href="<?= base_url() . 'index.php/transaksi/daftar_widraw'; ?>"><span>Daftar Widraw</span></a></li>
                                     <li><a href="#"><span>Laporan Transaksi</span></a></li>
                                 </ul>
                             </li>

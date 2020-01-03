@@ -825,11 +825,30 @@ class Transaksi extends CI_Controller
             $data = [
                 'saldo_wallet' => $this->model_transaksi->getLastTranById($id, 'uang'),
                 'detail'    => $this->model_tedagt->getAccountById($id),
+                'byadmin'   => $this->model_uang->getValueById(1),
                 'page' => 'pages/member/member_widraw'
             ];
 
             $this->load->view('dashboard', $data);
         }
+    }
+
+    public function daftar_widraw()
+    {
+        $this->form_validation->set_rules('tgl1', 'Tanggal Awal', 'required');
+
+        if ($this->form_validation->run()) {
+
+            $tgl1 = $this->input->post('tgl1');
+            $tgl2 = $this->input->post('tgl2');
+
+            $data['widraws'] = $this->model_widraw->getByDateRange($tgl1, $tgl2);
+        } else {
+            $data['widraws'] = $this->model_widraw->getAll();
+        }
+        $data['page'] = 'pages/admin/daftar_widraw';
+
+        $this->load->view('dashboard', $data);
     }
 
     public function history($id = null)

@@ -25,10 +25,15 @@
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-8">
                             <label for="nominal">Nominal Penarikan</label>
                             <input type="text" class="form-control" name="nominal" id="nominal" value="" placeholder="nominal Rp">
                             <?= form_error('nominal', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="byadmin">Biaya Admin</label>
+                            <input type="text" class="form-control" name="byadmin" id="byadmin" value="<?= $byadmin['by_adm_master']; ?>" readonly="true">
+                            <?= form_error('byadmin', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                     </div>
 
@@ -49,7 +54,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="anagt">An.</label>
-                            <input type="text" class="form-control" name="anagt" id="anagt" value="<?= $detail['norek']; ?>" readonly="true">
+                            <input type="text" class="form-control" name="anagt" id="anagt" value="<?= $detail['an']; ?>" readonly="true">
                             <?= form_error('anagt', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                     </div>
