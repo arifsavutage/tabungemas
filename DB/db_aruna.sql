@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Jan 2020 pada 04.46
+-- Waktu pembuatan: 05 Feb 2020 pada 15.26
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.0
 
@@ -166,6 +166,18 @@ CREATE TABLE `tb_bank` (
 
 INSERT INTO `tb_bank` (`id`, `nm_bank`, `norek`, `an`) VALUES
 (2, 'BRI', '3036 0104 1826 532', 'Susiloningsih');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_biaya_cetak`
+--
+
+CREATE TABLE `tb_biaya_cetak` (
+  `idx` int(5) NOT NULL,
+  `jml_gram` float NOT NULL,
+  `biaya` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -646,6 +658,12 @@ ALTER TABLE `tb_bank`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `tb_biaya_cetak`
+--
+ALTER TABLE `tb_biaya_cetak`
+  ADD PRIMARY KEY (`idx`);
+
+--
 -- Indeks untuk tabel `tb_bonus`
 --
 ALTER TABLE `tb_bonus`
@@ -708,6 +726,12 @@ ALTER TABLE `tb_agt_tmp`
 --
 ALTER TABLE `tb_bank`
   MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_biaya_cetak`
+--
+ALTER TABLE `tb_biaya_cetak`
+  MODIFY `idx` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_bonus`
