@@ -857,6 +857,7 @@ class Transaksi extends CI_Controller
             redirect(base_url());
         } else {
             $data = [
+                'jualan'    => $this->model_history->jualanID($id),
                 'history_uang' => $this->model_transaksi->getTransactionById($id, 'uang'),
                 'history_emas' => $this->model_transaksi->getTransactionById($id, 'emas'),
                 'page' => 'pages/member/member_history'

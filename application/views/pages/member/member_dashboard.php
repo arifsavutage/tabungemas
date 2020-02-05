@@ -189,87 +189,8 @@
                         <?php
                         endforeach;
                         ?>
-
-                        <?php
-                        $jml    = count($jualan);
-                        //echo $jml;
-
-                        if ($jml > 0) :
-                        ?>
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>No.</th>
-                                            <th>ID.</th>
-                                            <th>Nama Anggota</th>
-                                            <th>Jml Gram</th>
-                                            <th>Harga / gr</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $n = 1;
-                                        foreach ($jualan as $rowss) :
-                                        ?>
-                                            <tr>
-                                                <td><?= $n; ?></td>
-                                                <td><?= $rowss['tujuan_jual']; ?></td>
-                                                <td><?= $rowss['nama_lengkap']; ?></td>
-                                                <td><?= $rowss['nominal_gram']; ?></td>
-                                                <td><?= number_format($rowss['nominal_uang'], 0, ',', '.'); ?></td>
-                                                <td>
-                                                    <?php
-                                                    if ($rowss['status'] == 0) {
-                                                        echo "<span class='badge badge-warning'>menunggu</span>";
-                                                    } else if ($rowss['status'] == 1) {
-                                                        echo "<span class='badge badge-success'>terbayar</span>";
-                                                    } else {
-                                                        echo "<span class='badge badge-secondary'>batal</span>";
-                                                    }
-                                                    ?>
-                                                </td>
-                                            </tr>
-                                        <?php
-                                            $n++;
-                                        endforeach;
-                                        ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <?php
-                        endif;
-                        ?>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col text-center">
-                <a href="<?= base_url(); ?>index.php/transaksi/beli_emas/<?= $this->session->userdata('id'); ?>">
-                    <img src="<?= base_url(); ?>assets/images/menu-beli.png" class="img-fluid img-thumbnail rounded mx-auto d-block" alt="">
-                    <p>Beli Emas</p>
-                </a>
-            </div>
-            <div class="col text-center">
-                <a href="<?= base_url(); ?>index.php/transaksi/jual_emas/<?= $this->session->userdata('id'); ?>">
-                    <img src="<?= base_url(); ?>assets/images/menu-jual.png" class="img-fluid img-thumbnail rounded mx-auto d-block" alt="">
-                    <p>Jual Emas</p>
-                </a>
-            </div>
-            <div class="col text-center">
-                <a href="">
-                    <img src="<?= base_url(); ?>assets/images/menu-tarik-saldo.png" class="img-fluid img-thumbnail rounded mx-auto d-block" alt="">
-                    <p>Tarik Saldo</p>
-                </a>
-            </div>
-            <div class="col text-center">
-                <a href="">
-                    <img src="<?= base_url(); ?>assets/images/menu-tarik-barang.png" class="img-fluid img-thumbnail rounded mx-auto d-block" alt="">
-                    <p>Tarik Barang</p>
-                </a>
             </div>
         </div>
 

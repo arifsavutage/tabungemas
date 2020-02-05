@@ -12,10 +12,13 @@
                 ?>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Uang</a>
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Saldo Wallet</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Emas</a>
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Saldo Emas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="jualemas-tab" data-toggle="tab" href="#jualemas" role="tab" aria-controls="jualemas" aria-selected="false">Jual Emas</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
@@ -34,7 +37,7 @@
                                 <tbody>
                                     <?php
                                     foreach ($history_uang as $row) :
-                                        ?>
+                                    ?>
                                         <tr>
                                             <td><?= $row['tgl']; ?></td>
                                             <td><?= $row['uraian']; ?></td>
@@ -64,7 +67,7 @@
                                 <tbody>
                                     <?php
                                     foreach ($history_emas as $list) :
-                                        ?>
+                                    ?>
                                         <tr>
                                             <td><?= $list['tgl']; ?></td>
                                             <td><?= $list['uraian']; ?></td>
@@ -77,6 +80,61 @@
                                     ?>
                                 </tbody>
                             </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="jualemas" role="tabpanel" aria-labelledby="jualemas-tab">
+                        <div class="table-responsive mt-3">
+                            <?php
+                            $jml    = count($jualan);
+                            //echo $jml;
+
+                            if ($jml > 0) :
+                            ?>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>ID.</th>
+                                                <th>Nama Anggota</th>
+                                                <th>Jml Gram</th>
+                                                <th>Harga / gr</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $n = 1;
+                                            foreach ($jualan as $rowss) :
+                                            ?>
+                                                <tr>
+                                                    <td><?= $n; ?></td>
+                                                    <td><?= $rowss['tujuan_jual']; ?></td>
+                                                    <td><?= $rowss['nama_lengkap']; ?></td>
+                                                    <td><?= $rowss['nominal_gram']; ?></td>
+                                                    <td><?= number_format($rowss['nominal_uang'], 0, ',', '.'); ?></td>
+                                                    <td>
+                                                        <?php
+                                                        if ($rowss['status'] == 0) {
+                                                            echo "<span class='badge badge-warning'>menunggu</span>";
+                                                        } else if ($rowss['status'] == 1) {
+                                                            echo "<span class='badge badge-success'>terbayar</span>";
+                                                        } else {
+                                                            echo "<span class='badge badge-secondary'>batal</span>";
+                                                        }
+                                                        ?>
+                                                    </td>
+                                                </tr>
+                                            <?php
+                                                $n++;
+                                            endforeach;
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <?php
+                            endif;
+                            ?>
                         </div>
                     </div>
                 </div>

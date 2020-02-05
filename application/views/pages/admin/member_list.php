@@ -11,7 +11,8 @@
                 }
                 ?>
                 <div class="table-responsive">
-                    <table class="table" id="example1">
+                    <input type="hidden" name="judul-berkas" id="judul-berkas" value="Daftar Member Aktif" />
+                    <table class="table table-bordered display" id="export">
                         <thead>
                             <tr>
                                 <th>No.</th>
@@ -37,26 +38,11 @@
 
                                         <a href="<?= base_url() . "index.php/member/profil_anggota/$detail[idted]"; ?>" class="btn btn-primary btn-sm" title="Lihat Profil" role="button"><i class="fas fa-user"></i></a>
                                         <a href="<?= base_url() . "index.php/member/update_pass_anggota/$detail[idted]"; ?>" class="btn btn-danger btn-sm" title="Update Password" role="button"><i class="fas fa-lock"></i></a>
-
-                                        <!--
-                                        <a href="<?= base_url() . "index.php/member/delRegistration/$detail[idtmp]"; ?>" class="btn btn-danger btn-sm" role="button" onclick="return valdel()"><i class="fas fa-user-times"></i></a>
-                                        <script>
-                                            function valdel() {
-                                                var conf = confirm("Apakah yakin data akan dihapus?");
-
-                                                if (conf == true) {
-                                                    return true;
-                                                } else {
-                                                    return false;
-                                                }
-                                            }
-                                        </script>
-                                        -->
                                     </td>
                                 </tr>
                             <?php
-                                                    $no++;
-                                                endforeach;
+                                $no++;
+                            endforeach;
                             ?>
                         </tbody>
                     </table>

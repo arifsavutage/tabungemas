@@ -138,6 +138,23 @@
     });
 </script>
 <script>
+    $(document).ready(function() {
+        var judul = $('#judul-berkas').val();
+        $('#export').DataTable({
+            dom: 'Bfrtip',
+            buttons: [{
+                    extend: 'excelHtml5',
+                    title: judul
+                },
+                {
+                    extend: 'pdfHtml5',
+                    title: judul
+                }
+            ]
+        });
+    });
+</script>
+<script>
     $(function() {
         $('input[name="tgllahir"]').daterangepicker({
             singleDatePicker: true,
