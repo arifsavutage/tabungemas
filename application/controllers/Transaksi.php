@@ -833,7 +833,7 @@ class Transaksi extends CI_Controller
         }
     }
 
-    public function daftar_widraw()
+    public function daftar_widraw($idx = '', $act = '')
     {
         $this->form_validation->set_rules('tgl1', 'Tanggal Awal', 'required');
 
@@ -849,6 +849,88 @@ class Transaksi extends CI_Controller
         $data['page'] = 'pages/admin/daftar_widraw';
 
         $this->load->view('dashboard', $data);
+
+        //action check and delete
+        if ($act == 'transfer') {
+
+            $detail_widraw = $this->model_widraw->getByIdx($idx);
+
+            $nom        = $detail_widraw['nominal'];
+            $idted      = $detail_widraw['idted'];
+            $tgl_widraw = $detail_widraw['tgl_pengajuan'];
+            $tgl_trf    = date('Y-m-d');
+            $byadm      = $detail_widraw['biaya_adm'];
+
+            //ambil data uang terakhir
+            $saldo_rp = $this->model_transaksi->getLastTranById($idted, 'uang');
+            $trf      = $nom - $byadm;
+            $pengurangan = $saldo_rp['saldo'] - $trf;
+
+            //simpan perubahan di transaksi
+            $datasaldo = [
+                [
+                    'idted' => $idted,
+                    'tgl'   => $tgl_widraw,
+                    'uraian' => "tarik wallet, trf. tgl $tgl_trf",
+                    'masuk' => 0,
+                    'keluar' => $trf,
+                    'saldo' => $pengurangan,
+                    'jenis' => 'uang'
+                ],
+                [
+                    'idted' => $idted,
+                    'tgl'   => $tgl_widraw,
+                    'uraian' => "adm tarik wallet, trf. tgl $tgl_trf",
+                    'masuk' => 0,
+                    'keluar' => $byadm,
+                    'saldo' => $pengurangan,
+                    'jenis' => 'uang'
+                ]
+            ];
+
+            for ($i = 0; $i < 2; $i++) {
+                $this->model_transaksi->save($datasaldo[$i]);
+            }
+
+
+            /*$databyadm  = [
+                'idted' => $idted,
+                'tgl'   => $tgl_widraw,
+                'uraian' => "adm tarik wallet, trf. tgl $tgl_trf",
+                'masuk' => 0,
+                'keluar' => $byadm,
+                'saldo' => $pengurangan,
+                'jenis' => 'uang'
+            ];*/
+
+            $datawidraw = [
+                'idx'      => $idx,
+                'status'   => 1,
+                'tgl_cair' => $tgl_trf
+            ];
+
+            $this->model_widraw->update($datawidraw);
+
+            $this->session->set_flashdata('info', '<div class="alert alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>Success, </h4> Update berhasil, saldo terpotong ...
+                </div>');
+
+            redirect(base_url() . 'index.php/transaksi/daftar_widraw');
+        } else if ($act == 'batal') {
+            //hapus
+            $this->model_widraw->hapus($idx);
+            $this->session->set_flashdata('info', '<div class="alert alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>Success, </h4> Pembatalan berhasil ...
+                </div>');
+
+            redirect(base_url() . 'index.php/transaksi/daftar_widraw');
+        }
     }
 
     public function history($id = null)

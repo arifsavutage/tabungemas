@@ -141,6 +141,8 @@ class Member extends CI_Controller
     {
         $data = [
             'detail' => $this->model_tedagt->getAccountById($id),
+            'saldo_rp'  => $this->model_transaksi->getLastTranById($id, 'uang'),
+            'saldo_emas'  => $this->model_transaksi->getLastTranById($id, 'emas'),
             'page' => 'pages/admin/member_profile_admin'
         ];
         $this->load->view('dashboard', $data);

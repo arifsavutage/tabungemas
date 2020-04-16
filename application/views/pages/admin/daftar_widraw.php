@@ -64,6 +64,7 @@
                                     <th>Nominal</th>
                                     <th>By. Adm</th>
                                     <th>Nom. Trf</th>
+                                    <th><i class="fas fa-cog"></i></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -77,7 +78,7 @@
                                     <tr>
                                         <td scope="row"><?= $no; ?></td>
                                         <td><?= date('d-m-Y', strtotime($detail['tgl_pengajuan'])); ?></td>
-                                        <td><?= ucwords($detail['nama_lengkap']); ?></td>
+                                        <td><a style="color:black; font-weight:bold;" href="<?= base_url('index.php/member/profil_anggota/') . $detail['idted']; ?>"><?= ucwords($detail['nama_lengkap']); ?></a></td>
                                         <td><?= strtoupper($detail['bank']); ?></td>
                                         <td><?= $detail['norek']; ?></td>
                                         <td><?= ucwords($detail['an']); ?></td>
@@ -92,6 +93,20 @@
                                             $total_trf = $total_trf + $trf;
                                             echo number_format($trf, 0, ',', '.');
                                             ?>
+                                        </td>
+                                        <td>
+                                            <?php
+                                            if ($detail['status'] == 0) {
+                                            ?>
+                                                <a href="<?= base_url() . "index.php/transaksi/daftar_widraw/$detail[idx]/transfer"; ?>" class="btn btn-info btn-sm"><i class="fas fa-check"></i></a>
+
+                                                <a href="<?= base_url() . "index.php/transaksi/daftar_widraw/$detail[idx]/batal"; ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                            <?php
+                                            } else {
+                                                echo "<span class='badge badge-danger'>PAID</span>";
+                                            }
+                                            ?>
+
                                         </td>
                                     </tr>
                                 <?php

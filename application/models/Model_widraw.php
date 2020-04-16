@@ -73,6 +73,19 @@ class Model_widraw extends CI_Model
         return $this->db->get($this->_table)->result_array();
     }
 
+    public function getByIdx($idx)
+    {
+        $this->db->select("tb_widraw.`idx`, tb_widraw.`tgl_pengajuan`, tb_widraw.`idted`, 
+        tb_widraw.`nominal`, tb_widraw.`biaya_adm`, tb_widraw.`bankagt`, tb_widraw.`rekagt`, 
+        tb_widraw.`anagt`, tb_widraw.`status`, tb_widraw.`tgl_cair`, tb_agt_ted.`nama_lengkap`,
+        tb_agt_ted.`nohp`,tb_agt_ted.`norek`,tb_agt_ted.`bank`,tb_agt_ted.`an`");
+        $this->db->join('tb_agt_ted', 'tb_agt_ted.idted = tb_widraw.idted');
+        $this->db->order_by('tb_widraw.tgl_pengajuan', 'DESC');
+        $this->db->where('tb_widraw.idx', $idx);
+
+        return $this->db->get($this->_table)->row_array();
+    }
+
     public function save()
     {
 
@@ -89,5 +102,17 @@ class Model_widraw extends CI_Model
         $this->tgl_cair = "0000-00-00";
 
         $this->db->insert($this->_table, $this);
+    }
+
+    public function update($data)
+    {
+        $this->db->where('idx', $data['idx']);
+        return $this->db->update($this->_table, $data);
+    }
+
+    public function hapus($idx)
+    {
+        $this->db->where('idx', $idx);
+        return $this->db->delete($this->_table);
     }
 }
