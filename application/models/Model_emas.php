@@ -12,6 +12,8 @@ class Model_emas extends CI_Model
 
     public function getNewHarga()
     {
+        $this->db->where('HRG_BELI !=', '');
+        $this->db->where('HRG_JUAL !=', '');
         $this->db->order_by('UPDATE_AT', 'DESC');
         $this->db->limit(2);
         return $this->db->get($this->_table)->result_array();
@@ -19,6 +21,8 @@ class Model_emas extends CI_Model
 
     public function getLastUpdate()
     {
+        $this->db->where('HRG_BELI !=', '');
+        $this->db->where('HRG_JUAL !=', '');
         $this->db->order_by('UPDATE_AT', 'DESC');
         $this->db->limit(1);
         return $this->db->get($this->_table)->row_array();
@@ -26,6 +30,8 @@ class Model_emas extends CI_Model
 
     public function getHargaEmas()
     {
+        $this->db->where('HRG_BELI !=', '');
+        $this->db->where('HRG_JUAL !=', '');
         $this->db->order_by('UPDATE_AT', 'DESC');
         return $this->db->get($this->_table)->result_array();
     }
