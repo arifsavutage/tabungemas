@@ -32,7 +32,7 @@
                                 } else {
                                     $label = "<span class='badge badge-success'>sudah</span>";
                                 }
-                                ?>
+                            ?>
                                 <tr>
                                     <td scope="row"><?= $no; ?></td>
                                     <td><?= date('d-m-Y', strtotime($detail['tgl_deposit'])); ?></td>
@@ -41,17 +41,17 @@
                                     <td><?= $label; ?></td>
                                     <td>
                                         <?php
-                                            if ($detail['status'] == 'aproved') {
-                                                $status = 'aria-disabled="true"';
-                                                $disabled = "disabled";
-                                            } else {
-                                                $status = '';
-                                                $disabled = "";
-                                            }
-                                            ?>
+                                        if ($detail['status'] == 'aproved') {
+                                            $status = 'aria-disabled="true"';
+                                            $disabled = "disabled";
+                                        } else {
+                                            $status = '';
+                                            $disabled = "";
+                                        }
+                                        ?>
 
                                         <!-- Button trigger modal -->
-                                        <a role="button" href="#" class="btn btn-primary btn-sm <?= $disabled;?>" data-toggle="modal" data-target="#addToPay<?= $no; ?>" title="Konfirm pembayaran" <?= $status;?>>
+                                        <a role="button" href="#" class="btn btn-primary btn-sm <?= $disabled; ?>" data-toggle="modal" data-target="#addToPay<?= $no; ?>" title="Konfirm pembayaran" <?= $status; ?>>
                                             <i class="fa fa-check"></i>
                                         </a>
 
@@ -110,7 +110,7 @@
                                             </div>
                                         </div>
 
-                                        <a href="<?= base_url() . "index.php/transaksi/batal_tarik_fisik/$detail[idx]"; ?>" class="btn btn-danger btn-sm <?= $disabled; ?>" tabindex="-1" role="button" onclick="return valdel()" <?= $status; ?>><i class="fa fa-times"></i></a>
+                                        <a href="<?= base_url() . "index.php/transaksi/batal_deposit/$detail[idx]"; ?>" class="btn btn-danger btn-sm" tabindex="-1" role="button" onclick="return valdel()" <?= $status; ?>><i class="fa fa-times"></i></a>
                                         <script>
                                             function valdel() {
                                                 var conf = confirm("Apakah yakin data akan dihapus?");

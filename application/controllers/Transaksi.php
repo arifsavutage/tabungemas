@@ -1089,10 +1089,14 @@ class Transaksi extends CI_Controller
 
     public function batal_deposit($idx)
     {
-        $delete = $this->model_deposit->delete($idx);
+        $detail_deposit = $this->model_deposit->getById($idx);
 
-        if ($delete) {
-            $this->session->set_flashdata('info', '
+        if ($detail_deposit['status'] == 'tunggu') {
+
+            $delete = $this->model_deposit->delete($idx);
+
+            if ($delete) {
+                $this->session->set_flashdata('info', '
             <div class="alert alert-success" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">×</span>
@@ -1100,9 +1104,9 @@ class Transaksi extends CI_Controller
                 <h4>Success :</h4> Pembatalan deposit berhasil ...
             </div>');
 
-            redirect(base_url() . "index.php/transaksi/daftar_deposit");
-        } else {
-            $this->session->set_flashdata('info', '
+                redirect(base_url() . "index.php/transaksi/daftar_deposit");
+            } else {
+                $this->session->set_flashdata('info', '
             <div class="alert alert-warning" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">×</span>
@@ -1110,7 +1114,39 @@ class Transaksi extends CI_Controller
                 <h4>Oops, </h4> Hapus deposit gagal ...
             </div>');
 
-            redirect(base_url() . "index.php/transaksi/daftar_deposit");
+                redirect(base_url() . "index.php/transaksi/daftar_deposit");
+            }
+        } else if ($detail_deposit['status'] == 'aproved') {
+            //hapus histori & pengurangan saldo
+            $idted = $detail_deposit['idted'];
+            $uang  = $detail_deposit['nom_deposit'];
+
+            $saldo_uang = $this->model_transaksi->getLastTranById($idted, 'uang');
+
+            $new_saldo = $saldo_uang['saldo'] - $uang;
+            $data_saldo = [
+                'tgl' => date('Y-m-d'),
+                'idted' => "$idted",
+                'uraian' => 'koreksi, batal deposit',
+                'masuk' => 0,
+                'keluar' => $uang,
+                'saldo' => $new_saldo,
+                'jenis' => 'uang'
+            ];
+
+            $this->model_transaksi->save($data_saldo);
+
+            //hapus
+            $delete = $this->model_deposit->delete($idx);
+
+            $this->session->set_flashdata('info', '<div class="alert alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>Success, </h4> pembatalan deposit sukses
+                </div>');
+
+            redirect(base_url() . 'index.php/transaksi/daftar_deposit/');
         }
     }
 

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.4
+-- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 19 Apr 2020 pada 22.59
--- Versi server: 10.3.22-MariaDB
--- Versi PHP: 7.3.6
+-- Generation Time: Jun 04, 2020 at 12:13 PM
+-- Server version: 10.3.22-MariaDB
+-- PHP Version: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_agt_koperasi`
+-- Table structure for table `tb_agt_koperasi`
 --
 
 CREATE TABLE `tb_agt_koperasi` (
@@ -56,7 +56,7 @@ CREATE TABLE `tb_agt_koperasi` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_agt_ted`
+-- Table structure for table `tb_agt_ted`
 --
 
 CREATE TABLE `tb_agt_ted` (
@@ -79,13 +79,13 @@ CREATE TABLE `tb_agt_ted` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_agt_ted`
+-- Dumping data for table `tb_agt_ted`
 --
 
 INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `nohp`, `alamat`, `email`, `password`, `level_user`, `scan_ktp`, `scan_npwp`, `norek`, `bank`, `an`, `foto_profil`, `jenis`, `aktif`) VALUES
 ('01.00001', '2019-10-28', 'Susiloningsih 1', '08123635427', 'Reykjavik, Greendland', 'info@tabungemas.com', '$2y$10$nXCTezbOMOectb0p1XnIL.m4GYZKwBHV14R8w4bED1KjSZuXvdbTS', 'super', 'noimage.jpg', 'noimage.jpg', '12312388857', 'Vereenigde Oostindische Compagnie Bank', '', '01_00001.jpg', 'agen', 1),
 ('01.00002', '2019-11-05', 'Purnomo', '0812524426', '', 'ciptoted@tabungemas.com', '$2y$10$6DxFsdIch.NTEpDIeuQFMOqiV4GGqbMdYApfZlZ.0.0JCXhmN7Yfm', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'agen', 1),
-('01.00003', '2019-11-05', 'Susiloningsih', '082136368828', 'puri asri perdana ', 'kopikukopika@gmail.com', '$2y$10$R8gD4lOjc3KSG3zUQDCpe.gQFEEyO0pB9UEmMjLTVYfpCxOF4Bosu', 'member', 'noimage.jpg', 'noimage.jpg', '303601041826532', 'BRI', 'susiloningsih', '01_00003.jpg', 'agen', 1),
+('01.00003', '2019-11-05', 'Susiloningsih', '082136368828', 'puri asri perdana ', 'kopikukopika@gmail.com', '$2y$10$R8gD4lOjc3KSG3zUQDCpe.gQFEEyO0pB9UEmMjLTVYfpCxOF4Bosu', 'member', 'ktp_01_00003.jpg', 'npwp_01_00003.jpg', '303601041826532', 'BRI', 'susiloningsih', '01_00003.jpg', 'agen', 1),
 ('01.00004', '2019-11-05', 'Cipto Purnomo', '081225230626', 'Jl truntum VI no 11 Tlogosari kulon pedurungan semarang', 'ciptopurnomo@tabungemas.com', '$2y$10$1cE9HF4MQZrdRu6hAzEs5uEcGfoFSgyMW57bURv0gIMORlYstGMpe', 'member', 'noimage.jpg', 'noimage.jpg', '0094680561', 'BCA', '', 'noimage.jpg', 'agen', 1),
 ('01.00005', '2019-11-05', 'Ariandaru Kusuma Yudha', '08112888470', '', 'kog434@gmail.com', '$2y$10$SSDq5wmc9kEdz3Jf1s7gl.VxKyYKuNa4RrOGo0xP27Y7PlU4DPk5O', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'agen', 1),
 ('01.00006', '2019-11-05', 'Muhammad Irfan Muammar', '082127055238', 'Jl pangeran panjunan rt1/rw1 desa Cisaat kecamatan Dukupuntang kabupaten Cirebon', 'irfanmuammar007@gmail.com', '$2y$10$h.mIK.JBj5B9RCyBAzN9C.XT0HMBCCrMWo4sKhe10akouejlcB9mm', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', '01_00006.jpg', 'agen', 1),
@@ -107,7 +107,7 @@ INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `nohp`, `alamat
 ('01.00022', '2019-11-19', 'Andika Latif Kurniawan', '0895367355591', '', 'dika.latif.99@gmail.com', '$2y$10$LlHD8MLh6kbF2N52Y.3oluPe4qrz92/bDpYSyDbMWSvA03O//MI.6', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1),
 ('01.00023', '2019-12-05', 'Lia Afiani', '081327405100', '', 'bisnisjaring@gmail.com', '$2y$10$LYAFdD4fUxEBuoT4hwi4Uu56NXTrsv9BIlo1xymajKts7ySXANUja', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1),
 ('01.00024', '2019-12-05', 'Muhammad Arif Efendi', '081392761799', '', 'muhammadarifefendi6@gmail.com', '$2y$10$3JqS6g1B4iGrv8Z/gsyt5.R9Q0mkgVxpZ67ABX6jJDNh5danLMkIW', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', '01_00024.jpg', 'basic', 1),
-('01.00025', '2019-12-05', 'Amelia Nadia Rahma', '082230854065', '', 'amelianadiar@gmail.com', '$2y$10$f4O1BHEMdJdybnCLMwUY8Oq7YAbWBXTKdh9HMGAjDn3psHWxRBP7C', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1),
+('01.00025', '2019-12-05', 'Amelia Nadia Rahma', '082230854065', '', 'amelianadiar@gmail.com', '$2y$10$0qLmoKIwEzzOiLuoMve0je.Vs5pzXItAnxNjUPPpykKD1Gzaoe7cK', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1),
 ('01.00026', '2019-12-06', 'Hilda Sabrina Dyra Permata Hatti Mama', '0895396248408', '', 'hildasabrinadyra@gmail.com', '$2y$10$K9PXNd9Qdt5J.QrD4guKWua5v1DDwuLhmAD/5BE9iDSIBdlhiuB/u', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1),
 ('01.00027', '2019-12-08', 'Sri Susanti', '085101995521', 'Jl. Arumanis Barat No. 17 Semarang', 'srisusantihasta@gmail.com', '$2y$10$zebC05vZXCM2AmlvrGZGU.0Wd1Yrc7itUE.jaNCELy1kuxFOG4Yey', 'member', 'noimage.jpg', 'noimage.jpg', '304301021939534', '', '', 'noimage.jpg', 'agen', 1),
 ('01.00028', '2019-12-08', 'Ari Wuryantini', '081326627170', '', 'kosbuwarto@gmail.com', '$2y$10$PfNant9yJDpOhbfKB60s5uFGkOkAtjJJaXb6xFzUbb4ECIpTCllTW', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1),
@@ -134,12 +134,17 @@ INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `nohp`, `alamat
 ('01.00049', '2020-03-02', 'Maria Magdalena Sutari', '087734645495', '', 'cutt762@gmail.com', '$2y$10$0Cc5vwBYiBQoBCSZQPL50.4BXyqaoxmMTu1xD8HvGvAWy.zNNgZBS', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1),
 ('01.00050', '2020-03-21', 'Ivonne Kartika Aju', '081228156119', '', 'indigo_221@yahoo.com', '$2y$10$ss8l3pHAqz9GsvYWnqsrgO7kGXYs8c4F7.r4cDb9dIVg3DzFrB.7O', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1),
 ('01.00051', '2020-03-25', 'Tri Nurdyastuti/Alumni', '082299413996', '', 'nurdyastutitri@gmail.com', '$2y$10$bw.yUArlZ2c1feSsB6VAJ.2ZtbY/LDx6lpv6YtBOAFVY2ezxcPpb6', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1),
-('01.00052', '2020-04-10', 'Dwi Ratnawati', '081575886727', '', 'ratnasujadi@gmail.com', '$2y$10$45Zmfv5xE8kgmZTtJyyDgOM7DgIG8Wm6VoyKNKueZ79deElzWlGEK', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1);
+('01.00052', '2020-04-10', 'Dwi Ratnawati', '081575886727', '', 'ratnasujadi@gmail.com', '$2y$10$45Zmfv5xE8kgmZTtJyyDgOM7DgIG8Wm6VoyKNKueZ79deElzWlGEK', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1),
+('01.00053', '2020-05-01', 'Sugiharti', '0811251610', '', 'sugih_arti1@yahoo.com', '$2y$10$K9czd8brpcBt970H/79Q3u/kLakLxkOvkMEvKjkf/q7duxshM5Vq2', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1),
+('01.00054', '2020-05-31', 'Muhammad Badruz Zaman', '085713893698', 'Jl.kyai Mojo gg buntu Srondol kulon Banyumanik Semarang', 'muhammadbadruz19@gmail.com', '$2y$10$A249YCZQMw4BUxOqkWa2J.PCG2TxlReym70mgcjboN7d6st7OjsYO', 'member', 'noimage.jpg', 'noimage.jpg', '7830017954', 'BCA', 'Muhammad Badruz zaman', '01_00054.jpg', 'agen', 1),
+('01.00055', '2020-06-02', 'Moh. Nahrudin', '085701036714', 'Jl. Kemuning Gg seruni 2 no:4 kejambon tegal', 'mohnahrudin@gmail.com', '$2y$10$0IIr8P14zNoYHIcrZdtepuqN8FlBkJRMAQYLKP0uAuj/JbOYYUKKC', 'member', 'noimage.jpg', 'noimage.jpg', '060901011057503', 'BRI', 'Mohamad Nahrudin', 'noimage.jpg', 'agen', 1),
+('01.00056', '2020-06-02', 'Achmad Heidar Maulana', '085647425251', '', 'achmdheidar14@gmail.com', '$2y$10$1zu7oO50R0RTUrb9g.i3U.fDl1tJFm//0bcBNTrjZPApk8X6VGzZu', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1),
+('01.00057', '2020-06-02', 'Raffendra Gilang Dicahya', '082143165184', '', 'raffendragilangdicahya@gmail.com', '$2y$10$tmcB.ceT5M4Edf8YJVQYSem3FoJBzNWr3iY/ot//3EsXPf3FD18J6', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_agt_tmp`
+-- Table structure for table `tb_agt_tmp`
 --
 
 CREATE TABLE `tb_agt_tmp` (
@@ -157,7 +162,7 @@ CREATE TABLE `tb_agt_tmp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_agt_tmp`
+-- Dumping data for table `tb_agt_tmp`
 --
 
 INSERT INTO `tb_agt_tmp` (`idtmp`, `tgl_daftar`, `nm_tmp`, `nohp_tmp`, `email_tmp`, `ktp_tmp`, `password_tmp`, `idreferal`, `nominal`, `konfirm_status`, `token`) VALUES
@@ -167,12 +172,12 @@ INSERT INTO `tb_agt_tmp` (`idtmp`, `tgl_daftar`, `nm_tmp`, `nohp_tmp`, `email_tm
 (27, '2019-11-14', 'Titik ikha purbiyanti', '081229929291', 'bundatikarosa@gmail.com', '', '$2y$10$rE1fEJ7H7yp2oihj5VSpme6lKfqIXyLUsLHr..cRa9gzGNeTfHnRG', '01.00003', 970323, 0, 'MZBsb07owrt8Szy1'),
 (36, '2019-12-05', 'Adyatma Gusti Pandya', '081575012844', 'adyatmagp@gmail.com', '', '$2y$10$R6j6mzdHufYdNjvyfOAP/O7pKTJBnZst.S0HxfsrkLJkcvD15eZ3a', '01.00010', 200313, 0, 'XwjsYkmucNWAbZpJ'),
 (56, '2020-01-24', 'endang soepriyanti', '081327408630', 'endangsoepriyanti@gmail.com', '', '$2y$10$45GfpO9vS/AyiKslZciVA.mn2.wrWAzkwC8h6p2IOjVKoXZPxoP7W', '01.00034', 200131, 0, 'YVdkKMvDrlHJ7EGp'),
-(69, '2020-04-16', 'Muhammad Badruz Zaman', '085713893698', 'muhammadbadruz19@gmail.com', '', '$2y$10$UiJaZgaFwY6U5VWoePsfBuHCUYwnsvwBpn1md70G/7nt0x5cbg3q6', '01.00003', 200132, 0, 'YExN4GKqSnDPltQX');
+(72, '2020-06-01', 'Haryono', '085876100940', 'ahmadkahar.mgl@gmail.com', '', '$2y$10$cysHDR8kxZfkuJRbRAznouqMBZzHBV4D6tZoR6iHU38n7n9vaPyY.', '01.00054', 200231, 0, 'cnGILZdrCyfNuAXk');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_bank`
+-- Table structure for table `tb_bank`
 --
 
 CREATE TABLE `tb_bank` (
@@ -183,7 +188,7 @@ CREATE TABLE `tb_bank` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_bank`
+-- Dumping data for table `tb_bank`
 --
 
 INSERT INTO `tb_bank` (`id`, `nm_bank`, `norek`, `an`) VALUES
@@ -192,7 +197,7 @@ INSERT INTO `tb_bank` (`id`, `nm_bank`, `norek`, `an`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_bonus`
+-- Table structure for table `tb_bonus`
 --
 
 CREATE TABLE `tb_bonus` (
@@ -208,7 +213,7 @@ CREATE TABLE `tb_bonus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_bonus`
+-- Dumping data for table `tb_bonus`
 --
 
 INSERT INTO `tb_bonus` (`id`, `registrasi`, `referal`, `royalti`, `royalti_target`, `gram_pokok`, `selisih_jual`, `selisih_beli`, `by_adm_master`) VALUES
@@ -222,7 +227,7 @@ INSERT INTO `tb_bonus` (`id`, `registrasi`, `referal`, `royalti`, `royalti_targe
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_cabang`
+-- Table structure for table `tb_cabang`
 --
 
 CREATE TABLE `tb_cabang` (
@@ -235,7 +240,7 @@ CREATE TABLE `tb_cabang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_cabang`
+-- Dumping data for table `tb_cabang`
 --
 
 INSERT INTO `tb_cabang` (`idcabang`, `nama_cabang`, `alamat_cabang`, `kotakab`, `idpemilik`, `status`) VALUES
@@ -244,7 +249,7 @@ INSERT INTO `tb_cabang` (`idcabang`, `nama_cabang`, `alamat_cabang`, `kotakab`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_deposit`
+-- Table structure for table `tb_deposit`
 --
 
 CREATE TABLE `tb_deposit` (
@@ -257,16 +262,20 @@ CREATE TABLE `tb_deposit` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_deposit`
+-- Dumping data for table `tb_deposit`
 --
 
 INSERT INTO `tb_deposit` (`idx`, `tgl_deposit`, `idted`, `nom_deposit`, `banktrf`, `status`) VALUES
-(0, '2020-01-04 01:32:43', '01.00001', 50000, 2, 'tunggu');
+(1, '2020-01-04 01:32:43', '01.00001', 50000, 2, 'aproved'),
+(2, '2020-06-01 11:19:54', '01.00053', 144818, 2, 'aproved'),
+(3, '2020-06-01 11:31:39', '01.00003', 20000, 2, 'aproved'),
+(4, '2020-06-01 14:47:39', '01.00003', 250000, 2, 'aproved'),
+(5, '2020-06-02 09:31:59', '01.00025', 88979, 2, 'aproved');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_history`
+-- Table structure for table `tb_history`
 --
 
 CREATE TABLE `tb_history` (
@@ -281,7 +290,7 @@ CREATE TABLE `tb_history` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_history`
+-- Dumping data for table `tb_history`
 --
 
 INSERT INTO `tb_history` (`idx`, `tgl`, `idted`, `tujuan_jual`, `ket`, `nominal_uang`, `nominal_gram`, `status`) VALUES
@@ -328,12 +337,16 @@ INSERT INTO `tb_history` (`idx`, `tgl`, `idted`, `tujuan_jual`, `ket`, `nominal_
 (43, '2020-04-07 07:49:44', '01.00033', '', 'pembelian emas ', 2000000, 2.214, 1),
 (44, '2020-04-10 10:37:28', '01.00052', '', 'pembelian emas ', 1800000, 2.015, 1),
 (45, '2020-04-15 10:37:51', '01.00007', 'TED', 'jual emas ', 158760, 0.189, 0),
-(46, '2020-04-15 10:37:51', '01.00007', 'TED', 'jual emas ', 158760, 0.189, 0);
+(46, '2020-04-15 10:37:51', '01.00007', 'TED', 'jual emas ', 158760, 0.189, 0),
+(47, '2020-06-01 11:24:07', '01.00003', '', 'pembelian emas ', 0, 0, 1),
+(48, '2020-06-01 11:24:17', '01.00003', '', 'pembelian emas ', 10000, 0.011, 1),
+(49, '2020-06-01 11:24:58', '01.00003', '', 'pembelian emas ', 1000, 0.001, 0),
+(50, '2020-06-01 11:26:04', '01.00003', 'TED', 'jual emas ', 8130, 0.01, 0);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_jaringan`
+-- Table structure for table `tb_jaringan`
 --
 
 CREATE TABLE `tb_jaringan` (
@@ -347,20 +360,20 @@ CREATE TABLE `tb_jaringan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_jaringan`
+-- Dumping data for table `tb_jaringan`
 --
 
 INSERT INTO `tb_jaringan` (`idagt`, `idreferal`, `idupline`, `jml_downline`, `pos_jar`, `pos_level`, `tgl_proses`) VALUES
 ('01.00001', '0', '0', 3, '1', 1, '2019-10-28'),
 ('01.00002', '01.00001', '01.00001', 1, '11', 2, '0000-00-00'),
-('01.00003', '01.00002', '01.00002', 24, '111', 3, '0000-00-00'),
+('01.00003', '01.00002', '01.00002', 25, '111', 3, '0000-00-00'),
 ('01.00004', '01.00003', '01.00003', 2, '1111', 4, '0000-00-00'),
 ('01.00005', '01.00004', '01.00004', 1, '11111', 5, '0000-00-00'),
 ('01.00006', '01.00005', '01.00005', 4, '111111', 6, '0000-00-00'),
 ('01.00007', '01.00003', '01.00003', 1, '1112', 4, '0000-00-00'),
 ('01.00008', '01.00007', '01.00007', 0, '11121', 5, '0000-00-00'),
-('01.00009', '01.00003', '01.00003', 0, '1113', 4, '0000-00-00'),
-('01.00010', '01.00003', '01.00003', 4, '1114', 4, '0000-00-00'),
+('01.00009', '01.00003', '01.00003', 2, '1113', 4, '0000-00-00'),
+('01.00010', '01.00003', '01.00003', 5, '1114', 4, '0000-00-00'),
 ('01.00011', '01.00003', '01.00003', 1, '1115', 4, '0000-00-00'),
 ('01.00012', '01.00011', '01.00011', 0, '11151', 5, '0000-00-00'),
 ('01.00013', '01.00003', '01.00003', 0, '1116', 4, '0000-00-00'),
@@ -402,12 +415,17 @@ INSERT INTO `tb_jaringan` (`idagt`, `idreferal`, `idupline`, `jml_downline`, `po
 ('01.00049', '01.00016', '01.00016', 0, '11185', 5, '0000-00-00'),
 ('01.00050', '01.00003', '01.00003', 0, '11123', 4, '0000-00-00'),
 ('01.00051', '01.00010', '01.00010', 0, '11144', 5, '0000-00-00'),
-('01.00052', '01.00003', '01.00003', 0, '11124', 4, '0000-00-00');
+('01.00052', '01.00003', '01.00003', 0, '11124', 4, '0000-00-00'),
+('01.00053', '01.00010', '01.00010', 0, '11145', 5, '0000-00-00'),
+('01.00054', '01.00003', '01.00003', 1, '11125', 4, '0000-00-00'),
+('01.00055', '01.00054', '01.00054', 0, '111251', 5, '0000-00-00'),
+('01.00056', '01.00009', '01.00009', 0, '11131', 5, '0000-00-00'),
+('01.00057', '01.00009', '01.00009', 0, '11132', 5, '0000-00-00');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_transaksi`
+-- Table structure for table `tb_transaksi`
 --
 
 CREATE TABLE `tb_transaksi` (
@@ -422,7 +440,7 @@ CREATE TABLE `tb_transaksi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_transaksi`
+-- Dumping data for table `tb_transaksi`
 --
 
 INSERT INTO `tb_transaksi` (`id`, `tgl`, `idted`, `uraian`, `masuk`, `keluar`, `saldo`, `jenis`) VALUES
@@ -575,12 +593,26 @@ INSERT INTO `tb_transaksi` (`id`, `tgl`, `idted`, `uraian`, `masuk`, `keluar`, `
 (147, '2020-04-15', '01.00007', 'tarik wallet, trf. tgl 2020-04-16', 0, 290000, 27520, 'uang'),
 (148, '2020-04-15', '01.00007', 'adm tarik wallet, trf. tgl 2020-04-16', 0, 10000, 27520, 'uang'),
 (149, '2020-04-16', '01.00003', 'tarik wallet, trf. tgl 2020-04-16', 0, 10000, 318086, 'uang'),
-(150, '2020-04-16', '01.00003', 'adm tarik wallet, trf. tgl 2020-04-16', 0, 10000, 318086, 'uang');
+(150, '2020-04-16', '01.00003', 'adm tarik wallet, trf. tgl 2020-04-16', 0, 10000, 318086, 'uang'),
+(151, '2020-04-30', '01.00001', 'trf. dari ID 01.00003 ', 9.576, 0, 99.299, 'emas'),
+(152, '2020-04-30', '01.00003', 'transfer emas ke  01.00001', 0, 9.576, 1, 'emas'),
+(153, '2020-05-01', '01.00053', 'simp. pokok & simp. wajib', 0.023, 0, 0.023, 'emas'),
+(154, '2020-05-31', '01.00054', 'simp. pokok & simp. wajib', 0.024, 0, 0.024, 'emas'),
+(155, '2020-06-01', '01.00003', 'bayar beli emas 0.000 gr', 0, 0.1, 318086, 'uang'),
+(156, '2020-06-01', '01.00003', 'beli emas', 0, 0, 1, 'emas'),
+(157, '2020-06-01', '01.00003', 'bayar beli emas 0.011 gr', 0, 10000, 308086, 'uang'),
+(158, '2020-06-01', '01.00003', 'beli emas', 0.011, 0, 1.011, 'emas'),
+(159, '2020-06-01', '01.00003', 'pencairan jual emas', 8130, 0, 316216, 'uang'),
+(160, '2020-06-01', '01.00003', 'jual emas', 0, 0.01, 1.001, 'emas'),
+(161, '2020-06-02', '01.00025', 'deposit', 88979, 0, 88979, 'uang'),
+(162, '2020-06-02', '01.00055', 'simp. pokok & simp. wajib', 0.024, 0, 0.024, 'emas'),
+(163, '2020-06-02', '01.00056', 'simp. pokok & simp. wajib', 0.024, 0, 0.024, 'emas'),
+(164, '2020-06-02', '01.00057', 'simp. pokok & simp. wajib', 0.024, 0, 0.024, 'emas');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_verifikasi_email`
+-- Table structure for table `tb_verifikasi_email`
 --
 
 CREATE TABLE `tb_verifikasi_email` (
@@ -593,7 +625,7 @@ CREATE TABLE `tb_verifikasi_email` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_widraw`
+-- Table structure for table `tb_widraw`
 --
 
 CREATE TABLE `tb_widraw` (
@@ -610,7 +642,7 @@ CREATE TABLE `tb_widraw` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tb_widraw`
+-- Dumping data for table `tb_widraw`
 --
 
 INSERT INTO `tb_widraw` (`idx`, `tgl_pengajuan`, `idted`, `nominal`, `biaya_adm`, `bankagt`, `rekagt`, `anagt`, `status`, `tgl_cair`) VALUES
@@ -622,7 +654,7 @@ INSERT INTO `tb_widraw` (`idx`, `tgl_pengajuan`, `idted`, `nominal`, `biaya_adm`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_update_ubs`
+-- Table structure for table `t_update_ubs`
 --
 
 CREATE TABLE `t_update_ubs` (
@@ -633,7 +665,7 @@ CREATE TABLE `t_update_ubs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `t_update_ubs`
+-- Dumping data for table `t_update_ubs`
 --
 
 INSERT INTO `t_update_ubs` (`IDX`, `UPDATE_AT`, `HRG_BELI`, `HRG_JUAL`) VALUES
@@ -883,129 +915,178 @@ INSERT INTO `t_update_ubs` (`IDX`, `UPDATE_AT`, `HRG_BELI`, `HRG_JUAL`) VALUES
 (249, '2020-04-16 04:00:03', '945,938', '837,000'),
 (250, '2020-04-16 04:25:03', '955,019', '837,000'),
 (251, '2020-04-17 04:00:03', '941,902', '840,000'),
-(253, '2020-04-18 16:00:04', '', '');
+(254, '2020-04-20 13:25:13', '927,776', '816,000'),
+(256, '2020-04-28 04:10:04', '948,460', '834,000'),
+(273, '2020-04-30 08:00:03', '933,830', '829,000'),
+(274, '2020-05-01 00:00:04', '933,830', '829,000'),
+(275, '2020-05-02 00:00:05', '933,830', '829,000'),
+(276, '2020-05-03 00:00:04', '933,830', '829,000'),
+(277, '2020-05-04 00:00:04', '933,830', '829,000'),
+(278, '2020-05-05 00:00:04', '920,713', '813,000'),
+(279, '2020-05-06 00:00:03', '925,758', '812,000'),
+(280, '2020-05-07 00:00:05', '926,767', '813,000'),
+(281, '2020-05-08 00:00:03', '926,767', '813,000'),
+(282, '2020-05-09 00:00:04', '929,289', '819,000'),
+(283, '2020-05-10 00:00:05', '929,289', '819,000'),
+(284, '2020-05-11 00:00:05', '929,289', '819,000'),
+(285, '2020-05-12 00:00:04', '917,686', '812,000'),
+(286, '2020-05-13 00:00:04', '916,677', '806,000'),
+(287, '2020-05-14 00:00:05', '917,686', '812,000'),
+(288, '2020-05-15 00:00:03', '923,235', '815,000'),
+(289, '2020-05-16 00:00:04', '928,785', '823,000'),
+(290, '2020-05-17 00:00:05', '928,785', '823,000'),
+(291, '2020-05-18 00:00:05', '928,785', '823,000'),
+(292, '2020-05-19 00:00:04', '940,893', '831,000'),
+(293, '2020-05-20 00:00:04', '928,785', '822,000'),
+(294, '2020-05-21 00:00:05', '929,794', '824,000'),
+(295, '2020-05-22 00:00:03', '929,794', '824,000'),
+(296, '2020-05-23 00:00:04', '929,794', '824,000'),
+(297, '2020-05-24 00:00:04', '929,794', '824,000'),
+(298, '2020-05-25 00:00:03', '929,794', '824,000'),
+(299, '2020-05-26 00:00:04', '929,794', '824,000'),
+(300, '2020-05-27 00:00:05', '923,740', '816,000'),
+(301, '2020-05-28 00:00:04', '915,668', '808,000'),
+(302, '2020-05-29 00:00:05', '918,190', '808,000'),
+(303, '2020-05-30 00:00:04', '920,713', '813,000'),
+(304, '2020-05-31 00:00:04', '920,713', '813,000'),
+(305, '2020-06-01 00:00:05', '920,713', '813,000'),
+(306, '2020-06-02 00:00:04', '920,713', '813,000'),
+(307, '2020-06-03 00:00:05', '915,668', '823,000'),
+(308, '2020-06-04 00:00:04', '903,055', '801,000');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `tb_agt_koperasi`
+-- Indexes for table `tb_agt_koperasi`
 --
 ALTER TABLE `tb_agt_koperasi`
   ADD PRIMARY KEY (`idanggota`);
 
 --
--- Indeks untuk tabel `tb_agt_ted`
+-- Indexes for table `tb_agt_ted`
 --
 ALTER TABLE `tb_agt_ted`
   ADD PRIMARY KEY (`idted`);
 
 --
--- Indeks untuk tabel `tb_agt_tmp`
+-- Indexes for table `tb_agt_tmp`
 --
 ALTER TABLE `tb_agt_tmp`
   ADD PRIMARY KEY (`idtmp`);
 
 --
--- Indeks untuk tabel `tb_bank`
+-- Indexes for table `tb_bank`
 --
 ALTER TABLE `tb_bank`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tb_bonus`
+-- Indexes for table `tb_bonus`
 --
 ALTER TABLE `tb_bonus`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tb_cabang`
+-- Indexes for table `tb_cabang`
 --
 ALTER TABLE `tb_cabang`
   ADD PRIMARY KEY (`idcabang`);
 
 --
--- Indeks untuk tabel `tb_history`
+-- Indexes for table `tb_deposit`
+--
+ALTER TABLE `tb_deposit`
+  ADD PRIMARY KEY (`idx`);
+
+--
+-- Indexes for table `tb_history`
 --
 ALTER TABLE `tb_history`
   ADD PRIMARY KEY (`idx`);
 
 --
--- Indeks untuk tabel `tb_transaksi`
+-- Indexes for table `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tb_verifikasi_email`
+-- Indexes for table `tb_verifikasi_email`
 --
 ALTER TABLE `tb_verifikasi_email`
   ADD PRIMARY KEY (`idx`);
 
 --
--- Indeks untuk tabel `tb_widraw`
+-- Indexes for table `tb_widraw`
 --
 ALTER TABLE `tb_widraw`
   ADD PRIMARY KEY (`idx`);
 
 --
--- Indeks untuk tabel `t_update_ubs`
+-- Indexes for table `t_update_ubs`
 --
 ALTER TABLE `t_update_ubs`
   ADD PRIMARY KEY (`IDX`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `tb_agt_tmp`
+-- AUTO_INCREMENT for table `tb_agt_tmp`
 --
 ALTER TABLE `tb_agt_tmp`
-  MODIFY `idtmp` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `idtmp` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_bank`
+-- AUTO_INCREMENT for table `tb_bank`
 --
 ALTER TABLE `tb_bank`
   MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_bonus`
+-- AUTO_INCREMENT for table `tb_bonus`
 --
 ALTER TABLE `tb_bonus`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_history`
+-- AUTO_INCREMENT for table `tb_deposit`
+--
+ALTER TABLE `tb_deposit`
+  MODIFY `idx` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tb_history`
 --
 ALTER TABLE `tb_history`
-  MODIFY `idx` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `idx` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_transaksi`
+-- AUTO_INCREMENT for table `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_verifikasi_email`
+-- AUTO_INCREMENT for table `tb_verifikasi_email`
 --
 ALTER TABLE `tb_verifikasi_email`
   MODIFY `idx` bigint(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_widraw`
+-- AUTO_INCREMENT for table `tb_widraw`
 --
 ALTER TABLE `tb_widraw`
-  MODIFY `idx` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idx` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `t_update_ubs`
+-- AUTO_INCREMENT for table `t_update_ubs`
 --
 ALTER TABLE `t_update_ubs`
-  MODIFY `IDX` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=254;
+  MODIFY `IDX` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=309;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
