@@ -15,6 +15,7 @@ class Transaksi extends CI_Controller
         $this->load->model('model_biayacetak');
         $this->load->model('model_deposit');
         $this->load->model('model_widraw');
+        $this->load->model('model_titipan');
 
         not_login();
     }
@@ -1291,6 +1292,160 @@ class Transaksi extends CI_Controller
 
                 redirect(base_url());
             }
+        }
+    }
+
+    public function alltransaction()
+    {
+        $data = [
+            'page' => 'pages/admin/daftar_transaksi',
+            'datas' => $this->model_transaksi->allTransaction()->result_array()
+        ];
+
+        $this->load->view('dashboard', $data);
+    }
+
+    public function titipan_emas($idted = null)
+    {
+        if ($idted == null) {
+            redirect(base_url());
+        } else {
+
+            $this->form_validation->set_rules('gramtrf', 'Jumlah Gram', 'required');
+            $this->form_validation->set_rules('agreement', 'Persetujuan', 'required');
+
+            if ($this->form_validation->run()) {
+
+                $emasku = $this->input->post('emasku');
+                $gram   = $this->input->post('gramtrf');
+                $idted  = $this->input->post('idted');
+                $tenor  = $this->input->post('tenor');
+                $tgl    = $this->input->post('tgl');
+                $ket    = $this->input->post('keterangan');
+                $status = $this->input->post('status'); //pending, aktif, berhenti
+
+                //harga terkini
+                $get_harga  = $this->db->query("SELECT `IDX`, `UPDATE_AT`, `HRG_BELI`, `HRG_JUAL` FROM `t_update_ubs` ORDER BY `IDX` DESC LIMIT 1")->row_array();
+                $hrg_ikut   = (int) str_replace(",", "", $get_harga['HRG_JUAL']);
+                $jml_uang   = (int) str_replace(",", "", $get_harga['HRG_JUAL']) * $gram;
+
+                //limit simpanan pokok emas
+                $lim    = $this->model_transaksi->getFirstTransaction($idted, 'emas');
+                $limit_ikut = $emasku - $gram;
+
+                if ($gram < 2) {
+                    $this->session->set_flashdata('info', '
+                    <div class="alert alert-warning" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4>Oops, </h4> Minimal emas 2 gram ...
+                    </div>');
+
+                    redirect(base_url() . 'index.php/transaksi/titipan_emas/' . $idted);
+                } else if ($limit_ikut <= $lim['saldo']) {
+                    $this->session->set_flashdata('info', '
+                    <div class="alert alert-warning" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4>Oops, </h4> Anda tidak boleh lebih dari limit simpanan pokok & simpanan wajib sebesar ' . $lim['saldo'] . ' gr ... gramtrf
+                    </div>');
+
+                    redirect(base_url() . 'index.php/transaksi/titipan_emas/' . $idted);
+                } else {
+
+                    //Kirim ke tabel titipan emas
+                    $data_titipan = [
+                        'idted'         => $idted,
+                        'tgl_ikut'      => $tgl,
+                        'tgl_berakhir'  => date('Y-m-d', strtotime("+$tenor months", strtotime($tgl))),
+                        'tenor'         => $tenor,
+                        'gram'          => $gram,
+                        'harga_ikut'    => $hrg_ikut,
+                        'jml_uang'      => $jml_uang,
+                        'status'        => $status
+                    ];
+                    $this->model_titipan->save($data_titipan);
+
+                    //melakukan potongan saldo emas
+                    $potongan_titipan = $this->model_transaksi->getLastTranById($idted, 'emas');
+                    $potongan_titipan = $potongan_titipan['saldo'] - $gram;
+
+                    $data_pengirim = [
+                        'tgl'   => date('Y-m-d'),
+                        'idted' => $idted,
+                        'uraian' => $ket,
+                        'masuk' => 0,
+                        'keluar' => $gram,
+                        'saldo' => $potongan_titipan,
+                        'jenis' => 'emas'
+                    ];
+
+                    $this->model_transaksi->save($data_pengirim);
+
+                    $this->session->set_flashdata('info', '
+                    <div class="alert alert-success" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4>SUCCESS: </h4> Titipan emas diproses ...
+                    </div>');
+
+                    redirect(base_url() . 'index.php/transaksi/titipan_emas/' . $idted);
+                }
+            }
+
+            $data = [
+                'saldo_emas' => $this->model_transaksi->getLastTranById($idted, 'emas'),
+                'page' => 'pages/member/member_titipan_emas'
+            ];
+
+            $this->load->view('dashboard', $data);
+        }
+    }
+
+    public function titipan_emas_profit($idted = null)
+    {
+        if ($idted == null) {
+            redirect(base_url());
+        } else {
+            $data = [
+                'titipan'    => $this->model_titipan->getById($idted),
+                'page' => 'pages/member/member_titipan_emas_profit'
+            ];
+
+            $this->load->view('dashboard', $data);
+        }
+    }
+
+    public function daftar_titipan_emas()
+    {
+
+        $data = [
+            'lists'    => $this->model_titipan->getAll(),
+            'page' => 'pages/admin/daftar_titipan_emas'
+        ];
+
+        $this->load->view('dashboard', $data);
+    }
+
+    public function titipan_emas_approve($idx = null)
+    {
+        if ($idx == null) {
+            redirect(base_url());
+        } else {
+            $this->model_titipan->approve($idx);
+
+            $this->session->set_flashdata('info', '
+            <div class="alert alert-success" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4>SUCCESS: </h4> Titipan emas approved ...
+            </div>');
+
+            redirect(base_url('index.php/transaksi/daftar_titipan_emas'));
         }
     }
 }

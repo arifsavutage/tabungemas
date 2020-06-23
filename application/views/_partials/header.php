@@ -35,7 +35,7 @@
     <!-- END CSS for this page -->
 
     <!-- SCRIPT -->
-    <script src="<?= base_url(); ?>assets/js/jquery.min.js"></script>
+    <script src="<?= base_url(); ?>assets/js/jquery-3.5.1.min.js"></script>
 </head>
 
 <body class="adminbody">
