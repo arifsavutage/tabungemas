@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Jun 2020 pada 17.32
+-- Waktu pembuatan: 26 Jun 2020 pada 19.08
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.0
 
@@ -86,7 +86,7 @@ INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `nohp`, `alamat
 ('01.00001', '2019-10-28', 'Susiloningsih 1', '08123635427', 'Reykjavik, Greendland', 'info@tabungemas.com', '$2y$10$nXCTezbOMOectb0p1XnIL.m4GYZKwBHV14R8w4bED1KjSZuXvdbTS', 'super', 'noimage.jpg', 'noimage.jpg', '12312388857', 'Vereenigde Oostindische Compagnie Bank', '', '01_00001.jpg', 'agen', 1),
 ('01.00002', '2019-11-05', 'Purnomo', '0812524426', '', 'ciptoted@tabungemas.com', '$2y$10$ca0pp55yIoQa7ktPaU20nOlApQit2dmHalQkGlaL1bX/ZYB6k/bZO', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'agen', 1),
 ('01.00003', '2019-11-05', 'Susiloningsih', '082136368828', 'puri asri perdana ', 'kopikukopika@gmail.com', '$2y$10$R8gD4lOjc3KSG3zUQDCpe.gQFEEyO0pB9UEmMjLTVYfpCxOF4Bosu', 'member', 'noimage.jpg', 'noimage.jpg', '303601041826532', 'BRI', 'susiloningsih', '01_00003.jpg', 'agen', 1),
-('01.00004', '2019-11-05', 'Cipto Purnomo', '081225230626', 'Jl truntum VI no 11 Tlogosari kulon pedurungan semarang', 'ciptopurnomo@tabungemas.com', '$2y$10$1cE9HF4MQZrdRu6hAzEs5uEcGfoFSgyMW57bURv0gIMORlYstGMpe', 'member', 'noimage.jpg', 'noimage.jpg', '0094680561', 'BCA', '', 'noimage.jpg', 'agen', 1),
+('01.00004', '2019-11-05', 'Cipto Purnomo', '081225230626', 'Jl truntum VI no 11 Tlogosari kulon pedurungan semarang', 'ciptopurnomo@tabungemas.com', '$2y$10$ca0pp55yIoQa7ktPaU20nOlApQit2dmHalQkGlaL1bX/ZYB6k/bZO', 'member', 'noimage.jpg', 'noimage.jpg', '0094680561', 'BCA', '', 'noimage.jpg', 'agen', 1),
 ('01.00005', '2019-11-05', 'Ariandaru Kusuma Yudha', '08112888470', '', 'kog434@gmail.com', '$2y$10$SSDq5wmc9kEdz3Jf1s7gl.VxKyYKuNa4RrOGo0xP27Y7PlU4DPk5O', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'agen', 1),
 ('01.00006', '2019-11-05', 'Muhammad Irfan Muammar', '082127055238', 'Jl pangeran panjunan rt1/rw1 desa Cisaat kecamatan Dukupuntang kabupaten Cirebon', 'irfanmuammar007@gmail.com', '$2y$10$ca0pp55yIoQa7ktPaU20nOlApQit2dmHalQkGlaL1bX/ZYB6k/bZO', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', '01_00006.png', 'agen', 1),
 ('01.00007', '2019-11-05', 'Dwi Sunu Raharjo', '085866139850', 'Jomblang legok rt 05 rw 02 semarang 50256', 'sunjoxang@gmail.com', '$2y$10$ca0pp55yIoQa7ktPaU20nOlApQit2dmHalQkGlaL1bX/ZYB6k/bZO', 'member', 'noimage.jpg', 'noimage.jpg', '111001002375536', 'Bank Rakyat Indonesia BRI', 'Dwi sunu raharjo', '01_00007.jpg', 'agen', 1),
@@ -187,7 +187,8 @@ CREATE TABLE `tb_bank` (
 --
 
 INSERT INTO `tb_bank` (`id`, `nm_bank`, `norek`, `an`) VALUES
-(2, 'BRI', '3036 0104 1826 532', 'Susiloningsih');
+(3, 'BCA', '803 051 7131', 'Susiloningsih'),
+(4, 'BRI', '3036 0104 1826 532', 'Susiloningsih');
 
 -- --------------------------------------------------------
 
@@ -333,7 +334,9 @@ INSERT INTO `tb_history` (`idx`, `tgl`, `idted`, `tujuan_jual`, `ket`, `nominal_
 (45, '2020-04-15 10:37:51', '01.00007', 'TED', 'jual emas ', 158760, 0.189, 0),
 (46, '2020-04-15 10:37:51', '01.00007', 'TED', 'jual emas ', 158760, 0.189, 0),
 (47, '2020-06-14 01:34:49', '01.00015', '', 'pembelian emas ', 1400000, 1.566, 1),
-(48, '2020-06-14 01:47:51', '01.00015', '', 'pembelian emas ', 2000000, 2.238, 1);
+(48, '2020-06-14 01:47:51', '01.00015', '', 'pembelian emas ', 2000000, 2.238, 1),
+(49, '2020-06-25 12:44:40', '01.00004', '', 'pembelian emas ', 2500000, 2.797, 1),
+(50, '2020-06-25 12:46:19', '01.00004', '', 'pembelian emas ', 900000, 1.007, 1);
 
 -- --------------------------------------------------------
 
@@ -432,7 +435,9 @@ CREATE TABLE `tb_titipan_emas` (
 --
 
 INSERT INTO `tb_titipan_emas` (`idx`, `idted`, `tgl_ikut`, `tgl_berakhir`, `tenor`, `gram`, `harga_ikut`, `jml_uang`, `status`) VALUES
-(1, '01.00015', '2020-06-23', '2020-12-23', 6, 6, 829000, 4974000, 'aktif');
+(1, '01.00015', '2020-06-23', '2020-12-23', 6, 6, 829000, 4974000, 'aktif'),
+(2, '01.00001', '2020-06-25', '2020-12-25', 6, 70, 829000, 58030000, 'aktif'),
+(3, '01.00004', '2020-06-25', '2020-12-25', 6, 2, 829000, 1658000, 'aktif');
 
 -- --------------------------------------------------------
 
@@ -442,11 +447,23 @@ INSERT INTO `tb_titipan_emas` (`idx`, `idted`, `tgl_ikut`, `tgl_berakhir`, `teno
 
 CREATE TABLE `tb_titipan_emas_detail` (
   `idx` int(11) NOT NULL,
-  `idted` varchar(8) NOT NULL,
+  `id_titipan` int(11) NOT NULL,
   `periode` date NOT NULL,
   `profit_persen` double NOT NULL,
   `profit_uang` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tb_titipan_emas_detail`
+--
+
+INSERT INTO `tb_titipan_emas_detail` (`idx`, `id_titipan`, `periode`, `profit_persen`, `profit_uang`) VALUES
+(1, 1, '2020-06-26', 1.25, 0),
+(2, 2, '2020-06-26', 1.25, 0),
+(3, 3, '2020-06-26', 1.25, 0),
+(4, 1, '2020-06-26', 0.75, 0),
+(5, 2, '2020-06-26', 0.75, 0),
+(6, 3, '2020-06-26', 0.75, 0);
 
 -- --------------------------------------------------------
 
@@ -635,7 +652,11 @@ INSERT INTO `tb_transaksi` (`id`, `tgl`, `idted`, `uraian`, `masuk`, `keluar`, `
 (163, '2020-06-14', '01.00015', 'deposit', 2000000, 0, 2082000, 'uang'),
 (164, '2020-06-14', '01.00015', 'bayar beli emas 2.238 gr', 0, 2000000, 82000, 'uang'),
 (165, '2020-06-14', '01.00015', 'beli emas', 2.238, 0, 7.336, 'emas'),
-(166, '2020-06-23', '01.00015', 'ikut titipan emas ', 0, 6, 1.336, 'emas');
+(166, '2020-06-23', '01.00015', 'ikut titipan emas ', 0, 6, 1.336, 'emas'),
+(167, '2020-06-25', '01.00001', 'ikut titipan emas ', 0, 70, 19.723, 'emas'),
+(168, '2020-06-25', '01.00004', 'beli emas', 1.007, 0, 1.007, 'emas'),
+(169, '2020-06-25', '01.00004', 'beli emas', 2.797, 0, 3.804, 'emas'),
+(170, '2020-06-25', '01.00004', 'ikut titipan emas ', 0, 2, 1.804, 'emas');
 
 -- --------------------------------------------------------
 
@@ -1048,7 +1069,7 @@ ALTER TABLE `tb_agt_tmp`
 -- AUTO_INCREMENT untuk tabel `tb_bank`
 --
 ALTER TABLE `tb_bank`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_bonus`
@@ -1066,25 +1087,25 @@ ALTER TABLE `tb_deposit`
 -- AUTO_INCREMENT untuk tabel `tb_history`
 --
 ALTER TABLE `tb_history`
-  MODIFY `idx` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `idx` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_titipan_emas`
 --
 ALTER TABLE `tb_titipan_emas`
-  MODIFY `idx` bigint(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idx` bigint(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_titipan_emas_detail`
 --
 ALTER TABLE `tb_titipan_emas_detail`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_verifikasi_email`

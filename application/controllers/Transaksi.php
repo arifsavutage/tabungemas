@@ -1411,7 +1411,7 @@ class Transaksi extends CI_Controller
             redirect(base_url());
         } else {
             $data = [
-                'titipan'    => $this->model_titipan->getById($idted),
+                'titipan'    => $this->model_titipan->totalProfitById($idted),
                 'page' => 'pages/member/member_titipan_emas_profit'
             ];
 
@@ -1447,5 +1447,63 @@ class Transaksi extends CI_Controller
 
             redirect(base_url('index.php/transaksi/daftar_titipan_emas'));
         }
+    }
+
+    public function titipan_emas_addprofit()
+    {
+
+        $this->form_validation->set_rules('profit', 'Prosentase Profit', 'required');
+
+        if ($this->form_validation->run()) {
+
+            $profit = $this->input->post('profit');
+            $date   = date('Y-m-d');
+
+            //load data titipan emas yg aktif
+            $data_aktif = $this->model_titipan->loadAktif();
+
+            foreach ($data_aktif as $aktif) {
+                if ($date > $aktif['tgl_berakhir']) {
+                    //ubah status jadi berhenti
+                    $this->model_titipan->updateBerhenti($aktif['idx']);
+                } else {
+                    //input ke detail titipan
+                    $in_data = [
+                        'id_titipan'    => $aktif['idx'],
+                        //'idted'         => $aktif['idted'],
+                        'periode'       => $date,
+                        'profit_persen' => $profit,
+                        'profit_uang'   => 0
+                    ];
+
+                    $this->model_titipan->adddetail($in_data);
+                }
+            }
+
+            $this->session->set_flashdata('info', '
+            <div class="alert alert-success" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4>SUCCESS: </h4> Tambah profit berhasil ...
+            </div>');
+
+            redirect(base_url('index.php/transaksi/daftar_titipan_emas'));
+        }
+
+        $data = [
+            'page' => 'pages/admin/add_titipan_emas_profit'
+        ];
+
+        $this->load->view('dashboard', $data);
+    }
+
+    public function titipan_emas_profitreport()
+    {
+        $data = [
+            'page' => 'pages/admin/report_titipan_emas_profit'
+        ];
+
+        $this->load->view('dashboard', $data);
     }
 }

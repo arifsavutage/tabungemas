@@ -73,15 +73,12 @@
                                     <li><a href="<?= base_url() . 'index.php/transaksi/alltransaction'; ?>"><span>Laporan Transaksi</span></a></li>
                                 </ul>
                             </li>
-                            <!--
                             <li class="submenu">
-                                <a href="#" class="subdrop"><span>Cabang</span> <span class="menu-arrow"></span> </a>
+                                <a href="#" class="subdrop"><span>Pengaturan</span> <span class="menu-arrow"></span> </a>
                                 <ul style="display: block;">
-                                    <li><a href="#"><span>Daftar Cabang</span></a></li>
-                                    <li><a href="#"><span>Laporan Cabang</span></a></li>
+                                    <li><a href="<?= base_url() . 'index.php/pengaturan/rekening'; ?>"><span>Rekening TED</span></a></li>
                                 </ul>
                             </li>
-                -->
                         </ul>
                     </li>
                 <?php

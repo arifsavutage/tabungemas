@@ -10,6 +10,14 @@
                     echo $this->session->flashdata('info');
                 }
                 ?>
+                <a role="button" href="<?= base_url() . 'index.php/transaksi/titipan_emas_addprofit'; ?>" class="btn btn-primary">
+                    <span class="btn-label"><i class="fa fa-plus"></i></span>Nominal Profit
+                </a>
+                <a role="button" href="<?= base_url() . 'index.php/transaksi/titipan_emas_profitreport'; ?>" class="btn btn-secondary">
+                    <span class="btn-label"><i class="fa fa-file"></i></span>Laporan Profit
+                </a>
+                <br />
+                <br />
                 <div class="table-responsive">
                     <input type="hidden" name="judul-berkas" id="judul-berkas" value="Daftar Titipan Emas">
                     <table class="table" id="export">

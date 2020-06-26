@@ -42,6 +42,11 @@
 
 <script src="<?= base_url(); ?>assets/plugins/trumbowyg/trumbowyg.min.js"></script>
 
+<script src="<?= base_url(); ?>assets/plugins/parsleyjs/parsley.min.js"></script>
+<script>
+    $('#form').parsley();
+</script>
+
 <script type="text/javascript">
     //fungsi untuk filtering data berdasarkan tanggal 
     var start_date;
