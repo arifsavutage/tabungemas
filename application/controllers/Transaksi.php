@@ -1326,8 +1326,8 @@ class Transaksi extends CI_Controller
 
                 //harga terkini
                 $get_harga  = $this->db->query("SELECT `IDX`, `UPDATE_AT`, `HRG_BELI`, `HRG_JUAL` FROM `t_update_ubs` ORDER BY `IDX` DESC LIMIT 1")->row_array();
-                $hrg_ikut   = (int) str_replace(",", "", $get_harga['HRG_JUAL']);
-                $jml_uang   = (int) str_replace(",", "", $get_harga['HRG_JUAL']) * $gram;
+                $hrg_ikut   = (int) str_replace(",", "", $get_harga['HRG_BELI']);
+                $jml_uang   = (int) str_replace(",", "", $get_harga['HRG_BELI']) * $gram;
 
                 //limit simpanan pokok emas
                 $lim    = $this->model_transaksi->getFirstTransaction($idted, 'emas');

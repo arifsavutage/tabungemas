@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 24 Jun 2020 pada 15.12
+-- Waktu pembuatan: 27 Jun 2020 pada 06.46
 -- Versi server: 10.3.23-MariaDB
 -- Versi PHP: 7.3.6
 
@@ -91,7 +91,7 @@ INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `nohp`, `alamat
 ('01.00006', '2019-11-05', 'Muhammad Irfan Muammar', '082127055238', 'Jl pangeran panjunan rt1/rw1 desa Cisaat kecamatan Dukupuntang kabupaten Cirebon', 'irfanmuammar007@gmail.com', '$2y$10$h.mIK.JBj5B9RCyBAzN9C.XT0HMBCCrMWo4sKhe10akouejlcB9mm', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', '01_00006.jpg', 'agen', 1),
 ('01.00007', '2019-11-05', 'Dwi Sunu Raharjo', '085866139850', 'Jomblang legok rt 05 rw 02 semarang 50256', 'sunjoxang@gmail.com', '$2y$10$WNm2C8U2hwQzKySAvrSzD..cB6wwQqq8kDMk/L4422FYOVugtuqlC', 'member', 'noimage.jpg', 'noimage.jpg', '111001002375536', 'Bank Rakyat Indonesia BRI', 'Dwi sunu raharjo', '01_00007.jpg', 'agen', 1),
 ('01.00008', '2019-11-05', 'Eko Nur Prasetyo, Spt. Msi', '085727611329', 'Tegalsari barat 3 rt 01 rw 11 no 11', 'ekonurprasetyo1984@gmail.com', '$2y$10$Z9ZGBwoCdE5vnTfgGvgRrOxDkrGPspPCJ1mv4Vez59ipFGAtOPM5u', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'agen', 1),
-('01.00009', '2019-11-05', 'Yayan Supardi', '081325123353', 'Slukatan RT 07/ RW 02', 'yayansupardi46@gmail.com', '$2y$10$6mc3VbHXWrmmd7Xaes2Sd.e27w9UzS8Vl7aO8Jjv/mI8m6PO5zcB.', 'member', 'noimage.jpg', 'noimage.jpg', '8030322925', 'BCA', '', '01_00009.jpg', 'agen', 1),
+('01.00009', '2019-11-05', 'Yayan Supardi', '081325123353', 'Slukatan RT 07/ RW 02', 'yayansupardi46@gmail.com', '$2y$10$YcHqODIqfKEPAR5ft.rjBuxhkouFu0FdJug.eTTObm/sNsm.ZarYa', 'member', 'noimage.jpg', 'noimage.jpg', '8030322925', 'BCA', '', '01_00009.jpg', 'agen', 1),
 ('01.00010', '2019-11-05', 'Sudarto', '085747410593', 'jl kradenan lama no 7 RT 08 RW 05 Kelurahan Sukorejo Kecamatan Gunungpati Semarang', 'sudartosw@gmail.com', '$2y$10$CH2eYl2j98pxhBSCAXTff.oldpRTes0wzvJNLd9cBCSnPIzn130oC', 'member', 'noimage.jpg', 'noimage.jpg', '2465191960', 'BCA', '', 'noimage.jpg', 'agen', 1),
 ('01.00011', '2019-11-05', 'Ummy Mubarokah', '081325469975', '', 'ummyrobaei@yahoo.com', '$2y$10$5hgNcGga7G3islwWJF5q4O0023mukbssefEwuTQjOOZBdqYbYBgEO', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'agen', 1),
 ('01.00012', '2019-11-06', 'Thoriq Diaz Pahlevi Daeng Matarane', '085799448908', '', 'thoriqdiaz07@gmail.com', '$2y$10$d0WYOlqAc07qfrj2bmzB.eJM6BDMWRsy4TUO9p.AK2270/s9jiC3q', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1),
@@ -142,9 +142,11 @@ INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `nohp`, `alamat
 ('01.00057', '2020-06-02', 'Raffendra Gilang Dicahya', '082143165184', '', 'raffendragilangdicahya@gmail.com', '$2y$10$tmcB.ceT5M4Edf8YJVQYSem3FoJBzNWr3iY/ot//3EsXPf3FD18J6', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1),
 ('01.00058', '2020-06-08', 'Junaidi', '0895360905875', 'Jl. Menoreh Tengah X No. 6 Sampangan Gajahmungkur Kota Semarang', 'junelqudsy@gmail.com', '$2y$10$zIGFEh1iFU.kahX0zD/SKO2r9/augmxnLP3Zw1gZ..sX1gtwI9dDK', 'member', 'noimage.jpg', 'noimage.jpg', '8035099243', 'BCA', 'Junaidi', 'noimage.jpg', 'agen', 1),
 ('01.00059', '2020-06-08', 'Saiful Rizal', '082323011056', '', 'rizalfkubsemarang@gmail.com', '$2y$10$0JCV6vtjZcGzdkcyoydGpO.iN9d5E4KkcaT/hxiLsyB33HivtZB7G', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1),
-('01.00060', '2020-06-09', 'Haryono', '085876100940', 'Dsn Tumbu Purwodadi KEC Tegalrejo Kab Magelang', 'ahmadkahar.mgl@gmail.com', '$2y$10$A6r7xlRjQhvhWQyxZuV8Vuum34LTTY5Ly8q86INQZl9HnkC4sMxxS', 'member', 'noimage.jpg', 'noimage.jpg', '100601002755535', 'BRI', 'HARYONO', 'noimage.jpg', 'agen', 1),
+('01.00060', '2020-06-09', 'Haryono', '085876100940', 'Dsn Tumbu Purwodadi KEC Tegalrejo Kab Magelang', 'ahmadkahar.mgl@gmail.com', '$2y$10$A6r7xlRjQhvhWQyxZuV8Vuum34LTTY5Ly8q86INQZl9HnkC4sMxxS', 'member', 'noimage.jpg', 'noimage.jpg', '100601002755535', 'BRI', 'HARYONO', '01_00060.jpg', 'agen', 1),
 ('01.00061', '2020-06-16', 'Ekosetyocahyono', '081937676933', '', 'ekosetyo244@gmail.com', '$2y$10$Q0.Y4xwLf7yaXmdmTOZbQOSbFzg808C/3wUAQYsi6KI6hwTXHVHF6', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1),
-('01.00062', '2020-06-20', 'Prawira Rajendra Arva Habib Kusuma', '085101292189', '', 'arvakusumatabunganemas@gmail.com', '$2y$10$0hORzQL2gkZpk8cqidhk1eSi6rV2wjk68JXn6VlL89JYlqakxSMKa', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1);
+('01.00062', '2020-06-20', 'Prawira Rajendra Arva Habib Kusuma', '085101292189', '', 'arvakusumatabunganemas@gmail.com', '$2y$10$0hORzQL2gkZpk8cqidhk1eSi6rV2wjk68JXn6VlL89JYlqakxSMKa', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1),
+('01.00063', '2020-06-24', 'Agus Prasetyo', '085950726801', '', 'dspsmg1@gmail.com', '$2y$10$sKqpPS0lULSe0/CvS.Ayp.PW0QTDhORPwcsU8eGd/3qZZ77Hq9/Yq', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'agen', 1),
+('01.00064', '2020-06-25', 'SRI WAHYUNI', '08156516580', '', 'maysafif.02@gmail.com', '$2y$10$/zi2IJQ5O9ASGLppJ0i4YOZISXAt6D31UWBMTL3ApL9T.IW80J3jK', 'member', 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1);
 
 -- --------------------------------------------------------
 
@@ -357,7 +359,8 @@ INSERT INTO `tb_history` (`idx`, `tgl`, `idted`, `tujuan_jual`, `ket`, `nominal_
 (63, '2020-06-23 16:34:47', '01.00027', '', 'pembelian emas ', 10400000, 12.043, 1),
 (64, '2020-06-23 16:37:10', '01.00062', '', 'pembelian emas ', 1728000, 2.001, 1),
 (65, '2020-06-23 16:38:42', '01.00023', '', 'pembelian emas ', 1728000, 2.001, 1),
-(66, '2020-06-23 16:40:10', '01.00011', '', 'pembelian emas ', 10400000, 12.043, 1);
+(66, '2020-06-23 16:40:10', '01.00011', '', 'pembelian emas ', 10400000, 12.043, 1),
+(68, '2020-06-25 10:10:15', '01.00063', '', 'pembelian emas ', 2000000, 2.308, 1);
 
 -- --------------------------------------------------------
 
@@ -382,13 +385,13 @@ CREATE TABLE `tb_jaringan` (
 INSERT INTO `tb_jaringan` (`idagt`, `idreferal`, `idupline`, `jml_downline`, `pos_jar`, `pos_level`, `tgl_proses`) VALUES
 ('01.00001', '0', '0', 3, '1', 1, '2019-10-28'),
 ('01.00002', '01.00001', '01.00001', 1, '11', 2, '0000-00-00'),
-('01.00003', '01.00002', '01.00002', 25, '111', 3, '0000-00-00'),
+('01.00003', '01.00002', '01.00002', 26, '111', 3, '0000-00-00'),
 ('01.00004', '01.00003', '01.00003', 5, '1111', 4, '0000-00-00'),
 ('01.00005', '01.00004', '01.00004', 1, '11111', 5, '0000-00-00'),
 ('01.00006', '01.00005', '01.00005', 4, '111111', 6, '0000-00-00'),
 ('01.00007', '01.00003', '01.00003', 1, '1112', 4, '0000-00-00'),
 ('01.00008', '01.00007', '01.00007', 0, '11121', 5, '0000-00-00'),
-('01.00009', '01.00003', '01.00003', 2, '1113', 4, '0000-00-00'),
+('01.00009', '01.00003', '01.00003', 3, '1113', 4, '0000-00-00'),
 ('01.00010', '01.00003', '01.00003', 5, '1114', 4, '0000-00-00'),
 ('01.00011', '01.00003', '01.00003', 1, '1115', 4, '0000-00-00'),
 ('01.00012', '01.00011', '01.00011', 0, '11151', 5, '0000-00-00'),
@@ -441,7 +444,9 @@ INSERT INTO `tb_jaringan` (`idagt`, `idreferal`, `idupline`, `jml_downline`, `po
 ('01.00059', '01.00004', '01.00004', 0, '11114', 5, '0000-00-00'),
 ('01.00060', '01.00055', '01.00055', 0, '1112511', 6, '0000-00-00'),
 ('01.00061', '01.00004', '01.00004', 0, '11115', 5, '0000-00-00'),
-('01.00062', '01.00027', '01.00027', 0, '111421', 6, '0000-00-00');
+('01.00062', '01.00027', '01.00027', 0, '111421', 6, '0000-00-00'),
+('01.00063', '01.00009', '01.00009', 0, '11133', 5, '0000-00-00'),
+('01.00064', '01.00003', '01.00003', 0, '11126', 4, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -466,21 +471,22 @@ CREATE TABLE `tb_titipan_emas` (
 --
 
 INSERT INTO `tb_titipan_emas` (`idx`, `idted`, `tgl_ikut`, `tgl_berakhir`, `tenor`, `gram`, `harga_ikut`, `jml_uang`, `status`) VALUES
-(1, '01.00015', '2020-06-23', '2021-06-23', 12, 4, 797000, 3188000, 'pending'),
-(2, '01.00051', '2020-06-23', '2020-12-23', 6, 6, 797000, 4782000, 'aktif'),
-(3, '01.00042', '2020-06-23', '2020-12-23', 6, 2, 797000, 1594000, 'aktif'),
-(4, '01.00052', '2020-06-23', '2020-12-23', 6, 2, 797000, 1594000, 'aktif'),
-(5, '01.00011', '2020-06-23', '2020-12-23', 6, 2, 797000, 1594000, 'aktif'),
-(6, '01.00053', '2020-06-23', '2020-12-23', 6, 6, 797000, 4782000, 'aktif'),
-(7, '01.00025', '2020-06-23', '2020-12-23', 6, 10, 797000, 7970000, 'aktif'),
-(8, '01.00003', '2020-06-23', '2020-12-23', 6, 2, 797000, 1594000, 'aktif'),
-(9, '01.00003', '2020-06-23', '2020-12-23', 6, 2, 797000, 1594000, 'aktif'),
-(10, '01.00001', '2020-06-23', '2021-06-23', 12, 4, 797000, 3188000, 'aktif'),
-(11, '01.00009', '2020-06-23', '2020-12-23', 6, 2, 797000, 1594000, 'aktif'),
-(12, '01.00027', '2020-06-23', '2020-12-23', 6, 12, 797000, 9564000, 'aktif'),
-(13, '01.00062', '2020-06-23', '2020-12-23', 6, 2, 797000, 1594000, 'aktif'),
-(14, '01.00023', '2020-06-23', '2020-12-23', 6, 2, 797000, 1594000, 'aktif'),
-(15, '01.00011', '2020-06-23', '2020-12-23', 6, 12, 797000, 9564000, 'aktif');
+(1, '01.00051', '2020-04-02', '2020-09-02', 6, 6, 878695, 4782000, 'aktif'),
+(2, '01.00042', '2020-04-09', '2020-09-09', 6, 2, 893325, 1594000, 'aktif'),
+(3, '01.00052', '2020-04-10', '2020-09-10', 6, 2, 893325, 1594000, 'aktif'),
+(4, '01.00011', '2020-04-26', '2020-09-26', 6, 2, 913460, 1594000, 'aktif'),
+(5, '01.00053', '2020-05-09', '2020-10-09', 6, 2, 898830, 4782000, 'aktif'),
+(6, '01.00054', '2020-05-17', '2020-10-17', 6, 4, 877686, 4782000, 'aktif'),
+(7, '01.00025', '2020-05-27', '2020-10-27', 6, 10, 889794, 7970000, 'aktif'),
+(8, '01.00003', '2020-05-27', '2020-10-27', 6, 2, 889794, 1594000, 'aktif'),
+(9, '01.00003', '2020-05-27', '2020-10-27', 6, 2, 889794, 1594000, 'aktif'),
+(10, '01.00001', '2020-06-01', '2021-06-01', 12, 4, 889794, 3188000, 'aktif'),
+(11, '01.00009', '2020-09-06', '2020-09-12', 6, 2, 829758, 1594000, 'aktif'),
+(12, '01.00027', '2020-06-20', '2020-12-20', 6, 12, 850947, 9564000, 'aktif'),
+(13, '01.00062', '2020-06-20', '2020-12-20', 6, 2, 850947, 1594000, 'aktif'),
+(14, '01.00023', '2020-06-20', '2020-12-20', 6, 2, 850947, 1594000, 'aktif'),
+(15, '01.00011', '2020-06-23', '2020-12-23', 6, 12, 850947, 9564000, 'aktif'),
+(16, '01.00063', '2020-06-25', '2020-12-25', 6, 2, 809000, 1618000, 'aktif');
 
 -- --------------------------------------------------------
 
@@ -490,11 +496,28 @@ INSERT INTO `tb_titipan_emas` (`idx`, `idted`, `tgl_ikut`, `tgl_berakhir`, `teno
 
 CREATE TABLE `tb_titipan_emas_detail` (
   `idx` int(11) NOT NULL,
-  `idted` varchar(8) NOT NULL,
+  `id_titipan` int(11) NOT NULL,
   `periode` date NOT NULL,
   `profit_persen` double NOT NULL,
   `profit_uang` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tb_titipan_emas_detail`
+--
+
+INSERT INTO `tb_titipan_emas_detail` (`idx`, `id_titipan`, `periode`, `profit_persen`, `profit_uang`) VALUES
+(1, 1, '2020-06-27', 14.15, 0),
+(2, 2, '2020-06-27', 12.35, 0),
+(3, 3, '2020-06-27', 11.35, 0),
+(4, 4, '2020-06-27', 8.85, 0),
+(5, 5, '2020-06-27', 7.35, 0),
+(6, 6, '2020-06-27', 5.2, 0),
+(7, 7, '2020-06-27', 4.2, 0),
+(8, 8, '2020-06-27', 3.2, 0),
+(9, 9, '2020-06-27', 3.2, 0),
+(10, 10, '2020-06-27', 3.2, 0),
+(11, 11, '2020-06-27', 2.2, 0);
 
 -- --------------------------------------------------------
 
@@ -724,7 +747,11 @@ INSERT INTO `tb_transaksi` (`id`, `tgl`, `idted`, `uraian`, `masuk`, `keluar`, `
 (204, '2020-06-24', '01.00023', 'beli emas', 2.001, 0, 2.031, 'emas'),
 (205, '2020-06-23', '01.00023', 'ikut titipan emas ', 0, 2, 0.031, 'emas'),
 (206, '2020-06-24', '01.00011', 'beli emas', 12.043, 0, 13.157, 'emas'),
-(207, '2020-06-23', '01.00011', 'ikut titipan emas ', 0, 12, 1.157, 'emas');
+(207, '2020-06-23', '01.00011', 'ikut titipan emas ', 0, 12, 1.157, 'emas'),
+(208, '2020-06-24', '01.00063', 'simp. pokok & simp. wajib', 0.024, 0, 0.024, 'emas'),
+(209, '2020-06-25', '01.00064', 'simp. pokok & simp. wajib', 0.024, 0, 0.024, 'emas'),
+(210, '2020-06-25', '01.00063', 'beli emas', 2.308, 0, 2.332, 'emas'),
+(211, '2020-06-25', '01.00063', 'ikut titipan emas ', 0, 2, 0.332, 'emas');
 
 -- --------------------------------------------------------
 
@@ -1089,7 +1116,9 @@ INSERT INTO `t_update_ubs` (`IDX`, `UPDATE_AT`, `HRG_BELI`, `HRG_JUAL`) VALUES
 (325, '2020-06-21 00:00:05', '890,947', '784,000'),
 (326, '2020-06-22 00:00:04', '890,947', '784,000'),
 (327, '2020-06-23 00:00:05', '903,560', '797,000'),
-(328, '2020-06-24 00:00:05', '904,064', '799,000');
+(328, '2020-06-24 00:00:05', '904,064', '799,000'),
+(329, '2020-06-25 00:00:05', '906,587', '809,000'),
+(330, '2020-06-26 00:00:04', '907,596', '800,000');
 
 --
 -- Indexes for dumped tables
@@ -1187,7 +1216,7 @@ ALTER TABLE `t_update_ubs`
 -- AUTO_INCREMENT untuk tabel `tb_agt_tmp`
 --
 ALTER TABLE `tb_agt_tmp`
-  MODIFY `idtmp` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `idtmp` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_bank`
@@ -1211,25 +1240,25 @@ ALTER TABLE `tb_deposit`
 -- AUTO_INCREMENT untuk tabel `tb_history`
 --
 ALTER TABLE `tb_history`
-  MODIFY `idx` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `idx` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_titipan_emas`
 --
 ALTER TABLE `tb_titipan_emas`
-  MODIFY `idx` bigint(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `idx` bigint(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_titipan_emas_detail`
 --
 ALTER TABLE `tb_titipan_emas_detail`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=212;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_verifikasi_email`
@@ -1247,7 +1276,7 @@ ALTER TABLE `tb_widraw`
 -- AUTO_INCREMENT untuk tabel `t_update_ubs`
 --
 ALTER TABLE `t_update_ubs`
-  MODIFY `IDX` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=329;
+  MODIFY `IDX` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=331;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
