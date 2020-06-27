@@ -13,7 +13,7 @@
 
 
         $profit_gr      = ($baris['totalpersen'] / 100) * $baris['gram'];
-        $profit_uang    = $profit_gr * $baris['harga_ikut'];
+        $profit_uang    = floor($profit_gr * $baris['harga_ikut']);
     ?>
         <div class="col-xs-12 col-md-6 col-lg-6 col-xl-6">
             <div class="card-box noradius noborder bg-info">

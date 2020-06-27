@@ -54,8 +54,8 @@
                                     <td><?= date('d/m/Y', strtotime($row['tgl_berakhir'])); ?></td>
                                     <td><?= $row['tenor']; ?></td>
                                     <td><?= $row['gram']; ?></td>
-                                    <td><?= $row['harga_ikut']; ?></td>
-                                    <td><?= $row['jml_uang']; ?></td>
+                                    <td><?= number_format($row['harga_ikut'], 0, ',', '.'); ?></td>
+                                    <td><?= number_format($row['jml_uang'], 0, ',', '.'); ?></td>
                                     <td><?= $status; ?></td>
                                     <td>
                                         <?php
