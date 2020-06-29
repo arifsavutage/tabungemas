@@ -1324,10 +1324,15 @@ class Transaksi extends CI_Controller
                 $ket    = $this->input->post('keterangan');
                 $status = $this->input->post('status'); //pending, aktif, berhenti
 
+                //Selisih harga
+                $selisih_hrgbeli    = $this->model_uang->getValueById(1);
+
                 //harga terkini
                 $get_harga  = $this->db->query("SELECT `IDX`, `UPDATE_AT`, `HRG_BELI`, `HRG_JUAL` FROM `t_update_ubs` ORDER BY `IDX` DESC LIMIT 1")->row_array();
-                $hrg_ikut   = (int) str_replace(",", "", $get_harga['HRG_BELI']);
-                $jml_uang   = (int) str_replace(",", "", $get_harga['HRG_BELI']) * $gram;
+
+                $hrgfix     = (int) str_replace(",", "", $get_harga['HRG_BELI']) - $selisih_hrgbeli['selisih_beli'];
+                $hrg_ikut   = $hrgfix;
+                $jml_uang   = $hrgfix * $gram;
 
                 //limit simpanan pokok emas
                 $lim    = $this->model_transaksi->getFirstTransaction($idted, 'emas');
