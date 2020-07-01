@@ -88,6 +88,9 @@ class Member extends CI_Controller
         } else {
 
             $this->form_validation->set_rules('idted', 'No ID', 'required');
+            $this->form_validation->set_rules('nmwaris', 'Nama Waris', 'required');
+            $this->form_validation->set_rules('hubwaris', 'Hubungan Waris', 'required');
+            $this->form_validation->set_rules('hpwaris', 'No. HP Waris', 'required');
 
             if ($this->form_validation->run()) {
                 $idted  = $this->input->post('idted');
@@ -96,6 +99,9 @@ class Member extends CI_Controller
                 $norek  = $this->input->post('norek');
                 $bank   = $this->input->post('bank');
                 $an     = $this->input->post('an');
+                $nmwaris    = strtolower($this->input->post('nmwaris'));
+                $hubwaris   = strtolower($this->input->post('hubwaris'));
+                $hpwaris    = $this->input->post('hpwaris');
 
                 $data = [
                     'idted' => "$idted",
@@ -103,7 +109,10 @@ class Member extends CI_Controller
                     'alamat' => "$alamat",
                     'norek ' => "$norek",
                     'bank'  => "$bank",
-                    'an'    => "$an"
+                    'an'    => "$an",
+                    'nmwaris' => "$nmwaris",
+                    'hubwaris' => "$hubwaris",
+                    'hpwaris'  => "$hpwaris"
                 ];
 
                 $update = $this->model_tedagt->update($data);
@@ -155,6 +164,9 @@ class Member extends CI_Controller
         } else {
 
             $this->form_validation->set_rules('idted', 'No ID', 'required');
+            $this->form_validation->set_rules('nmwaris', 'Nama Waris', 'required');
+            $this->form_validation->set_rules('hubwaris', 'Hubungan Waris', 'required');
+            $this->form_validation->set_rules('hpwaris', 'No. HP Waris', 'required');
 
             if ($this->form_validation->run()) {
                 $idted  = $this->input->post('idted');
@@ -164,13 +176,20 @@ class Member extends CI_Controller
                 $bank   = $this->input->post('bank');
                 $an     = $this->input->post('an');
 
+                $nmwaris    = strtolower($this->input->post('nmwaris'));
+                $hubwaris   = strtolower($this->input->post('hubwaris'));
+                $hpwaris    = $this->input->post('hpwaris');
+
                 $data = [
                     'idted' => "$idted",
                     'nohp'  => "$nohp",
                     'alamat' => "$alamat",
                     'norek ' => "$norek",
                     'bank'  => "$bank",
-                    'an'    => "$an"
+                    'an'    => "$an",
+                    'nmwaris' => "$nmwaris",
+                    'hubwaris' => "$hubwaris",
+                    'hpwaris'  => "$hpwaris"
                 ];
 
                 $update = $this->model_tedagt->update($data);

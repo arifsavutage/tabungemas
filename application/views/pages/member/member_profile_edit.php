@@ -32,6 +32,39 @@
                         <label for="an">Atas Nama</label>
                         <input type="text" class="form-control" id="anid" name="an" value="<?= $detail['an'] ?>">
                     </div>
+
+                    <?php
+                    if (($detail['nmwaris'] == "") && ($detail['hubwaris'] == "") && ($detail['hpwaris'] == "")) {
+                        $disabled = '';
+                    } else {
+                        $disabled = 'disabled';
+                    }
+                    ?>
+                    <fieldset <?= $disabled ?>>
+                        <div class="form-group">
+                            <label for="nmwaris">Nama Ahli Waris</label>
+                            <input type="text" class="form-control" id="nmwarisid" name="nmwaris" value="<?= $detail['nmwaris'] ?>" placeholder="Nama ahli waris" required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="hubwaris">Hubungan</label>
+                            <!--<input type="text" class="form-control" name="hubwaris" value="<?= $detail['hubwaris'] ?>" placeholder="Hubungan dengan ahli waris" <?= $readonly ?> required="">-->
+                            <select name="hubwaris" class="form-control" id="hubwarisid" required="">
+                                <?php
+                                $arr = ['anak' => "Anak", 'ortu' => "Orang tua", 'saudara' => "Saudara kandung", 'istri' => 'Istri', 'suami' => 'Suami'];
+                                foreach ($arr as $val => $item) {
+                                    echo "<option value='$val'";
+                                    if ($detail['hubwaris'] == "$val") echo "selected='selected'";
+                                    echo ">$item</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="hpwaris">No. Hp</label>
+                            <input type="text" class="form-control" id="hpwarisid" name="hpwaris" value="<?= $detail['hpwaris'] ?>" placeholder="No. kontak yang bisa dihubungi" required="">
+                        </div>
+                    </fieldset>
+
                     <button type="submit" class="btn btn-secondary btn-lg btn-block">Edit</button>
 
                 </form>

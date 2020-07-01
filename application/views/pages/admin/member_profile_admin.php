@@ -67,6 +67,7 @@
                         <i class="fas fa-map-marker"></i> <?= $detail['alamat']; ?>
                     </li>
                     <li class="list-group-item disabled"><i class="fas fa-university"></i> <?= $detail['norek'] . " | " . $detail['bank'] . " | an. " . $detail['an']; ?></li>
+                    <li class="list-group-item disabled"><i class="fas fa-hand-holding-heart"></i> <?= ucwords($detail['nmwaris']) . " | " . ucwords($detail['hubwaris']) . " | " . $detail['hpwaris']; ?></li>
                 </ul>
                 <?= $upgrade; ?>
             </div>
