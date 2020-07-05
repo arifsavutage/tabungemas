@@ -238,6 +238,12 @@
             showDropdowns: true
         });
     });
+    $(function() {
+        $('.dates').daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true
+        });
+    });
 </script>
 <script>
     $(document).ready(function() {

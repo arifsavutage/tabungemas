@@ -1505,9 +1505,22 @@ class Transaksi extends CI_Controller
 
     public function titipan_emas_profitreport()
     {
-        $data = [
-            'page' => 'pages/admin/report_titipan_emas_profit'
-        ];
+        $this->form_validation->set_rules('tgl1', 'Range tanggal 1', 'required');
+        $this->form_validation->set_rules('tgl2', 'Range tanggal 2', 'required');
+
+        if ($this->form_validation->run()) {
+
+            $date1  = $this->input->post('tgl1');
+            $date2  = $this->input->post('tgl2');
+
+            //$data['reports'] = $this->model_titipan->profitbyrange($date1, $date2);
+
+            $data['reports'] = $this->model_titipan->profitbyrange($date1, $date2);
+        } else {
+            $data['reports'] = $this->model_titipan->profitAll();
+        }
+
+        $data['page'] = 'pages/admin/report_titipan_emas_profit';
 
         $this->load->view('dashboard', $data);
     }

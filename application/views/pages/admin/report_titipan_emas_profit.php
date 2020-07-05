@@ -1,60 +1,104 @@
 <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-6 offset-xl-3">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <div class="card mb-3">
             <div class="card-header">
                 <h3>Laporan Profit Titipan Emas</h3>
             </div>
             <div class="card-body">
-                <form name="report" action="" method="post" data-parsley-validate novalidate>
-                    <div class="form-row mb-4">
-                        <div class="col">
-                            <label for="bulan">Bulan <span class="text-danger">*</span></label>
-                            <select name="bulan" class="form-control" data-parsley-trigger="change" required>
-                                <option value="">: Pilih</option>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <form name="cekwidraw" method="post" action="">
+                            <div class="form-row align-items-center">
+                                <div class="col-auto">
+                                    <label class="sr-only" for="tgl1">Tgl Awal</label>
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fas fa-calendar"></i></div>
+                                        </div>
+                                        <input type="text" class="form-control" name="tgl1" id="tgl1" placeholder="yyyy-mm-dd">
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <label class="form-check-label">
+                                        s/d
+                                    </label>
+                                </div>
+                                <div class="col-auto">
+                                    <label class="sr-only" for="tgl2">Tgl Akhir</label>
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fas fa-calendar"></i></div>
+                                        </div>
+                                        <input type="text" class="form-control" name="tgl2" id="tgl2" placeholder="yyyy-mm-dd">
+                                    </div>
+                                </div>
+
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-warning mb-2">Cek</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <?php
+                if (isset($_POST)) :
+                ?>
+                    <div class="table-responsive">
+                        <table class="table" id="export">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>ID</th>
+                                    <th>Nama Anggota</th>
+                                    <th>Tgl. Ikut</th>
+                                    <th>Tgl. Berakhir</th>
+                                    <th>Tenor</th>
+                                    <th>Jml. Gr</th>
+                                    <th>Harga</th>
+                                    <th>Profit %</th>
+                                    <th>Profit Gr</th>
+                                    <th>Profit Rp</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
                                 <?php
-                                $bln    = [
-                                    '01'    => 'Januari',
-                                    '02'    => 'Februari',
-                                    '03'    => 'Maret',
-                                    '04'    => 'April',
-                                    '05'    => 'Mei',
-                                    '06'    => 'Juni',
-                                    '07'    => 'Juli',
-                                    '08'    => 'Agustus',
-                                    '09'    => 'September',
-                                    '10'    => 'Oktober',
-                                    '11'    => 'November',
-                                    '12'    => 'Desember'
-                                ];
-                                foreach ($bln as $key => $value) {
-                                    echo "<option value='$key'>$value</option>";
+                                $i = 1;
+                                foreach ($reports as $report) {
+
+                                    $profitgr   = round(($report['jmlprofit'] / 100) * $report['gram'], 2);
+                                    $profitcuan = $profitgr * $report['harga_ikut'];
+                                    echo "
+                                <tr>
+                                    <td>$i</td>
+                                    <td>$report[idted]</td>
+                                    <td>$report[nama_lengkap]</td>
+                                    <td>$report[tgl_ikut]</td>
+                                    <td>$report[tgl_berakhir]</td>
+                                    <td>$report[tenor]</td>
+                                    <td>$report[gram]</td>
+                                    <td>" . number_format($report['harga_ikut'], 0, ',', '.') . "</td>
+                                    <td>$report[jmlprofit]</td>
+                                    <td>$profitgr gr</td>
+                                    <td>" . number_format($profitcuan, 0, ',', '.') . "</td>
+                                    <td>$report[status]</td>
+                                </tr>
+                                ";
+
+                                    $i++;
                                 }
                                 ?>
-                            </select>
-                        </div>
-                        <div class="col">
-                            <label for="tahun">Tahun<span class="text-danger">*</span></label>
-                            <?php $tahun = date('Y'); ?>
-                            <input type="text" name="tahun" value="<?= $tahun; ?>" data-parsley-trigger="change" required placeholder="yyyy" class="form-control" id="tahun">
-
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
-
-                    <div class="form-group text-right m-b-0">
-                        <button class="btn btn-primary" type="submit">
-                            Submit
-                        </button>
-                        <button type="reset" class="btn btn-secondary m-l-5">
-                            Cancel
-                        </button>
-                    </div>
-
-                </form>
-
+                <?php
+                endif;
+                ?>
             </div>
         </div>
     </div>
 </div>
+
 <style>
     .parsley-error {
         border-color: #ff5d48 !important;
