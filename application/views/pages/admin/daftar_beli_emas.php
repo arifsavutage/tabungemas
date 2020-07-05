@@ -34,7 +34,7 @@
                                 } else {
                                     $label = "<span class='badge badge-success'>sudah</span>";
                                 }
-                                ?>
+                            ?>
                                 <tr>
                                     <td scope="row"><?= $no; ?></td>
                                     <td><?= date('d-m-Y', strtotime($detail['tgl'])); ?></td>
@@ -97,14 +97,14 @@
                                         </div>
 
                                         <?php
-                                            if ($detail['status'] == 1) {
-                                                $status = 'aria-disabled="true"';
-                                                $disabled = "disabled";
-                                            } else {
-                                                $status = '';
-                                                $disabled = "";
-                                            }
-                                            ?>
+                                        if ($detail['status'] == 1) {
+                                            $status = 'aria-disabled="true"';
+                                            $disabled = "disabled";
+                                        } else {
+                                            $status = '';
+                                            $disabled = "";
+                                        }
+                                        ?>
                                         <a href="<?= base_url() . "index.php/transaksi/hapus_beli_emas/$detail[idx]"; ?>" class="btn btn-danger btn-sm <?= $disabled; ?>" tabindex="-1" role="button" onclick="return valdel()" <?= $status; ?>><i class="fa fa-times"></i></a>
                                         <script>
                                             function valdel() {

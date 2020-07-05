@@ -13,7 +13,7 @@
                 <form name="titipanemas" method="post" action="">
                     <input type="hidden" name="tgl" value="<?= date('Y-m-d'); ?> " />
                     <input type="hidden" name="keterangan" value="<?= "ikut titipan emas" ?> " />
-                    <input type="hidden" name="idted" value="<?= $this->session->userdata('id'); ?> " />
+                    <input type="hidden" name="idted" value="<?= $idted; ?> " />
                     <input type="hidden" name="status" value="pending" />
 
                     <div class="form-row">

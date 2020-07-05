@@ -14,7 +14,7 @@
                     <input type="hidden" name="hrgbeli" id="hrgbeli" value="<?= $beli; ?> " />
                     <input type="hidden" name="tgl" value="<?= date('Y-m-d'); ?> " />
                     <input type="hidden" name="keterangan" value="<?= "pembelian emas" ?> " />
-                    <input type="hidden" name="idted" value="<?= $this->session->userdata('id'); ?> " />
+                    <input type="hidden" name="idted" value="<?= $idted; ?> " />
                     <input type="hidden" name="status" value="0" />
 
                     <div class="form-row">
@@ -61,7 +61,7 @@
                                 <option value="">: Pilih</option>
                                 <?php
                                 foreach ($bank as $transfer) :
-                                    ?>
+                                ?>
                                     <option value="<?= $transfer['id']; ?>"><?= $transfer['nm_bank']; ?></option>
                                 <?php
                                 endforeach;

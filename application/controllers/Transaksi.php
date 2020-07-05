@@ -218,6 +218,7 @@ class Transaksi extends CI_Controller
 
             $data   = [
                 'beli'  => $newjual,
+                'idted' => $id,
                 'wallet' => $getwallet['saldo'],
                 'bank'  => $this->model_bank->getAll(),
                 'page'  => 'pages/member/member_beli_emas'
@@ -1015,6 +1016,7 @@ class Transaksi extends CI_Controller
                 }
             } else {
                 $data = [
+                    'idted' => $id,
                     'bank' => $this->model_bank->getAll(),
                     'page' => 'pages/member/member_deposit'
                 ];
@@ -1402,6 +1404,7 @@ class Transaksi extends CI_Controller
             }
 
             $data = [
+                'idted' => $idted,
                 'saldo_emas' => $this->model_transaksi->getLastTranById($idted, 'emas'),
                 'page' => 'pages/member/member_titipan_emas'
             ];

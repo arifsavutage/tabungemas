@@ -19,7 +19,7 @@
                                 <th>Tgl. Daftar</th>
                                 <th>Nama Lengkap</th>
                                 <th>No. HP</th>
-                                <th>Email</th>
+                                <!--<th>Email</th>-->
                                 <th><i class="fas fa-sitemap"></i></th>
                             </tr>
                         </thead>
@@ -33,11 +33,26 @@
                                     <td><?= date('d-m-Y', strtotime($detail['tgl_gabung'])); ?></td>
                                     <td><?= ucwords($detail['nama_lengkap']); ?></td>
                                     <td><?= $detail['nohp']; ?></td>
-                                    <td><?= $detail['email']; ?></td>
+                                    <!--<td><?= $detail['email']; ?></td>-->
                                     <td>
-
+                                        <!--
                                         <a href="<?= base_url() . "index.php/member/profil_anggota/$detail[idted]"; ?>" class="btn btn-primary btn-sm" title="Lihat Profil" role="button"><i class="fas fa-user"></i></a>
                                         <a href="<?= base_url() . "index.php/member/update_pass_anggota/$detail[idted]"; ?>" class="btn btn-danger btn-sm" title="Update Password" role="button"><i class="fas fa-lock"></i></a>
+                            -->
+                                        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                            <div class="btn-group" role="group">
+                                                <a id="btnGroupDrop<?= $no; ?>" role="button" href="#" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Action
+                                                </a>
+                                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop<?= $no; ?>">
+                                                    <a class="dropdown-item" href="<?= base_url() . "index.php/member/profil_anggota/$detail[idted]"; ?>">Profil Anggota</a>
+                                                    <a class="dropdown-item" href="<?= base_url() . "index.php/member/update_pass_anggota/$detail[idted]"; ?>">Ubah Password</a>
+                                                    <a class="dropdown-item" href="<?= base_url() . "index.php/transaksi/beli_emas/$detail[idted]" ?>">Beli Emas</a>
+                                                    <a class="dropdown-item" href="<?= base_url() . "index.php/transaksi/deposit/$detail[idted]"; ?>">Deposit</a>
+                                                    <a class="dropdown-item" href="<?= base_url() . "index.php/transaksi/titipan_emas/$detail[idted]"; ?>">Titipan Emas</a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php

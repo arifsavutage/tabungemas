@@ -11,7 +11,7 @@
                 }
                 ?>
                 <form name="deposit" method="post" action="">
-                    <input type="hidden" name="idted" value="<?= $this->session->userdata('id'); ?> " />
+                    <input type="hidden" name="idted" value="<?= $idted; ?> " />
 
                     <div class="form-row">
                         <div class="form-group col-md-12">
@@ -20,7 +20,7 @@
                             <?= form_error('nominal', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="banktrf">Daftar Bank</label>
@@ -28,7 +28,7 @@
                                 <option value="">: Pilih</option>
                                 <?php
                                 foreach ($bank as $transfer) :
-                                    ?>
+                                ?>
                                     <option value="<?= $transfer['id']; ?>"><?= $transfer['nm_bank']; ?></option>
                                 <?php
                                 endforeach;
