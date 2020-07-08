@@ -66,7 +66,8 @@
                                 $i = 1;
                                 foreach ($reports as $report) {
 
-                                    $profitgr   = round(($report['jmlprofit'] / 100) * $report['gram'], 2);
+                                    $profitgr   = ($report['jmlprofit'] / 100) * $report['gram'];
+                                    //$profitgr   = round(($report['jmlprofit'] / 100) * $report['gram'], 2);
                                     $profitcuan = $profitgr * $report['harga_ikut'];
                                     echo "
                                 <tr>
@@ -77,10 +78,10 @@
                                     <td>$report[tgl_berakhir]</td>
                                     <td>$report[tenor]</td>
                                     <td>$report[gram]</td>
-                                    <td>" . number_format($report['harga_ikut'], 0, ',', '.') . "</td>
+                                    <td>" . number_format($report['harga_ikut'], 0, '.', ',') . "</td>
                                     <td>$report[jmlprofit]</td>
                                     <td>$profitgr gr</td>
-                                    <td>" . number_format($profitcuan, 0, ',', '.') . "</td>
+                                    <td>" . number_format($profitcuan, 0, '.', ',') . "</td>
                                     <td>$report[status]</td>
                                 </tr>
                                 ";
