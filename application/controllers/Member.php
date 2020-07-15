@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Member extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -67,6 +66,7 @@ class Member extends CI_Controller
 
     public function profile($id = null)
     {
+        $id = $this->session->userdata('id');
         if ($id == null) {
             redirect(base_url());
         } else {
@@ -83,6 +83,7 @@ class Member extends CI_Controller
 
     public function edit_profile($id = null)
     {
+        $id = $this->session->userdata('id');
         if ($id == null) {
             redirect(base_url());
         } else {
@@ -125,7 +126,7 @@ class Member extends CI_Controller
                 <h4>Success :</h4> Update berhasil ... 
             </div>');
 
-                    redirect(base_url() . "index.php/member/profile/" . $idted);
+                    redirect(base_url('index.php/member/profile/'));
                 } else {
                     $this->session->set_flashdata('info', '<div class="alert alert-warning" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -134,7 +135,7 @@ class Member extends CI_Controller
                 <h4>Oops :</h4> Update gagal ... 
             </div>');
 
-                    redirect(base_url() . "index.php/member/profile/" . $idted);
+                    redirect(base_url('index.php/member/profile/'));
                 }
             } else {
                 $data = [
@@ -225,6 +226,7 @@ class Member extends CI_Controller
 
     public function photo_profile($id = null)
     {
+        $id = $this->session->userdata('id');
         if ($id == null) {
             redirect(base_url());
         } else {
@@ -389,6 +391,7 @@ class Member extends CI_Controller
 
     public function berkas_ktp($id = null)
     {
+        $id = $this->session->userdata('id');
         if ($id == null) {
             redirect(base_url());
         } else {
@@ -471,6 +474,7 @@ class Member extends CI_Controller
 
     public function berkas_npwp($id = null)
     {
+        $id = $this->session->userdata('id');
         if ($id == null) {
             redirect(base_url());
         } else {
@@ -553,6 +557,7 @@ class Member extends CI_Controller
 
     public function update_pass($id = null)
     {
+        $id = $this->session->userdata('id');
         if ($id == null) {
             redirect(base_url());
         } else {
@@ -657,6 +662,7 @@ class Member extends CI_Controller
 
     public function pohon_jaringan($id = null)
     {
+        $id = $this->session->userdata('id');
         if ($id == null) {
             redirect(base_url());
         } else {
@@ -673,6 +679,7 @@ class Member extends CI_Controller
 
     public function upgrade($id = null)
     {
+        $id = $this->session->userdata('id');
         if ($id == null) {
             redirect(base_url());
         } else {

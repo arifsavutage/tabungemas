@@ -60,7 +60,7 @@ class Register extends CI_Controller
                 'tglproses' => '0000-00-00'
             ];
 
-            $level = "super";
+            $level = 3;
         } else {
             $panjangId  = $agtbaru->jmlIdCabang($cabang);
             $updatejar  = $jaringan->cekUpline($refid);
@@ -93,7 +93,7 @@ class Register extends CI_Controller
                 'tglproses' => '0000-00-00'
             ];
 
-            $level  = "member";
+            $level  = 3;
         }
 
 
@@ -271,7 +271,7 @@ class Register extends CI_Controller
                         'mail'  => $mailregis,
                         'nama'  => ucwords($nameregis),
                         'token' => $token,
-                        'npminal' => $data['nominal'],
+                        'nominal' => $data['nominal'],
                         'bank'  => $this->model_bank->getAll()
                     ];
 

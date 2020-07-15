@@ -32,7 +32,8 @@
                                 <option value="">: Pilih</option>
                                 <?php
                                 $i = 2;
-                                while ($i <= 100) {
+                                $emas   = 1000;
+                                while ($i <= $emas) {
                                     echo "<option value='$i'>$i</option>";
                                     $i += 2;
                                 }
@@ -73,8 +74,13 @@
                 </form>
 
                 <br />
-                <a href="<?= base_url() . "index.php/transaksi/titipan_emas_profit/" . $this->session->userdata('id'); ?>" class="btn btn-success btn-lg btn-block">Lihat Profit</a>
-
+                <?php
+                if ($this->session->userdata('id') == $idted) :
+                ?>
+                    <a href="<?= base_url('index.php/transaksi/titipan_emas_profit/') ?>" class=" btn btn-success btn-lg btn-block">Lihat Profit</a>
+                <?php
+                endif;
+                ?>
             </div>
         </div>
     </div>

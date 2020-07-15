@@ -63,6 +63,7 @@ class Transaksi extends CI_Controller
 
     public function beli_emas($id = null)
     {
+        $id = $this->session->userdata('id');
         if ($id == null) {
             redirect(base_url());
         } else {
@@ -230,6 +231,7 @@ class Transaksi extends CI_Controller
 
     public function jual_emas($id = null)
     {
+        $id = $this->session->userdata('id');
         if ($id == null) {
             redirect(base_url());
         } else {
@@ -555,6 +557,7 @@ class Transaksi extends CI_Controller
 
     public function tarik_fisik_emas($id = null)
     {
+        $id = $this->session->userdata('id');
         if ($id == null) {
             redirect(base_url());
         } else {
@@ -721,6 +724,7 @@ class Transaksi extends CI_Controller
 
     public function transfer($id = null)
     {
+        $id = $this->session->userdata('id');
         if ($id == null) {
             redirect(base_url());
         } else {
@@ -790,6 +794,7 @@ class Transaksi extends CI_Controller
 
     public function widraw($id = null)
     {
+        $id = $this->session->userdata('id');
         if ($id == null) {
             redirect(base_url());
         } else {
@@ -937,6 +942,7 @@ class Transaksi extends CI_Controller
 
     public function history($id = null)
     {
+        $id = $this->session->userdata('id');
         if ($id == null) {
             redirect(base_url());
         } else {
@@ -953,6 +959,7 @@ class Transaksi extends CI_Controller
 
     public function deposit($id = null)
     {
+        $id = $this->session->userdata('id');
         if ($id == null) {
             redirect(base_url());
         } else {
@@ -1309,6 +1316,7 @@ class Transaksi extends CI_Controller
 
     public function titipan_emas($idted = null)
     {
+        $idted = $this->session->userdata('id');
         if ($idted == null) {
             redirect(base_url());
         } else {
@@ -1415,6 +1423,7 @@ class Transaksi extends CI_Controller
 
     public function titipan_emas_profit($idted = null)
     {
+        $idted = $this->session->userdata('id');
         if ($idted == null) {
             redirect(base_url());
         } else {

@@ -12,7 +12,7 @@ class Model_tedagt extends CI_Model
     public $alamat;
     public $email;
     public $password;
-    public $level_user;
+    public $role_id;
     public $scan_ktp;
     public $scan_npwp;
     public $foto_profil;
@@ -81,6 +81,8 @@ class Model_tedagt extends CI_Model
 
     public function getAccountByEmail($email)
     {
+        $this->db->select("`idted`,`nama_lengkap`,`password`,`foto_profil`,`aktif`, role_name");
+        $this->db->join('tb_user_role', 'tb_user_role ON tb_user_role.id = tb_agt_ted.role_id', 'left');
         $this->db->where('email', "$email");
         return $this->db->get($this->_table)->row_array();
     }
@@ -107,7 +109,7 @@ class Model_tedagt extends CI_Model
             $this->alamat       = "";
             $this->email        = $post['email'];
             $this->password     = $post['password'];
-            $this->level_user   = $level;
+            $this->role_id      = $level;
             $this->scan_ktp     = "noimage.jpg";
             $this->scan_npwp    = "noimage.jpg";
             $this->foto_profil  = "noimage.jpg";

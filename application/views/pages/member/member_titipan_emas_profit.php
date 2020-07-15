@@ -1,4 +1,4 @@
-<a role="button" href="<?= base_url() . "index.php/transaksi/titipan_emas/" . $this->session->userdata('id'); ?>" class="btn btn-primary"><span class="btn-label"><i class="fa fa-arrow-left"></i></span>Kembali</a>
+<a role="button" href="<?= base_url('index.php/transaksi/titipan_emas/'); ?>" class="btn btn-primary"><span class="btn-label"><i class="fa fa-arrow-left"></i></span>Kembali</a>
 
 <div class="row mt-4">
     <?php
@@ -25,7 +25,7 @@
                     <span class="mr-3"><i class="fa fa-money" style="font-size: 1rem !important;"></i> <?= number_format($baris['harga_ikut'], 0, ',', '.') . " IDR"; ?></span>
                     <span><i class="fa fa-check-square-o" style="font-size: 1rem !important;"></i> <?= $label ?></span>
                 </p>
-                <h1 class="m-b-20 text-white counter">Rp. <?= number_format($profit_uang, 0, ',', '.') ?></h1>
+                <h1 class="m-b-20 text-white counter">Rp. <?= number_format($profit_uang, 0, '.', ',') ?></h1>
                 <p class="text-white">
                     <span class="mr-2">Profit:</span>
                     <span class="mr-2"><?= $baris['totalpersen']; ?> <i class="fa fa-percent" style="font-size: 1rem !important;"></i></span>

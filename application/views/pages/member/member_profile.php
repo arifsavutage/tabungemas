@@ -8,11 +8,11 @@
                 }
                 ?>
                 <div class="text-center">
-                    <img src="<?= base_url() . "assets/images/avatars/" . $detail['foto_profil']; ?>" class="img-fluid img-thumbnail rounded-circle" alt="member profile">
+                    <img src="<?= base_url() . "assets/images/avatars/" . $detail['foto_profil']; ?>" class="img-fluid img-thumbnail rounded-circle" style="width: 250px;" alt="member profile">
                     <br />
                     <br />
                     <h4 class="card-title" style="font-family: 'Pacifico', cursive;color:dimgray;"><?= $detail['nama_lengkap']; ?>
-                        <a href="<?= base_url(); ?>index.php/member/edit_profile/<?= $this->session->userdata('id'); ?>" style="color:darkgrey;"><i class="fas fa-user-edit float-right"></i></a>
+                        <a href="<?= base_url(); ?>index.php/member/edit_profile/" style="color:darkgrey;"><i class="fas fa-user-edit float-right"></i></a>
                     </h4>
                     <br />
                     <div class="text-center">
@@ -20,7 +20,7 @@
                         if ($detail['jenis'] == 'basic') {
                             $keanggotaan    = "Basic Anggota";
                             $class          = "badge-info";
-                            $upgrade        = '<a href="' . base_url('index.php/member/upgrade/') . $this->session->userdata('id') . '" class="btn btn-danger btn-block btn-lg mt-4">Upgrade to premium</a>';
+                            $upgrade        = '<a href="' . base_url('index.php/member/upgrade/') . '" class="btn btn-danger btn-block btn-lg mt-4">Upgrade to premium</a>';
                         } else {
                             $keanggotaan    = "Agen TED";
                             $class          = "badge-danger";

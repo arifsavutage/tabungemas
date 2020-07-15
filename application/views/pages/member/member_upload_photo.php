@@ -11,6 +11,7 @@
                         <input type="file" class="form-control" id="foto" name="foto" value="">
                         <input type="hidden" name="idted" value="<?= $detail['idted']; ?>" />
                     </div>
+
                     <button type="submit" class="btn btn-secondary btn-lg btn-block">Upload</button>
                 </form>
             </div>

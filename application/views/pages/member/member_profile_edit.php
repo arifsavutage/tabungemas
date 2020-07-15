@@ -36,34 +36,33 @@
                     <?php
                     if (($detail['nmwaris'] == "") && ($detail['hubwaris'] == "") && ($detail['hpwaris'] == "")) {
                         $disabled = '';
+
+                        $arr = ['anak' => "Anak", 'ortu' => "Orang tua", 'saudara' => "Saudara kandung", 'istri' => 'Istri', 'suami' => 'Suami'];
+                        $hubungan = "";
+                        $hubungan .= '<select name="hubwaris" class="form-control" id="hubwarisid" required="">';
+                        foreach ($arr as $val => $item) {
+                            $hubungan .= "<option value='$val'";
+                            if ($detail['hubwaris'] == "$val") $hubungan .= "selected='selected'";
+                            $hubungan .= ">$item</option>";
+                        }
+                        $hubungan .= '</select>';
                     } else {
-                        $disabled = 'disabled';
+                        $disabled = 'readonly="true"';
+                        $hubungan = '<input type="text" class="form-control" name="hubwaris" value="' . ucwords($detail['hubwaris']) . '" placeholder="Hubungan dengan ahli waris" readonly="true" required="">';
                     }
                     ?>
-                    <fieldset <?= $disabled ?>>
-                        <div class="form-group">
-                            <label for="nmwaris">Nama Ahli Waris</label>
-                            <input type="text" class="form-control" id="nmwarisid" name="nmwaris" value="<?= $detail['nmwaris'] ?>" placeholder="Nama ahli waris" required="">
-                        </div>
-                        <div class="form-group">
-                            <label for="hubwaris">Hubungan</label>
-                            <!--<input type="text" class="form-control" name="hubwaris" value="<?= $detail['hubwaris'] ?>" placeholder="Hubungan dengan ahli waris" <?= $readonly ?> required="">-->
-                            <select name="hubwaris" class="form-control" id="hubwarisid" required="">
-                                <?php
-                                $arr = ['anak' => "Anak", 'ortu' => "Orang tua", 'saudara' => "Saudara kandung", 'istri' => 'Istri', 'suami' => 'Suami'];
-                                foreach ($arr as $val => $item) {
-                                    echo "<option value='$val'";
-                                    if ($detail['hubwaris'] == "$val") echo "selected='selected'";
-                                    echo ">$item</option>";
-                                }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="hpwaris">No. Hp</label>
-                            <input type="text" class="form-control" id="hpwarisid" name="hpwaris" value="<?= $detail['hpwaris'] ?>" placeholder="No. kontak yang bisa dihubungi" required="">
-                        </div>
-                    </fieldset>
+                    <div class="form-group">
+                        <label for="nmwaris">Nama Ahli Waris</label>
+                        <input type="text" class="form-control" id="nmwarisid" name="nmwaris" value="<?= ucwords($detail['nmwaris']) ?>" placeholder="Nama ahli waris" required="" <?= $disabled; ?>>
+                    </div>
+                    <div class="form-group">
+                        <label for="hubwaris">Hubungan</label>
+                        <?= $hubungan; ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="hpwaris">No. Hp</label>
+                        <input type="text" class="form-control" id="hpwarisid" name="hpwaris" value="<?= $detail['hpwaris'] ?>" placeholder="No. kontak yang bisa dihubungi" required="" <?= $disabled; ?>>
+                    </div>
 
                     <button type="submit" class="btn btn-secondary btn-lg btn-block">Edit</button>
 

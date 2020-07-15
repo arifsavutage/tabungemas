@@ -21,11 +21,6 @@
                      </div>
 
                      <!-- item-->
-                     <a href="<?= base_url(); ?>index.php/member/profile/<?= $this->session->userdata('id'); ?>" class="dropdown-item notify-item">
-                         <i class="fa fa-user"></i> <span>Profile</span>
-                     </a>
-
-                     <!-- item-->
                      <a href="<?= base_url(); ?>index.php/auth/logout" class="dropdown-item notify-item">
                          <i class="fa fa-power-off"></i> <span>Logout</span>
                      </a>
