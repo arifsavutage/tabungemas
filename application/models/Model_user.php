@@ -6,6 +6,12 @@ class Model_user extends CI_Model
 
     private $_table = 'tb_user';
 
+    public function getRole()
+    {
+        $this->db->order_by('id', 'ASC');
+        return $this->db->get('tb_user_role')->result_array();
+    }
+
     public function getLogin($email)
     {
         $this->db->select("tb_user.`id`, `nama_user`, `email`, `password`, `is_active`, foto, tb_user_role.role_name");
