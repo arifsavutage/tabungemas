@@ -16,6 +16,9 @@
                 <a role="button" href="<?= base_url() . 'index.php/transaksi/titipan_emas_profitreport'; ?>" class="btn btn-secondary">
                     <span class="btn-label"><i class="fa fa-file"></i></span>Laporan Profit
                 </a>
+                <a role="button" href="<?= base_url() . 'index.php/transaksi/titipan_emas_widraw'; ?>" class="btn btn-success">
+                    <span class="btn-label"><i class="fa fa-bank"></i></span>Transfer Profit
+                </a>
                 <br />
                 <br />
                 <div class="table-responsive">

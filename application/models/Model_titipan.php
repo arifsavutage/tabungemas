@@ -117,4 +117,27 @@ SELECT tb_titipan_emas.idted, tb_agt_ted.nama_lengkap, tb_titipan_emas.tgl_ikut,
         $render = $this->db->query($query);
         return $render->result_array();
     }
+
+    public function transferProfit($periode)
+    {
+        $query = "SELECT tb_titipan_emas.idted, tb_agt_ted.nama_lengkap, tb_agt_ted.nohp, tb_agt_ted.bank, tb_agt_ted.norek, tb_agt_ted.an, tb_titipan_emas.tgl_ikut, tb_titipan_emas.tgl_berakhir, tb_titipan_emas.tenor, tb_titipan_emas.gram, tb_titipan_emas.harga_ikut, SUM(IF(MONTH(tb_titipan_emas_detail.periode) = MONTH(tb_titipan_emas_detail.periode), tb_titipan_emas_detail.profit_persen,0)) AS jmlprofit, tb_titipan_emas.status FROM tb_titipan_emas, tb_titipan_emas_detail, tb_agt_ted WHERE tb_agt_ted.idted = tb_titipan_emas.idted AND tb_titipan_emas.idx = tb_titipan_emas_detail.id_titipan AND DATE_FORMAT(tb_titipan_emas_detail.periode, '%m %Y')='$periode'  GROUP BY tb_titipan_emas_detail.id_titipan";
+        $render = $this->db->query($query);
+
+        return $render->result_array();
+    }
+
+    //input ke tabel transfer
+    public function addTransfer($data)
+    {
+        return $this->db->insert('tb_titipan_emas_transfer', $data);
+    }
+
+    public function transferProfitReport()
+    {
+        $this->db->select("`id`, `periode`, `tgl_trf`, tb_titipan_emas_transfer.`idted`, tb_agt_ted.nama_lengkap, tb_titipan_emas_transfer.`nohp`, 
+        tb_titipan_emas_transfer.`bank`, tb_titipan_emas_transfer.`norek`, tb_titipan_emas_transfer.`an`, 
+        tb_titipan_emas_transfer.`nominal`, tb_titipan_emas_transfer.`is_transfer`");
+        $this->db->join('tb_agt_ted', 'tb_agt_ted.idted = tb_titipan_emas_transfer.idted', 'left');
+        return $this->db->get('tb_titipan_emas_transfer')->result_array();
+    }
 }

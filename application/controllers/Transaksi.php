@@ -1536,4 +1536,66 @@ class Transaksi extends CI_Controller
 
         $this->load->view('dashboard', $data);
     }
+
+    public function titipan_emas_widraw()
+    {
+        $this->form_validation->set_rules('bulan', 'Periode Bulan', 'required');
+        $this->form_validation->set_rules('tahun', 'Periode Tahun', 'required');
+        $this->form_validation->set_rules('tgl1', 'Tanggal Transfer', 'required');
+
+        if ($this->form_validation->run()) {
+            $bln    = $this->input->post('bulan');
+            $thn    = $this->input->post('tahun');
+            $tgl    = $this->input->post('tgl1');
+
+            $periode = $bln . " " . $thn;
+
+            $data_transfer = $this->model_titipan->transferProfit($periode);
+
+            foreach ($data_transfer as $row) {
+                $profitgr   = ($row['jmlprofit'] / 100) * $row['gram'];
+                $profitcuan = $profitgr * $row['harga_ikut'];
+
+                $data   = [
+                    'periode'   => $periode,
+                    'tgl_trf'   => $tgl,
+                    'idted'     => $row['idted'],
+                    'nohp'      => $row['nohp'],
+                    'bank'      => $row['bank'],
+                    'norek'     => $row['norek'],
+                    'an'        => $row['an'],
+                    'nominal'   => $profitcuan,
+                    'is_transfer' => 0
+                ];
+
+                $this->model_titipan->addTransfer($data);
+            }
+
+            $this->session->set_flashdata('info', '
+            <div class="alert alert-success" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4>SUCCESS: </h4> Laporan transfer profit berhasil dibuat ...
+            </div>');
+
+            redirect(base_url('index.php/transaksi/titipan_emas_widraw'));
+        }
+
+        $data = [
+            'page' => 'pages/admin/widraw_titipan_emas_profit'
+        ];
+
+        $this->load->view('dashboard', $data);
+    }
+
+    public function titipan_emas_widraw_report()
+    {
+        $data = [
+            'data' => $this->model_titipan->transferProfitReport(),
+            'page' => 'pages/admin/widraw_titipan_emas_report'
+        ];
+
+        $this->load->view('dashboard', $data);
+    }
 }
