@@ -89,7 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('url', 'form', 'security', 'ceklogin');
+$autoload['helper'] = array('url', 'form', 'security', 'ceklogin', 'smsapi');
 
 /*
 | -------------------------------------------------------------------

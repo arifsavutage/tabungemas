@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Jul 2020 pada 04.25
+-- Waktu pembuatan: 22 Jul 2020 pada 16.26
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.0
 
@@ -568,6 +568,50 @@ INSERT INTO `tb_titipan_emas_detail` (`idx`, `id_titipan`, `periode`, `profit_pe
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tb_titipan_emas_transfer`
+--
+
+CREATE TABLE `tb_titipan_emas_transfer` (
+  `id` int(11) NOT NULL,
+  `periode` varchar(128) NOT NULL,
+  `tgl_trf` date NOT NULL,
+  `idted` varchar(8) NOT NULL,
+  `nohp` varchar(128) NOT NULL,
+  `bank` varchar(128) NOT NULL,
+  `norek` varchar(128) NOT NULL,
+  `an` varchar(128) NOT NULL,
+  `nominal` int(11) NOT NULL,
+  `hrgikut` int(11) NOT NULL,
+  `gram` int(11) NOT NULL,
+  `jmlprofit` float NOT NULL,
+  `is_transfer` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tb_titipan_emas_transfer`
+--
+
+INSERT INTO `tb_titipan_emas_transfer` (`id`, `periode`, `tgl_trf`, `idted`, `nohp`, `bank`, `norek`, `an`, `nominal`, `hrgikut`, `gram`, `jmlprofit`, `is_transfer`) VALUES
+(1, '06 2020', '2020-07-06', '01.00051', '082299413996', '', '', '', 785553, 878695, 6, 14.9, 1),
+(2, '06 2020', '2020-07-06', '01.00042', '085740601703', '', '', '', 234051, 893325, 2, 13.1, 1),
+(3, '06 2020', '2020-07-06', '01.00052', '081575886727', '', '', '', 216185, 893325, 2, 12.1, 1),
+(4, '06 2020', '2020-07-06', '01.00011', '081325469975', '', '', '', 175384, 913460, 2, 9.6, 1),
+(5, '06 2020', '2020-07-06', '01.00053', '0811251610', '', '', '', 145610, 898830, 2, 8.1, 1),
+(6, '06 2020', '2020-07-06', '01.00053', '0811251610', '', '', '', 208889, 877686, 4, 5.95, 1),
+(7, '06 2020', '2020-07-06', '01.00025', '082230854065', '', '', '', 440448, 889794, 10, 4.95, 1),
+(8, '06 2020', '2020-07-06', '01.00003', '0821-3636-8828', 'BRI', '303601041826532', 'susiloningsih', 70294, 889794, 2, 3.95, 1),
+(9, '06 2020', '2020-07-06', '01.00003', '0821-3636-8828', 'BRI', '303601041826532', 'susiloningsih', 70294, 889794, 2, 3.95, 1),
+(10, '06 2020', '2020-07-06', '01.00001', '081327479067', 'BCA', '12312388857', 'koperasi mmas', 140587, 889794, 4, 3.95, 1),
+(11, '06 2020', '2020-07-06', '01.00009', '081325123353', 'BCA', '8030322925', '', 48956, 829758, 2, 2.95, 1),
+(12, '06 2020', '2020-07-06', '01.00027', '085101995521', '', '304301021939534', '', 76585, 850947, 12, 0.75, 1),
+(13, '06 2020', '2020-07-06', '01.00062', '085101292189', '', '', '', 12764, 850947, 2, 0.75, 1),
+(14, '06 2020', '2020-07-06', '01.00023', '081327405100', '', '', '', 12764, 850947, 2, 0.75, 1),
+(15, '06 2020', '2020-07-06', '01.00011', '081325469975', '', '', '', 76585, 850947, 12, 0.75, 1),
+(16, '06 2020', '2020-07-06', '01.00063', '085950726801', '', '', '', 12999, 866587, 2, 0.75, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tb_transaksi`
 --
 
@@ -806,7 +850,103 @@ INSERT INTO `tb_transaksi` (`id`, `tgl`, `idted`, `uraian`, `masuk`, `keluar`, `
 (217, '2020-06-29', '01.00027', 'beli emas', 70, 0, 70.073, 'emas'),
 (218, '2020-06-29', '01.00027', 'ikut titipan emas ', 0, 70, 0.073, 'emas'),
 (219, '2020-07-03', '01.00028', 'beli emas', 47.266, 0, 50.306, 'emas'),
-(220, '2020-07-03', '01.00028', 'ikut titipan emas ', 0, 50, 0.306, 'emas');
+(220, '2020-07-03', '01.00028', 'ikut titipan emas ', 0, 50, 0.306, 'emas'),
+(221, '2020-07-22', '01.00051', 'profit titipan emas periode 06 2020', 785553, 0, 785553, 'uang'),
+(222, '2020-07-22', '01.00051', 'trf. profit titipan emas ke   ', 0, 785553, 0, 'uang'),
+(223, '2020-07-22', '01.00042', 'profit titipan emas periode 06 2020', 234051, 0, 325693, 'uang'),
+(224, '2020-07-22', '01.00042', 'trf. profit titipan emas ke   ', 0, 234051, 91642, 'uang'),
+(225, '2020-07-22', '01.00052', 'profit titipan emas periode 06 2020', 216185, 0, 216185, 'uang'),
+(226, '2020-07-22', '01.00052', 'trf. profit titipan emas ke   ', 0, 216185, 0, 'uang'),
+(227, '2020-07-22', '01.00011', 'profit titipan emas periode 06 2020', 175384, 0, 175384, 'uang'),
+(228, '2020-07-22', '01.00011', 'trf. profit titipan emas ke   ', 0, 175384, 0, 'uang'),
+(229, '2020-07-22', '01.00053', 'profit titipan emas periode 06 2020', 145610, 0, 145610, 'uang'),
+(230, '2020-07-22', '01.00053', 'trf. profit titipan emas ke   ', 0, 145610, 0, 'uang'),
+(231, '2020-07-22', '01.00053', 'profit titipan emas periode 06 2020', 208889, 0, 208889, 'uang'),
+(232, '2020-07-22', '01.00053', 'trf. profit titipan emas ke   ', 0, 208889, 0, 'uang'),
+(233, '2020-07-22', '01.00025', 'profit titipan emas periode 06 2020', 440448, 0, 707386, 'uang'),
+(234, '2020-07-22', '01.00025', 'trf. profit titipan emas ke   ', 0, 440448, 266938, 'uang'),
+(235, '2020-07-22', '01.00003', 'profit titipan emas periode 06 2020', 70294, 0, 70294, 'uang'),
+(236, '2020-07-22', '01.00003', 'trf. profit titipan emas ke BRI 303601041826532 susiloningsih', 0, 70294, 0, 'uang'),
+(237, '2020-07-22', '01.00003', 'profit titipan emas periode 06 2020', 70294, 0, 70294, 'uang'),
+(238, '2020-07-22', '01.00003', 'trf. profit titipan emas ke BRI 303601041826532 susiloningsih', 0, 70294, 0, 'uang'),
+(239, '2020-07-22', '01.00001', 'profit titipan emas periode 06 2020', 140587, 0, 5140590, 'uang'),
+(240, '2020-07-22', '01.00001', 'trf. profit titipan emas ke BCA 12312388857 koperasi mmas', 0, 140587, 5000000, 'uang'),
+(241, '2020-07-22', '01.00009', 'profit titipan emas periode 06 2020', 48956, 0, 48956, 'uang'),
+(242, '2020-07-22', '01.00009', 'trf. profit titipan emas ke BCA 8030322925 ', 0, 48956, 0, 'uang'),
+(243, '2020-07-22', '01.00027', 'profit titipan emas periode 06 2020', 76585, 0, 76585, 'uang'),
+(244, '2020-07-22', '01.00027', 'trf. profit titipan emas ke  304301021939534 ', 0, 76585, 0, 'uang'),
+(245, '2020-07-22', '01.00062', 'profit titipan emas periode 06 2020', 12764, 0, 12764, 'uang'),
+(246, '2020-07-22', '01.00062', 'trf. profit titipan emas ke   ', 0, 12764, 0, 'uang'),
+(247, '2020-07-22', '01.00023', 'profit titipan emas periode 06 2020', 12764, 0, 12764, 'uang'),
+(248, '2020-07-22', '01.00023', 'trf. profit titipan emas ke   ', 0, 12764, 0, 'uang'),
+(249, '2020-07-22', '01.00011', 'profit titipan emas periode 06 2020', 76585, 0, 76585, 'uang'),
+(250, '2020-07-22', '01.00011', 'trf. profit titipan emas ke   ', 0, 76585, 0, 'uang'),
+(251, '2020-07-22', '01.00063', 'profit titipan emas periode 06 2020', 12999, 0, 12999, 'uang'),
+(252, '2020-07-22', '01.00063', 'trf. profit titipan emas ke   ', 0, 12999, 0, 'uang'),
+(253, '2020-07-22', '01.00051', 'profit titipan emas periode 06 2020', 785553, 0, 785553, 'uang'),
+(254, '2020-07-22', '01.00051', 'trf. profit titipan emas ke   ', 0, 785553, 0, 'uang'),
+(255, '2020-07-22', '01.00042', 'profit titipan emas periode 06 2020', 234051, 0, 325693, 'uang'),
+(256, '2020-07-22', '01.00042', 'trf. profit titipan emas ke   ', 0, 234051, 91642, 'uang'),
+(257, '2020-07-22', '01.00052', 'profit titipan emas periode 06 2020', 216185, 0, 216185, 'uang'),
+(258, '2020-07-22', '01.00052', 'trf. profit titipan emas ke   ', 0, 216185, 0, 'uang'),
+(259, '2020-07-22', '01.00011', 'profit titipan emas periode 06 2020', 175384, 0, 175384, 'uang'),
+(260, '2020-07-22', '01.00011', 'trf. profit titipan emas ke   ', 0, 175384, 0, 'uang'),
+(261, '2020-07-22', '01.00053', 'profit titipan emas periode 06 2020', 145610, 0, 145610, 'uang'),
+(262, '2020-07-22', '01.00053', 'trf. profit titipan emas ke   ', 0, 145610, 0, 'uang'),
+(263, '2020-07-22', '01.00053', 'profit titipan emas periode 06 2020', 208889, 0, 208889, 'uang'),
+(264, '2020-07-22', '01.00053', 'trf. profit titipan emas ke   ', 0, 208889, 0, 'uang'),
+(265, '2020-07-22', '01.00025', 'profit titipan emas periode 06 2020', 440448, 0, 707386, 'uang'),
+(266, '2020-07-22', '01.00025', 'trf. profit titipan emas ke   ', 0, 440448, 266938, 'uang'),
+(267, '2020-07-22', '01.00003', 'profit titipan emas periode 06 2020', 70294, 0, 70294, 'uang'),
+(268, '2020-07-22', '01.00003', 'trf. profit titipan emas ke BRI 303601041826532 susiloningsih', 0, 70294, 0, 'uang'),
+(269, '2020-07-22', '01.00003', 'profit titipan emas periode 06 2020', 70294, 0, 70294, 'uang'),
+(270, '2020-07-22', '01.00003', 'trf. profit titipan emas ke BRI 303601041826532 susiloningsih', 0, 70294, 0, 'uang'),
+(271, '2020-07-22', '01.00001', 'profit titipan emas periode 06 2020', 140587, 0, 5140590, 'uang'),
+(272, '2020-07-22', '01.00001', 'trf. profit titipan emas ke BCA 12312388857 koperasi mmas', 0, 140587, 5000000, 'uang'),
+(273, '2020-07-22', '01.00009', 'profit titipan emas periode 06 2020', 48956, 0, 48956, 'uang'),
+(274, '2020-07-22', '01.00009', 'trf. profit titipan emas ke BCA 8030322925 ', 0, 48956, 0, 'uang'),
+(275, '2020-07-22', '01.00027', 'profit titipan emas periode 06 2020', 76585, 0, 76585, 'uang'),
+(276, '2020-07-22', '01.00027', 'trf. profit titipan emas ke  304301021939534 ', 0, 76585, 0, 'uang'),
+(277, '2020-07-22', '01.00062', 'profit titipan emas periode 06 2020', 12764, 0, 12764, 'uang'),
+(278, '2020-07-22', '01.00062', 'trf. profit titipan emas ke   ', 0, 12764, 0, 'uang'),
+(279, '2020-07-22', '01.00023', 'profit titipan emas periode 06 2020', 12764, 0, 12764, 'uang'),
+(280, '2020-07-22', '01.00023', 'trf. profit titipan emas ke   ', 0, 12764, 0, 'uang'),
+(281, '2020-07-22', '01.00011', 'profit titipan emas periode 06 2020', 76585, 0, 76585, 'uang'),
+(282, '2020-07-22', '01.00011', 'trf. profit titipan emas ke   ', 0, 76585, 0, 'uang'),
+(283, '2020-07-22', '01.00063', 'profit titipan emas periode 06 2020', 12999, 0, 12999, 'uang'),
+(284, '2020-07-22', '01.00063', 'trf. profit titipan emas ke   ', 0, 12999, 0, 'uang'),
+(285, '2020-07-22', '01.00051', 'profit titipan emas periode 06 2020', 785553, 0, 785553, 'uang'),
+(286, '2020-07-22', '01.00051', 'trf. profit titipan emas ke   ', 0, 785553, 0, 'uang'),
+(287, '2020-07-22', '01.00042', 'profit titipan emas periode 06 2020', 234051, 0, 325693, 'uang'),
+(288, '2020-07-22', '01.00042', 'trf. profit titipan emas ke   ', 0, 234051, 91642, 'uang'),
+(289, '2020-07-22', '01.00052', 'profit titipan emas periode 06 2020', 216185, 0, 216185, 'uang'),
+(290, '2020-07-22', '01.00052', 'trf. profit titipan emas ke   ', 0, 216185, 0, 'uang'),
+(291, '2020-07-22', '01.00011', 'profit titipan emas periode 06 2020', 175384, 0, 175384, 'uang'),
+(292, '2020-07-22', '01.00011', 'trf. profit titipan emas ke   ', 0, 175384, 0, 'uang'),
+(293, '2020-07-22', '01.00053', 'profit titipan emas periode 06 2020', 145610, 0, 145610, 'uang'),
+(294, '2020-07-22', '01.00053', 'trf. profit titipan emas ke   ', 0, 145610, 0, 'uang'),
+(295, '2020-07-22', '01.00053', 'profit titipan emas periode 06 2020', 208889, 0, 208889, 'uang'),
+(296, '2020-07-22', '01.00053', 'trf. profit titipan emas ke   ', 0, 208889, 0, 'uang'),
+(297, '2020-07-22', '01.00025', 'profit titipan emas periode 06 2020', 440448, 0, 707386, 'uang'),
+(298, '2020-07-22', '01.00025', 'trf. profit titipan emas ke   ', 0, 440448, 266938, 'uang'),
+(299, '2020-07-22', '01.00003', 'profit titipan emas periode 06 2020', 70294, 0, 70294, 'uang'),
+(300, '2020-07-22', '01.00003', 'trf. profit titipan emas ke BRI 303601041826532 susiloningsih', 0, 70294, 0, 'uang'),
+(301, '2020-07-22', '01.00003', 'profit titipan emas periode 06 2020', 70294, 0, 70294, 'uang'),
+(302, '2020-07-22', '01.00003', 'trf. profit titipan emas ke BRI 303601041826532 susiloningsih', 0, 70294, 0, 'uang'),
+(303, '2020-07-22', '01.00001', 'profit titipan emas periode 06 2020', 140587, 0, 5140590, 'uang'),
+(304, '2020-07-22', '01.00001', 'trf. profit titipan emas ke BCA 12312388857 koperasi mmas', 0, 140587, 5000000, 'uang'),
+(305, '2020-07-22', '01.00009', 'profit titipan emas periode 06 2020', 48956, 0, 48956, 'uang'),
+(306, '2020-07-22', '01.00009', 'trf. profit titipan emas ke BCA 8030322925 ', 0, 48956, 0, 'uang'),
+(307, '2020-07-22', '01.00027', 'profit titipan emas periode 06 2020', 76585, 0, 76585, 'uang'),
+(308, '2020-07-22', '01.00027', 'trf. profit titipan emas ke  304301021939534 ', 0, 76585, 0, 'uang'),
+(309, '2020-07-22', '01.00062', 'profit titipan emas periode 06 2020', 12764, 0, 12764, 'uang'),
+(310, '2020-07-22', '01.00062', 'trf. profit titipan emas ke   ', 0, 12764, 0, 'uang'),
+(311, '2020-07-22', '01.00023', 'profit titipan emas periode 06 2020', 12764, 0, 12764, 'uang'),
+(312, '2020-07-22', '01.00023', 'trf. profit titipan emas ke   ', 0, 12764, 0, 'uang'),
+(313, '2020-07-22', '01.00011', 'profit titipan emas periode 06 2020', 76585, 0, 76585, 'uang'),
+(314, '2020-07-22', '01.00011', 'trf. profit titipan emas ke   ', 0, 76585, 0, 'uang'),
+(315, '2020-07-22', '01.00063', 'profit titipan emas periode 06 2020', 12999, 0, 12999, 'uang'),
+(316, '2020-07-22', '01.00063', 'trf. profit titipan emas ke   ', 0, 12999, 0, 'uang');
 
 -- --------------------------------------------------------
 
@@ -1376,6 +1516,12 @@ ALTER TABLE `tb_titipan_emas_detail`
   ADD PRIMARY KEY (`idx`);
 
 --
+-- Indeks untuk tabel `tb_titipan_emas_transfer`
+--
+ALTER TABLE `tb_titipan_emas_transfer`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
@@ -1470,10 +1616,16 @@ ALTER TABLE `tb_titipan_emas_detail`
   MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
+-- AUTO_INCREMENT untuk tabel `tb_titipan_emas_transfer`
+--
+ALTER TABLE `tb_titipan_emas_transfer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- AUTO_INCREMENT untuk tabel `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=221;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=317;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user`

@@ -5,6 +5,7 @@
                 <h4>Buat Laporan Transfer Profit Titipan Emas</h4>
             </div>
             <div class="card-body">
+                <a href="<?= base_url('index.php/transaksi/daftar_titipan_emas'); ?>" class="btn btn-primary mb-4">Kembali</a>
                 <?php
                 if ($this->session->flashdata('info')) {
                     echo $this->session->flashdata('info');

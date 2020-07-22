@@ -136,8 +136,19 @@ SELECT tb_titipan_emas.idted, tb_agt_ted.nama_lengkap, tb_titipan_emas.tgl_ikut,
     {
         $this->db->select("`id`, `periode`, `tgl_trf`, tb_titipan_emas_transfer.`idted`, tb_agt_ted.nama_lengkap, tb_titipan_emas_transfer.`nohp`, 
         tb_titipan_emas_transfer.`bank`, tb_titipan_emas_transfer.`norek`, tb_titipan_emas_transfer.`an`, 
-        tb_titipan_emas_transfer.`nominal`, tb_titipan_emas_transfer.`is_transfer`");
+        tb_titipan_emas_transfer.`nominal`, tb_titipan_emas_transfer.`is_transfer`, SUM(tb_titipan_emas_transfer.`nominal`) AS totalnominal");
         $this->db->join('tb_agt_ted', 'tb_agt_ted.idted = tb_titipan_emas_transfer.idted', 'left');
+        $this->db->group_by('periode');
+        return $this->db->get('tb_titipan_emas_transfer')->result_array();
+    }
+
+    public function transferProfitDetail($periode)
+    {
+        $this->db->select("`id`, `periode`, `tgl_trf`, tb_titipan_emas_transfer.`idted`, tb_agt_ted.nama_lengkap, tb_titipan_emas_transfer.`nohp`, 
+        tb_titipan_emas_transfer.`bank`, tb_titipan_emas_transfer.`norek`, tb_titipan_emas_transfer.`an`, 
+        tb_titipan_emas_transfer.`nominal`, tb_titipan_emas_transfer.gram, tb_titipan_emas_transfer.jmlprofit, tb_titipan_emas_transfer.`is_transfer`");
+        $this->db->join('tb_agt_ted', 'tb_agt_ted.idted = tb_titipan_emas_transfer.idted', 'left');
+        $this->db->where("periode", "$periode");
         return $this->db->get('tb_titipan_emas_transfer')->result_array();
     }
 }

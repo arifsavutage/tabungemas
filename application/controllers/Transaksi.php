@@ -1565,6 +1565,9 @@ class Transaksi extends CI_Controller
                     'norek'     => $row['norek'],
                     'an'        => $row['an'],
                     'nominal'   => $profitcuan,
+                    'hrgikut'   => $row['harga_ikut'],
+                    'gram'      => $row['gram'],
+                    'jmlprofit' => $row['jmlprofit'],
                     'is_transfer' => 0
                 ];
 
@@ -1597,5 +1600,87 @@ class Transaksi extends CI_Controller
         ];
 
         $this->load->view('dashboard', $data);
+    }
+
+    public function detail_transfer_profit($periode)
+    {
+        $periode = str_replace("_", " ", $periode);
+        $data = [
+            'data' => $this->model_titipan->transferProfitDetail($periode),
+            'page' => 'pages/admin/widraw_titipan_emas_detail_transfer'
+        ];
+
+        //echo $this->db->last_query();
+        $this->load->view('dashboard', $data);
+    }
+
+    public function transfer_profit_titipan($periode)
+    {
+        $periode = str_replace("_", " ", $periode);
+        $data = $this->model_titipan->transferProfitDetail($periode);
+
+        //looping catat transaksi di history & sendsms
+        foreach ($data as $row) {
+
+            //save ke histori / nambah saldo
+            $ambilsaldo = $this->model_transaksi->getLastTranById($row['idted'], 'uang');
+            $saldo      = $ambilsaldo['saldo'] + $row['nominal'];
+
+            $data_in = [
+                'tgl'   => date('Y-m-d'),
+                'idted' => $row['idted'],
+                'uraian' => 'profit titipan emas periode ' . $periode,
+                'masuk' => $row['nominal'],
+                'keluar' => 0,
+                'saldo' => $saldo,
+                'jenis' => 'uang'
+            ];
+            $this->model_transaksi->save($data_in);
+
+            //melakukan potongan saldo uang krn widraw / trf
+            $getsaldo = $this->model_transaksi->getLastTranById($row['idted'], 'uang');
+            $saldokirim = $getsaldo['saldo'] - $row['nominal'];
+
+            $data_out = [
+                'tgl'   => date('Y-m-d'),
+                'idted' => $row['idted'],
+                'uraian' => 'trf. profit titipan emas ke ' . $row['bank'] . ' ' . $row['norek'] . ' ' . $row['an'],
+                'masuk' => 0,
+                'keluar' => $row['nominal'],
+                'saldo' => $saldokirim,
+                'jenis' => 'uang'
+            ];
+
+            $this->model_transaksi->save($data_out);
+
+            //send sms transfer profit
+            $nama_explode   = explode(" ", $row['nama_lengkap']);
+
+            if (count($nama_explode) > 1) {
+                $nama_anggota   = $nama_explode[0];
+            } else {
+                $nama_anggota   = $row['nama_lengkap'];
+            }
+
+            $profitgr   = $row['gram'] * ($row['jmlprofit'] / 100);
+            $pesan = "Total profit titipan emas bulan " . $row['periode'] . " sebesar " . $row['jmlprofit'] . "% / $profitgr gr, 
+            telah ditransfer ke rekening " . $row['bank'] . " An. " . $row['an'] . " sebesar Rp " . number_format($row['nominal'], 0, ',', '.') . ",-. Tks";
+
+            sendsms($row['nohp'], $pesan);
+        }
+
+        //is_transfer set to 1
+        $this->db->where('periode', $periode);
+        $this->db->update('tb_titipan_emas_transfer', ['is_transfer' => 1]);
+
+        $this->session->set_flashdata('info', '
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+            <h4>SUCCESS: </h4> Set & sms info transfer profit berhasil ...
+        </div>');
+
+        redirect(base_url() . 'index.php/transaksi/titipan_emas_widraw_report');
     }
 }
