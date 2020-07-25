@@ -8,8 +8,10 @@ class Model_tmpagt extends CI_Model
 
     public $tgl_daftar;
     public $nm_tmp;
+    public $role_id;
     public $nohp_tmp;
     public $email_tmp;
+    public $ktp_tmp;
     public $password_tmp;
     public $idreferal;
     public $nominal;
@@ -23,6 +25,19 @@ class Model_tmpagt extends CI_Model
                 'field' => 'nama',
                 'label' => 'Nama sesuai KTP',
                 'rules' => 'required'
+            ],
+            [
+                'field' => 'jenis',
+                'label' => 'Jenis Keanggotaan',
+                'rules' => 'required'
+            ],
+            [
+                'field' => 'ktp',
+                'label' => 'No. KTP',
+                'rules' => 'required|min_length[16]',
+                'errors' => [
+                    'min_length' => '%s setidaknya 16 karakter'
+                ]
             ],
             [
                 'field' => 'email',
@@ -58,8 +73,10 @@ class Model_tmpagt extends CI_Model
 
         $this->tgl_daftar   = date('Y-m-d');
         $this->nm_tmp       = $post['nama'];
+        $this->role_id      = $post['jenis'];
         $this->nohp_tmp     = $post['nohp'];
         $this->email_tmp    = $post['email'];
+        $this->ktp_tmp      = $post['ktp'];
         $this->password_tmp = password_hash($post['password'], PASSWORD_DEFAULT);
         $this->idreferal    = "$data[referal]";
         $this->nominal      = $data['nominal'];
@@ -76,7 +93,7 @@ class Model_tmpagt extends CI_Model
 
     public function getRelationAll()
     {
-        $this->db->select('tb_agt_tmp.*, tb_agt_ted.*');
+        $this->db->select('tb_agt_tmp.*, tb_agt_ted.idted, tb_agt_ted.`nama_lengkap`, tb_agt_ted.`nohp`, tb_agt_ted.`alamat`, tb_agt_ted.`email`, tb_agt_ted.`role_id` AS roleref, tb_agt_ted.`foto_profil`');
         $this->db->from($this->_table);
         $this->db->join('tb_agt_ted', 'tb_agt_ted.idted = tb_agt_tmp.idreferal');
         return $this->db->get()->result_array();
@@ -97,6 +114,13 @@ class Model_tmpagt extends CI_Model
     {
         $this->db->where('email_tmp', "$email");
         return $this->db->get($this->_table)->row_array();
+    }
+
+    //cek ktp dari tb_agt_ted
+    public function getAccountByKtp($ktp)
+    {
+        $this->db->where('noktp', $ktp);
+        return $this->db->get('tb_agt_ted')->row_array();
     }
 
     public function delete($id)

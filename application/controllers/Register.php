@@ -32,6 +32,7 @@ class Register extends CI_Controller
         $mailregis  = $this->input->post('email');
         $nameregis  = $this->input->post('nama');
         $idtmp      = $this->input->post('idtmp');
+        $role_id    = $this->input->post('role');
 
         if (!empty($refid)) {
             //ambil kode cabang pada ID's
@@ -60,7 +61,7 @@ class Register extends CI_Controller
                 'tglproses' => '0000-00-00'
             ];
 
-            $level = 3;
+            $level = $role_id;
         } else {
             $panjangId  = $agtbaru->jmlIdCabang($cabang);
             $updatejar  = $jaringan->cekUpline($refid);
@@ -93,7 +94,7 @@ class Register extends CI_Controller
                 'tglproses' => '0000-00-00'
             ];
 
-            $level  = 3;
+            $level  = $role_id;
         }
 
 
@@ -169,6 +170,8 @@ class Register extends CI_Controller
             $refid      = $this->input->post('refid');
             $mailregis  = $this->input->post('email');
             $nameregis  = $this->input->post('nama');
+            $ktpregis   = $this->input->post('ktp');
+            $jenis_mem  = $this->input->post('jenis');
 
             if ($refid == "") {
                 $this->session->set_flashdata('info', '
@@ -183,7 +186,24 @@ class Register extends CI_Controller
             } else {
 
                 $cekjmlagt  = $this->model_tedagt->getAll()->num_rows();
+
                 if ($cekjmlagt > 0) {
+
+                    //cek keberadaan anggota dgn KTP yg sama
+                    $cekktp    = $agtbaru->getAccountByKtp($ktpregis);
+
+                    if ($ktpregis == $cekktp['noktp']) {
+                        $this->session->set_flashdata('info', '
+                        <div class="alert alert-warning" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4>Maaf, </h4> Anggota dengan KTP <strong>' . $ktpregis . '</strong> sudah terdaftar an. <strong>' . $cekktp['nama_lengkap'] . '</strong>.
+                        </div>');
+
+                        redirect(base_url() . 'index.php/register/new_member');
+                    } else {
+                    }
                     $cekuser   = $agtbaru->getAccountByEmail($mailregis);
 
                     if ($mailregis != $cekuser['email']) {
@@ -194,7 +214,16 @@ class Register extends CI_Controller
                             $ref  = "01.00001";
                         }
 
-                        $nominalregis   = $this->model_uang->getValueById(1);
+                        //get jenis membership
+                        $mem_ship = $this->db->get_where('tb_user_role', ['id' => $jenis_mem])->row_array();
+
+                        if ($mem_ship['role_name'] == 'agen') {
+                            $regis_fee = 1;
+                        } else if ($mem_ship['role_name'] == 'basic') {
+                            $regis_fee = 3;
+                        }
+
+                        $nominalregis   = $this->model_uang->getValueById($regis_fee);
 
                         $randnom    = "";
                         for ($i = 0; $i < 3; $i++) {
@@ -239,12 +268,12 @@ class Register extends CI_Controller
                         redirect(base_url() . 'index.php/register/new_member');
                     } else {
                         $this->session->set_flashdata('info', '
-                    <div class="alert alert-warning" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                        <h4>Maaf, </h4> Email sudah terdaftar ...
-                    </div>');
+                        <div class="alert alert-warning" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4>Maaf, </h4> Email sudah terdaftar ...
+                        </div>');
 
                         redirect(base_url() . 'index.php/register/new_member');
                     }

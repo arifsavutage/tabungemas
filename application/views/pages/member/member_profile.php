@@ -58,6 +58,7 @@
                     </li>
                 </ul>
                 <ul class="list-group mt-4">
+                    <li class="list-group-item disabled"><i class="fa fa-id-card-o"></i> <?= $detail['noktp']; ?></li>
                     <li class="list-group-item disabled"><i class="far fa-envelope"></i> <?= $detail['email']; ?></li>
                     <li class="list-group-item disabled"><i class="fas fa-mobile-alt"></i> <?= $detail['nohp']; ?></li>
                     <li class="list-group-item disabled">
@@ -66,7 +67,10 @@
                     <li class="list-group-item disabled"><i class="fas fa-university"></i> <?= $detail['norek'] . " | " . $detail['bank'] . " | an. " . $detail['an']; ?></li>
                     <li class="list-group-item disabled"><i class="fas fa-hand-holding-heart"></i> <?= ucwords($detail['nmwaris']) . " | " . ucwords($detail['hubwaris']) . " | " . $detail['hpwaris']; ?></li>
                 </ul>
+
+                <!--
                 <?= $upgrade; ?>
+                    -->
             </div>
         </div>
     </div>

@@ -17,6 +17,8 @@
                                 <th>No.</th>
                                 <th>Tgl. Daftar</th>
                                 <th>Nama Lengkap</th>
+                                <th>KTP</th>
+                                <th>Keanggotaan</th>
                                 <th>No. HP</th>
                                 <th>Email</th>
                                 <th>ID Referal</th>
@@ -35,11 +37,27 @@
                                 } else {
                                     $label = "<span class='badge badge-success'>sudah</span>";
                                 }
-                                ?>
+                            ?>
                                 <tr>
                                     <td scope="row"><?= $no; ?></td>
                                     <td><?= date('Y-m-d', strtotime($detail['tgl_daftar'])); ?></td>
                                     <td><?= ucwords($detail['nm_tmp']); ?></td>
+                                    <td><?= $detail['ktp_tmp']; ?></td>
+                                    <td>
+                                        <?php
+                                        $this->db->select('tb_user_role.role_name as memship');
+                                        $this->db->join('tb_agt_tmp', 'tb_agt_tmp.role_id = tb_user_role.id', 'right');
+                                        $mem_ship_tmp = $this->db->get_where('tb_user_role', ['id' => $detail['role_id']])->row_array();
+
+                                        if ($mem_ship_tmp['memship'] == 'agen') {
+                                            echo '<span class="badge badge-danger">' . ucwords($mem_ship_tmp['memship']) . '</span>';
+                                            //echo $detail['role_id'];
+                                        } else if ($mem_ship_tmp['memship'] == 'basic') {
+                                            echo '<span class="badge badge-success">' . ucwords($mem_ship_tmp['memship']) . '</span>';
+                                            //echo $detail['role_id'];
+                                        }
+                                        ?>
+                                    </td>
                                     <td><?= $detail['nohp_tmp']; ?></td>
                                     <td><?= $detail['email_tmp']; ?></td>
                                     <td>
@@ -62,17 +80,41 @@
                                                         <div class="card">
                                                             <div class="card-body">
                                                                 <div class="text-center">
-                                                                    <img src="<?= base_url(); ?>assets/images/avatars/cesar-rincon.jpg" class="img-fluid img-thumbnail rounded-circle" alt="member profile">
+                                                                    <img src="<?= base_url(); ?>assets/images/avatars/<?= $detail['foto_profil']; ?>" width="200px" class="img-fluid img-thumbnail" alt="member profile">
                                                                     <br />
                                                                     <br />
                                                                     <h4 class="card-title" style="font-family: 'Pacifico', cursive;color:dimgray;"><?= $detail['nama_lengkap']; ?></h4>
                                                                     <br />
                                                                     <div class="text-center">
-                                                                        <h6><span class="badge badge-info">Basic Member</span></h6>
+                                                                        <?php
+                                                                        $this->db->join('tb_agt_ted', 'tb_agt_ted.role_id = tb_user_role.id', 'left');
+                                                                        $mem_ship = $this->db->get_where('tb_user_role', ['id' => $detail['roleref']])->row_array();
+                                                                        ?>
+                                                                        <h6><span class="badge badge-info"><?= ucwords($mem_ship['role_name']) ?></span></h6>
                                                                     </div>
                                                                     <hr>
                                                                     <div style="font-size: 18px;color:darkgrey;">
-                                                                        Saldo <span class="badge badge-primary">3500 K</span> | Emas <span class="badge badge-warning">4,66 gr</span>
+                                                                        <?php
+                                                                        $saldo_rp   = $this->model_transaksi->getLastTranById($detail['idted'], 'uang');
+                                                                        $saldo_emas = $this->model_transaksi->getLastTranById($detail['idted'], 'emas');
+
+                                                                        //uang
+                                                                        if (empty($saldo_rp['saldo'])) {
+                                                                            $uang = 0;
+                                                                        } else {
+                                                                            $uang   = $saldo_rp['saldo'] / 1000;
+                                                                        }
+                                                                        ?>
+
+                                                                        <?php
+                                                                        //emas
+                                                                        if (empty($saldo_emas['saldo'])) {
+                                                                            $emas = 0;
+                                                                        } else {
+                                                                            $emas = number_format($saldo_emas['saldo'], 3, ',', '.');
+                                                                        }
+                                                                        ?>
+                                                                        Saldo <span class="badge badge-primary"><?= number_format($uang, 2, ',', '.'); ?> K</span> | Emas <span class="badge badge-warning"><?= $emas; ?> gr</span>
                                                                     </div>
                                                                 </div>
                                                                 <ul class="list-group mt-4">
@@ -129,6 +171,10 @@
                                                                         <input type="text" class="form-control" name="nama" id="nama" value="<?= $detail['nm_tmp']; ?>">
                                                                     </div>
                                                                     <div class="form-group">
+                                                                        <label for="noktp">No. KTP</label>
+                                                                        <input type="text" class="form-control" name="noktp" id="noktp" value="<?= $detail['ktp_tmp']; ?>" />
+                                                                    </div>
+                                                                    <div class="form-group">
                                                                         <label for="email">E-mail</label>
                                                                         <input type="email" class="form-control" id="email" name="email" value="<?= $detail['email_tmp']; ?>">
                                                                     </div>
@@ -137,6 +183,7 @@
                                                                         <input type="text" class="form-control" id="nohp" name="nohp" value="<?= $detail['nohp_tmp'] ?>">
                                                                         <input type="hidden" name="password" value="<?= $detail['password_tmp']; ?>" />
                                                                         <input type="hidden" name="idtmp" value="<?= $detail['idtmp']; ?>" />
+                                                                        <input type="hidden" name="role" value="<?= $detail['role_id']; ?>" />
                                                                     </div>
 
                                                                 </div>

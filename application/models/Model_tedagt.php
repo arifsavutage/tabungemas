@@ -8,6 +8,7 @@ class Model_tedagt extends CI_Model
     public $idted;
     public $tgl_gabung;
     public $nama_lengkap;
+    public $noktp;
     public $nohp;
     public $alamat;
     public $email;
@@ -105,6 +106,7 @@ class Model_tedagt extends CI_Model
             $this->idted        = $id;
             $this->tgl_gabung   = date('Y-m-d');
             $this->nama_lengkap = ucwords($post['nama']);
+            $this->noktp        = $post['noktp'];
             $this->nohp         = $post['nohp'];
             $this->alamat       = "";
             $this->email        = $post['email'];

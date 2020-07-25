@@ -39,6 +39,10 @@
                         <input type="text" class="form-control" id="nmwarisid" name="nmwaris" value="<?= ucwords($detail['nmwaris']) ?>" placeholder="Nama ahli waris" required="">
                     </div>
                     <div class="form-group">
+                        <label for="ktpwaris">Ktp Ahli Waris</label>
+                        <input type="text" class="form-control" id="ktpwarisid" name="ktpwaris" value="<?= $detail['ktpwaris'] ?>" placeholder="Nama ahli waris" required="">
+                    </div>
+                    <div class="form-group">
                         <label for="hubwaris">Hubungan</label>
                         <!--<input type="text" class="form-control" name="hubwaris" value="<?= $detail['hubwaris'] ?>" placeholder="Hubungan dengan ahli waris" <?= $readonly ?> required="">-->
                         <select name="hubwaris" class="form-control" id="hubwarisid" required="">

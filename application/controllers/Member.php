@@ -178,6 +178,7 @@ class Member extends CI_Controller
                 $an     = $this->input->post('an');
 
                 $nmwaris    = strtolower($this->input->post('nmwaris'));
+                $ktpwaris   = $this->input->post('ktpwaris');
                 $hubwaris   = strtolower($this->input->post('hubwaris'));
                 $hpwaris    = $this->input->post('hpwaris');
 
@@ -189,6 +190,7 @@ class Member extends CI_Controller
                     'bank'  => "$bank",
                     'an'    => "$an",
                     'nmwaris' => "$nmwaris",
+                    'ktpwaris' => $ktpwaris,
                     'hubwaris' => "$hubwaris",
                     'hpwaris'  => "$hpwaris"
                 ];

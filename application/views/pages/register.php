@@ -42,12 +42,29 @@
                     <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
+                    <input class="form-control" type="text" name="ktp" value="<?= set_value('ktp'); ?>" placeholder="No. KTP">
+                    <?= form_error('ktp', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+                <div class="form-group">
                     <input class="form-control" type="email" name="email" value="<?= set_value('email'); ?>" placeholder="Email">
                     <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
                     <input class="form-control" type="text" name="nohp" value="<?= set_value('nohp'); ?>" placeholder="No. handphone">
                     <?= form_error('nohp', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                    <select name="jenis" class="form-control">
+                        <option value="">: Pilih</option>
+                        <?php
+                        $this->db->where('id IN (3,4)');
+                        $roles = $this->db->get('tb_user_role')->result_array();
+
+                        foreach ($roles as $role) {
+                            echo "<option value='$role[id]'>" . ucwords($role['role_name']) . "</option>";
+                        }
+                        ?>
+                    </select>
                 </div>
                 <div class="form-group">
                     <div class="form-row">
@@ -86,7 +103,7 @@
                 </div>
                 <div class="form-group">
                     <div class="form-check">
-                        <label class="form-check-label"><input class="form-check-input" name="agreement" type="checkbox" required="">Saya setuju dengan ketentuan yang berlaku.</label>
+                        <label class="form-check-label"><input class="form-check-input" name="agreement" type="checkbox" required="">Saya setuju dengan <a href="http://www.tabungemas.com/syarat-dan-ketentuan-agen-ted/" title="syarat & ketentuan" target="_blank">ketentuan</a> yang berlaku.</label>
                         <?= form_error('agreement', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                 </div>

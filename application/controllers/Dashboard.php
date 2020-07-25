@@ -20,7 +20,7 @@ class Dashboard extends CI_Controller
     {
         $id = $this->session->userdata('id');
 
-        if ($this->session->userdata['role'] == 'member') {
+        if ($this->session->userdata['role'] == 'agen' || $this->session->userdata['role'] == 'basic') {
             $page = 'pages/member/member_dashboard';
         } else {
             $page = 'pages/dashboard_pages';

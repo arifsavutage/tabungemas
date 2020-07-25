@@ -8,7 +8,7 @@
                 }
                 ?>
                 <div class="text-center">
-                    <img src="<?= base_url() . "assets/images/avatars/" . $detail['foto_profil']; ?>" class="img-fluid img-thumbnail rounded-circle" alt="member profile">
+                    <img src="<?= base_url() . "assets/images/avatars/" . $detail['foto_profil']; ?>" width="200px" class="img-fluid img-thumbnail rounded-circle" alt="member profile">
                     <br />
                     <br />
                     <h4 class="card-title" style="font-family: 'Pacifico', cursive;color:dimgray;"><?= $detail['nama_lengkap']; ?>
@@ -61,13 +61,16 @@
                     </li>
                 </ul>
                 <ul class="list-group mt-4">
+                    <li class="list-group-item disabled"><i class="fa fa-id-card-o"></i> <?= $detail['noktp']; ?></li>
                     <li class="list-group-item disabled"><i class="far fa-envelope"></i> <?= $detail['email']; ?></li>
                     <li class="list-group-item disabled"><i class="fas fa-mobile-alt"></i> <?= $detail['nohp']; ?></li>
                     <li class="list-group-item disabled">
                         <i class="fas fa-map-marker"></i> <?= $detail['alamat']; ?>
                     </li>
                     <li class="list-group-item disabled"><i class="fas fa-university"></i> <?= $detail['norek'] . " | " . $detail['bank'] . " | an. " . $detail['an']; ?></li>
-                    <li class="list-group-item disabled"><i class="fas fa-hand-holding-heart"></i> <?= ucwords($detail['nmwaris']) . " | " . ucwords($detail['hubwaris']) . " | " . $detail['hpwaris']; ?></li>
+                    <li class="list-group-item disabled">
+                        <i class="fas fa-hand-holding-heart"></i> <?= $detail['ktpwaris'] . " | " . ucwords($detail['nmwaris']) . " | " . ucwords($detail['hubwaris']) . " | " . $detail['hpwaris']; ?>
+                    </li>
                 </ul>
                 <?= $upgrade; ?>
             </div>
