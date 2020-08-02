@@ -55,7 +55,7 @@
                 </div>
                 <div class="form-group">
                     <select name="jenis" class="form-control">
-                        <option value="">: Pilih</option>
+                        <option value="">: Pilih Keanggotaan</option>
                         <?php
                         $this->db->where('id IN (3,4)');
                         $roles = $this->db->get('tb_user_role')->result_array();

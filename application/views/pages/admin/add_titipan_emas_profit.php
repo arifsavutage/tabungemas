@@ -7,6 +7,10 @@
             <div class="card-body">
                 <form name="addprofit" action="" method="post" data-parsley-validate novalidate>
                     <div class="form-group">
+                        <label for="tgl1">Tanggal Profit <span class="text-danger">*</span></label>
+                        <input type="text" name="tgl1" class="form-control" readonly="true" />
+                    </div>
+                    <div class="form-group">
                         <label for="profit">Nominal (%)<span class="text-danger">*</span></label>
                         <input type="text" name="profit" data-parsley-trigger="change" required placeholder="Isi nominal" class="form-control" id="profit">
                         <small class="form-text text-muted">pecahan menggunakan titik ( . )</small>

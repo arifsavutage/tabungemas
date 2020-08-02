@@ -23,6 +23,7 @@
                                 <th>No.</th>
                                 <th>ID</th>
                                 <th>Nama Anggota</th>
+                                <th>No. HP</th>
                                 <th>Periode</th>
                                 <th>Tgl. Trf</th>
                                 <th>Bank</th>
@@ -50,6 +51,7 @@
                                     <td scope="row"><?= $no; ?></td>
                                     <td><a href="<?= base_url() . 'index.php/member/profil_anggota/' . $row['idted']; ?>"><?= $row['idted']; ?></a></td>
                                     <td><?= ucwords($row['nama_lengkap']); ?></td>
+                                    <td><?= $row['nohp']; ?></td>
                                     <td><?= $row['periode']; ?></td>
                                     <td><?= date('d/m/Y', strtotime($row['tgl_trf'])); ?></td>
                                     <td><?= strtoupper($row['bank']); ?></td>

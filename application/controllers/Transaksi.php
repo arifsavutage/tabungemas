@@ -1340,7 +1340,7 @@ class Transaksi extends CI_Controller
                 //harga terkini
                 $get_harga  = $this->db->query("SELECT `IDX`, `UPDATE_AT`, `HRG_BELI`, `HRG_JUAL` FROM `t_update_ubs` ORDER BY `IDX` DESC LIMIT 1")->row_array();
 
-                $hrgfix     = (int) str_replace(",", "", $get_harga['HRG_BELI']) - $selisih_hrgbeli['selisih_beli'];
+                $hrgfix     = (int) str_replace(",", "", $get_harga['HRG_JUAL']) - $selisih_hrgbeli['selisih_jual'];
                 $hrg_ikut   = $hrgfix;
                 $jml_uang   = $hrgfix * $gram;
 
@@ -1474,7 +1474,8 @@ class Transaksi extends CI_Controller
         if ($this->form_validation->run()) {
 
             $profit = $this->input->post('profit');
-            $date   = date('Y-m-d');
+            //$date   = date('Y-m-d');
+            $date   = $this->input->post('tgl1');
 
             //load data titipan emas yg aktif
             $data_aktif = $this->model_titipan->loadAktif();
@@ -1638,35 +1639,61 @@ class Transaksi extends CI_Controller
             $this->model_transaksi->save($data_in);
 
             //melakukan potongan saldo uang krn widraw / trf
-            $getsaldo = $this->model_transaksi->getLastTranById($row['idted'], 'uang');
-            $saldokirim = $getsaldo['saldo'] - $row['nominal'];
+            //yang di transfer adalah profit di atas 100.000
 
-            $data_out = [
-                'tgl'   => date('Y-m-d'),
-                'idted' => $row['idted'],
-                'uraian' => 'trf. profit titipan emas ke ' . $row['bank'] . ' ' . $row['norek'] . ' ' . $row['an'],
-                'masuk' => 0,
-                'keluar' => $row['nominal'],
-                'saldo' => $saldokirim,
-                'jenis' => 'uang'
-            ];
+            if ($row['nominal'] >= 100000) {
 
-            $this->model_transaksi->save($data_out);
+                //ambil biaya admin
+                $by_admin    = $this->model_uang->getValueById(1);
+                $adm         = $by_admin['by_adm_master'];
 
-            //send sms transfer profit
-            $nama_explode   = explode(" ", $row['nama_lengkap']);
+                $getsaldo   = $this->model_transaksi->getLastTranById($row['idted'], 'uang');
+                $saldokirim = $getsaldo['saldo'] - $row['nominal'];
+                $nomtrf     = $row['nominal'] - $adm;
 
-            if (count($nama_explode) > 1) {
-                $nama_anggota   = $nama_explode[0];
-            } else {
-                $nama_anggota   = $row['nama_lengkap'];
+                $data_out = [
+                    'tgl'   => date('Y-m-d'),
+                    'idted' => $row['idted'],
+                    'uraian' => 'trf. profit titipan emas ke ' . $row['bank'] . ' ' . $row['norek'] . ' ' . $row['an'],
+                    'masuk' => 0,
+                    'keluar' => $nomtrf,
+                    'saldo' => $saldokirim,
+                    'jenis' => 'uang'
+                ];
+
+                $this->model_transaksi->save($data_out);
+
+                //save data biaya admin
+                $biaya = [
+                    'tgl'   => date('Y-m-d'),
+                    'idted' => $row['idted'],
+                    'uraian' => 'potongan biaya admin',
+                    'masuk' => 0,
+                    'keluar' => $adm,
+                    'saldo' => $saldokirim,
+                    'jenis' => 'uang'
+                ];
+
+                $this->model_transaksi->save($biaya);
+
+                //send sms transfer profit
+                $nama_explode   = explode(" ", $row['nama_lengkap']);
+
+                if (count($nama_explode) > 1) {
+                    $nama_anggota   = $nama_explode[0];
+                } else {
+                    $nama_anggota   = $row['nama_lengkap'];
+                }
+
+                $profitgr   = $row['gram'] * ($row['jmlprofit'] / 100);
+                $pesan = "Total profit titipan emas bulan " . $row['periode'] . " sebesar " . $row['jmlprofit'] . "% / $profitgr gr, 
+                telah ditransfer ke rekening " . $row['bank'] . " An. " . $row['an'] . " sebesar Rp " . number_format($row['nominal'], 0, ',', '.') . ",-. Test";
+
+                //echo $pesan;
+                if (!empty($row['nohp'])) {
+                    sendsms($row['nohp'], $pesan);
+                }
             }
-
-            $profitgr   = $row['gram'] * ($row['jmlprofit'] / 100);
-            $pesan = "Total profit titipan emas bulan " . $row['periode'] . " sebesar " . $row['jmlprofit'] . "% / $profitgr gr, 
-            telah ditransfer ke rekening " . $row['bank'] . " An. " . $row['an'] . " sebesar Rp " . number_format($row['nominal'], 0, ',', '.') . ",-. Tks";
-
-            sendsms($row['nohp'], $pesan);
         }
 
         //is_transfer set to 1

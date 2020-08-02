@@ -79,7 +79,7 @@
                                     <td>$report[tenor]</td>
                                     <td>$report[gram]</td>
                                     <td>" . number_format($report['harga_ikut'], 0, '.', ',') . "</td>
-                                    <td>$report[jmlprofit]</td>
+                                    <td>" . number_format($report['jmlprofit'], 3, '.', ',') . "</td>
                                     <td>$profitgr gr</td>
                                     <td>" . number_format($profitcuan, 0, '.', ',') . "</td>
                                     <td>$report[status]</td>
