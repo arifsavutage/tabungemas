@@ -93,9 +93,10 @@ class Model_tmpagt extends CI_Model
 
     public function getRelationAll()
     {
-        $this->db->select('tb_agt_tmp.*, tb_agt_ted.idted, tb_agt_ted.`nama_lengkap`, tb_agt_ted.`nohp`, tb_agt_ted.`alamat`, tb_agt_ted.`email`, tb_agt_ted.`role_id` AS roleref, tb_agt_ted.`foto_profil`');
+        $this->db->select('tb_agt_tmp.*, tb_agt_ted.idted, tb_agt_ted.`nama_lengkap`, tb_agt_ted.`nohp`, tb_agt_ted.`alamat`, tb_agt_ted.`email`, tb_agt_ted.`role_id` AS roleref, tb_agt_ted.`foto_profil`, role_name');
         $this->db->from($this->_table);
         $this->db->join('tb_agt_ted', 'tb_agt_ted.idted = tb_agt_tmp.idreferal');
+        $this->db->join('tb_user_role', 'tb_user_role.id = tb_agt_tmp.role_id');
         return $this->db->get()->result_array();
     }
 

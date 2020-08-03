@@ -45,14 +45,14 @@
                                     <td><?= $detail['ktp_tmp']; ?></td>
                                     <td>
                                         <?php
-                                        $this->db->select('tb_user_role.role_name as memship');
+                                        $this->db->select('tb_user_role.role_name as memship, tb_user_role.id');
                                         $this->db->join('tb_agt_tmp', 'tb_agt_tmp.role_id = tb_user_role.id', 'right');
                                         $mem_ship_tmp = $this->db->get_where('tb_user_role', ['id' => $detail['role_id']])->row_array();
 
-                                        if ($mem_ship_tmp['memship'] == 'agen') {
+                                        if ($mem_ship_tmp['id'] == 3) {
                                             echo '<span class="badge badge-danger">' . ucwords($mem_ship_tmp['memship']) . '</span>';
                                             //echo $detail['role_id'];
-                                        } else if ($mem_ship_tmp['memship'] == 'basic') {
+                                        } else if ($mem_ship_tmp['id'] == 4) {
                                             echo '<span class="badge badge-success">' . ucwords($mem_ship_tmp['memship']) . '</span>';
                                             //echo $detail['role_id'];
                                         }

@@ -51,6 +51,7 @@ class Auth extends CI_Controller
                         'id'    => $user['idted'],
                         'nama'  => $nameview,
                         'role'  => $user['role_name'],
+                        'roleid' => $user['role_id'],
                         'foto'  => $user['foto_profil']
                     ];
 
@@ -99,6 +100,7 @@ class Auth extends CI_Controller
                             'id'    => $admin['id'],
                             'nama'  => $nameview,
                             'role'  => $admin['role_name'],
+                            'roleid' => $admin['role_id'],
                             'foto'  => $admin['foto']
                         ];
 

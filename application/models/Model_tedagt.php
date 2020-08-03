@@ -82,7 +82,7 @@ class Model_tedagt extends CI_Model
 
     public function getAccountByEmail($email)
     {
-        $this->db->select("`idted`,`nama_lengkap`,`password`,`foto_profil`,`aktif`, role_name");
+        $this->db->select("`idted`,`nama_lengkap`,`password`,`foto_profil`,`aktif`, role_name, tb_agt_ted.role_id");
         $this->db->join('tb_user_role', 'tb_user_role ON tb_user_role.id = tb_agt_ted.role_id', 'left');
         $this->db->where('email', "$email");
         return $this->db->get($this->_table)->row_array();

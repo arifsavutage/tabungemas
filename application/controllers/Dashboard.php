@@ -18,13 +18,17 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
-        $id = $this->session->userdata('id');
+        $id         = $this->session->userdata('id');
+        $role_id    = $this->session->userdata('roleid');
 
-        if ($this->session->userdata['role'] == 'agen' || $this->session->userdata['role'] == 'basic') {
+        //get dashboard page
+        $page = $this->db->get_where('tb_user_dashboard', ['role_id' => $role_id])->row_array();
+
+        /*if ($this->session->userdata['role'] == 'agen' || $this->session->userdata['role'] == 'basic') {
             $page = 'pages/member/member_dashboard';
         } else {
             $page = 'pages/dashboard_pages';
-        }
+        }*/
 
         $data = [
             'banks'     => $this->model_bank->getAll(),
@@ -39,7 +43,7 @@ class Dashboard extends CI_Controller
             'toptransaksi' => $this->model_transaksi->topTransaction()->num_rows(),
             'users' => $this->model_tedagt->getAll()->num_rows(),
             'newusers' => $this->model_tedagt->newUser()->num_rows(),
-            'page' => $page
+            'page' => $page['dashboard']
         ];
         $this->load->view('dashboard', $data);
     }

@@ -18,15 +18,25 @@
                     <br />
                     <div class="text-center">
                         <?php
-                        if ($detail['jenis'] == 'basic') {
-                            $keanggotaan    = "Basic Anggota";
+                        $this->db->select('tb_user_role.role_name as memship, tb_user_role.id');
+                        $this->db->join('tb_agt_ted', 'tb_agt_ted.role_id = tb_user_role.id', 'right');
+                        $mem_ship = $this->db->get_where('tb_user_role', ['id' => $detail['role_id']])->row_array();
+
+                        if ($mem_ship['id'] == 3) {
+                            //echo '<span class="badge badge-danger">' . ucwords($mem_ship_tmp['memship']) . '</span>';
+                            //echo $detail['role_id'];
+                            $keanggotaan    = ucwords($mem_ship['memship']);
                             $class          = "badge-info";
                             $upgrade        = '<a href="' . base_url('index.php/member/upgrade/') . $this->session->userdata('id') . '" class="btn btn-danger btn-block btn-lg mt-4">Upgrade to premium</a>';
-                        } else {
-                            $keanggotaan    = "Agen TED";
+                        } else if ($mem_ship['id'] == 4) {
+                            //echo '<span class="badge badge-success">' . ucwords($mem_ship_tmp['memship']) . '</span>';
+                            //echo $detail['role_id'];
+                            $keanggotaan    = ucwords($mem_ship['memship']);
                             $class          = "badge-danger";
                             $upgrade        = "";
                         }
+
+
                         ?>
                         <h6><span class="badge <?= $class; ?>"><?= $keanggotaan; ?></span></h6>
                         <a role="button" href="<?= base_url(); ?>index.php/member/edit_profil_anggota/<?= $detail['idted']; ?>" class="btn btn-primary"><span class="btn-label"><i class="fas fa-user-edit"></i></span>Edit Profil</a>
