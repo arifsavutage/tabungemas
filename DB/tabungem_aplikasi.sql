@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 03 Agu 2020 pada 11.29
+-- Waktu pembuatan: 03 Agu 2020 pada 22.41
 -- Versi server: 10.3.23-MariaDB
 -- Versi PHP: 7.3.6
 
@@ -90,7 +90,7 @@ CREATE TABLE `tb_agt_ted` (
 INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `noktp`, `nohp`, `alamat`, `email`, `password`, `role_id`, `scan_ktp`, `scan_npwp`, `norek`, `bank`, `an`, `foto_profil`, `jenis`, `aktif`, `nmwaris`, `ktpwaris`, `hubwaris`, `hpwaris`) VALUES
 ('01.00001', '2019-10-28', 'Susiloningsih 1', '', '081327479067', 'koperasi mmas', 'info@tabungemas.com', '$2y$10$gXQu/Q8jvhD6obcASleZ9.I2SuwjXdqprBTPVoau1qn34e6w/g0bW', 3, 'noimage.jpg', 'noimage.jpg', '12312388857', 'BCA', 'koperasi mmas', '01_00001.png', 'agen', 1, '', '', '', ''),
 ('01.00002', '2019-11-05', 'Purnomo', '', '0812524426', '', 'ciptoted@tabungemas.com', '$2y$10$6DxFsdIch.NTEpDIeuQFMOqiV4GGqbMdYApfZlZ.0.0JCXhmN7Yfm', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'agen', 1, '', '', '', ''),
-('01.00003', '2019-11-05', 'Susiloningsih', '', '0821-3636-8828', 'Kanfer raya', 'kopikukopika@gmail.com', '$2y$10$Vk7juauW8gfOzN89Xk5yru59Vk89imsBNXnGa8d4fKN5bnAPLffBy', 3, 'ktp_01_00003.jpg', 'npwp_01_00003.jpg', '303601041826532', 'BRI', 'susiloningsih', '01_00003.jpg', 'agen', 1, 'sumarni', '', 'ortu', '+62 822-4216-9246'),
+('01.00003', '2019-11-05', 'Susiloningsih', '', '082136368828', 'Jl kanfer raya P-1', 'kopikukopika@gmail.com', '$2y$10$Vk7juauW8gfOzN89Xk5yru59Vk89imsBNXnGa8d4fKN5bnAPLffBy', 3, 'ktp_01_00003.jpg', 'npwp_01_00003.jpg', '8030517131', 'BCA', 'susiloningsih', '01_00003.jpg', 'agen', 1, 'sumarni', '', 'ortu', '+62 822-4216-9246'),
 ('01.00004', '2019-11-05', 'Cipto Purnomo', '', '081225230626', 'Jl truntum VI no 11 Tlogosari kulon pedurungan semarang', 'ciptopurnomo@tabungemas.com', '$2y$10$ITr2hGKEcpKGhklx0i96Je1Jiw7l9.PtjDoyX/fgIaPpiLvvfhxYC', 3, 'noimage.jpg', 'noimage.jpg', '0094680561', 'BCA', 'Cipto purnomo', 'noimage.jpg', 'agen', 1, 'rasendria fico purnomo', '', 'anak', '082228101815'),
 ('01.00005', '2019-11-05', 'Ariandaru Kusuma Yudha', '', '08112888470', '', 'kog434@gmail.com', '$2y$10$SSDq5wmc9kEdz3Jf1s7gl.VxKyYKuNa4RrOGo0xP27Y7PlU4DPk5O', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'agen', 1, '', '', '', ''),
 ('01.00006', '2019-11-05', 'Muhammad Irfan Muammar', '', '082127055238', 'Jl pangeran panjunan rt1/rw1 desa Cisaat kecamatan Dukupuntang kabupaten Cirebon', 'irfanmuammar007@gmail.com', '$2y$10$h.mIK.JBj5B9RCyBAzN9C.XT0HMBCCrMWo4sKhe10akouejlcB9mm', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', '01_00006.jpg', 'agen', 1, '', '', '', ''),
@@ -112,10 +112,10 @@ INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `noktp`, `nohp`
 ('01.00022', '2019-11-19', 'Andika Latif Kurniawan', '', '0895367355591', '', 'dika.latif.99@gmail.com', '$2y$10$LlHD8MLh6kbF2N52Y.3oluPe4qrz92/bDpYSyDbMWSvA03O//MI.6', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00023', '2019-12-05', 'Lia Afiani', '', '081327405100', '', 'bisnisjaring@gmail.com', '$2y$10$LYAFdD4fUxEBuoT4hwi4Uu56NXTrsv9BIlo1xymajKts7ySXANUja', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00024', '2019-12-05', 'Muhammad Arif Efendi', '', '081392761799', '', 'muhammadarifefendi6@gmail.com', '$2y$10$3JqS6g1B4iGrv8Z/gsyt5.R9Q0mkgVxpZ67ABX6jJDNh5danLMkIW', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', '01_00024.jpg', 'basic', 1, '', '', '', ''),
-('01.00025', '2019-12-05', 'Amelia Nadia Rahma', '', '082230854065', '', 'amelianadiar@gmail.com', '$2y$10$K7iM9pRUnseeTLGOdBVXleU.j5m82ulkJhOC2r97iuGbBVlyCexJC', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'agen', 1, '', '', '', ''),
+('01.00025', '2019-12-05', 'Amelia Nadia Rahma', '', '082230854065', 'Kradenan Lama Rt 8 Rw 5, Sukorejo, Gunungpati, Semarang', 'amelianadiar@gmail.com', '$2y$10$K7iM9pRUnseeTLGOdBVXleU.j5m82ulkJhOC2r97iuGbBVlyCexJC', 3, 'noimage.jpg', 'noimage.jpg', '3021211841', 'Bank Jateng', 'Amelia Nadia Rahma', 'noimage.jpg', 'agen', 1, 'tri nurdyastuti', '', 'ortu', '082230854065'),
 ('01.00026', '2019-12-06', 'Hilda Sabrina Dyra Permata Hatti Mama', '', '0895396248408', '', 'hildasabrinadyra@gmail.com', '$2y$10$K9PXNd9Qdt5J.QrD4guKWua5v1DDwuLhmAD/5BE9iDSIBdlhiuB/u', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
-('01.00027', '2019-12-08', 'Sri Susanti', '', '085101995521', 'Jl. Arumanis Barat No. 17 Semarang', 'srisusantihasta@gmail.com', '$2y$10$zebC05vZXCM2AmlvrGZGU.0Wd1Yrc7itUE.jaNCELy1kuxFOG4Yey', 3, 'noimage.jpg', 'noimage.jpg', '304301021939534', '', '', 'noimage.jpg', 'agen', 1, '', '', '', ''),
-('01.00028', '2019-12-08', 'Ari Wuryantini', '', '081326627170', '', 'kosbuwarto@gmail.com', '$2y$10$YPDNuMz8U1snE3Z68/v5r.BQQUZB8sDgRJLLAYYmCyR3KIo0tB4t.', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
+('01.00027', '2019-12-08', 'Sri Susanti', '', '085101995521', 'Jl. Arumanis Barat No. 17 Semarang', 'srisusantihasta@gmail.com', '$2y$10$zebC05vZXCM2AmlvrGZGU.0Wd1Yrc7itUE.jaNCELy1kuxFOG4Yey', 3, 'noimage.jpg', 'noimage.jpg', '0408.1.000168', 'BTPN', 'Sri susanti', 'noimage.jpg', 'agen', 1, 'andre', 'xxxxxxxxxxxxxxxxxx', 'anak', 'xxxxxxxxxxxxxxxxx'),
+('01.00028', '2019-12-08', 'Ari Wuryantini', '', '081326627170', 'demaan  rt  01  rw  07   jepara', 'kosbuwarto@gmail.com', '$2y$10$YPDNuMz8U1snE3Z68/v5r.BQQUZB8sDgRJLLAYYmCyR3KIo0tB4t.', 3, 'noimage.jpg', 'noimage.jpg', ' 3405  -   01-    016327 -  53 -  8', 'BRI', 'Ari  wuryantini  ', 'noimage.jpg', 'basic', 1, 'xxxxxxxxxxx', 'xxxxxxxxxxxxxxxxxx', 'anak', 'xxxxxxxxxxxxxxxxx'),
 ('01.00029', '2019-12-09', 'Kukuh Saryanto', '', '089658970103', '', 'kukuhsaryanto2105@gmail.com', '$2y$10$hfbtMoz/6Q9sbvOV8SxF9u95Q7083xnE42Jzigb8jy547uckpNpbO', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00030', '2019-12-16', 'Susila Widodo B.Sc', '', '081220007663', '', 'denbagussusilo4@gmail.com', '$2y$10$Slc.vh8k.fYb9cWlH6ctIOPriQNBXPmRd/z44KQ43.cwLZ.BHJMhK', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00031', '2019-12-19', 'Arwani', '', '082244083915', 'Jl. Mangga dalam no. 16C, RT/RW 06/02, Srondol Wetan, Banyumanik, Semarang ', 'arwani0709@gmail.com', '$2y$10$ZQvQLQ5kaCvJe1XinQoNuetEhVh83by9k0UpJxRB.eGUfw9DdnO2a', 3, 'noimage.jpg', 'noimage.jpg', '0095345617', 'BCA', '', 'noimage.jpg', 'agen', 1, '', '', '', ''),
@@ -138,7 +138,7 @@ INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `noktp`, `nohp`
 ('01.00048', '2020-03-02', 'Mansyur Salim ', '', '082324210910', '', 'msyaifullohfatah@gmail.com', '$2y$10$5gftD2usWEOSdaTc2X.1muKwhxF6ibbcit9DKwYNCvBF4dcfRBApG', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00049', '2020-03-02', 'Maria Magdalena Sutari', '', '087734645495', '', 'cutt762@gmail.com', '$2y$10$0Cc5vwBYiBQoBCSZQPL50.4BXyqaoxmMTu1xD8HvGvAWy.zNNgZBS', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00050', '2020-03-21', 'Ivonne Kartika Aju', '', '081228156119', '', 'indigo_221@yahoo.com', '$2y$10$ss8l3pHAqz9GsvYWnqsrgO7kGXYs8c4F7.r4cDb9dIVg3DzFrB.7O', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
-('01.00051', '2020-03-25', 'Tri Nurdyastuti/Alumni', '', '082299413996', '', 'nurdyastutitri@gmail.com', '$2y$10$fJWhvaMbznsuizA/L7ZV3uk300GPRprXXJdFEafD8REdgAojDt4vS', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
+('01.00051', '2020-03-25', 'Tri Nurdyastuti/Alumni', '', '082299413996', '', 'nurdyastutitri@gmail.com', '$2y$10$fJWhvaMbznsuizA/L7ZV3uk300GPRprXXJdFEafD8REdgAojDt4vS', 3, 'noimage.jpg', 'noimage.jpg', '2465191960', 'BCA', 'Sudarto', 'noimage.jpg', 'basic', 1, 'amelia nadia', 'xxxxxxxxxxxxxxxxxx', 'anak', 'xxxxxxxxxxxxxxxxx'),
 ('01.00052', '2020-04-10', 'Dwi Ratnawati', '', '081575886727', '', 'ratnasujadi@gmail.com', '$2y$10$u4PY5mSmLXfIPYTWBJyRbeUsIEuuAyRM8OqNo19rBR1FaKyBP7jEm', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00053', '2020-05-01', 'Sugiharti', '', '0811251610', '', 'sugih_arti1@yahoo.com', '$2y$10$K9czd8brpcBt970H/79Q3u/kLakLxkOvkMEvKjkf/q7duxshM5Vq2', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00054', '2020-05-31', 'Muhammad Badruz Zaman', '', '085713893698', 'Jl.kyai Mojo gg buntu Srondol kulon Banyumanik Semarang', 'muhammadbadruz19@gmail.com', '$2y$10$A249YCZQMw4BUxOqkWa2J.PCG2TxlReym70mgcjboN7d6st7OjsYO', 3, 'noimage.jpg', 'noimage.jpg', '7830017954', 'BCA', 'Muhammad Badruz zaman', '01_00054.jpg', 'agen', 1, '', '', '', ''),
@@ -149,15 +149,16 @@ INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `noktp`, `nohp`
 ('01.00059', '2020-06-08', 'Saiful Rizal', '', '082323011056', '', 'rizalfkubsemarang@gmail.com', '$2y$10$0JCV6vtjZcGzdkcyoydGpO.iN9d5E4KkcaT/hxiLsyB33HivtZB7G', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00060', '2020-06-09', 'Haryono', '', '085876100940', 'Dsn Tumbu Purwodadi KEC Tegalrejo Kab Magelang', 'ahmadkahar.mgl@gmail.com', '$2y$10$A6r7xlRjQhvhWQyxZuV8Vuum34LTTY5Ly8q86INQZl9HnkC4sMxxS', 3, 'noimage.jpg', 'noimage.jpg', '100601002755535', 'BRI', 'HARYONO', '01_00060.jpg', 'agen', 1, '', '', '', ''),
 ('01.00061', '2020-06-16', 'Ekosetyocahyono', '', '081937676933', '', 'ekosetyo244@gmail.com', '$2y$10$Q0.Y4xwLf7yaXmdmTOZbQOSbFzg808C/3wUAQYsi6KI6hwTXHVHF6', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
-('01.00062', '2020-06-20', 'Prawira Rajendra Arva Habib Kusuma', '', '085101292189', '', 'arvakusumatabunganemas@gmail.com', '$2y$10$0hORzQL2gkZpk8cqidhk1eSi6rV2wjk68JXn6VlL89JYlqakxSMKa', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
+('01.00062', '2020-06-20', 'Prawira Rajendra Arva Habib Kusuma', '', '085101292189', '', 'arvakusumatabunganemas@gmail.com', '$2y$10$0hORzQL2gkZpk8cqidhk1eSi6rV2wjk68JXn6VlL89JYlqakxSMKa', 3, 'noimage.jpg', 'noimage.jpg', '0408.1.000168', 'BTPN', 'SRI SUSANTI', 'noimage.jpg', 'basic', 1, 'andre', 'xxxxxxxxxxxxxxxxxx', 'ortu', 'xxxxxxxxxxxxxxxxx'),
 ('01.00063', '2020-06-24', 'Agus Prasetyo', '', '085950726801', '', 'dspsmg1@gmail.com', '$2y$10$sKqpPS0lULSe0/CvS.Ayp.PW0QTDhORPwcsU8eGd/3qZZ77Hq9/Yq', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'agen', 1, '', '', '', ''),
 ('01.00064', '2020-06-25', 'SRI WAHYUNI', '', '08156516580', '', 'maysafif.02@gmail.com', '$2y$10$/zi2IJQ5O9ASGLppJ0i4YOZISXAt6D31UWBMTL3ApL9T.IW80J3jK', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
-('01.00065', '2020-06-29', 'ANDRE WIRADIKUSUMA, ST', '', '081325453388', '', 'andrewiradikusuma727@gmail.com', '$2y$10$3PTkOL5mQrkAxLsGv7CQp.9GpyYRQdxGNB0fDhSMNChUaxFH9n72m', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
+('01.00065', '2020-06-29', 'ANDRE WIRADIKUSUMA, ST', '', '081325453388', '', 'andrewiradikusuma727@gmail.com', '$2y$10$3PTkOL5mQrkAxLsGv7CQp.9GpyYRQdxGNB0fDhSMNChUaxFH9n72m', 3, 'noimage.jpg', 'noimage.jpg', '04081000158', 'BTPN', 'SRI SUSANTI', 'noimage.jpg', 'basic', 1, 'sri susanti', 'xxxxxxxxxxxxxxxxxx', 'ortu', 'xxxxxxxxxxxxxxxxx'),
 ('01.00066', '2020-07-13', 'ADITYA CIPTA PRADANA', '', '085726841990', 'Jl Wonodri Krajan No 38 Semarang RT4/1 ', 'aditya_cipta99@yahoo.co.id', '$2y$10$6.FgKDR5dXQlPYzePQmqzeMm.Lgw5ThLMMaPQEgdnkvrTE9fG6Nr.', 3, 'noimage.jpg', 'noimage.jpg', '0091324902', 'BCA', 'Aditya Cipta P', 'noimage.jpg', 'agen', 1, 'eleonore kenes parveen', '', 'anak', '08112512309'),
 ('01.00067', '2020-07-19', 'Cholimah', '', '085643072448', 'Tegaljoho rt 03 rw 03 .desa bulu. Kec. Bulu. Temangung', 'Chalimah19700@gmail.com', '$2y$10$4sKsKIfimmRKdJANcufgYeV0hjCcLgwkYaLGM05HSEdZuNPK9grei', 3, 'noimage.jpg', 'noimage.jpg', '185-00-000-71-206', 'Mandiri', 'Cholimah', 'noimage.jpg', 'agen', 1, 'titah latiefiyani', '', 'anak', '+6281227619390'),
 ('01.00068', '2020-07-25', 'Heri Kuswiyono', '', '081329255707', '', 'herikuswiyono99@gmail.com', '$2y$10$xs1lCOhNQJdhCawhaEqyTeGAksHKE30b3P7LkTuQTRQ4ihaVlkowm', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'agen', 1, '', '', '', ''),
 ('01.00069', '2020-07-27', 'YF. Arnies Natalia', '', '081229234924', '', 'frans_natalie@yahoo.com', '$2y$10$bZq2Hx/53JIqzBgTGtr4YuHY8Z61nKNRE2rdEy2rZz591CaxfMoEa', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
-('01.00070', '2020-07-29', 'Dini Andriani', '', '085226252490', '', 'Dandriani54@gmail.com', '$2y$10$gjqg/okRH25JY/zuOz8D/uSDTJie3.S4TkfnKY8cjtz0xJBtbLY1K', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', '');
+('01.00070', '2020-07-29', 'Dini Andriani', '', '085226252490', '', 'Dandriani54@gmail.com', '$2y$10$gjqg/okRH25JY/zuOz8D/uSDTJie3.S4TkfnKY8cjtz0xJBtbLY1K', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
+('01.00071', '2020-08-03', 'Adyatma Gusti Pandya', '3374120702000002', '081575012844', '', 'adyatmagp@gmail.com', '$2y$10$PM14rZ1Gdic0r4iEdSTBFebP9mVzkZL/MaQMLJJ5hx6YZXCS3SAji', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -300,7 +301,9 @@ INSERT INTO `tb_deposit` (`idx`, `tgl_deposit`, `idted`, `nom_deposit`, `banktrf
 (25, '2020-08-02 16:00:00', '01.00009', 48956, 2, 'aproved'),
 (26, '2020-08-02 16:00:00', '01.00027', 76585, 2, 'aproved'),
 (27, '2020-08-02 16:00:00', '01.00062', 12764, 2, 'aproved'),
-(28, '2020-08-02 16:00:00', '01.00023', 12764, 2, 'aproved');
+(28, '2020-08-02 16:00:00', '01.00023', 12764, 2, 'aproved'),
+(30, '2020-08-03 10:26:11', '1 ', 622038, 3, 'tunggu'),
+(31, '2020-08-03 10:26:31', '1 ', 407145, 3, 'tunggu');
 
 -- --------------------------------------------------------
 
@@ -442,7 +445,7 @@ INSERT INTO `tb_jaringan` (`idagt`, `idreferal`, `idupline`, `jml_downline`, `po
 ('01.00022', '01.00006', '01.00006', 0, '1111114', 7, '0000-00-00'),
 ('01.00023', '01.00001', '01.00001', 0, '13', 2, '0000-00-00'),
 ('01.00024', '01.00016', '01.00016', 0, '11181', 5, '0000-00-00'),
-('01.00025', '01.00010', '01.00010', 0, '11141', 5, '0000-00-00'),
+('01.00025', '01.00010', '01.00010', 1, '11141', 5, '0000-00-00'),
 ('01.00026', '01.00016', '01.00016', 3, '11182', 5, '0000-00-00'),
 ('01.00027', '01.00010', '01.00010', 2, '11142', 5, '0000-00-00'),
 ('01.00028', '01.00010', '01.00010', 0, '11143', 5, '0000-00-00'),
@@ -487,7 +490,8 @@ INSERT INTO `tb_jaringan` (`idagt`, `idreferal`, `idupline`, `jml_downline`, `po
 ('01.00067', '01.00016', '01.00016', 1, '11186', 5, '0000-00-00'),
 ('01.00068', '01.00067', '01.00067', 0, '111861', 6, '0000-00-00'),
 ('01.00069', '01.00042', '01.00042', 0, '111161', 5, '0000-00-00'),
-('01.00070', '01.00003', '01.00003', 0, '11127', 4, '0000-00-00');
+('01.00070', '01.00003', '01.00003', 0, '11127', 4, '0000-00-00'),
+('01.00071', '01.00025', '01.00025', 0, '111411', 6, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -707,6 +711,34 @@ CREATE TABLE `tb_titipan_emas_transfer` (
   `jmlprofit` float NOT NULL,
   `is_transfer` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tb_titipan_emas_transfer`
+--
+
+INSERT INTO `tb_titipan_emas_transfer` (`id`, `periode`, `tgl_trf`, `idted`, `nohp`, `bank`, `norek`, `an`, `nominal`, `hrgikut`, `gram`, `jmlprofit`, `is_transfer`) VALUES
+(36, '07 2020', '2020-08-03', '01.00051', '082299413996', 'BCA', '2465191960', 'Sudarto', 108079, 878695, 6, 2.05, 0),
+(37, '07 2020', '2020-08-03', '01.00042', '085740601703', '', '', '', 36626, 893325, 2, 2.05, 0),
+(38, '07 2020', '2020-08-03', '01.00052', '081575886727', '', '', '', 36626, 893325, 2, 2.05, 0),
+(39, '07 2020', '2020-08-03', '01.00011', '081325469975', 'BCA ', '0130639798', 'Ummy Mubarokah', 37452, 913460, 2, 2.05, 0),
+(40, '07 2020', '2020-08-03', '01.00053', '0811251610', '', '', '', 36852, 898830, 2, 2.05, 0),
+(41, '07 2020', '2020-08-03', '01.00053', '0811251610', '', '', '', 71970, 877686, 4, 2.05, 0),
+(42, '07 2020', '2020-08-03', '01.00025', '082230854065', 'Bank Jateng', '3021211841', 'Amelia Nadia Rahma', 182408, 889794, 10, 2.05, 0),
+(43, '07 2020', '2020-08-03', '01.00003', '0821-3636-8828', 'BRI', '303601041826532', 'susiloningsih', 36482, 889794, 2, 2.05, 0),
+(44, '07 2020', '2020-08-03', '01.00003', '0821-3636-8828', 'BRI', '303601041826532', 'susiloningsih', 36482, 889794, 2, 2.05, 0),
+(45, '07 2020', '2020-08-03', '01.00001', '081327479067', 'BCA', '12312388857', 'koperasi mmas', 72963, 889794, 4, 2.05, 0),
+(46, '07 2020', '2020-08-03', '01.00009', '081325123353', 'BCA', '8030322925', '', 34020, 829758, 2, 2.05, 0),
+(47, '07 2020', '2020-08-03', '01.00027', '085101995521', 'BTPN', '04081000158', 'Sri susanti', 209333, 850947, 12, 2.05, 0),
+(48, '07 2020', '2020-08-03', '01.00062', '085101292189', 'BTPN', '0408.1.000168', 'SRI SUSANTI', 34889, 850947, 2, 2.05, 0),
+(49, '07 2020', '2020-08-03', '01.00023', '081327405100', '', '', '', 34889, 850947, 2, 2.05, 0),
+(50, '07 2020', '2020-08-03', '01.00011', '081325469975', 'BCA ', '0130639798', 'Ummy Mubarokah', 209333, 850947, 12, 2.05, 0),
+(51, '07 2020', '2020-08-03', '01.00063', '085950726801', '', '', '', 35530, 866587, 2, 2.05, 0),
+(52, '07 2020', '2020-08-03', '01.00065', '081325453388', 'BTPN', '04081000158', 'SRI SUSANTI', 1249344, 870623, 70, 2.05, 0),
+(53, '07 2020', '2020-08-03', '01.00027', '085101995521', 'BTPN', '04081000158', 'Sri susanti', 1249344, 870623, 70, 2.05, 0),
+(54, '07 2020', '2020-08-03', '01.00028', '081326627170', 'BRI', ' 3405  -   01-    016327 -  53 -  8', 'Ari  wuryantini  ', 912039, 889794, 50, 2.05, 0),
+(55, '07 2020', '2020-08-03', '01.00066', '085726841990', 'BCA', '0091324902', 'Aditya Cipta P', 632038, 902911, 100, 0.7, 0),
+(56, '07 2020', '2020-08-03', '01.00066', '085726841990', 'BCA', '0091324902', 'Aditya Cipta P', 417145, 902911, 66, 0.7, 0),
+(57, '07 2020', '2020-08-03', '01.00011', '081325469975', 'BCA ', '0130639798', 'Ummy Mubarokah', 12782, 913001, 2, 0.7, 0);
 
 -- --------------------------------------------------------
 
@@ -981,7 +1013,14 @@ INSERT INTO `tb_transaksi` (`id`, `tgl`, `idted`, `uraian`, `masuk`, `keluar`, `
 (249, '2020-08-03', '01.00052', 'deposit', 70573, 0, 70573, 'uang'),
 (250, '2020-08-03', '01.00042', 'deposit', 70573, 0, 147215, 'uang'),
 (251, '2020-08-03', '01.00052', 'deposit', 100946, 0, 171519, 'uang'),
-(252, '2020-08-03', '01.00052', 'deposit', 44666, 0, 216185, 'uang');
+(252, '2020-08-03', '01.00052', 'deposit', 44666, 0, 216185, 'uang'),
+(253, '2020-08-03', '01.00071', 'simp. pokok & simp. wajib', 0.021, 0, 0.021, 'emas'),
+(254, '2020-08-03', '01.00051', 'profit titipan emas periode 07 2020', 108079, 0, 108079, 'uang'),
+(255, '2020-08-03', '01.00051', 'trf. profit titipan emas ke BCA 2465191960 Sudarto', 0, 98079, 0, 'uang'),
+(256, '2020-08-03', '01.00051', 'potongan biaya admin', 0, 10000, 0, 'uang'),
+(257, '2020-08-03', '01.00051', 'profit titipan emas periode 07 2020', 108079, 0, 108079, 'uang'),
+(258, '2020-08-03', '01.00051', 'trf. profit titipan emas ke BCA 2465191960 Sudarto', 0, 98079, 0, 'uang'),
+(259, '2020-08-03', '01.00051', 'potongan biaya admin', 0, 10000, 0, 'uang');
 
 -- --------------------------------------------------------
 
@@ -1005,6 +1044,28 @@ CREATE TABLE `tb_user` (
 
 INSERT INTO `tb_user` (`id`, `nama_user`, `email`, `password`, `foto`, `is_active`, `role_id`) VALUES
 (1, 'Superadmin Ted', 'admin@tabungemas.com', '$2y$10$ca0pp55yIoQa7ktPaU20nOlApQit2dmHalQkGlaL1bX/ZYB6k/bZO', 'noimage.jpg', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_user_dashboard`
+--
+
+CREATE TABLE `tb_user_dashboard` (
+  `id` int(11) NOT NULL,
+  `role_id` int(1) NOT NULL,
+  `dashboard` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tb_user_dashboard`
+--
+
+INSERT INTO `tb_user_dashboard` (`id`, `role_id`, `dashboard`) VALUES
+(1, 1, 'pages/dashboard_pages'),
+(2, 2, 'pages/dashboard_pages'),
+(3, 3, 'pages/member/member_dashboard'),
+(4, 4, 'pages/member/member_dashboard');
 
 -- --------------------------------------------------------
 
@@ -1105,7 +1166,7 @@ CREATE TABLE `tb_user_role` (
 INSERT INTO `tb_user_role` (`id`, `role_name`) VALUES
 (1, 'superadmin'),
 (2, 'admin'),
-(3, 'agen'),
+(3, 'premium'),
 (4, 'basic');
 
 -- --------------------------------------------------------
@@ -1596,6 +1657,12 @@ ALTER TABLE `tb_user`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `tb_user_dashboard`
+--
+ALTER TABLE `tb_user_dashboard`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `tb_user_menu`
 --
 ALTER TABLE `tb_user_menu`
@@ -1639,7 +1706,7 @@ ALTER TABLE `t_update_ubs`
 -- AUTO_INCREMENT untuk tabel `tb_agt_tmp`
 --
 ALTER TABLE `tb_agt_tmp`
-  MODIFY `idtmp` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `idtmp` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_bank`
@@ -1657,7 +1724,7 @@ ALTER TABLE `tb_bonus`
 -- AUTO_INCREMENT untuk tabel `tb_deposit`
 --
 ALTER TABLE `tb_deposit`
-  MODIFY `idx` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `idx` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_history`
@@ -1681,19 +1748,25 @@ ALTER TABLE `tb_titipan_emas_detail`
 -- AUTO_INCREMENT untuk tabel `tb_titipan_emas_transfer`
 --
 ALTER TABLE `tb_titipan_emas_transfer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=253;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=260;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_user_dashboard`
+--
+ALTER TABLE `tb_user_dashboard`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user_menu`

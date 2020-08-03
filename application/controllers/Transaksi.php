@@ -63,9 +63,10 @@ class Transaksi extends CI_Controller
 
     public function beli_emas($id = null)
     {
-        $id = $this->session->userdata('id');
+
         if ($id == null) {
-            redirect(base_url());
+            //redirect(base_url());
+            $id = $this->session->userdata('id');
         } else {
 
             $this->form_validation->set_rules("nominaluang", "Nilai emas", "required");
@@ -959,9 +960,10 @@ class Transaksi extends CI_Controller
 
     public function deposit($id = null)
     {
-        $id = $this->session->userdata('id');
+
         if ($id == null) {
-            redirect(base_url());
+            //redirect(base_url());
+            $id = $this->session->userdata('id');
         } else {
             $this->form_validation->set_rules('idted', 'ID Anggota', 'required');
 
@@ -1316,9 +1318,10 @@ class Transaksi extends CI_Controller
 
     public function titipan_emas($idted = null)
     {
-        $idted = $this->session->userdata('id');
+
         if ($idted == null) {
-            redirect(base_url());
+            //redirect(base_url());
+            $idted = $this->session->userdata('id');
         } else {
 
             $this->form_validation->set_rules('gramtrf', 'Jumlah Gram', 'required');
