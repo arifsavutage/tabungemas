@@ -1607,6 +1607,7 @@ class Transaksi extends CI_Controller
     {
         $periode = str_replace("_", " ", $periode);
         $data = [
+            'adms' => $this->model_uang->getValueById(1),
             'data' => $this->model_titipan->transferProfitDetail($periode),
             'page' => 'pages/admin/widraw_titipan_emas_detail_transfer'
         ];
@@ -1687,7 +1688,7 @@ class Transaksi extends CI_Controller
 
                 $profitgr   = $row['gram'] * ($row['jmlprofit'] / 100);
                 $pesan = "Total profit titipan emas bulan " . $row['periode'] . " sebesar " . $row['jmlprofit'] . "% / $profitgr gr, 
-                telah ditransfer ke rekening " . $row['bank'] . " An. " . $row['an'] . " sebesar Rp " . number_format($row['nominal'], 0, ',', '.') . ",-. Test";
+                telah ditransfer ke rekening " . $row['bank'] . " An. " . $row['an'] . " sebesar Rp " . number_format($nomtrf, 0, ',', '.') . ",-. Tks";
 
                 //echo $pesan;
                 if (!empty($row['nohp'])) {

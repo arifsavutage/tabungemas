@@ -29,13 +29,17 @@
                                 <th>Bank</th>
                                 <th>No. rek</th>
                                 <th>An</th>
-                                <th>Nominal</th>
+                                <th>Total Profit</th>
+                                <th>Adm.</th>
+                                <th>Profit Bersih</th>
+                                <th>Ket.</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             $no = 1;
+
                             foreach ($data as $row) :
                                 if ($row['is_transfer'] == 0) {
                                     $status = "<span class='badge badge-danger'>pending</span>";
@@ -45,6 +49,15 @@
                                     $button = '<a href="" class="btn btn-sm btn-success disabled" aria-disabled="true">transfer</a>';
                                 }
 
+                                if ($row['nominal'] >= 100000) {
+                                    $byadm  = $adms['by_adm_master'];
+                                    $netto  = $row['nominal'] - $byadm;
+                                    $ket    = '<span class="badge badge-info">Transfer</span>';
+                                } else {
+                                    $byadm  = 0;
+                                    $netto  = $row['nominal'] - $byadm;
+                                    $ket    = '<span class="badge badge-warning">Wallet</span>';
+                                }
                                 $p = str_replace(" ", "", $row['periode']);
                             ?>
                                 <tr>
@@ -58,6 +71,9 @@
                                     <td><?= $row['norek']; ?></td>
                                     <td><?= ucwords($row['an']); ?></td>
                                     <td><?= number_format($row['nominal'], 0, '.', ','); ?></td>
+                                    <td><?= number_format($byadm, 0, '.', ','); ?></td>
+                                    <td><?= number_format($netto, 0, '.', ','); ?></td>
+                                    <td><?= $ket; ?></td>
                                     <td><?= $status; ?></td>
                                 </tr>
                             <?php

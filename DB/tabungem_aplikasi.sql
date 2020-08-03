@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 02 Agu 2020 pada 08.48
+-- Waktu pembuatan: 03 Agu 2020 pada 10.06
 -- Versi server: 10.3.23-MariaDB
 -- Versi PHP: 7.3.6
 
@@ -169,6 +169,7 @@ CREATE TABLE `tb_agt_tmp` (
   `idtmp` int(5) NOT NULL,
   `tgl_daftar` date NOT NULL,
   `nm_tmp` varchar(150) NOT NULL,
+  `role_id` int(1) NOT NULL,
   `nohp_tmp` varchar(20) NOT NULL,
   `email_tmp` varchar(100) NOT NULL,
   `ktp_tmp` text NOT NULL,
@@ -183,10 +184,10 @@ CREATE TABLE `tb_agt_tmp` (
 -- Dumping data untuk tabel `tb_agt_tmp`
 --
 
-INSERT INTO `tb_agt_tmp` (`idtmp`, `tgl_daftar`, `nm_tmp`, `nohp_tmp`, `email_tmp`, `ktp_tmp`, `password_tmp`, `idreferal`, `nominal`, `konfirm_status`, `token`) VALUES
-(91, '2020-07-25', 'I Nyoman Sudarma', '081939028744', 'mangamadharma@gmail.com', '', '$2y$10$InzHVhq8ILjk9FYGYWeiyedmx69dFmAvkdD4cBJy3giHGZvPByrf6', '01.00003', 200111, 0, 'BRU6ZPDexa5zYsGX'),
-(93, '2020-07-27', 'Nur Widayanti', '081390742419', 'iiarumsaraswati@gmail.com', '', '$2y$10$ed23UcZR4Ag8Xxm5r3xAf.tx2qcxt057T6A.mDOKIpYetqVYYs/NK', '01.00042', 200122, 0, '1mstCXNy7cxMqZeT'),
-(96, '2020-08-01', 'Maulana Fakhrur roji', '082327931238', 'Maulanadosen@gmail.com', '', '$2y$10$R78M/CxaKKop1shqwwtq1e38sKlxmAKNkYkn2C0swTeO2sYUZfZeu', '01.00054', 200232, 0, '7VO4ouHECAf2PjK0');
+INSERT INTO `tb_agt_tmp` (`idtmp`, `tgl_daftar`, `nm_tmp`, `role_id`, `nohp_tmp`, `email_tmp`, `ktp_tmp`, `password_tmp`, `idreferal`, `nominal`, `konfirm_status`, `token`) VALUES
+(91, '2020-07-25', 'I Nyoman Sudarma', 3, '081939028744', 'mangamadharma@gmail.com', '', '$2y$10$InzHVhq8ILjk9FYGYWeiyedmx69dFmAvkdD4cBJy3giHGZvPByrf6', '01.00003', 200111, 0, 'BRU6ZPDexa5zYsGX'),
+(93, '2020-07-27', 'Nur Widayanti', 3, '081390742419', 'iiarumsaraswati@gmail.com', '', '$2y$10$ed23UcZR4Ag8Xxm5r3xAf.tx2qcxt057T6A.mDOKIpYetqVYYs/NK', '01.00042', 200122, 0, '1mstCXNy7cxMqZeT'),
+(96, '2020-08-01', 'Maulana Fakhrur roji', 3, '082327931238', 'Maulanadosen@gmail.com', '', '$2y$10$R78M/CxaKKop1shqwwtq1e38sKlxmAKNkYkn2C0swTeO2sYUZfZeu', '01.00054', 200232, 0, '7VO4ouHECAf2PjK0');
 
 -- --------------------------------------------------------
 
@@ -282,7 +283,6 @@ CREATE TABLE `tb_deposit` (
 
 INSERT INTO `tb_deposit` (`idx`, `tgl_deposit`, `idted`, `nom_deposit`, `banktrf`, `status`) VALUES
 (1, '2020-01-04 01:32:43', '01.00001', 50000, 2, 'aproved'),
-(14, '2020-07-29 04:51:34', '01.00042', 100000, 2, 'tunggu'),
 (7, '2020-06-12 07:39:50', '01.00053', 144818, 2, 'aproved'),
 (5, '2020-06-02 09:31:59', '01.00025', 88979, 2, 'aproved'),
 (8, '2020-06-13 02:46:54', '01.00042', 141642, 2, 'aproved'),
@@ -1462,7 +1462,8 @@ INSERT INTO `t_update_ubs` (`IDX`, `UPDATE_AT`, `HRG_BELI`, `HRG_JUAL`) VALUES
 (364, '2020-07-30 00:00:02', '1,020,099', '910,000'),
 (365, '2020-07-31 00:00:02', '1,026,658', '913,000'),
 (366, '2020-08-01 00:00:02', '1,026,658', '913,000'),
-(367, '2020-08-02 00:00:04', '1,026,658', '913,000');
+(367, '2020-08-02 00:00:04', '1,026,658', '913,000'),
+(368, '2020-08-03 00:00:03', '1,026,658', '913,000');
 
 --
 -- Indexes for dumped tables
@@ -1680,7 +1681,7 @@ ALTER TABLE `tb_widraw`
 -- AUTO_INCREMENT untuk tabel `t_update_ubs`
 --
 ALTER TABLE `t_update_ubs`
-  MODIFY `IDX` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=368;
+  MODIFY `IDX` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=369;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
