@@ -47,9 +47,9 @@
                                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop<?= $no; ?>">
                                                     <a class="dropdown-item" href="<?= base_url() . "index.php/member/profil_anggota/$detail[idted]"; ?>">Profil Anggota</a>
                                                     <a class="dropdown-item" href="<?= base_url() . "index.php/member/update_pass_anggota/$detail[idted]"; ?>">Ubah Password</a>
-                                                    <a class="dropdown-item" href="<?= base_url() . "index.php/transaksi/beli_emas/$detail[idted]" ?>">Beli Emas</a>
-                                                    <a class="dropdown-item" href="<?= base_url() . "index.php/transaksi/deposit/$detail[idted]"; ?>">Deposit</a>
-                                                    <a class="dropdown-item" href="<?= base_url() . "index.php/transaksi/titipan_emas/$detail[idted]"; ?>">Titipan Emas</a>
+                                                    <a class="dropdown-item" href="<?= base_url() . "index.php/transaksi/beli_emas_admin/$detail[idted]" ?>">Beli Emas</a>
+                                                    <a class="dropdown-item" href="<?= base_url() . "index.php/transaksi/deposit_admin/$detail[idted]"; ?>">Deposit</a>
+                                                    <a class="dropdown-item" href="<?= base_url() . "index.php/transaksi/titipan_emas_admin/$detail[idted]"; ?>">Titipan Emas</a>
                                                 </div>
                                             </div>
                                         </div>
