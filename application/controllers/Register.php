@@ -168,8 +168,8 @@ class Register extends CI_Controller
         if ($validation->run()) {
 
             $refid      = $this->input->post('refid');
-            $mailregis  = $this->input->post('email');
-            $nameregis  = $this->input->post('nama');
+            $mailregis  = strtolower($this->input->post('email'));
+            $nameregis  = ucwords(strtolower($this->input->post('nama')));
             $ktpregis   = $this->input->post('ktp');
             $jenis_mem  = $this->input->post('jenis');
 
@@ -206,7 +206,8 @@ class Register extends CI_Controller
                     }
                     $cekuser   = $agtbaru->getAccountByEmail($mailregis);
 
-                    if ($mailregis != $cekuser['email']) {
+                    //if ($mailregis != $cekuser['email']) {
+                    if (count($cekuser) == 0) {
 
                         if (!empty($refid)) {
                             $ref  = $refid;
@@ -217,7 +218,7 @@ class Register extends CI_Controller
                         //get jenis membership
                         $mem_ship = $this->db->get_where('tb_user_role', ['id' => $jenis_mem])->row_array();
 
-                        if ($mem_ship['role_name'] == 'agen') {
+                        if ($mem_ship['role_name'] == 'premium') {
                             $regis_fee = 1;
                         } else if ($mem_ship['role_name'] == 'basic') {
                             $regis_fee = 3;
