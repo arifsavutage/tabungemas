@@ -203,62 +203,60 @@ class Register extends CI_Controller
 
                         redirect(base_url() . 'index.php/register/new_member');
                     } else {
-                    }
-                    $cekuser   = $agtbaru->getAccountByEmail($mailregis);
+                        $cekuser    = $this->db->get_where('tb_agt_tmp', ['email_tmp' => $mailregis])->num_rows();
 
-                    //if ($mailregis != $cekuser['email']) {
-                    if (count($cekuser) == 0) {
+                        if ($cekuser == 0) {
 
-                        if (!empty($refid)) {
-                            $ref  = $refid;
-                        } else {
-                            $ref  = "01.00001";
-                        }
+                            if (!empty($refid)) {
+                                $ref  = $refid;
+                            } else {
+                                $ref  = "01.00001";
+                            }
 
-                        //get jenis membership
-                        $mem_ship = $this->db->get_where('tb_user_role', ['id' => $jenis_mem])->row_array();
+                            //get jenis membership
+                            $mem_ship = $this->db->get_where('tb_user_role', ['id' => $jenis_mem])->row_array();
 
-                        if ($mem_ship['role_name'] == 'premium') {
-                            $regis_fee = 1;
-                        } else if ($mem_ship['role_name'] == 'basic') {
-                            $regis_fee = 3;
-                        }
+                            if ($mem_ship['role_name'] == 'premium') {
+                                $regis_fee = 1;
+                            } else if ($mem_ship['role_name'] == 'basic') {
+                                $regis_fee = 3;
+                            }
 
-                        $nominalregis   = $this->model_uang->getValueById($regis_fee);
+                            $nominalregis   = $this->model_uang->getValueById($regis_fee);
 
-                        $randnom    = "";
-                        for ($i = 0; $i < 3; $i++) {
-                            $randnom  .= rand(1, 3);
-                        }
+                            $randnom    = "";
+                            for ($i = 0; $i < 3; $i++) {
+                                $randnom  .= rand(1, 3);
+                            }
 
-                        $nomtransfer    = $nominalregis['registrasi'] + $randnom;
+                            $nomtransfer    = $nominalregis['registrasi'] + $randnom;
 
-                        //prepare send mail
-                        $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                        $token = substr(str_shuffle($permitted_chars), 0, 16);
+                            //prepare send mail
+                            $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                            $token = substr(str_shuffle($permitted_chars), 0, 16);
 
-                        $data   = [
-                            'referal'   => "$ref",
-                            'nominal'   => $nomtransfer,
-                            'status'    => 0,
-                            'token'     => $token
-                        ];
+                            $data   = [
+                                'referal'   => "$ref",
+                                'nominal'   => $nomtransfer,
+                                'status'    => 0,
+                                'token'     => $token
+                            ];
 
-                        //save to tmp data
-                        $agtbaru->save($data);
+                            //save to tmp data
+                            $agtbaru->save($data);
 
-                        $dataemail = [
-                            'mail'  => $mailregis,
-                            'nama'  => ucwords($nameregis),
-                            'token' => $token,
-                            'nominal' => $nomtransfer,
-                            'bank'  => $this->model_bank->getAll()
-                        ];
+                            $dataemail = [
+                                'mail'  => $mailregis,
+                                'nama'  => ucwords($nameregis),
+                                'token' => $token,
+                                'nominal' => $nomtransfer,
+                                'bank'  => $this->model_bank->getAll()
+                            ];
 
-                        //send email
-                        $this->mailVerifikasi($dataemail);
+                            //send email
+                            $this->mailVerifikasi($dataemail);
 
-                        $this->session->set_flashdata('info', '
+                            $this->session->set_flashdata('info', '
                         <div class="alert alert-success" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">×</span>
@@ -266,9 +264,9 @@ class Register extends CI_Controller
                             <h4>success :</h4> Registrasi berhasil.. 
                         </div>');
 
-                        redirect(base_url() . 'index.php/register/new_member');
-                    } else {
-                        $this->session->set_flashdata('info', '
+                            redirect(base_url() . 'index.php/register/new_member');
+                        } else {
+                            $this->session->set_flashdata('info', '
                         <div class="alert alert-warning" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">×</span>
@@ -276,7 +274,8 @@ class Register extends CI_Controller
                             <h4>Maaf, </h4> Email sudah terdaftar ...
                         </div>');
 
-                        redirect(base_url() . 'index.php/register/new_member');
+                            redirect(base_url() . 'index.php/register/new_member');
+                        }
                     }
                 } else {
 
