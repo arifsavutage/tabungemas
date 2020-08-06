@@ -250,7 +250,7 @@ class Register extends CI_Controller
                             'mail'  => $mailregis,
                             'nama'  => ucwords($nameregis),
                             'token' => $token,
-                            'nominal' => $data['nominal'],
+                            'nominal' => $nomtransfer,
                             'bank'  => $this->model_bank->getAll()
                         ];
 

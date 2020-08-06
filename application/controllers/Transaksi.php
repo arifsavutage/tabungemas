@@ -16,6 +16,7 @@ class Transaksi extends CI_Controller
         $this->load->model('model_deposit');
         $this->load->model('model_widraw');
         $this->load->model('model_titipan');
+        $this->load->model('model_smsinfo');
 
         not_login();
     }
@@ -1977,6 +1978,16 @@ class Transaksi extends CI_Controller
         //looping catat transaksi di history & sendsms
         foreach ($data as $row) {
 
+            $nama_explode   = explode(" ", $row['nama_lengkap']);
+
+            if (count($nama_explode) > 1) {
+                $nama_anggota   = $nama_explode[0];
+            } else {
+                $nama_anggota   = $row['nama_lengkap'];
+            }
+
+            $profitgr   = $row['gram'] * ($row['jmlprofit'] / 100);
+
             //save ke histori / nambah saldo
             $ambilsaldo = $this->model_transaksi->getLastTranById($row['idted'], 'uang');
             $saldo      = $ambilsaldo['saldo'] + $row['nominal'];
@@ -1991,6 +2002,19 @@ class Transaksi extends CI_Controller
                 'jenis' => 'uang'
             ];
             $this->model_transaksi->save($data_in);
+
+            //simpan pesan untuk agt yg profitnya ke wallet
+            $pesansms = "Ttl profit titipan emas bln " . $row['periode'] . " adl " . $row['jmlprofit'] . "% / $profitgr gr, 
+                senilai Rp " . number_format($row['nominal'], 0, ',', '.') . " tlh ditbh ke wallet,-. Tks";
+
+            $datasmswallet  = [
+                'idted' => $row['idted'],
+                'nohp'  => $row['nohp'],
+                'pesan' => $pesansms,
+                'is_sent' => 0
+            ];
+
+            $this->model_smsinfo->save($datasmswallet);
 
             //melakukan potongan saldo uang krn widraw / trf
             //yang di transfer adalah profit di atas 100.000
@@ -2030,22 +2054,22 @@ class Transaksi extends CI_Controller
 
                 $this->model_transaksi->save($biaya);
 
-                //send sms transfer profit
-                $nama_explode   = explode(" ", $row['nama_lengkap']);
 
-                if (count($nama_explode) > 1) {
-                    $nama_anggota   = $nama_explode[0];
-                } else {
-                    $nama_anggota   = $row['nama_lengkap'];
-                }
-
-                $profitgr   = $row['gram'] * ($row['jmlprofit'] / 100);
-                $pesan = "Total profit titipan emas bulan " . $row['periode'] . " sebesar " . $row['jmlprofit'] . "% / $profitgr gr, 
-                telah ditransfer ke rekening " . $row['bank'] . " An. " . $row['an'] . " sebesar Rp " . number_format($nomtrf, 0, ',', '.') . ",-. Tks";
+                $pesan = "Ttl profit titipan emas bln " . $row['periode'] . " adl " . $row['jmlprofit'] . "% / $profitgr gr, 
+                tlh ditrf ke rek " . $row['bank'] . " An. " . $row['an'] . " sebesar Rp " . number_format($nomtrf, 0, ',', '.') . ",-. Tks";
 
                 //echo $pesan;
                 if (!empty($row['nohp'])) {
-                    sendsms($row['nohp'], $pesan);
+                    //sendsms($row['nohp'], $pesan);
+
+                    $datasmswallet  = [
+                        'idted' => $row['idted'],
+                        'nohp'  => $row['nohp'],
+                        'pesan' => $pesan,
+                        'is_sent' => 0
+                    ];
+
+                    $this->model_smsinfo->save($datasmswallet);
                 }
             }
         }

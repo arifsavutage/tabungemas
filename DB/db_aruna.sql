@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Agu 2020 pada 10.50
+-- Waktu pembuatan: 06 Agu 2020 pada 04.39
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.0
 
@@ -513,6 +513,57 @@ INSERT INTO `tb_jaringan` (`idagt`, `idreferal`, `idupline`, `jml_downline`, `po
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tb_sms_info`
+--
+
+CREATE TABLE `tb_sms_info` (
+  `id` int(11) NOT NULL,
+  `idted` varchar(8) NOT NULL,
+  `nohp` varchar(20) NOT NULL,
+  `pesan` text NOT NULL,
+  `is_sent` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tb_sms_info`
+--
+
+INSERT INTO `tb_sms_info` (`id`, `idted`, `nohp`, `pesan`, `is_sent`) VALUES
+(1, '01.00051', '082299413996', 'Ttl profit titipan emas bln 07 2020 sebesar 2.05% / 0.123 gr, \r\n                senilai Rp 108.079 tlh ditbh ke wallet,-. Tks', 0),
+(2, '01.00051', '082299413996', 'Ttl profit titipan emas bln 07 2020 adl 2.05% / 0.123 gr, \r\n                tlh ditrf ke rek BCA An. Sudarto sebesar Rp 98.079,-. Tks', 0),
+(3, '01.00042', '085740601703', 'Ttl profit titipan emas bln 07 2020 sebesar 2.05% / 0.041 gr, \r\n                senilai Rp 36.626 tlh ditbh ke wallet,-. Tks', 0),
+(4, '01.00052', '081575886727', 'Ttl profit titipan emas bln 07 2020 sebesar 2.05% / 0.041 gr, \r\n                senilai Rp 36.626 tlh ditbh ke wallet,-. Tks', 0),
+(5, '01.00011', '081325469975', 'Ttl profit titipan emas bln 07 2020 sebesar 2.05% / 0.041 gr, \r\n                senilai Rp 37.452 tlh ditbh ke wallet,-. Tks', 0),
+(6, '01.00053', '0811251610', 'Ttl profit titipan emas bln 07 2020 sebesar 2.05% / 0.041 gr, \r\n                senilai Rp 36.852 tlh ditbh ke wallet,-. Tks', 0),
+(7, '01.00053', '0811251610', 'Ttl profit titipan emas bln 07 2020 sebesar 2.05% / 0.082 gr, \r\n                senilai Rp 71.970 tlh ditbh ke wallet,-. Tks', 0),
+(8, '01.00025', '082230854065', 'Ttl profit titipan emas bln 07 2020 sebesar 2.05% / 0.205 gr, \r\n                senilai Rp 182.408 tlh ditbh ke wallet,-. Tks', 0),
+(9, '01.00025', '082230854065', 'Ttl profit titipan emas bln 07 2020 adl 2.05% / 0.205 gr, \r\n                tlh ditrf ke rek Bank Jateng An. Amelia Nadia Rahma sebesar Rp 172.408,-. Tks', 0),
+(10, '01.00003', '0821-3636-8828', 'Ttl profit titipan emas bln 07 2020 sebesar 2.05% / 0.041 gr, \r\n                senilai Rp 36.482 tlh ditbh ke wallet,-. Tks', 0),
+(11, '01.00003', '0821-3636-8828', 'Ttl profit titipan emas bln 07 2020 sebesar 2.05% / 0.041 gr, \r\n                senilai Rp 36.482 tlh ditbh ke wallet,-. Tks', 0),
+(12, '01.00001', '081327479067', 'Ttl profit titipan emas bln 07 2020 sebesar 2.05% / 0.082 gr, \r\n                senilai Rp 72.963 tlh ditbh ke wallet,-. Tks', 0),
+(13, '01.00009', '081325123353', 'Ttl profit titipan emas bln 07 2020 sebesar 2.05% / 0.041 gr, \r\n                senilai Rp 34.020 tlh ditbh ke wallet,-. Tks', 0),
+(14, '01.00027', '085101995521', 'Ttl profit titipan emas bln 07 2020 sebesar 2.05% / 0.246 gr, \r\n                senilai Rp 209.333 tlh ditbh ke wallet,-. Tks', 0),
+(15, '01.00027', '085101995521', 'Ttl profit titipan emas bln 07 2020 adl 2.05% / 0.246 gr, \r\n                tlh ditrf ke rek BTPN An. Sri susanti sebesar Rp 199.333,-. Tks', 0),
+(16, '01.00062', '085101292189', 'Ttl profit titipan emas bln 07 2020 sebesar 2.05% / 0.041 gr, \r\n                senilai Rp 34.889 tlh ditbh ke wallet,-. Tks', 0),
+(17, '01.00023', '081327405100', 'Ttl profit titipan emas bln 07 2020 sebesar 2.05% / 0.041 gr, \r\n                senilai Rp 34.889 tlh ditbh ke wallet,-. Tks', 0),
+(18, '01.00011', '081325469975', 'Ttl profit titipan emas bln 07 2020 sebesar 2.05% / 0.246 gr, \r\n                senilai Rp 209.333 tlh ditbh ke wallet,-. Tks', 0),
+(19, '01.00011', '081325469975', 'Ttl profit titipan emas bln 07 2020 adl 2.05% / 0.246 gr, \r\n                tlh ditrf ke rek BCA  An. Ummy Mubarokah sebesar Rp 199.333,-. Tks', 0),
+(20, '01.00063', '085950726801', 'Ttl profit titipan emas bln 07 2020 sebesar 2.05% / 0.041 gr, \r\n                senilai Rp 35.530 tlh ditbh ke wallet,-. Tks', 0),
+(21, '01.00065', '081325453388', 'Ttl profit titipan emas bln 07 2020 sebesar 2.05% / 1.435 gr, \r\n                senilai Rp 1.249.344 tlh ditbh ke wallet,-. Tks', 0),
+(22, '01.00065', '081325453388', 'Ttl profit titipan emas bln 07 2020 adl 2.05% / 1.435 gr, \r\n                tlh ditrf ke rek BTPN An. SRI SUSANTI sebesar Rp 1.239.344,-. Tks', 0),
+(23, '01.00027', '085101995521', 'Ttl profit titipan emas bln 07 2020 sebesar 2.05% / 1.435 gr, \r\n                senilai Rp 1.249.344 tlh ditbh ke wallet,-. Tks', 0),
+(24, '01.00027', '085101995521', 'Ttl profit titipan emas bln 07 2020 adl 2.05% / 1.435 gr, \r\n                tlh ditrf ke rek BTPN An. Sri susanti sebesar Rp 1.239.344,-. Tks', 0),
+(25, '01.00028', '081326627170', 'Ttl profit titipan emas bln 07 2020 sebesar 2.05% / 1.025 gr, \r\n                senilai Rp 912.039 tlh ditbh ke wallet,-. Tks', 0),
+(26, '01.00028', '081326627170', 'Ttl profit titipan emas bln 07 2020 adl 2.05% / 1.025 gr, \r\n                tlh ditrf ke rek BRI An. Ari  wuryantini   sebesar Rp 902.039,-. Tks', 0),
+(27, '01.00066', '085726841990', 'Ttl profit titipan emas bln 07 2020 sebesar 0.7% / 0.7 gr, \r\n                senilai Rp 632.038 tlh ditbh ke wallet,-. Tks', 0),
+(28, '01.00066', '085726841990', 'Ttl profit titipan emas bln 07 2020 adl 0.7% / 0.7 gr, \r\n                tlh ditrf ke rek BCA An. Aditya Cipta P sebesar Rp 622.038,-. Tks', 0),
+(29, '01.00066', '085726841990', 'Ttl profit titipan emas bln 07 2020 sebesar 0.7% / 0.462 gr, \r\n                senilai Rp 417.145 tlh ditbh ke wallet,-. Tks', 0),
+(30, '01.00066', '085726841990', 'Ttl profit titipan emas bln 07 2020 adl 0.7% / 0.462 gr, \r\n                tlh ditrf ke rek BCA An. Aditya Cipta P sebesar Rp 407.145,-. Tks', 0),
+(31, '01.00011', '081325469975', 'Ttl profit titipan emas bln 07 2020 sebesar 0.7% / 0.014 gr, \r\n                senilai Rp 12.782 tlh ditbh ke wallet,-. Tks', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tb_titipan_emas`
 --
 
@@ -705,7 +756,29 @@ INSERT INTO `tb_titipan_emas_detail` (`idx`, `id_titipan`, `periode`, `profit_pe
 (128, 19, '2020-08-03', 0.45, 0),
 (129, 20, '2020-08-03', 0.45, 0),
 (130, 21, '2020-08-03', 0.45, 0),
-(131, 22, '2020-08-03', 0.45, 0);
+(131, 22, '2020-08-03', 0.45, 0),
+(132, 1, '2020-08-03', 3.5, 0),
+(133, 2, '2020-08-03', 3.5, 0),
+(134, 3, '2020-08-03', 3.5, 0),
+(135, 4, '2020-08-03', 3.5, 0),
+(136, 5, '2020-08-03', 3.5, 0),
+(137, 6, '2020-08-03', 3.5, 0),
+(138, 7, '2020-08-03', 3.5, 0),
+(139, 8, '2020-08-03', 3.5, 0),
+(140, 9, '2020-08-03', 3.5, 0),
+(141, 10, '2020-08-03', 3.5, 0),
+(142, 11, '2020-08-03', 3.5, 0),
+(143, 12, '2020-08-03', 3.5, 0),
+(144, 13, '2020-08-03', 3.5, 0),
+(145, 14, '2020-08-03', 3.5, 0),
+(146, 15, '2020-08-03', 3.5, 0),
+(147, 16, '2020-08-03', 3.5, 0),
+(148, 17, '2020-08-03', 3.5, 0),
+(149, 18, '2020-08-03', 3.5, 0),
+(150, 19, '2020-08-03', 3.5, 0),
+(151, 20, '2020-08-03', 3.5, 0),
+(152, 21, '2020-08-03', 3.5, 0),
+(153, 22, '2020-08-03', 3.5, 0);
 
 -- --------------------------------------------------------
 
@@ -734,28 +807,50 @@ CREATE TABLE `tb_titipan_emas_transfer` (
 --
 
 INSERT INTO `tb_titipan_emas_transfer` (`id`, `periode`, `tgl_trf`, `idted`, `nohp`, `bank`, `norek`, `an`, `nominal`, `hrgikut`, `gram`, `jmlprofit`, `is_transfer`) VALUES
-(36, '07 2020', '2020-08-03', '01.00051', '082299413996', 'BCA', '2465191960', 'Sudarto', 108079, 878695, 6, 2.05, 0),
-(37, '07 2020', '2020-08-03', '01.00042', '085740601703', '', '', '', 36626, 893325, 2, 2.05, 0),
-(38, '07 2020', '2020-08-03', '01.00052', '081575886727', '', '', '', 36626, 893325, 2, 2.05, 0),
-(39, '07 2020', '2020-08-03', '01.00011', '081325469975', 'BCA ', '0130639798', 'Ummy Mubarokah', 37452, 913460, 2, 2.05, 0),
-(40, '07 2020', '2020-08-03', '01.00053', '0811251610', '', '', '', 36852, 898830, 2, 2.05, 0),
-(41, '07 2020', '2020-08-03', '01.00053', '0811251610', '', '', '', 71970, 877686, 4, 2.05, 0),
-(42, '07 2020', '2020-08-03', '01.00025', '082230854065', 'Bank Jateng', '3021211841', 'Amelia Nadia Rahma', 182408, 889794, 10, 2.05, 0),
-(43, '07 2020', '2020-08-03', '01.00003', '0821-3636-8828', 'BRI', '303601041826532', 'susiloningsih', 36482, 889794, 2, 2.05, 0),
-(44, '07 2020', '2020-08-03', '01.00003', '0821-3636-8828', 'BRI', '303601041826532', 'susiloningsih', 36482, 889794, 2, 2.05, 0),
-(45, '07 2020', '2020-08-03', '01.00001', '081327479067', 'BCA', '12312388857', 'koperasi mmas', 72963, 889794, 4, 2.05, 0),
-(46, '07 2020', '2020-08-03', '01.00009', '081325123353', 'BCA', '8030322925', '', 34020, 829758, 2, 2.05, 0),
-(47, '07 2020', '2020-08-03', '01.00027', '085101995521', 'BTPN', '04081000158', 'Sri susanti', 209333, 850947, 12, 2.05, 0),
-(48, '07 2020', '2020-08-03', '01.00062', '085101292189', 'BTPN', '0408.1.000168', 'SRI SUSANTI', 34889, 850947, 2, 2.05, 0),
-(49, '07 2020', '2020-08-03', '01.00023', '081327405100', '', '', '', 34889, 850947, 2, 2.05, 0),
-(50, '07 2020', '2020-08-03', '01.00011', '081325469975', 'BCA ', '0130639798', 'Ummy Mubarokah', 209333, 850947, 12, 2.05, 0),
-(51, '07 2020', '2020-08-03', '01.00063', '085950726801', '', '', '', 35530, 866587, 2, 2.05, 0),
-(52, '07 2020', '2020-08-03', '01.00065', '081325453388', 'BTPN', '04081000158', 'SRI SUSANTI', 1249344, 870623, 70, 2.05, 0),
-(53, '07 2020', '2020-08-03', '01.00027', '085101995521', 'BTPN', '04081000158', 'Sri susanti', 1249344, 870623, 70, 2.05, 0),
-(54, '07 2020', '2020-08-03', '01.00028', '081326627170', 'BRI', ' 3405  -   01-    016327 -  53 -  8', 'Ari  wuryantini  ', 912039, 889794, 50, 2.05, 0),
-(55, '07 2020', '2020-08-03', '01.00066', '085726841990', 'BCA', '0091324902', 'Aditya Cipta P', 632038, 902911, 100, 0.7, 0),
-(56, '07 2020', '2020-08-03', '01.00066', '085726841990', 'BCA', '0091324902', 'Aditya Cipta P', 417145, 902911, 66, 0.7, 0),
-(57, '07 2020', '2020-08-03', '01.00011', '081325469975', 'BCA ', '0130639798', 'Ummy Mubarokah', 12782, 913001, 2, 0.7, 0);
+(36, '07 2020', '2020-08-03', '01.00051', '082299413996', 'BCA', '2465191960', 'Sudarto', 108079, 878695, 6, 2.05, 1),
+(37, '07 2020', '2020-08-03', '01.00042', '085740601703', '', '', '', 36626, 893325, 2, 2.05, 1),
+(38, '07 2020', '2020-08-03', '01.00052', '081575886727', '', '', '', 36626, 893325, 2, 2.05, 1),
+(39, '07 2020', '2020-08-03', '01.00011', '081325469975', 'BCA ', '0130639798', 'Ummy Mubarokah', 37452, 913460, 2, 2.05, 1),
+(40, '07 2020', '2020-08-03', '01.00053', '0811251610', '', '', '', 36852, 898830, 2, 2.05, 1),
+(41, '07 2020', '2020-08-03', '01.00053', '0811251610', '', '', '', 71970, 877686, 4, 2.05, 1),
+(42, '07 2020', '2020-08-03', '01.00025', '082230854065', 'Bank Jateng', '3021211841', 'Amelia Nadia Rahma', 182408, 889794, 10, 2.05, 1),
+(43, '07 2020', '2020-08-03', '01.00003', '0821-3636-8828', 'BRI', '303601041826532', 'susiloningsih', 36482, 889794, 2, 2.05, 1),
+(44, '07 2020', '2020-08-03', '01.00003', '0821-3636-8828', 'BRI', '303601041826532', 'susiloningsih', 36482, 889794, 2, 2.05, 1),
+(45, '07 2020', '2020-08-03', '01.00001', '081327479067', 'BCA', '12312388857', 'koperasi mmas', 72963, 889794, 4, 2.05, 1),
+(46, '07 2020', '2020-08-03', '01.00009', '081325123353', 'BCA', '8030322925', '', 34020, 829758, 2, 2.05, 1),
+(47, '07 2020', '2020-08-03', '01.00027', '085101995521', 'BTPN', '04081000158', 'Sri susanti', 209333, 850947, 12, 2.05, 1),
+(48, '07 2020', '2020-08-03', '01.00062', '085101292189', 'BTPN', '0408.1.000168', 'SRI SUSANTI', 34889, 850947, 2, 2.05, 1),
+(49, '07 2020', '2020-08-03', '01.00023', '081327405100', '', '', '', 34889, 850947, 2, 2.05, 1),
+(50, '07 2020', '2020-08-03', '01.00011', '081325469975', 'BCA ', '0130639798', 'Ummy Mubarokah', 209333, 850947, 12, 2.05, 1),
+(51, '07 2020', '2020-08-03', '01.00063', '085950726801', '', '', '', 35530, 866587, 2, 2.05, 1),
+(52, '07 2020', '2020-08-03', '01.00065', '081325453388', 'BTPN', '04081000158', 'SRI SUSANTI', 1249344, 870623, 70, 2.05, 1),
+(53, '07 2020', '2020-08-03', '01.00027', '085101995521', 'BTPN', '04081000158', 'Sri susanti', 1249344, 870623, 70, 2.05, 1),
+(54, '07 2020', '2020-08-03', '01.00028', '081326627170', 'BRI', ' 3405  -   01-    016327 -  53 -  8', 'Ari  wuryantini  ', 912039, 889794, 50, 2.05, 1),
+(55, '07 2020', '2020-08-03', '01.00066', '085726841990', 'BCA', '0091324902', 'Aditya Cipta P', 632038, 902911, 100, 0.7, 1),
+(56, '07 2020', '2020-08-03', '01.00066', '085726841990', 'BCA', '0091324902', 'Aditya Cipta P', 417145, 902911, 66, 0.7, 1),
+(57, '07 2020', '2020-08-03', '01.00011', '081325469975', 'BCA ', '0130639798', 'Ummy Mubarokah', 12782, 913001, 2, 0.7, 1),
+(58, '08 2020', '2020-09-06', '01.00051', '082299413996', 'BCA', '2465191960', 'Sudarto', 208251, 878695, 6, 3.95, 0),
+(59, '08 2020', '2020-09-06', '01.00042', '085740601703', '', '', '', 70573, 893325, 2, 3.95, 0),
+(60, '08 2020', '2020-09-06', '01.00052', '081575886727', '', '', '', 70573, 893325, 2, 3.95, 0),
+(61, '08 2020', '2020-09-06', '01.00011', '081325469975', 'BCA ', '0130639798', 'Ummy Mubarokah', 72163, 913460, 2, 3.95, 0),
+(62, '08 2020', '2020-09-06', '01.00053', '0811251610', '', '', '', 71008, 898830, 2, 3.95, 0),
+(63, '08 2020', '2020-09-06', '01.00053', '0811251610', '', '', '', 138674, 877686, 4, 3.95, 0),
+(64, '08 2020', '2020-09-06', '01.00025', '082230854065', 'Bank Jateng', '3021211841', 'Amelia Nadia Rahma', 351469, 889794, 10, 3.95, 0),
+(65, '08 2020', '2020-09-06', '01.00003', '082136368828', 'BCA', '8030517131', 'susiloningsih', 70294, 889794, 2, 3.95, 0),
+(66, '08 2020', '2020-09-06', '01.00003', '082136368828', 'BCA', '8030517131', 'susiloningsih', 70294, 889794, 2, 3.95, 0),
+(67, '08 2020', '2020-09-06', '01.00001', '081327479067', 'BCA', '12312388857', 'koperasi mmas', 140587, 889794, 4, 3.95, 0),
+(68, '08 2020', '2020-09-06', '01.00009', '081325123353', 'BCA', '8030322925', '', 65551, 829758, 2, 3.95, 0),
+(69, '08 2020', '2020-09-06', '01.00027', '085101995521', 'BTPN', '0408.1.000168', 'Sri susanti', 403349, 850947, 12, 3.95, 0),
+(70, '08 2020', '2020-09-06', '01.00062', '085101292189', 'BTPN', '0408.1.000168', 'SRI SUSANTI', 67225, 850947, 2, 3.95, 0),
+(71, '08 2020', '2020-09-06', '01.00023', '081327405100', '', '', '', 67225, 850947, 2, 3.95, 0),
+(72, '08 2020', '2020-09-06', '01.00011', '081325469975', 'BCA ', '0130639798', 'Ummy Mubarokah', 403349, 850947, 12, 3.95, 0),
+(73, '08 2020', '2020-09-06', '01.00063', '085950726801', '', '', '', 68460, 866587, 2, 3.95, 0),
+(74, '08 2020', '2020-09-06', '01.00065', '081325453388', 'BTPN', '04081000158', 'SRI SUSANTI', 2407273, 870623, 70, 3.95, 0),
+(75, '08 2020', '2020-09-06', '01.00027', '085101995521', 'BTPN', '0408.1.000168', 'Sri susanti', 2407273, 870623, 70, 3.95, 0),
+(76, '08 2020', '2020-09-06', '01.00028', '081326627170', 'BRI', ' 3405  -   01-    016327 -  53 -  8', 'Ari  wuryantini  ', 1757343, 889794, 50, 3.95, 0),
+(77, '08 2020', '2020-09-06', '01.00066', '085726841990', 'BCA', '0091324902', 'Aditya Cipta P', 3566498, 902911, 100, 3.95, 0),
+(78, '08 2020', '2020-09-06', '01.00066', '085726841990', 'BCA', '0091324902', 'Aditya Cipta P', 2353889, 902911, 66, 3.95, 0),
+(79, '08 2020', '2020-09-06', '01.00011', '081325469975', 'BCA ', '0130639798', 'Ummy Mubarokah', 72127, 913001, 2, 3.95, 0);
 
 -- --------------------------------------------------------
 
@@ -1037,7 +1132,47 @@ INSERT INTO `tb_transaksi` (`id`, `tgl`, `idted`, `uraian`, `masuk`, `keluar`, `
 (256, '2020-08-03', '01.00051', 'potongan biaya admin', 0, 10000, 0, 'uang'),
 (257, '2020-08-03', '01.00051', 'profit titipan emas periode 07 2020', 108079, 0, 108079, 'uang'),
 (258, '2020-08-03', '01.00051', 'trf. profit titipan emas ke BCA 2465191960 Sudarto', 0, 98079, 0, 'uang'),
-(259, '2020-08-03', '01.00051', 'potongan biaya admin', 0, 10000, 0, 'uang');
+(259, '2020-08-03', '01.00051', 'potongan biaya admin', 0, 10000, 0, 'uang'),
+(260, '2020-08-05', '01.00051', 'profit titipan emas periode 07 2020', 108079, 0, 108079, 'uang'),
+(261, '2020-08-05', '01.00051', 'trf. profit titipan emas ke BCA 2465191960 Sudarto', 0, 98079, 0, 'uang'),
+(262, '2020-08-05', '01.00051', 'potongan biaya admin', 0, 10000, 0, 'uang'),
+(263, '2020-08-05', '01.00042', 'profit titipan emas periode 07 2020', 36626, 0, 183841, 'uang'),
+(264, '2020-08-05', '01.00052', 'profit titipan emas periode 07 2020', 36626, 0, 252811, 'uang'),
+(265, '2020-08-05', '01.00011', 'profit titipan emas periode 07 2020', 37452, 0, 37452, 'uang'),
+(266, '2020-08-05', '01.00053', 'profit titipan emas periode 07 2020', 36852, 0, 246534, 'uang'),
+(267, '2020-08-05', '01.00053', 'profit titipan emas periode 07 2020', 71970, 0, 318504, 'uang'),
+(268, '2020-08-05', '01.00025', 'profit titipan emas periode 07 2020', 182408, 0, 622856, 'uang'),
+(269, '2020-08-05', '01.00025', 'trf. profit titipan emas ke Bank Jateng 3021211841 Amelia Nadia Rahma', 0, 172408, 440448, 'uang'),
+(270, '2020-08-05', '01.00025', 'potongan biaya admin', 0, 10000, 440448, 'uang'),
+(271, '2020-08-05', '01.00003', 'profit titipan emas periode 07 2020', 36482, 0, 177069, 'uang'),
+(272, '2020-08-05', '01.00003', 'profit titipan emas periode 07 2020', 36482, 0, 213551, 'uang'),
+(273, '2020-08-05', '01.00001', 'profit titipan emas periode 07 2020', 72963, 0, 5213550, 'uang'),
+(274, '2020-08-05', '01.00009', 'profit titipan emas periode 07 2020', 34020, 0, 82976, 'uang'),
+(275, '2020-08-05', '01.00027', 'profit titipan emas periode 07 2020', 209333, 0, 285918, 'uang'),
+(276, '2020-08-05', '01.00027', 'trf. profit titipan emas ke BTPN 04081000158 Sri susanti', 0, 199333, 76585, 'uang'),
+(277, '2020-08-05', '01.00027', 'potongan biaya admin', 0, 10000, 76585, 'uang'),
+(278, '2020-08-05', '01.00062', 'profit titipan emas periode 07 2020', 34889, 0, 47653, 'uang'),
+(279, '2020-08-05', '01.00023', 'profit titipan emas periode 07 2020', 34889, 0, 47653, 'uang'),
+(280, '2020-08-05', '01.00011', 'profit titipan emas periode 07 2020', 209333, 0, 246785, 'uang'),
+(281, '2020-08-05', '01.00011', 'trf. profit titipan emas ke BCA  0130639798 Ummy Mubarokah', 0, 199333, 37452, 'uang'),
+(282, '2020-08-05', '01.00011', 'potongan biaya admin', 0, 10000, 37452, 'uang'),
+(283, '2020-08-05', '01.00063', 'profit titipan emas periode 07 2020', 35530, 0, 35530, 'uang'),
+(284, '2020-08-05', '01.00065', 'profit titipan emas periode 07 2020', 1249340, 0, 1249340, 'uang'),
+(285, '2020-08-05', '01.00065', 'trf. profit titipan emas ke BTPN 04081000158 SRI SUSANTI', 0, 1239340, -4, 'uang'),
+(286, '2020-08-05', '01.00065', 'potongan biaya admin', 0, 10000, -4, 'uang'),
+(287, '2020-08-05', '01.00027', 'profit titipan emas periode 07 2020', 1249340, 0, 1325930, 'uang'),
+(288, '2020-08-05', '01.00027', 'trf. profit titipan emas ke BTPN 04081000158 Sri susanti', 0, 1239340, 76586, 'uang'),
+(289, '2020-08-05', '01.00027', 'potongan biaya admin', 0, 10000, 76586, 'uang'),
+(290, '2020-08-05', '01.00028', 'profit titipan emas periode 07 2020', 912039, 0, 912040, 'uang'),
+(291, '2020-08-05', '01.00028', 'trf. profit titipan emas ke BRI  3405  -   01-    016327 -  53 -  8 Ari  wuryantini  ', 0, 902039, 1, 'uang'),
+(292, '2020-08-05', '01.00028', 'potongan biaya admin', 0, 10000, 1, 'uang'),
+(293, '2020-08-05', '01.00066', 'profit titipan emas periode 07 2020', 632038, 0, 632038, 'uang'),
+(294, '2020-08-05', '01.00066', 'trf. profit titipan emas ke BCA 0091324902 Aditya Cipta P', 0, 622038, 0, 'uang'),
+(295, '2020-08-05', '01.00066', 'potongan biaya admin', 0, 10000, 0, 'uang'),
+(296, '2020-08-05', '01.00066', 'profit titipan emas periode 07 2020', 417145, 0, 417145, 'uang'),
+(297, '2020-08-05', '01.00066', 'trf. profit titipan emas ke BCA 0091324902 Aditya Cipta P', 0, 407145, 0, 'uang'),
+(298, '2020-08-05', '01.00066', 'potongan biaya admin', 0, 10000, 0, 'uang'),
+(299, '2020-08-05', '01.00011', 'profit titipan emas periode 07 2020', 12782, 0, 50234, 'uang');
 
 -- --------------------------------------------------------
 
@@ -1650,6 +1785,12 @@ ALTER TABLE `tb_history`
   ADD PRIMARY KEY (`idx`);
 
 --
+-- Indeks untuk tabel `tb_sms_info`
+--
+ALTER TABLE `tb_sms_info`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `tb_titipan_emas`
 --
 ALTER TABLE `tb_titipan_emas`
@@ -1762,6 +1903,12 @@ ALTER TABLE `tb_history`
   MODIFY `idx` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
+-- AUTO_INCREMENT untuk tabel `tb_sms_info`
+--
+ALTER TABLE `tb_sms_info`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
 -- AUTO_INCREMENT untuk tabel `tb_titipan_emas`
 --
 ALTER TABLE `tb_titipan_emas`
@@ -1771,19 +1918,19 @@ ALTER TABLE `tb_titipan_emas`
 -- AUTO_INCREMENT untuk tabel `tb_titipan_emas_detail`
 --
 ALTER TABLE `tb_titipan_emas_detail`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_titipan_emas_transfer`
 --
 ALTER TABLE `tb_titipan_emas_transfer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=260;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=300;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user`
