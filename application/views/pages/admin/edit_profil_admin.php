@@ -13,9 +13,14 @@
                 ?>
                 <form method="post" action="">
                     <div class="form-group">
+                        <label for="noktp">KTP Anggota</label>
+                        <input type="text" class="form-control" id="noktp" name="noktp" value="<?= $detail['noktp'] ?>">
+                        <input type="hidden" name="idted" value="<?= $detail['idted']; ?>" />
+                    </div>
+                    <div class="form-group">
                         <label for="nohp">No. Handphone</label>
                         <input type="text" class="form-control" id="nohp" name="nohp" value="<?= $detail['nohp'] ?>">
-                        <input type="hidden" name="idted" value="<?= $detail['idted']; ?>" />
+
                     </div>
                     <div class="form-group">
                         <label for="nohp">Alamat</label>
@@ -40,7 +45,7 @@
                     </div>
                     <div class="form-group">
                         <label for="ktpwaris">Ktp Ahli Waris</label>
-                        <input type="text" class="form-control" id="ktpwarisid" name="ktpwaris" value="<?= $detail['ktpwaris'] ?>" placeholder="Nama ahli waris" required="">
+                        <input type="text" class="form-control" id="ktpwarisid" name="ktpwaris" value="<?= $detail['ktpwaris'] ?>" placeholder="Ktp ahli waris" required="">
                     </div>
                     <div class="form-group">
                         <label for="hubwaris">Hubungan</label>

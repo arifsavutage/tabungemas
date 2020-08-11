@@ -94,6 +94,12 @@ class Model_tedagt extends CI_Model
         return $this->db->get($this->_table)->row_array();
     }
 
+    public function numAccountByKtp($ktp)
+    {
+        $this->db->where('noktp', $ktp);
+        return $this->db->get($this->_table);
+    }
+
     public function update($data)
     {
         return $this->db->update($this->_table, $data, ['idted' => "$data[idted]"]);

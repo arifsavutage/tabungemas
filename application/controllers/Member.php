@@ -171,6 +171,7 @@ class Member extends CI_Controller
 
             if ($this->form_validation->run()) {
                 $idted  = $this->input->post('idted');
+                $noktp  = $this->input->post('noktp');
                 $nohp   = $this->input->post('nohp');
                 $alamat = $this->input->post('alamat');
                 $norek  = $this->input->post('norek');
@@ -184,6 +185,7 @@ class Member extends CI_Controller
 
                 $data = [
                     'idted' => "$idted",
+                    'noktp'  => "$noktp",
                     'nohp'  => "$nohp",
                     'alamat' => "$alamat",
                     'norek ' => "$norek",

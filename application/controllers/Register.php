@@ -30,9 +30,10 @@ class Register extends CI_Controller
         //membuat id agt baru
         $refid      = $this->input->post('refid');
         $mailregis  = $this->input->post('email');
-        $nameregis  = $this->input->post('nama');
+        $nameregis  = ucwords(strtolower($this->input->post('nama')));
         $idtmp      = $this->input->post('idtmp');
         $role_id    = $this->input->post('role');
+        $ktp        = $this->input->post('noktp');
 
         if (!empty($refid)) {
             //ambil kode cabang pada ID's
@@ -45,117 +46,133 @@ class Register extends CI_Controller
             $refid  = "01.00001";
         }
 
-        //start create new ID's
-        //cek jumlah terdaftar
-        $jmlagt = $agtbaru->getAll()->num_rows();
+        //cek data anggota dgn noktp yg sama
+        $cekduplikatagt = $this->model_tedagt->numAccountByKtp($ktp)->num_rows();
+        $detailduplikat = $this->model_tedagt->numAccountByKtp($ktp)->row_array();
 
-        if ($jmlagt == 0) {
-            $newid = $cabang . ".00001";
-            $datajar    = [
-                'idagt' => "$newid",
-                'refid' => "0",
-                'uplineid' => "0",
-                'jmldown' => 0,
-                'posjar' => '1',
-                'poslvl' => 1,
-                'tglproses' => '0000-00-00'
-            ];
+        if ($cekduplikatagt == 0) {
+            //start create new ID's
+            //cek jumlah terdaftar
+            $jmlagt = $agtbaru->getAll()->num_rows();
 
-            $level = $role_id;
-        } else {
-            $panjangId  = $agtbaru->jmlIdCabang($cabang);
-            $updatejar  = $jaringan->cekUpline($refid);
+            if ($jmlagt == 0) {
+                $newid = $cabang . ".00001";
+                $datajar    = [
+                    'idagt' => "$newid",
+                    'refid' => "0",
+                    'uplineid' => "0",
+                    'jmldown' => 0,
+                    'posjar' => '1',
+                    'poslvl' => 1,
+                    'tglproses' => '0000-00-00'
+                ];
 
-            //echo $panjangId;
-            $panjangId = $panjangId + 1;
-            if (strlen($panjangId) == 1) {
-                $newid  = $cabang . ".0000" . $panjangId;
-            } else if (strlen($panjangId) == 2) {
-                $newid  = $cabang . ".000" . $panjangId;
-            } else if (strlen($panjangId) == 3) {
-                $newid  = $cabang . ".00" . $panjangId;
-            } else if (strlen($panjangId) == 4) {
-                $newid  = $cabang . ".0" . $panjangId;
+                $level = $role_id;
             } else {
-                $newid  = $cabang . "." . $panjangId;
+                $panjangId  = $agtbaru->jmlIdCabang($cabang);
+                $updatejar  = $jaringan->cekUpline($refid);
+
+                //echo $panjangId;
+                $panjangId = $panjangId + 1;
+                if (strlen($panjangId) == 1) {
+                    $newid  = $cabang . ".0000" . $panjangId;
+                } else if (strlen($panjangId) == 2) {
+                    $newid  = $cabang . ".000" . $panjangId;
+                } else if (strlen($panjangId) == 3) {
+                    $newid  = $cabang . ".00" . $panjangId;
+                } else if (strlen($panjangId) == 4) {
+                    $newid  = $cabang . ".0" . $panjangId;
+                } else {
+                    $newid  = $cabang . "." . $panjangId;
+                }
+
+                $newdownline = $updatejar['jml_downline'] + 1;
+                $newposjar  = $updatejar['pos_jar'] . "" . $newdownline;
+                $newposlvl  = $updatejar['pos_level'] + 1;
+
+                $datajar    = [
+                    'idagt' => "$newid",
+                    'refid' => "$refid",
+                    'uplineid' => "$refid",
+                    'jmldown' => 0,
+                    'posjar' => "$newposjar",
+                    'poslvl' => $newposlvl,
+                    'tglproses' => '0000-00-00'
+                ];
+
+                $level  = $role_id;
             }
 
-            $newdownline = $updatejar['jml_downline'] + 1;
-            $newposjar  = $updatejar['pos_jar'] . "" . $newdownline;
-            $newposlvl  = $updatejar['pos_level'] + 1;
 
-            $datajar    = [
-                'idagt' => "$newid",
-                'refid' => "$refid",
-                'uplineid' => "$refid",
-                'jmldown' => 0,
-                'posjar' => "$newposjar",
-                'poslvl' => $newposlvl,
-                'tglproses' => '0000-00-00'
+            $agtbaru->save($newid, $level);
+            $jaringan->save($datajar);
+
+            //ambil nominal uang untuk pembanding dengan harga beli emas terbaru
+            $nomvar  = $this->model_uang->getValueById(3);
+            $emasnow = $this->model_emas->getLastUpdate();
+            $vselisih = $this->model_uang->getValueById(1);
+
+            $xemas   = explode(",", $emasnow['HRG_BELI']);
+            $inemas  = implode("", $xemas);
+            $hargaemasbarucuy = $inemas - $vselisih['selisih_beli'];
+
+            $emaspokok = $nomvar['registrasi'] / $hargaemasbarucuy;
+
+            $dt_trans   = [
+                'tgl'   => date('Y-m-d'),
+                'idted' => "$newid",
+                'uraian' => "simp. pokok & simp. wajib",
+                'masuk' => number_format($emaspokok, 3, '.', ''),
+                'keluar' => 0,
+                'saldo' => number_format($emaspokok, 3, '.', ''),
+                'jenis' => 'emas'
             ];
 
-            $level  = $role_id;
-        }
+            $this->model_transaksi->save($dt_trans);
 
+            //update jaringan untuk refid
+            if ($jmlagt != 0) {
+                $updateup   = [
+                    'idagt'       => $refid,
+                    'jml_downline' => $newdownline
+                ];
+                $jaringan->updateUpline($updateup);
+            }
 
-        $agtbaru->save($newid, $level);
-        $jaringan->save($datajar);
-
-        //ambil nominal uang untuk pembanding dengan harga beli emas terbaru
-        $nomvar  = $this->model_uang->getValueById(3);
-        $emasnow = $this->model_emas->getLastUpdate();
-        $vselisih = $this->model_uang->getValueById(1);
-
-        $xemas   = explode(",", $emasnow['HRG_BELI']);
-        $inemas  = implode("", $xemas);
-        $hargaemasbarucuy = $inemas - $vselisih['selisih_beli'];
-
-        $emaspokok = $nomvar['registrasi'] / $hargaemasbarucuy;
-
-        $dt_trans   = [
-            'tgl'   => date('Y-m-d'),
-            'idted' => "$newid",
-            'uraian' => "simp. pokok & simp. wajib",
-            'masuk' => number_format($emaspokok, 3, '.', ''),
-            'keluar' => 0,
-            'saldo' => number_format($emaspokok, 3, '.', ''),
-            'jenis' => 'emas'
-        ];
-
-        $this->model_transaksi->save($dt_trans);
-
-        //update jaringan untuk refid
-        if ($jmlagt != 0) {
-            $updateup   = [
-                'idagt'       => $refid,
-                'jml_downline' => $newdownline
+            //prepare send mail
+            $dataemail = [
+                'mail'  => $mailregis,
+                'nama'  => ucwords($nameregis)
             ];
-            $jaringan->updateUpline($updateup);
-        }
 
-        //prepare send mail
-        $dataemail = [
-            'mail'  => $mailregis,
-            'nama'  => ucwords($nameregis)
-        ];
+            //send email
+            $this->mailAkunAktif($dataemail);
 
-        //send email
-        $this->mailAkunAktif($dataemail);
-
-        //hapus data di table tmp
-        //echo $idtmp;
-        $this->model_tmpagt->delete($idtmp);
+            //hapus data di table tmp
+            //echo $idtmp;
+            $this->model_tmpagt->delete($idtmp);
 
 
-        $this->session->set_flashdata('info', '
+            $this->session->set_flashdata('info', '
             <div class="alert alert-success" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
-                <h4>Success :</h4> Penambahan member ke jaringan berhasil.. 
+                <h4>Success :</h4> Penambahan anggota ke jaringan berhasil.. 
             </div>');
 
-        redirect(base_url() . 'index.php/member/member_baru');
+            redirect(base_url() . 'index.php/member/member_baru');
+        } else {
+            $this->session->set_flashdata('info', '
+            <div class="alert alert-warning" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4>Oops, </h4> Penambahan anggota gagal, karena duplikat dengan <strong>' . $detailduplikat['nama_lengkap'] . '</strong> 
+            </div>');
+
+            redirect(base_url() . 'index.php/member/member_baru');
+        }
     }
 
     public function new_member()
