@@ -13,6 +13,7 @@ class Member extends CI_Controller
         $this->load->model('model_history');
         $this->load->model('model_emas');
         $this->load->model('model_uang');
+        $this->load->model('model_payout');
 
         not_login();
     }

@@ -15,6 +15,7 @@ class Register extends CI_Controller
         $this->load->model('model_transaksi');
         $this->load->model('model_bank');
         $this->load->model('model_emas');
+        $this->load->model('model_payout');
     }
 
     public function index()
@@ -107,6 +108,26 @@ class Register extends CI_Controller
             $agtbaru->save($newid, $level);
             $jaringan->save($datajar);
 
+            //get payout by role_id
+            $getpayout  = $this->db->get_where('tb_user_role', ['id' => $role_id])->row()->payout_id;
+            $json   = json_decode($getpayout, true);
+
+            $xx = 1;
+            foreach ($json as $ids => $values) {
+
+                $nominalx  = $this->model_payout->getById($values);
+                $data_payout    = [
+                    'idted'     => $newid,
+                    'payout_id' => $values,
+                    'nominal'   => $nominalx['nominal']
+                ];
+
+                $this->db->insert('tb_payout_trans', $data_payout);
+                $xx++;
+            }
+
+            //print_r(var_dump($json));
+
             //ambil nominal uang untuk pembanding dengan harga beli emas terbaru
             $nomvar  = $this->model_uang->getValueById(3);
             $emasnow = $this->model_emas->getLastUpdate();
@@ -116,7 +137,10 @@ class Register extends CI_Controller
             $inemas  = implode("", $xemas);
             $hargaemasbarucuy = $inemas - $vselisih['selisih_beli'];
 
-            $emaspokok = $nomvar['registrasi'] / $hargaemasbarucuy;
+            //$emaspokok = $nomvar['registrasi'] / $hargaemasbarucuy;
+
+            //simpanan pokok wajib di ganti uang & sudah masuk pos sendiri
+            $emaspokok = 0;
 
             $dt_trans   = [
                 'tgl'   => date('Y-m-d'),

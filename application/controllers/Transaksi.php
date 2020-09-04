@@ -17,6 +17,8 @@ class Transaksi extends CI_Controller
         $this->load->model('model_widraw');
         $this->load->model('model_titipan');
         $this->load->model('model_smsinfo');
+        $this->load->model('model_payout');
+        $this->load->model('model_payouttrans');
 
         not_login();
     }
@@ -1561,6 +1563,16 @@ class Transaksi extends CI_Controller
         $this->load->view('dashboard', $data);
     }
 
+    public function laporan_wallet()
+    {
+        $data = [
+            'page' => 'pages/admin/laporan_wallet',
+            'datas' => $this->model_transaksi->allTransaction()->result_array()
+        ];
+
+        $this->load->view('dashboard', $data);
+    }
+
     public function titipan_emas($idted = null)
     {
         $idted = $this->session->userdata('id');
@@ -2087,5 +2099,149 @@ class Transaksi extends CI_Controller
         </div>');
 
         redirect(base_url() . 'index.php/transaksi/titipan_emas_widraw_report');
+    }
+
+    public function view_payout()
+    {
+        $data = [
+            'pays' => $this->model_payout->getAll(),
+            'page' => 'pages/admin/daftar_payout'
+        ];
+
+        //echo $this->db->last_query();
+        $this->load->view('dashboard', $data);
+    }
+
+    public function edit_payout($id = null)
+    {
+
+        if ($id == null) {
+            redirect(base_url());
+        } else {
+            $this->form_validation->set_rules('namapayout', 'Nama Pay Out', 'required');
+            $this->form_validation->set_rules('nominal', 'Nominal Payout', 'required');
+
+            if ($this->form_validation->run()) {
+                $post_data = [
+                    'id'            => $this->input->post('id'),
+                    'nama_payout'   => $this->input->post('namapayout'),
+                    'nominal'       => $this->input->post('nominal')
+                ];
+
+                $this->model_payout->update($post_data);
+
+                //penghitungan biaya registrasi keanggotaan
+                $pays = $this->model_payout->getAll();
+
+                $premium    = 0;
+                $basic      = 0;
+                foreach ($pays as $pay) {
+                    $premium += $pay['nominal'];
+
+                    if ($pay['id'] == 9 || $pay['id'] == 10) {
+                        $basic += $pay['nominal'];
+                    }
+                }
+
+                //update nominal registrasi premium
+                $nom_premium = [
+                    'id'    => 1,
+                    'registrasi' => $premium
+                ];
+
+                $this->model_uang->update($nom_premium);
+
+                //update nominal registrasi basic
+                $nom_basic = [
+                    'id'    => 3,
+                    'registrasi' => $basic
+                ];
+
+                $this->model_uang->update($nom_basic);
+
+                $this->session->set_flashdata('info', '
+                <div class="alert alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>SUCCESS: </h4> Update berhasil ...
+                </div>');
+
+                redirect(base_url() . 'index.php/transaksi/view_payout');
+            }
+
+            $data = [
+                'detail' => $this->model_payout->getById($id),
+                'page' => 'pages/admin/edit_payout'
+            ];
+
+            //echo $this->db->last_query();
+            $this->load->view('dashboard', $data);
+        }
+    }
+
+    public function laporan($account = null)
+    {
+        if ($account == null) {
+            redirect(base_url());
+        } else {
+
+            switch ($account) {
+                case 'dana_referal':
+                    $data['judul_laporan'] = 'Laporan Dana Referal';
+                    $data['page'] = 'pages/admin/laporan_dana_simpanan';
+                    $data['list'] = $this->model_payouttrans->getDana(1);
+                    break;
+                case 'dana_reward':
+                    $data['judul_laporan'] = 'Laporan Dana Reward';
+                    $data['page'] = 'pages/admin/laporan_dana_simpanan';
+                    $data['list'] = $this->model_payouttrans->getDana(2);
+                    break;
+                case 'dana_investor':
+                    $data['judul_laporan'] = 'Laporan Dana Investor';
+                    $data['page'] = 'pages/admin/laporan_dana_simpanan';
+                    $data['list'] = $this->model_payouttrans->getDana(3);
+                    break;
+                case 'dana_cabang':
+                    $data['judul_laporan'] = 'Laporan Dana Cabang';
+                    $data['page'] = 'pages/admin/laporan_dana_simpanan';
+                    $data['list'] = $this->model_payouttrans->getDana(4);
+                    break;
+                case 'dana_pinjaman':
+                    $data['judul_laporan'] = 'Laporan Dana Pinjaman';
+                    $data['page'] = 'pages/admin/laporan_dana_simpanan';
+                    $data['list'] = $this->model_payouttrans->getDana(5);
+                    break;
+                case 'dana_marketing':
+                    $data['judul_laporan'] = 'Laporan Dana Marketing';
+                    $data['page'] = 'pages/admin/laporan_dana_simpanan';
+                    $data['list'] = $this->model_payouttrans->getDana(6);
+                    break;
+                case 'dana_admin':
+                    $data['judul_laporan'] = 'Laporan Dana Admin';
+                    $data['page'] = 'pages/admin/laporan_dana_simpanan';
+                    $data['list'] = $this->model_payouttrans->getDana(7);
+                    break;
+                case 'dana_cadangan':
+                    $data['judul_laporan'] = 'Laporan Dana Cadangan';
+                    $data['page'] = 'pages/admin/laporan_dana_simpanan';
+                    $data['list'] = $this->model_payouttrans->getDana(8);
+                    break;
+                case 'simpanan_wajib':
+                    $data['judul_laporan'] = 'Laporan Simpanan Wajib';
+                    $data['page'] = 'pages/admin/laporan_dana_simpanan';
+                    $data['list'] = $this->model_payouttrans->getDana(9);
+                    break;
+                case 'simpanan_pokok':
+                    $data['judul_laporan'] = 'Laporan Simpanan Pokok';
+                    $data['page'] = 'pages/admin/laporan_dana_simpanan';
+                    $data['list'] = $this->model_payouttrans->getDana(10);
+                    break;
+
+                default:
+            }
+
+            $this->load->view('dashboard', $data);
+        }
     }
 }
