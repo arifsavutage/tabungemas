@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Sep 2020 pada 11.14
+-- Waktu pembuatan: 04 Sep 2020 pada 12.51
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.0
 
@@ -1355,7 +1355,7 @@ INSERT INTO `tb_user_menu` (`id`, `title`, `url`, `icon`, `parent_menu`, `is_act
 (22, 'Unggah KTP', 'member/berkas_ktp/', '', 21, 1),
 (23, 'Unggah NPWP', 'member/berkas_npwp/', '', 21, 1),
 (24, 'Ubah Password', 'member/update_pass/', '', 18, 1),
-(25, 'Info Referal', 'member/pohon_jaringan/', '', 18, 1),
+(25, 'Info Jaringan', 'member/pohon_jaringan/', '', 18, 0),
 (26, 'Menu Transaksi', '#', 'fas_fa-retweet', 0, 1),
 (27, 'Beli Emas', 'transaksi/beli_emas/', '', 26, 1),
 (28, 'Jual Emas', 'transaksi/jual_emas/', '', 26, 1),
@@ -1376,7 +1376,8 @@ INSERT INTO `tb_user_menu` (`id`, `title`, `url`, `icon`, `parent_menu`, `is_act
 (43, 'Laporan Dana Admin', 'transaksi/laporan/dana_admin', '', 35, 1),
 (44, 'Laporan Dana Cadangan', 'transaksi/laporan/dana_cadangan', '', 35, 1),
 (45, 'Laporan Simpanan Wajib', 'transaksi/laporan/simpanan_wajib', '', 35, 1),
-(46, 'Laporan Simpanan Pokok', 'transaksi/laporan/simpanan_pokok', '', 35, 1);
+(46, 'Laporan Simpanan Pokok', 'transaksi/laporan/simpanan_pokok', '', 35, 1),
+(47, 'Info Daftar Referal', 'member/daftar_referal/', '', 18, 1);
 
 -- --------------------------------------------------------
 
@@ -2088,7 +2089,7 @@ ALTER TABLE `tb_user_dashboard`
 -- AUTO_INCREMENT untuk tabel `tb_user_menu`
 --
 ALTER TABLE `tb_user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user_menu_access`

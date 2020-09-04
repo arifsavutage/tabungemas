@@ -71,8 +71,10 @@ class Member extends CI_Controller
         if ($id == null) {
             redirect(base_url());
         } else {
+            $idreferal  = $this->model_jaringan->myReferalId($id)->idreferal;
 
             $data = [
+                'referalku' => $this->model_tedagt->getAccountById($idreferal),
                 'detail' => $this->model_tedagt->getAccountById($id),
                 'saldo_rp'  => $this->model_transaksi->getLastTranById($id, 'uang'),
                 'saldo_emas'  => $this->model_transaksi->getLastTranById($id, 'emas'),
@@ -150,7 +152,9 @@ class Member extends CI_Controller
 
     public function profil_anggota($id = null)
     {
+        $idreferal  = $this->model_jaringan->myReferalId($id)->idreferal;
         $data = [
+            'referalku' => $this->model_tedagt->getAccountById($idreferal),
             'detail' => $this->model_tedagt->getAccountById($id),
             'saldo_rp'  => $this->model_transaksi->getLastTranById($id, 'uang'),
             'saldo_emas'  => $this->model_transaksi->getLastTranById($id, 'emas'),
@@ -667,6 +671,7 @@ class Member extends CI_Controller
 
     public function pohon_jaringan($id = null)
     {
+
         $id = $this->session->userdata('id');
         if ($id == null) {
             redirect(base_url());
@@ -676,6 +681,37 @@ class Member extends CI_Controller
             $data = [
                 'jaringan'  => $this->model_jaringan->ambilJaringan($ambilposjar['pos_jar'], $id, $ambilposjar['pos_level']),
                 'page' => 'pages/member/member_pohon_jaringan'
+            ];
+
+            $this->load->view('dashboard', $data);
+        }
+    }
+
+    public function daftar_referal($id = null)
+    {
+        //untuk menampilkan referal ID di bawahnya saja bukan level jaringan nasional
+        $id = $this->session->userdata('id');
+        if ($id == null) {
+            redirect(base_url());
+        } else {
+            $data = [
+                'referals'  => $this->model_jaringan->daftarReferalId($id),
+                'page' => 'pages/member/member_daftar_referal'
+            ];
+
+            $this->load->view('dashboard', $data);
+        }
+    }
+
+    public function daftar_referal_member($id = null)
+    {
+        if ($id == null) {
+            redirect(base_url());
+        } else {
+
+            $data = [
+                'referals'  => $this->model_jaringan->daftarReferalId($id),
+                'page' => 'pages/admin/member_daftar_referal_admin'
             ];
 
             $this->load->view('dashboard', $data);

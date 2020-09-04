@@ -23,6 +23,21 @@ class Model_jaringan extends CI_Model
         $this->db->update($this->_table, $dataup, ['idagt' => $dataup['idagt']]);
     }
 
+    public function daftarReferalId($idted)
+    {
+        $this->db->select('tb_agt_ted.idted, tb_agt_ted.tgl_gabung, tb_agt_ted.nama_lengkap, tb_jaringan.pos_level');
+        $this->db->join('tb_agt_ted', 'tb_agt_ted.idted = tb_jaringan.idagt', 'left');
+        $this->db->where('tb_jaringan.idreferal', $idted);
+        $this->db->order_by('tb_agt_ted.tgl_gabung', 'DESC');
+        return $this->db->get($this->_table)->result_array();
+    }
+
+    public function myReferalId($idted)
+    {
+        $this->db->where('idagt', $idted);
+        return $this->db->get($this->_table)->row();
+    }
+
     public function save($data)
     {
         $this->idagt        = $data['idagt'];

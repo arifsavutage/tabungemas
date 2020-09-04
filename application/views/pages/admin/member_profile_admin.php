@@ -22,17 +22,17 @@
                         $this->db->join('tb_agt_ted', 'tb_agt_ted.role_id = tb_user_role.id', 'right');
                         $mem_ship = $this->db->get_where('tb_user_role', ['id' => $detail['role_id']])->row_array();
 
-                        if ($mem_ship['id'] == 3) {
+                        if ($mem_ship['id'] == 4) {
                             //echo '<span class="badge badge-danger">' . ucwords($mem_ship_tmp['memship']) . '</span>';
                             //echo $detail['role_id'];
                             $keanggotaan    = ucwords($mem_ship['memship']);
-                            $class          = "badge-info";
+                            $class          = "badge-danger";
                             $upgrade        = '<a href="' . base_url('index.php/member/upgrade/') . $this->session->userdata('id') . '" class="btn btn-danger btn-block btn-lg mt-4">Upgrade to premium</a>';
-                        } else if ($mem_ship['id'] == 4) {
+                        } else if ($mem_ship['id'] == 3) {
                             //echo '<span class="badge badge-success">' . ucwords($mem_ship_tmp['memship']) . '</span>';
                             //echo $detail['role_id'];
                             $keanggotaan    = ucwords($mem_ship['memship']);
-                            $class          = "badge-danger";
+                            $class          = "badge-info";
                             $upgrade        = "";
                         }
 
@@ -71,6 +71,8 @@
                     </li>
                 </ul>
                 <ul class="list-group mt-4">
+                    <li class="list-group-item disabled"><i class="fas fa-qrcode"></i>&nbsp;ID&nbsp;<?= $detail['idted']; ?></li>
+                    <li class="list-group-item disabled"><i class="fas fa-users"></i>&nbsp;Ref. ID&nbsp;<?= $referalku['idted']; ?>&nbsp;|&nbsp;<?= ucwords(strtolower($referalku['nama_lengkap'])); ?></li>
                     <li class="list-group-item disabled"><i class="fa fa-id-card-o"></i> <?= $detail['noktp']; ?></li>
                     <li class="list-group-item disabled"><i class="far fa-envelope"></i> <?= $detail['email']; ?></li>
                     <li class="list-group-item disabled"><i class="fas fa-mobile-alt"></i> <?= $detail['nohp']; ?></li>
