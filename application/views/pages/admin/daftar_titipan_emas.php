@@ -10,9 +10,13 @@
                     echo $this->session->flashdata('info');
                 }
                 ?>
-                <a role="button" href="<?= base_url() . 'index.php/transaksi/titipan_emas_addprofit'; ?>" class="btn btn-primary">
-                    <span class="btn-label"><i class="fa fa-plus"></i></span>Nominal Profit
-                </a>
+                <?php if ($this->session->userdata('roleid') == 1) : ?>
+                    <a role="button" href="<?= base_url() . 'index.php/transaksi/titipan_emas_addprofit'; ?>" class="btn btn-primary">
+                        <span class="btn-label"><i class="fa fa-plus"></i></span>Nominal Profit
+                    </a>
+                <?php
+                endif;
+                ?>
                 <a role="button" href="<?= base_url() . 'index.php/transaksi/titipan_emas_profitreport'; ?>" class="btn btn-secondary">
                     <span class="btn-label"><i class="fa fa-file"></i></span>Laporan Profit
                 </a>
