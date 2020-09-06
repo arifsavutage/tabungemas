@@ -2237,6 +2237,11 @@ class Transaksi extends CI_Controller
                     $data['page'] = 'pages/admin/laporan_dana_simpanan';
                     $data['list'] = $this->model_payouttrans->getDana(10);
                     break;
+                case 'wallet_anggota':
+                    $data['judul_laporan'] = 'Laporan Saldo Wallet Anggota';
+                    $data['page'] = 'pages/admin/daftar_wallet';
+                    $data['list'] = $this->model_transaksi->getSaldoAkhir();
+                    break;
 
                 default:
             }

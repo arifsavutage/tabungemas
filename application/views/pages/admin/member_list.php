@@ -16,6 +16,7 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
+                                <th>ID</th>
                                 <th>Tgl. Daftar</th>
                                 <th>Nama Lengkap</th>
                                 <th>No. HP</th>
@@ -30,6 +31,7 @@
                             ?>
                                 <tr>
                                     <td scope="row"><?= $no; ?></td>
+                                    <td><?= $detail['idted']; ?></td>
                                     <td><?= date('d-m-Y', strtotime($detail['tgl_gabung'])); ?></td>
                                     <td><?= ucwords($detail['nama_lengkap']); ?></td>
                                     <td><?= $detail['nohp']; ?></td>

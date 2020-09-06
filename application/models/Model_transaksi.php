@@ -82,6 +82,24 @@ class Model_transaksi extends CI_Model
         return $this->db->get($this->_table);
     }
 
+    public function getSaldoAkhir($id = null)
+    {
+        $this->db->select("`id`, `tgl`, `idted`, `uraian`, `masuk`, `keluar`, SUM(`saldo`) AS newsaldo, `jenis`");
+
+        if ($id == null) {
+            $this->db->where("DATE_FORMAT(`tgl`, '%m%Y') = DATE_FORMAT(CURDATE(), '%m%Y')");
+            $this->db->where('jenis', 'uang');
+            $this->db->group_by('idted');
+            $this->db->order_by('idted', 'ASC');
+        } else {
+            $this->db->where("DATE_FORMAT(`tgl`, '%m%Y') = DATE_FORMAT(CURDATE(), '%m%Y')");
+            $this->db->where('jenis', 'uang');
+            $this->db->where('idted', $id);
+        }
+
+        return $this->db->get($this->_table)->result_array();
+    }
+
     public function save($data)
     {
         $this->db->insert($this->_table, $data);
