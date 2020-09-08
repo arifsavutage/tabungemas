@@ -25,45 +25,39 @@
                         <td style="padding: 40px 30px 40px 30px;">
                             <h3 style="color:#5f1d80;border-bottom: thin solid #cccccc;border-collapse: collapse;padding-bottom:30px;">Hallo, Admin</h3>
 
-                            <p style="margin-bottom:50px;color:#6e6e6e;">Berikut Ini adalah data Anggota yang jatuh tempo titipan emasnya :</p>
+                            <p style="margin-bottom:50px;color:#6e6e6e;">Memberikan informasi bahwa Anggota dengan data sebagai berikut :</p>
 
-                            <table align="center" border="1" cellpadding="0" cellspacing="0" width="300">
-                                <thead>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>ID</th>
-                                        <th>Nama Anggota</th>
-                                        <th>E-mail</th>
-                                        <th>No. HP</th>
-                                        <th>Tgl. Ikut</th>
-                                        <th>Tgl. Berakhir</th>
-                                        <th>Tenor</th>
-                                        <th>Jml. Gram</th>
-                                    </tr>
-                                </thead>
+                            <table align="center" border="1" cellpadding="0" cellspacing="0" width="300" style="font-size:13px;">
+
                                 <tbody>
-                                    <?php
-                                    $i = 1;
-                                    foreach ($data as $list) {
-                                        echo "<tr>
-                                            <td>$i</td>
-                                            <td>$list->idted</td>
-                                            <td>$list->nama_lengkap</td>
-                                            <td>$list->email</td>
-                                            <td>$list->nohp</td>
-                                            <td>$list->tgl_ikut</td>
-                                            <td>$list->tgl_berakhir</td>
-                                            <td>$list->tenor</td>
-                                            <td>$list->gram</td>
-                                        </tr>";
-                                        $i++;
-                                    }
-                                    ?>
+                                    <tr>
+                                        <td>ID</td>
+                                        <td><?= $detail['idted']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nama Lengkap</td>
+                                        <td><?= $detail['nama_lengkap']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jml Gram</td>
+                                        <td><?= $detail['gram']; ?> gr</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tgl. Ikut</td>
+                                        <td><?= date('d/m/Y', strtotime($detail['tgl_ikut'])); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tgl. Berakhir</td>
+                                        <td><?= date('d/m/Y', strtotime($detail['tgl_berakhir'])); ?></td>
+                                    </tr>
                                 </tbody>
                             </table>
 
                             <p style="margin-bottom:50px;color:#6e6e6e;">
-                                Jangan lupa di konfirmasi ulang ya.
+                                Dengan ini telah menyelesaikan program <strong>titipan emas</strong> di tabungemas.com, jumlah gramasi sudah di kembalikan ke dalam akun tersebut.
+                            </p>
+                            <p style="margin-bottom:50px;color:#6e6e6e;">
+                                Silahkan daftarkan kembali bila memang ingin mengikuti kembali program <strong>titipan emas</strong>.
                             </p>
 
                             <p style="margin-top:65px;color:#6e6e6e;">
