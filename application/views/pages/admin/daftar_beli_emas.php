@@ -44,8 +44,18 @@
                                     <td><?= $detail['nominal_gram']; ?></td>
                                     <td><?= $label; ?></td>
                                     <td>
+
+                                        <?php
+                                        if ($detail['status'] == 1) {
+                                            $status = 'aria-disabled="true"';
+                                            $disabled = "disabled";
+                                        } else {
+                                            $status = '';
+                                            $disabled = "";
+                                        }
+                                        ?>
                                         <!-- Button trigger modal -->
-                                        <a role="button" href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addToPay<?= $no; ?>" title="Konfirm pembayaran">
+                                        <a role="button" href="#" class="btn btn-primary btn-sm <?= $disabled; ?>" data-toggle="modal" data-target="#addToPay<?= $no; ?>" title="Konfirm pembayaran">
                                             <i class="fa fa-check"></i>
                                         </a>
 
@@ -96,15 +106,6 @@
                                             </div>
                                         </div>
 
-                                        <?php
-                                        if ($detail['status'] == 1) {
-                                            $status = 'aria-disabled="true"';
-                                            $disabled = "disabled";
-                                        } else {
-                                            $status = '';
-                                            $disabled = "";
-                                        }
-                                        ?>
                                         <a href="<?= base_url() . "index.php/transaksi/hapus_beli_emas/$detail[idx]"; ?>" class="btn btn-danger btn-sm <?= $disabled; ?>" tabindex="-1" role="button" onclick="return valdel()" <?= $status; ?>><i class="fa fa-times"></i></a>
                                         <script>
                                             function valdel() {
