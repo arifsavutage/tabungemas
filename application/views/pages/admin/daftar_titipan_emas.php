@@ -49,6 +49,8 @@
                             foreach ($lists as $row) :
                                 if ($row['status'] == 'pending') {
                                     $status = "<span class='badge badge-secondary'>pending</span>";
+                                } else if ($row['status'] == 'berhenti') {
+                                    $status = "<span class='badge badge-danger'>berhenti</span>";
                                 } else {
                                     $status = "<span class='badge badge-success'>aktif</span>";
                                 }

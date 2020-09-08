@@ -1848,6 +1848,25 @@ class Transaksi extends CI_Controller
 
             foreach ($data_aktif as $aktif) {
                 if ($date > $aktif['tgl_berakhir']) {
+
+                    //ambil gram emas yg di titipkan
+                    $data_off = $this->model_titipan->getByIdx($aktif['idx']);
+
+                    $saldo_emas = $this->model_transaksi->getLastTranById($aktif['idted'], 'emas');
+
+                    $newsaldoemas = $saldo_emas['saldo'] + $data_off['gram'];
+                    $dataemas = [
+                        'idted' => $aktif['idted'],
+                        'tgl'   => date('Y-m-d'),
+                        'uraian' => 'Pengembalian saldo emas, berhenti titipan emas',
+                        'masuk' => $data_off['gram'],
+                        'keluar' => 0,
+                        'saldo' => $newsaldoemas,
+                        'jenis' => 'emas'
+                    ];
+                    //update saldo emas
+                    $this->model_transaksi->save($dataemas);
+
                     //ubah status jadi berhenti
                     $this->model_titipan->updateBerhenti($aktif['idx']);
                 } else {

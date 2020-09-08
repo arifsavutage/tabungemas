@@ -26,6 +26,12 @@ class Model_titipan extends CI_Model
         return $this->db->get($this->_table)->result_array();
     }
 
+    public function getByIdx($id_titipan)
+    {
+        $this->db->where('idx', $id_titipan);
+        return $this->db->get($this->_table)->row_array();
+    }
+
     public function getAll()
     {
         $this->db->select("`tb_titipan_emas`.`idx`, `tb_titipan_emas`.`idted`, `tb_titipan_emas`.`tgl_ikut`, `tb_titipan_emas`.`tgl_berakhir`, `tb_titipan_emas`.`tenor`, `tb_titipan_emas`.`gram`, `tb_titipan_emas`.`harga_ikut`, `tb_titipan_emas`.`jml_uang`, `tb_titipan_emas`.`status`, tb_agt_ted.nama_lengkap");
