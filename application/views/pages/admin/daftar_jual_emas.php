@@ -10,8 +10,13 @@
                     echo $this->session->flashdata('info');
                 }
                 ?>
+                <div class="row">
+                    <div class="row mb-4">
+                        <div class="col-md-12 datesearchbox"></div>
+                    </div>
+                </div>
                 <div class="table-responsive">
-                    <table class="table" id="example1">
+                    <table class="table" id="daterange">
                         <thead>
                             <tr>
                                 <th>No.</th>
@@ -30,10 +35,10 @@
                             ?>
                                 <tr>
                                     <td scope="row"><?= $no; ?></td>
-                                    <td><?= date('d-m-Y', strtotime($detail['tgl'])); ?></td>
-                                    <td><?= ucwords($detail['nama_lengkap']); ?></td>
+                                    <td><?= date('d/m/Y', strtotime($detail['tgl'])); ?></td>
+                                    <td><?= ucwords(strtolower($detail['nama_lengkap'])); ?></td>
                                     <td><?= $detail['nohp']; ?></td>
-                                    <td><?= "Rp. " . number_format($detail['nominal_uang'], 0, ',', '.'); ?></td>
+                                    <td><?= "Rp. " . number_format($detail['nominal_uang'], 0, '.', ','); ?></td>
                                     <td><?= $detail['nominal_gram'] . " gr"; ?></td>
                                     <td><?= $detail['ket']; ?></td>
                                 </tr>

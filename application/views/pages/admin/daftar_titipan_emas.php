@@ -10,31 +10,36 @@
                     echo $this->session->flashdata('info');
                 }
                 ?>
-                <?php if ($this->session->userdata('roleid') == 1) : ?>
-                    <a role="button" href="<?= base_url() . 'index.php/transaksi/titipan_emas_addprofit'; ?>" class="btn btn-primary">
-                        <span class="btn-label"><i class="fa fa-plus"></i></span>Nominal Profit
-                    </a>
-                <?php
-                endif;
-                ?>
-                <a role="button" href="<?= base_url() . 'index.php/transaksi/titipan_emas_profitreport'; ?>" class="btn btn-secondary">
-                    <span class="btn-label"><i class="fa fa-file"></i></span>Laporan Profit
-                </a>
-                <a role="button" href="<?= base_url() . 'index.php/transaksi/titipan_emas_widraw'; ?>" class="btn btn-success">
-                    <span class="btn-label"><i class="fa fa-bank"></i></span>Transfer Profit
-                </a>
-                <br />
-                <br />
+
+                <div class="row mb-4">
+                    <div class="col-md-4 datesearchbox"></div>
+                    <div class="col-md-8">
+                        <?php if ($this->session->userdata('roleid') == 1) : ?>
+                            <a role="button" href="<?= base_url() . 'index.php/transaksi/titipan_emas_addprofit'; ?>" class="btn btn-primary">
+                                <span class="btn-label"><i class="fa fa-plus"></i></span>Nominal Profit
+                            </a>
+                        <?php
+                        endif;
+                        ?>
+                        <a role="button" href="<?= base_url() . 'index.php/transaksi/titipan_emas_profitreport'; ?>" class="btn btn-secondary">
+                            <span class="btn-label"><i class="fa fa-file"></i></span>Laporan Profit
+                        </a>
+                        <a role="button" href="<?= base_url() . 'index.php/transaksi/titipan_emas_widraw'; ?>" class="btn btn-success">
+                            <span class="btn-label"><i class="fa fa-bank"></i></span>Transfer Profit
+                        </a>
+                    </div>
+                </div>
+
                 <div class="table-responsive">
                     <input type="hidden" name="judul-berkas" id="judul-berkas" value="Daftar Titipan Emas">
-                    <table class="table" id="export">
+                    <table class="table" id="daterange">
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>ID</th>
-                                <th>Nama Anggota</th>
                                 <th>Tgl. Ikut</th>
                                 <th>Tgl. Berakhir</th>
+                                <th>ID</th>
+                                <th>Nama Anggota</th>
                                 <th>Tenor</th>
                                 <th>Jml. Gr</th>
                                 <th>Harga</th>
@@ -57,10 +62,10 @@
                             ?>
                                 <tr>
                                     <td scope="row"><?= $no; ?></td>
-                                    <td><a href="<?= base_url() . 'index.php/member/profil_anggota/' . $row['idted']; ?>"><?= $row['idted']; ?></a></td>
-                                    <td><?= ucwords($row['nama_lengkap']); ?></td>
                                     <td><?= date('d/m/Y', strtotime($row['tgl_ikut'])); ?></td>
                                     <td><?= date('d/m/Y', strtotime($row['tgl_berakhir'])); ?></td>
+                                    <td><a href="<?= base_url() . 'index.php/member/profil_anggota/' . $row['idted']; ?>"><?= $row['idted']; ?></a></td>
+                                    <td><?= ucwords(strtolower($row['nama_lengkap'])); ?></td>
                                     <td><?= $row['tenor']; ?></td>
                                     <td><?= $row['gram']; ?></td>
                                     <td><?= number_format($row['harga_ikut'], 0, ',', '.'); ?></td>

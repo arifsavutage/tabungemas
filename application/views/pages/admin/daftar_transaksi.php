@@ -10,8 +10,11 @@
                     echo $this->session->flashdata('info');
                 }
                 ?>
+                <div class="row mb-4">
+                    <div class="col-md-4 datesearchbox"></div>
+                </div>
                 <div class="table-responsive">
-                    <table class="table" id="example1">
+                    <table class="table" id="daterange">
                         <thead>
                             <tr>
                                 <th>No.</th>
@@ -33,7 +36,7 @@
                                 <tr>
                                     <td scope="row"><?= $no; ?></td>
                                     <td><?= date('d/m/Y', strtotime($detail['tgl'])); ?></td>
-                                    <td>Transaksi <?= ucwords($detail['jenis']); ?></td>
+                                    <td>Transaksi <?= ucwords(strtolower($detail['jenis'])); ?></td>
                                     <td><a href="<?= base_url() . 'index.php/member/profil_anggota/' . $detail['idted']; ?>"><?= ucwords($anggota['nama_lengkap']); ?></a></td>
                                     <td><?= $detail['uraian']; ?></td>
                                     <td><?= $detail['masuk']; ?></td>

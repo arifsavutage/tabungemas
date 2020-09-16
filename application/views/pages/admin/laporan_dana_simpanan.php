@@ -15,14 +15,15 @@
                 </div>
 
                 <div class="table-responsive">
-                    <input type="hidden" name="judul-berkas" id="judul-berkas" value="Daftar Member Aktif" />
-                    <table class="table table-bordered display" id="export">
+                    <input type="hidden" name="judul-berkas" id="judul-berkas" value="<?= $judul_laporan ?>" />
+                    <table class="table table-bordered display" id="daterange">
                         <thead>
                             <tr>
                                 <th>No.</th>
+                                <th>Tgl. Transaksi</th>
                                 <th>Nama Anggota</th>
                                 <th>Nominal</th>
-                                <th>Tgl. Transaksi</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -32,9 +33,10 @@
                             ?>
                                 <tr>
                                     <td scope="row"><?= $no; ?></td>
+                                    <td><?= date('d/m/Y', strtotime($daftar['tgl_transaksi'])); ?></td>
                                     <td><?= ucwords(strtolower($daftar['nama_lengkap'])); ?></td>
                                     <td><?= number_format($daftar['nominal'], 0, '.', ','); ?></td>
-                                    <td><?= date('d/m/Y', strtotime($daftar['tgl_transaksi'])); ?></td>
+
                                 </tr>
                             <?php
                                 $no++;

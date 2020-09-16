@@ -1563,6 +1563,26 @@ class Transaksi extends CI_Controller
         $this->load->view('dashboard', $data);
     }
 
+    public function daftar_saldo_emas()
+    {
+        $data = [
+            'page' => 'pages/admin/daftar_transaksi_emas',
+            'datas' => $this->model_transaksi->allTransaction()->result_array()
+        ];
+
+        $this->load->view('dashboard', $data);
+    }
+
+    public function daftar_saldo_uang()
+    {
+        $data = [
+            'page' => 'pages/admin/daftar_transaksi_uang',
+            'datas' => $this->model_transaksi->allTransaction()->result_array()
+        ];
+
+        $this->load->view('dashboard', $data);
+    }
+
     public function laporan_wallet()
     {
         $data = [
