@@ -57,7 +57,8 @@
                     <select name="jenis" class="form-control">
                         <option value="">: Pilih Keanggotaan</option>
                         <?php
-                        $this->db->where('id IN (3,4)');
+                        //menampilkan paket keanggotaan
+                        $this->db->where('id IN (3)');
                         $roles = $this->db->get('tb_user_role')->result_array();
 
                         foreach ($roles as $role) {

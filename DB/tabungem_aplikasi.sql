@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 15 Sep 2020 pada 13.30
+-- Waktu pembuatan: 02 Okt 2020 pada 21.52
 -- Versi server: 10.3.24-MariaDB
 -- Versi PHP: 7.3.6
 
@@ -95,7 +95,7 @@ INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `noktp`, `nohp`
 ('01.00005', '2019-11-05', 'Ariandaru Kusuma Yudha', '', '08112888470', '', 'kog434@gmail.com', '$2y$10$SSDq5wmc9kEdz3Jf1s7gl.VxKyYKuNa4RrOGo0xP27Y7PlU4DPk5O', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'agen', 1, '', '', '', ''),
 ('01.00006', '2019-11-05', 'Muhammad Irfan Muammar', '', '082127055238', 'Jl pangeran panjunan rt1/rw1 desa Cisaat kecamatan Dukupuntang kabupaten Cirebon', 'irfanmuammar007@gmail.com', '$2y$10$h.mIK.JBj5B9RCyBAzN9C.XT0HMBCCrMWo4sKhe10akouejlcB9mm', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', '01_00006.jpg', 'agen', 1, '', '', '', ''),
 ('01.00007', '2019-11-05', 'Dwi Sunu Raharjo', '', '085866139850', 'Jomblang legok rt 05 rw 02 semarang 50256', 'sunjoxang@gmail.com', '$2y$10$WNm2C8U2hwQzKySAvrSzD..cB6wwQqq8kDMk/L4422FYOVugtuqlC', 3, 'noimage.jpg', 'noimage.jpg', '111001002375536', 'Bank Rakyat Indonesia BRI', 'Dwi sunu raharjo', '01_00007.jpg', 'agen', 1, '', '', '', ''),
-('01.00008', '2019-11-05', 'Eko Nur Prasetyo, Spt. Msi', '', '085727611329', 'Tegalsari barat 3 rt 01 rw 11 no 11', 'ekonurprasetyo1984@gmail.com', '$2y$10$Z9ZGBwoCdE5vnTfgGvgRrOxDkrGPspPCJ1mv4Vez59ipFGAtOPM5u', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'agen', 1, '', '', '', ''),
+('01.00008', '2019-11-05', 'Eko Nur Prasetyo, Spt. Msi', '', '085727611329', 'Tegalsari barat 3 rt 01 rw 11 no 11', 'ekonurprasetyo1984@gmail.com', '$2y$10$hV6X2hJZTS/b/K1sINy92eB118PMkCh5NhjtQ9OrsI7PF0mevWZrO', 3, 'noimage.jpg', 'noimage.jpg', '303201021584536', 'BRI', 'Eko nur prasetyo', 'noimage.jpg', 'agen', 1, 'nafila adelina putri prasetyo', '', 'anak', '087834777465'),
 ('01.00009', '2019-11-05', 'Yayan Supardi', '', '081325123353', 'Slukatan RT 07/ RW 02', 'yayansupardi46@gmail.com', '$2y$10$YcHqODIqfKEPAR5ft.rjBuxhkouFu0FdJug.eTTObm/sNsm.ZarYa', 3, 'noimage.jpg', 'noimage.jpg', '8030322925', 'BCA', '', '01_00009.jpg', 'agen', 1, '', '', '', ''),
 ('01.00010', '2019-11-05', 'Sudarto', '', '085747410593', 'jl kradenan lama no 7 RT 08 RW 05 Kelurahan Sukorejo Kecamatan Gunungpati Semarang', 'sudartosw@gmail.com', '$2y$10$CH2eYl2j98pxhBSCAXTff.oldpRTes0wzvJNLd9cBCSnPIzn130oC', 3, 'noimage.jpg', 'noimage.jpg', '2465191960', 'BCA', '', 'noimage.jpg', 'agen', 1, '', '', '', ''),
 ('01.00011', '2019-11-05', 'Ummy Mubarokah', '', '081325469975', 'Jalan Pemotongan no.1245 Salatiga ', 'ummyrobaei@yahoo.com', '$2y$10$5hgNcGga7G3islwWJF5q4O0023mukbssefEwuTQjOOZBdqYbYBgEO', 3, 'noimage.jpg', 'noimage.jpg', '0130639798', 'BCA ', 'Ummy Mubarokah', '01_00011.jpg', 'agen', 1, 'haydar salam jaffar robaei', '', 'anak', '0821-9948-7341'),
@@ -157,7 +157,7 @@ INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `noktp`, `nohp`
 ('01.00067', '2020-07-19', 'Cholimah', '', '085643072448', 'Tegaljoho rt 03 rw 03 .desa bulu. Kec. Bulu. Temangung', 'Chalimah19700@gmail.com', '$2y$10$4sKsKIfimmRKdJANcufgYeV0hjCcLgwkYaLGM05HSEdZuNPK9grei', 3, 'noimage.jpg', 'noimage.jpg', '185-00-000-71-206', 'Mandiri', 'Cholimah', 'noimage.jpg', 'agen', 1, 'titah latiefiyani', '', 'anak', '+6281227619390'),
 ('01.00068', '2020-07-25', 'Heri Kuswiyono', '', '081329255707', '', 'herikuswiyono99@gmail.com', '$2y$10$xs1lCOhNQJdhCawhaEqyTeGAksHKE30b3P7LkTuQTRQ4ihaVlkowm', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'agen', 1, '', '', '', ''),
 ('01.00069', '2020-07-27', 'YF. Arnies Natalia', '', '081229234924', '', 'frans_natalie@yahoo.com', '$2y$10$bZq2Hx/53JIqzBgTGtr4YuHY8Z61nKNRE2rdEy2rZz591CaxfMoEa', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
-('01.00070', '2020-07-29', 'Dini Andriani', '', '085226252490', '', 'Dandriani54@gmail.com', '$2y$10$gjqg/okRH25JY/zuOz8D/uSDTJie3.S4TkfnKY8cjtz0xJBtbLY1K', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
+('01.00070', '2020-07-29', 'Dini Andriani', '', '085226252490', '', 'Dandriani54@gmail.com', '$2y$10$pfdVxrT0jSdiEpUPRLfHQO1MiQ6ViWN.qpty.qZVlqLrc1WJLthYy', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00071', '2020-08-03', 'Adyatma Gusti Pandya', '3374120702000002', '081575012844', 'Kradenan lama no 7', 'adyatmagp@gmail.com', '$2y$10$PM14rZ1Gdic0r4iEdSTBFebP9mVzkZL/MaQMLJJ5hx6YZXCS3SAji', 3, 'noimage.jpg', 'noimage.jpg', '0728242081', 'BNI', 'Adyatma Gusti Pandya', 'noimage.jpg', 'basic', 1, 'tri nurdyastuti', '', 'ortu', '081575012844'),
 ('01.00072', '2020-08-04', 'Ida Susana', '3373044410640001', '081325922899', 'Jl Suropati no 528 togaten RT 04 RW 05', 'susanaida1964@gmail.com', '$2y$10$UEPlf9iKxUw.WMGkv7yJy.rwXNcgVyUkqoeBkqI.DQTXTwjmSr2me', 3, 'noimage.jpg', 'noimage.jpg', '0747460049', 'BNI', 'Ida susana', 'noimage.jpg', 'basic', 1, 'haris indrapratama', '', 'anak', '08112900488'),
 ('01.00073', '2020-08-05', 'Fajar Marantika Wahyuningtyas', '33740654078850003', '081229533263', 'Singojayan RT 01/RW 01, Tingkir Tengah, Tingkir, Salatiga', 'marantika8185@gmail.com', '$2y$10$dP2Chn/267s3IE8xvov2t.akvHjilL5ZFELr5GbwTBKych79HuB7O', 3, 'noimage.jpg', 'noimage.jpg', '0131293975', 'BCA', 'Fajar Marantika Wahyuningtyas', '01_00073.jpg', 'basic', 1, 'nimas ayu regina larasati', '111111111111', 'anak', '+62 812-2948-3238'),
@@ -184,7 +184,12 @@ INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `noktp`, `nohp`
 ('01.00094', '2020-09-04', 'Zunsyika Zahra Zatira', '3471086806970004', '081335623997', 'jatisawit rt /rw 019/044 balecatur gamping kab sleman', 'zunsyikazahrazatira@gmail.com', '$2y$10$K0KxOpJpxiiTMNBJTmPXTeJKKe8xE6LJNYktZ9NjEQBR3tuNZ/YkW', 3, 'noimage.jpg', 'noimage.jpg', '\'90013386284', 'BTPN', 'zunsyika zahra zatira', 'noimage.jpg', 'basic', 1, 'sugiarti', '3404014907680001', 'ortu', '0811251610'),
 ('01.00095', '2020-09-12', 'Roy Siegfried', '3374012901020001', '081329276426', '', 'victoriayahut69@gmail.com', '$2y$10$S.28VHm..V/b64M68eO9VO7pttj6ShQF6sdkc10IVN3NrcngZJ/Da', 4, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00096', '2020-09-12', 'Ryan Adhyatma', '3322180402900001', '081371819161', '', 'adhyatma.ryan21@gmail.com', '$2y$10$UWeVgkR9v.uLYGWsz8MigeAWLNjlD0JdpLngjA/Y998c9HFQp3bKK', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
-('01.00097', '2020-09-14', 'Heru Wahyono', '3374131008750006', '085740536475', '', 'herupenxy1@gmail.com', '$2y$10$CfzavSnzaW.zIV2AO12UZes9wzFXAZLxhJ8sbrowX0fcMsgExwMSK', 4, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', '');
+('01.00097', '2020-09-14', 'Heru Wahyono', '3374131008750006', '085740536475', '', 'herupenxy1@gmail.com', '$2y$10$CfzavSnzaW.zIV2AO12UZes9wzFXAZLxhJ8sbrowX0fcMsgExwMSK', 4, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
+('01.00098', '2020-09-17', 'AGUNG WIDIASTRO', '3515082910800003', '+12107809363', '', 'agungwidiastro80@gmail.com', '$2y$10$ph9CBdUEPQIxtrKuRBJNCOwwCSZxutnjqx5gkF38mvcOAV1IU1aEm', 3, 'ktp_01_00098.jpg', 'noimage.jpg', '', '', '', '01_00098.jpg', 'basic', 1, '', '', '', ''),
+('01.00099', '2020-09-19', 'Purwadi', '6201020808710003', '081351844986', '', 'ud.rizqibarokah@gmail.com', '$2y$10$aj7WaupAXlJ9zJCsoZQN4eJxQfzqGgZ90doaxr3nmkJPTTYQDe1L.', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
+('01.00100', '2020-09-27', 'WORO ENDANG SRI RAHAYU', '3374114610690004', '08112990610', '', 'woroendang1@gmail.com', '$2y$10$OgMOf3o0eaiJkbpSHNZnO.h9HFNao6uMN1tjCxih4vIWDsrGaWWxy', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
+('01.00101', '2020-09-28', 'Ninik Muryanti', '3310024210820001', '08157797694', '', 'ninikmuryanti63@gmail.com', '$2y$10$cy9gsechjCCYVOcmnLJJqujQaDO.qi.cy2YkTzP0Sf77dB5anBF1m', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
+('01.00102', '2020-09-28', 'Suharni', '3374114908680004', '08122857251', '', 'harnirda@gmail.com', '$2y$10$Lyye9hH/0MjaHubmHqZx1.05wlvMBtkNzm2oxZCLelNoFnXyuSEJy', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -206,6 +211,13 @@ CREATE TABLE `tb_agt_tmp` (
   `konfirm_status` int(2) NOT NULL,
   `token` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tb_agt_tmp`
+--
+
+INSERT INTO `tb_agt_tmp` (`idtmp`, `tgl_daftar`, `nm_tmp`, `role_id`, `nohp_tmp`, `email_tmp`, `ktp_tmp`, `password_tmp`, `idreferal`, `nominal`, `konfirm_status`, `token`) VALUES
+(137, '2020-09-28', 'Amrudin Mahfud Jumai', 3, '081222599475', 'amrudinmahfudzjumai@yahoo.co.id', '3374142511780001', '$2y$10$mwtYugx4HUwFwuxwItRAO.eqWwYhmssfUt26r/s8K5lG/Sevazmpq', '01.00093', 200221, 0, 'oHeOucjMbpZVSJ7Q');
 
 -- --------------------------------------------------------
 
@@ -457,14 +469,22 @@ INSERT INTO `tb_history` (`idx`, `tgl`, `idted`, `tujuan_jual`, `ket`, `nominal_
 (97, '2020-09-06 12:54:05', '01.00091', '', 'pembelian emas ', 50000, 0.051, 1),
 (98, '2020-09-07 06:57:19', '01.00054', '', 'pembelian emas ', 2000000, 2.039, 1),
 (99, '2020-09-07 10:05:49', '01.00055', '', 'pembelian emas ', 100000, 0.102, 1),
-(100, '2020-09-07 10:14:27', '01.00087', '', 'pembelian emas ', 100000, 0.102, 0),
 (101, '2020-09-07 10:22:32', '01.00055', '', 'pembelian emas ', 100000, 0.102, 1),
 (102, '2020-09-08 09:40:55', '01.00094', '', 'pembelian emas ', 1980000, 2.015, 1),
 (104, '2020-09-13 11:38:24', '01.00060', '', 'pembelian emas ', 1050000, 1.009, 1),
-(105, '2020-09-14 03:04:01', '01.00097', '', 'pembelian emas ', 200000, 0.192, 0),
 (106, '2020-09-14 07:07:46', '01.00095', '', 'pembelian emas ', 230000, 0.221, 1),
 (107, '2020-09-14 09:07:12', '1 ', '', 'pembelian emas ', 1040500, 1, 0),
-(108, '2020-09-14 09:18:09', '01.00060', '', 'pembelian emas ', 1040500, 1, 1);
+(108, '2020-09-14 09:18:09', '01.00060', '', 'pembelian emas ', 1040500, 1, 1),
+(109, '2020-09-17 06:18:35', '01.00098', '', 'pembelian emas ', 2100000, 2.023, 1),
+(110, '2020-09-18 01:28:55', '01.00003', '', 'pembelian emas ', 341000, 0.329, 1),
+(112, '2020-09-21 01:35:29', '01.00095', '', 'pembelian emas ', 750000, 0.729, 1),
+(113, '2020-09-22 01:59:40', '01.00008', '', 'pembelian emas ', 2050000, 2, 1),
+(114, '2020-09-22 02:08:36', '01.00008', '', 'pembelian emas ', 21000, 0.02, 1),
+(115, '2020-09-23 01:25:55', '01.00042', '', 'pembelian emas ', 50000, 0.05, 1),
+(116, '2020-09-23 01:26:31', '01.00042', '', 'pembelian emas ', 8000, 0.008, 1),
+(117, '2020-09-25 00:18:31', '01.00099', '', 'pembelian emas ', 150000, 0.149, 1),
+(118, '2020-09-27 13:48:01', '01.00055', '', 'pembelian emas ', 100000, 0.099, 1),
+(120, '2020-10-02 05:59:47', '01.00011', 'TED', 'jual emas ', 1808000, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -490,13 +510,13 @@ CREATE TABLE `tb_jaringan` (
 INSERT INTO `tb_jaringan` (`id`, `idagt`, `idreferal`, `idupline`, `jml_downline`, `pos_jar`, `pos_level`, `tgl_proses`) VALUES
 (1, '01.00001', '0', '0', 3, '1', 1, '2019-10-28'),
 (2, '01.00002', '01.00001', '01.00001', 1, '11', 2, '0000-00-00'),
-(3, '01.00003', '01.00002', '01.00002', 33, '111', 3, '0000-00-00'),
+(3, '01.00003', '01.00002', '01.00002', 36, '111', 3, '0000-00-00'),
 (4, '01.00004', '01.00003', '01.00003', 7, '1111', 4, '0000-00-00'),
 (5, '01.00005', '01.00004', '01.00004', 1, '11111', 5, '0000-00-00'),
 (6, '01.00006', '01.00005', '01.00005', 4, '111111', 6, '0000-00-00'),
 (7, '01.00007', '01.00003', '01.00003', 1, '1112', 4, '0000-00-00'),
 (8, '01.00008', '01.00007', '01.00007', 0, '11121', 5, '0000-00-00'),
-(9, '01.00009', '01.00003', '01.00003', 3, '1113', 4, '0000-00-00'),
+(9, '01.00009', '01.00003', '01.00003', 5, '1113', 4, '0000-00-00'),
 (10, '01.00010', '01.00003', '01.00003', 5, '1114', 4, '0000-00-00'),
 (11, '01.00011', '01.00003', '01.00003', 1, '1115', 4, '0000-00-00'),
 (12, '01.00012', '01.00011', '01.00011', 0, '11151', 5, '0000-00-00'),
@@ -584,7 +604,12 @@ INSERT INTO `tb_jaringan` (`id`, `idagt`, `idreferal`, `idupline`, `jml_downline
 (94, '01.00094', '01.00053', '01.00053', 0, '111452', 6, '0000-00-00'),
 (95, '01.00095', '01.00064', '01.00064', 0, '111264', 5, '0000-00-00'),
 (96, '01.00096', '01.00093', '01.00093', 0, '111331', 5, '0000-00-00'),
-(97, '01.00097', '01.00064', '01.00064', 0, '111265', 5, '0000-00-00');
+(97, '01.00097', '01.00064', '01.00064', 0, '111265', 5, '0000-00-00'),
+(98, '01.00098', '01.00009', '01.00009', 0, '11134', 5, '0000-00-00'),
+(99, '01.00099', '01.00003', '01.00003', 0, '11134', 4, '0000-00-00'),
+(100, '01.00100', '01.00003', '01.00003', 0, '11135', 4, '0000-00-00'),
+(101, '01.00101', '01.00003', '01.00003', 0, '11136', 4, '0000-00-00'),
+(102, '01.00102', '01.00009', '01.00009', 0, '11135', 5, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -1586,7 +1611,57 @@ INSERT INTO `tb_payout_trans` (`id`, `idted`, `payout_id`, `nominal`, `tgl_trans
 (951, '01.00096', 9, 12000, '2020-09-12 21:25:28'),
 (952, '01.00096', 10, 9000, '2020-09-12 21:25:28'),
 (953, '01.00097', 9, 12000, '2020-09-14 10:58:05'),
-(954, '01.00097', 10, 9000, '2020-09-14 10:58:05');
+(954, '01.00097', 10, 9000, '2020-09-14 10:58:05'),
+(955, '01.00098', 1, 31500, '2020-09-17 13:11:34'),
+(956, '01.00098', 2, 54000, '2020-09-17 13:11:34'),
+(957, '01.00098', 3, 20000, '2020-09-17 13:11:34'),
+(958, '01.00098', 4, 10000, '2020-09-17 13:11:34'),
+(959, '01.00098', 5, 25000, '2020-09-17 13:11:34'),
+(960, '01.00098', 6, 10000, '2020-09-17 13:11:34'),
+(961, '01.00098', 7, 14000, '2020-09-17 13:11:34'),
+(962, '01.00098', 8, 14500, '2020-09-17 13:11:34'),
+(963, '01.00098', 9, 12000, '2020-09-17 13:11:34'),
+(964, '01.00098', 10, 9000, '2020-09-17 13:11:34'),
+(965, '01.00099', 1, 31500, '2020-09-19 10:50:59'),
+(966, '01.00099', 2, 54000, '2020-09-19 10:50:59'),
+(967, '01.00099', 3, 20000, '2020-09-19 10:50:59'),
+(968, '01.00099', 4, 10000, '2020-09-19 10:50:59'),
+(969, '01.00099', 5, 25000, '2020-09-19 10:50:59'),
+(970, '01.00099', 6, 10000, '2020-09-19 10:50:59'),
+(971, '01.00099', 7, 14000, '2020-09-19 10:50:59'),
+(972, '01.00099', 8, 14500, '2020-09-19 10:50:59'),
+(973, '01.00099', 9, 12000, '2020-09-19 10:50:59'),
+(974, '01.00099', 10, 9000, '2020-09-19 10:50:59'),
+(975, '01.00100', 1, 31500, '2020-09-28 00:00:21'),
+(976, '01.00100', 2, 54000, '2020-09-28 00:00:21'),
+(977, '01.00100', 3, 20000, '2020-09-28 00:00:21'),
+(978, '01.00100', 4, 10000, '2020-09-28 00:00:21'),
+(979, '01.00100', 5, 25000, '2020-09-28 00:00:21'),
+(980, '01.00100', 6, 10000, '2020-09-28 00:00:21'),
+(981, '01.00100', 7, 14000, '2020-09-28 00:00:21'),
+(982, '01.00100', 8, 14500, '2020-09-28 00:00:21'),
+(983, '01.00100', 9, 12000, '2020-09-28 00:00:21'),
+(984, '01.00100', 10, 9000, '2020-09-28 00:00:21'),
+(985, '01.00101', 1, 31500, '2020-09-28 15:53:55'),
+(986, '01.00101', 2, 54000, '2020-09-28 15:53:55'),
+(987, '01.00101', 3, 20000, '2020-09-28 15:53:55'),
+(988, '01.00101', 4, 10000, '2020-09-28 15:53:55'),
+(989, '01.00101', 5, 25000, '2020-09-28 15:53:55'),
+(990, '01.00101', 6, 10000, '2020-09-28 15:53:55'),
+(991, '01.00101', 7, 14000, '2020-09-28 15:53:55'),
+(992, '01.00101', 8, 14500, '2020-09-28 15:53:55'),
+(993, '01.00101', 9, 12000, '2020-09-28 15:53:55'),
+(994, '01.00101', 10, 9000, '2020-09-28 15:53:55'),
+(995, '01.00102', 1, 31500, '2020-09-28 16:29:51'),
+(996, '01.00102', 2, 54000, '2020-09-28 16:29:51'),
+(997, '01.00102', 3, 20000, '2020-09-28 16:29:51'),
+(998, '01.00102', 4, 10000, '2020-09-28 16:29:51'),
+(999, '01.00102', 5, 25000, '2020-09-28 16:29:51'),
+(1000, '01.00102', 6, 10000, '2020-09-28 16:29:51'),
+(1001, '01.00102', 7, 14000, '2020-09-28 16:29:51'),
+(1002, '01.00102', 8, 14500, '2020-09-28 16:29:51'),
+(1003, '01.00102', 9, 12000, '2020-09-28 16:29:51'),
+(1004, '01.00102', 10, 9000, '2020-09-28 16:29:51');
 
 -- --------------------------------------------------------
 
@@ -1700,7 +1775,7 @@ INSERT INTO `tb_titipan_emas` (`idx`, `idted`, `tgl_ikut`, `tgl_berakhir`, `teno
 (1, '01.00051', '2020-04-02', '2020-09-02', 6, 6, 878695, 5272170, 'berhenti'),
 (2, '01.00042', '2020-04-09', '2020-09-09', 6, 2, 893325, 1786650, 'berhenti'),
 (3, '01.00052', '2020-04-10', '2020-09-10', 6, 2, 893325, 1786650, 'berhenti'),
-(4, '01.00011', '2020-04-26', '2020-09-26', 6, 2, 913460, 1826920, 'aktif'),
+(4, '01.00011', '2020-04-26', '2020-09-26', 6, 2, 913460, 1826920, 'berhenti'),
 (5, '01.00053', '2020-05-09', '2020-10-09', 6, 2, 898830, 1797660, 'aktif'),
 (6, '01.00053', '2020-05-17', '2020-10-17', 6, 4, 877686, 3510744, 'aktif'),
 (7, '01.00025', '2020-05-27', '2020-10-27', 6, 10, 889794, 8897940, 'aktif'),
@@ -1728,7 +1803,9 @@ INSERT INTO `tb_titipan_emas` (`idx`, `idted`, `tgl_ikut`, `tgl_berakhir`, `teno
 (29, '01.00094', '2020-09-08', '2021-09-08', 12, 2, 920000, 1840000, 'aktif'),
 (30, '01.00042', '2020-09-11', '2021-03-11', 6, 2, 927000, 1854000, 'aktif'),
 (31, '01.00052', '2020-09-11', '2021-03-11', 6, 2, 927000, 1854000, 'aktif'),
-(32, '01.00060', '2020-09-14', '2021-03-14', 6, 2, 929000, 1858000, 'aktif');
+(32, '01.00060', '2020-09-14', '2021-03-14', 6, 2, 929000, 1858000, 'aktif'),
+(33, '01.00098', '2020-09-17', '2021-03-17', 6, 2, 932000, 1864000, 'aktif'),
+(34, '01.00008', '2020-09-22', '2021-03-22', 6, 2, 926000, 1852000, 'aktif');
 
 -- --------------------------------------------------------
 
@@ -2027,7 +2104,66 @@ INSERT INTO `tb_titipan_emas_detail` (`idx`, `id_titipan`, `periode`, `profit_pe
 (301, 28, '2020-09-14', 0.25, 0),
 (302, 29, '2020-09-14', 0.25, 0),
 (303, 30, '2020-09-14', 0.25, 0),
-(304, 31, '2020-09-14', 0.25, 0);
+(304, 31, '2020-09-14', 0.25, 0),
+(305, 4, '2020-09-21', 0.25, 0),
+(306, 5, '2020-09-21', 0.25, 0),
+(307, 6, '2020-09-21', 0.25, 0),
+(308, 7, '2020-09-21', 0.25, 0),
+(309, 8, '2020-09-21', 0.25, 0),
+(310, 9, '2020-09-21', 0.25, 0),
+(311, 10, '2020-09-21', 0.25, 0),
+(312, 11, '2020-09-21', 0.25, 0),
+(313, 12, '2020-09-21', 0.25, 0),
+(314, 13, '2020-09-21', 0.25, 0),
+(315, 14, '2020-09-21', 0.25, 0),
+(316, 15, '2020-09-21', 0.25, 0),
+(317, 16, '2020-09-21', 0.25, 0),
+(318, 17, '2020-09-21', 0.25, 0),
+(319, 18, '2020-09-21', 0.25, 0),
+(320, 19, '2020-09-21', 0.25, 0),
+(321, 20, '2020-09-21', 0.25, 0),
+(322, 21, '2020-09-21', 0.25, 0),
+(323, 22, '2020-09-21', 0.25, 0),
+(324, 23, '2020-09-21', 0.25, 0),
+(325, 24, '2020-09-21', 0.25, 0),
+(326, 25, '2020-09-21', 0.25, 0),
+(327, 26, '2020-09-21', 0.25, 0),
+(328, 27, '2020-09-21', 0.25, 0),
+(329, 28, '2020-09-21', 0.25, 0),
+(330, 29, '2020-09-21', 0.25, 0),
+(331, 30, '2020-09-21', 0.25, 0),
+(332, 31, '2020-09-21', 0.25, 0),
+(333, 32, '2020-09-21', 0.25, 0),
+(334, 5, '2020-09-28', 0.25, 0),
+(335, 6, '2020-09-28', 0.25, 0),
+(336, 7, '2020-09-28', 0.25, 0),
+(337, 8, '2020-09-28', 0.25, 0),
+(338, 9, '2020-09-28', 0.25, 0),
+(339, 10, '2020-09-28', 0.25, 0),
+(340, 11, '2020-09-28', 0.25, 0),
+(341, 12, '2020-09-28', 0.25, 0),
+(342, 13, '2020-09-28', 0.25, 0),
+(343, 14, '2020-09-28', 0.25, 0),
+(344, 15, '2020-09-28', 0.25, 0),
+(345, 16, '2020-09-28', 0.25, 0),
+(346, 17, '2020-09-28', 0.25, 0),
+(347, 18, '2020-09-28', 0.25, 0),
+(348, 19, '2020-09-28', 0.25, 0),
+(349, 20, '2020-09-28', 0.25, 0),
+(350, 21, '2020-09-28', 0.25, 0),
+(351, 22, '2020-09-28', 0.25, 0),
+(352, 23, '2020-09-28', 0.25, 0),
+(353, 24, '2020-09-28', 0.25, 0),
+(354, 25, '2020-09-28', 0.25, 0),
+(355, 26, '2020-09-28', 0.25, 0),
+(356, 27, '2020-09-28', 0.25, 0),
+(357, 28, '2020-09-28', 0.25, 0),
+(358, 29, '2020-09-28', 0.25, 0),
+(359, 30, '2020-09-28', 0.25, 0),
+(360, 31, '2020-09-28', 0.25, 0),
+(361, 32, '2020-09-28', 0.25, 0),
+(362, 33, '2020-09-28', 0.25, 0),
+(363, 34, '2020-09-28', 0.25, 0);
 
 -- --------------------------------------------------------
 
@@ -2606,7 +2742,31 @@ INSERT INTO `tb_transaksi` (`id`, `tgl`, `idted`, `uraian`, `masuk`, `keluar`, `
 (457, '2020-09-14', '01.00097', 'simp. pokok & simp. wajib', 0, 0, 0, 'emas'),
 (458, '2020-09-14', '01.00095', 'beli emas', 0.221, 0, 0.221, 'emas'),
 (459, '2020-09-14', '01.00060', 'beli emas', 1, 0, 2.034, 'emas'),
-(460, '2020-09-14', '01.00060', 'ikut titipan emas ', 0, 2, 0.034, 'emas');
+(460, '2020-09-14', '01.00060', 'ikut titipan emas ', 0, 2, 0.034, 'emas'),
+(461, '2020-09-17', '01.00098', 'simp. pokok & simp. wajib', 0, 0, 0, 'emas'),
+(462, '2020-09-17', '01.00098', 'beli emas', 2.023, 0, 2.023, 'emas'),
+(463, '2020-09-17', '01.00098', 'ikut titipan emas ', 0, 2, 0.023, 'emas'),
+(464, '2020-09-18', '01.00003', 'bayar beli emas 0.329 gr', 0, 341000, 683, 'uang'),
+(465, '2020-09-18', '01.00003', 'beli emas', 0.329, 0, 0.472, 'emas'),
+(466, '2020-09-19', '01.00099', 'simp. pokok & simp. wajib', 0, 0, 0, 'emas'),
+(467, '2020-09-21', '01.00095', 'beli emas', 0.729, 0, 0.95, 'emas'),
+(468, '2020-09-22', '01.00008', 'beli emas', 0.02, 0, 0.02, 'emas'),
+(469, '2020-09-22', '01.00008', 'beli emas', 2, 0, 2.02, 'emas'),
+(470, '2020-09-22', '01.00008', 'ikut titipan emas ', 0, 2, 0.02, 'emas'),
+(471, '2020-09-23', '01.00042', 'bayar beli emas 0.050 gr', 0, 50000, 198161, 'uang'),
+(472, '2020-09-23', '01.00042', 'beli emas', 0.05, 0, 0.155, 'emas'),
+(473, '2020-09-23', '01.00042', 'bayar beli emas 0.008 gr', 0, 8000, 190161, 'uang'),
+(474, '2020-09-23', '01.00042', 'beli emas', 0.008, 0, 0.163, 'emas'),
+(475, '2020-09-25', '01.00099', 'beli emas', 0.149, 0, 0.149, 'emas'),
+(476, '2020-09-23', '01.00011', 'tarik wallet, trf. tgl 2020-09-25', 0, 170000, 11740, 'uang'),
+(477, '2020-09-23', '01.00011', 'adm tarik wallet, trf. tgl 2020-09-25', 0, 10000, 11740, 'uang'),
+(478, '2020-09-26', '01.00011', 'Pengembalian saldo emas, berhenti titipan emas', 2, 0, 3.157, 'emas'),
+(479, '2020-09-27', '01.00100', 'simp. pokok & simp. wajib', 0, 0, 0, 'emas'),
+(480, '2020-09-27', '01.00055', 'beli emas', 0.099, 0, 0.328, 'emas'),
+(481, '2020-09-28', '01.00101', 'simp. pokok & simp. wajib', 0, 0, 0, 'emas'),
+(482, '2020-09-28', '01.00102', 'simp. pokok & simp. wajib', 0, 0, 0, 'emas'),
+(483, '2020-10-02', '01.00011', 'pencairan jual emas', 1808000, 0, 1819740, 'uang'),
+(484, '2020-10-02', '01.00011', 'jual emas', 0, 2, 1.157, 'emas');
 
 -- --------------------------------------------------------
 
@@ -2630,7 +2790,8 @@ CREATE TABLE `tb_user` (
 
 INSERT INTO `tb_user` (`id`, `nama_user`, `email`, `password`, `foto`, `is_active`, `role_id`) VALUES
 (1, 'Superadmin Ted', 'admin@tabungemas.com', '$2y$10$cbbFi0B8A8uigMqqilHEaOrWxqFsYaXut.OSdYkEE7LqnvBZk29CK', 'noimage.jpg', 1, 1),
-(2, 'Keuangan Ted', 'keuangan@tabungemas.com', '$2y$10$ca0pp55yIoQa7ktPaU20nOlApQit2dmHalQkGlaL1bX/ZYB6k/bZO', 'noimage.jpg', 1, 5);
+(2, 'Keuangan Ted', 'keuangan@tabungemas.com', '$2y$10$ca0pp55yIoQa7ktPaU20nOlApQit2dmHalQkGlaL1bX/ZYB6k/bZO', 'noimage.jpg', 1, 5),
+(3, 'Mentor TED', 'mentor@tabungemas.com', '$2y$10$ca0pp55yIoQa7ktPaU20nOlApQit2dmHalQkGlaL1bX/ZYB6k/bZO', 'noimage.jpg', 1, 6);
 
 -- --------------------------------------------------------
 
@@ -2710,18 +2871,21 @@ INSERT INTO `tb_user_menu` (`id`, `title`, `url`, `icon`, `parent_menu`, `is_act
 (34, 'Riwayat Transaksi', 'transaksi/history/', '', 26, 1),
 (35, 'Laporan', '#', 'fas_fa-folder-open', 0, 1),
 (36, 'Setting Payout', 'transaksi/view_payout/', '', 12, 1),
-(37, 'Laporan Dana Referal', 'transaksi/laporan/dana_referal', '', 35, 1),
-(38, 'Laporan Dana Reward', 'transaksi/laporan/dana_reward', '', 35, 1),
-(39, 'Laporan Dana Investor', 'transaksi/laporan/dana_investor', '', 35, 1),
-(40, 'Laporan Dana Cabang', 'transaksi/laporan/dana_cabang', '', 35, 1),
-(41, 'Laporan Dana Pinjaman', 'transaksi/laporan/dana_pinjaman', '', 35, 1),
-(42, 'Laporan Dana Marketing', 'transaksi/laporan/dana_marketing', '', 35, 1),
-(43, 'Laporan Dana Admin', 'transaksi/laporan/dana_admin', '', 35, 1),
-(44, 'Laporan Dana Cadangan', 'transaksi/laporan/dana_cadangan', '', 35, 1),
+(37, 'Laporan Dana Referal', 'transaksi/laporan/dana_referal', '', 51, 1),
+(38, 'Laporan Dana Reward', 'transaksi/laporan/dana_reward', '', 51, 1),
+(39, 'Laporan Dana Investor', 'transaksi/laporan/dana_investor', '', 51, 1),
+(40, 'Laporan Dana Cabang', 'transaksi/laporan/dana_cabang', '', 51, 1),
+(41, 'Laporan Dana Pinjaman', 'transaksi/laporan/dana_pinjaman', '', 51, 1),
+(42, 'Laporan Dana Marketing', 'transaksi/laporan/dana_marketing', '', 51, 1),
+(43, 'Laporan Dana Admin', 'transaksi/laporan/dana_admin', '', 51, 1),
+(44, 'Laporan Dana Cadangan', 'transaksi/laporan/dana_cadangan', '', 51, 1),
 (45, 'Laporan Simpanan Wajib', 'transaksi/laporan/simpanan_wajib', '', 35, 1),
 (46, 'Laporan Simpanan Pokok', 'transaksi/laporan/simpanan_pokok', '', 35, 1),
 (47, 'Info Daftar Referal', 'member/daftar_referal/', '', 18, 1),
-(48, 'Saldo Wallet Anggota', 'transaksi/laporan/wallet_anggota', '', 35, 1);
+(48, 'Saldo Wallet Anggota', 'transaksi/laporan/wallet_anggota', '', 35, 0),
+(49, 'Laporan Saldo Emas', 'transaksi/daftar_saldo_emas', '', 35, 1),
+(50, 'Laporan Saldo Uang', 'transaksi/daftar_saldo_uang', '', 35, 1),
+(51, 'Alokasi Reward', '#', 'fas_fa-award', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -2750,7 +2914,12 @@ INSERT INTO `tb_user_menu_access` (`id`, `role_id`, `menu_id`) VALUES
 (8, 4, 26),
 (9, 5, 4),
 (10, 5, 35),
-(11, 1, 35);
+(11, 1, 35),
+(12, 6, 1),
+(13, 6, 4),
+(14, 6, 35),
+(15, 1, 51),
+(16, 5, 51);
 
 -- --------------------------------------------------------
 
@@ -2773,7 +2942,8 @@ INSERT INTO `tb_user_role` (`id`, `role_name`, `payout_id`) VALUES
 (2, 'admin', ''),
 (3, 'premium', '{\"id1\":\"1\",\"id2\":\"2\",\"id3\":\"3\",\"id4\":\"4\",\"id5\":\"5\",\"id6\":\"6\",\"id7\":\"7\",\"id8\":\"8\",\"id9\":\"9\",\"id10\":\"10\"}'),
 (4, 'basic', '{\"id1\":\"9\",\"id2\":\"10\"}'),
-(5, 'keuangan', '');
+(5, 'keuangan', ''),
+(6, 'mentor', '');
 
 -- --------------------------------------------------------
 
@@ -2815,7 +2985,12 @@ INSERT INTO `tb_widraw` (`idx`, `tgl_pengajuan`, `idted`, `nominal`, `biaya_adm`
 (1, '2020-01-03', '01.00015', 210000, 10000, 'Bank Toyib', '333 222 111', 'Juniar Arif Wicaksono', 1, '2020-04-16'),
 (2, '2020-01-30', '01.00003', 10000, 10000, 'BRI', '303601041826532', 'susiloningsih', 1, '2020-04-16'),
 (3, '2020-04-15', '01.00007', 300000, 10000, 'Bank Rakyat Indonesia BRI', '111001002375536', 'Dwi sunu raharjo', 1, '2020-04-16'),
-(5, '2020-04-16', '01.00003', 20000, 10000, 'BRI', '303601041826532', 'susiloningsih', 1, '2020-04-16');
+(5, '2020-04-16', '01.00003', 20000, 10000, 'BRI', '303601041826532', 'susiloningsih', 1, '2020-04-16'),
+(7, '2020-09-21', '01.00011', 180, 10000, 'BCA ', '0130639798', 'Ummy Mubarokah', 0, '0000-00-00'),
+(8, '2020-09-23', '01.00011', 180000, 10000, 'BCA ', '0130639798', 'Ummy Mubarokah', 1, '2020-09-25'),
+(9, '2020-09-23', '01.00011', 180, 10000, 'BCA ', '0130639798', 'Ummy Mubarokah', 0, '0000-00-00'),
+(10, '2020-10-02', '01.00011', 1800, 10000, 'BCA ', '0130639798', 'Ummy Mubarokah', 0, '0000-00-00'),
+(11, '2020-10-02', '01.00011', 1800000, 10000, 'BCA ', '0130639798', 'Ummy Mubarokah', 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -3221,7 +3396,24 @@ INSERT INTO `t_update_ubs` (`IDX`, `UPDATE_AT`, `HRG_BELI`, `HRG_JUAL`) VALUES
 (408, '2020-09-12 00:00:03', '1,080,135', '929,000'),
 (409, '2020-09-13 00:00:03', '1,080,135', '929,000'),
 (410, '2020-09-14 00:00:02', '1,080,135', '929,000'),
-(411, '2020-09-15 00:00:04', '1,081,648', '933,000');
+(411, '2020-09-15 00:00:04', '1,081,648', '933,000'),
+(412, '2020-09-16 00:00:03', '1,082,153', '940,000'),
+(413, '2020-09-17 00:00:03', '1,078,117', '932,000'),
+(414, '2020-09-18 00:00:02', '1,075,594', '932,000'),
+(415, '2020-09-19 00:00:04', '1,068,531', '932,000'),
+(416, '2020-09-20 00:00:03', '1,068,531', '932,000'),
+(417, '2020-09-21 00:00:04', '1,068,531', '932,000'),
+(418, '2020-09-22 00:00:03', '1,065,000', '926,000'),
+(419, '2020-09-23 00:00:04', '1,049,865', '907,000'),
+(420, '2020-09-24 00:00:04', '1,052,892', '904,000'),
+(421, '2020-09-25 00:00:03', '1,043,811', '890,000'),
+(422, '2020-09-26 00:00:04', '1,046,838', '897,000'),
+(423, '2020-09-27 00:00:04', '1,046,838', '897,000'),
+(424, '2020-09-28 00:00:04', '1,046,838', '897,000'),
+(425, '2020-09-29 00:00:06', '1,041,893', '894,000'),
+(426, '2020-09-30 00:00:06', '1,047,342', '904,000'),
+(427, '2020-10-01 00:00:04', '1,049,865', '907,000'),
+(428, '2020-10-02 00:00:03', '1,046,333', '904,000');
 
 --
 -- Indexes for dumped tables
@@ -3385,7 +3577,7 @@ ALTER TABLE `t_update_ubs`
 -- AUTO_INCREMENT untuk tabel `tb_agt_tmp`
 --
 ALTER TABLE `tb_agt_tmp`
-  MODIFY `idtmp` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+  MODIFY `idtmp` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_bank`
@@ -3409,19 +3601,19 @@ ALTER TABLE `tb_bonus`
 -- AUTO_INCREMENT untuk tabel `tb_deposit`
 --
 ALTER TABLE `tb_deposit`
-  MODIFY `idx` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `idx` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_history`
 --
 ALTER TABLE `tb_history`
-  MODIFY `idx` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `idx` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_jaringan`
 --
 ALTER TABLE `tb_jaringan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_payout`
@@ -3433,7 +3625,7 @@ ALTER TABLE `tb_payout`
 -- AUTO_INCREMENT untuk tabel `tb_payout_trans`
 --
 ALTER TABLE `tb_payout_trans`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=955;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1005;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_sms_info`
@@ -3445,13 +3637,13 @@ ALTER TABLE `tb_sms_info`
 -- AUTO_INCREMENT untuk tabel `tb_titipan_emas`
 --
 ALTER TABLE `tb_titipan_emas`
-  MODIFY `idx` bigint(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `idx` bigint(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_titipan_emas_detail`
 --
 ALTER TABLE `tb_titipan_emas_detail`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=305;
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=364;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_titipan_emas_transfer`
@@ -3463,13 +3655,13 @@ ALTER TABLE `tb_titipan_emas_transfer`
 -- AUTO_INCREMENT untuk tabel `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=461;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=485;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user_dashboard`
@@ -3481,19 +3673,19 @@ ALTER TABLE `tb_user_dashboard`
 -- AUTO_INCREMENT untuk tabel `tb_user_menu`
 --
 ALTER TABLE `tb_user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user_menu_access`
 --
 ALTER TABLE `tb_user_menu_access`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user_role`
 --
 ALTER TABLE `tb_user_role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_verifikasi_email`
@@ -3505,13 +3697,13 @@ ALTER TABLE `tb_verifikasi_email`
 -- AUTO_INCREMENT untuk tabel `tb_widraw`
 --
 ALTER TABLE `tb_widraw`
-  MODIFY `idx` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idx` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_update_ubs`
 --
 ALTER TABLE `t_update_ubs`
-  MODIFY `IDX` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=412;
+  MODIFY `IDX` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=429;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
