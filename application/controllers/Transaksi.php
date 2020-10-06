@@ -1984,6 +1984,20 @@ class Transaksi extends CI_Controller
         $this->load->view('dashboard', $data);
     }
 
+    public function batal_transfer_profit_titipan($periode)
+    {
+        $newperiod = str_replace("_", " ", $periode);
+        $this->model_titipan->bataltransferprofit($newperiod);
+
+        redirect(base_url('index.php/transaksi/titipan_emas_widraw_report'));
+        /*$data = [
+            'data' => $this->model_titipan->bataltransferprofit(),
+            'page' => 'pages/admin/widraw_titipan_emas_report'
+        ];
+
+        $this->load->view('dashboard', $data);*/
+    }
+
     public function detail_transfer_profit($periode)
     {
         $periode = str_replace("_", " ", $periode);

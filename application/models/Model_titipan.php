@@ -132,6 +132,12 @@ SELECT tb_titipan_emas.idted, tb_agt_ted.nama_lengkap, tb_titipan_emas.tgl_ikut,
         return $render->result_array();
     }
 
+    public function bataltransferprofit($periode)
+    {
+        $this->db->where('periode', $periode);
+        return $this->db->delete('tb_titipan_emas_transfer');
+    }
+
     //input ke tabel transfer
     public function addTransfer($data)
     {

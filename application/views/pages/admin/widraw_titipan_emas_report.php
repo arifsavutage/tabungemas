@@ -41,9 +41,11 @@
                                 if ($row['is_transfer'] == 0) {
                                     $status = "<span class='badge badge-danger'>pending</span>";
                                     $button = '<a href="' . base_url('index.php/transaksi/transfer_profit_titipan/') . $p . '" class="btn btn-sm btn-success">transfer</a>';
+                                    $batal = "<a href=" . base_url('index.php/transaksi/batal_transfer_profit_titipan/') . $p . " onclick='return batalin()' class='btn btn-sm btn-danger'>batal</a>";
                                 } else {
                                     $status = "<span class='badge badge-success'>paid</span>";
                                     $button = '<a href="" class="btn btn-sm btn-success disabled" aria-disabled="true">transfer</a>';
+                                    $batal = '';
                                 }
                             ?>
                                 <tr>
@@ -60,6 +62,19 @@
                                     <td>
                                         <?= $button ?>
                                         <a href="<?= base_url('index.php/transaksi/detail_transfer_profit/') . "$p"; ?>" class="btn btn-info btn-sm" title="daftar anggota"><i class="fas fa-file"></i></a>
+                                        <?= $batal ?>
+                                        <script>
+                                            function batalin() {
+                                                var r = confirm("dengan ini maka data generate akan di hapus, tekan OK untuk melanjutkan");
+
+                                                if (r == true) {
+                                                    return true;
+                                                } else {
+                                                    return false;
+                                                }
+
+                                            }
+                                        </script>
                                     </td>
                                 </tr>
                             <?php
