@@ -46,15 +46,15 @@
                         <div class="form-group col-md-12">
                             <label for="tenor">Tenor</label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="tenor" id="tenor1" value="6" checked>
+                                <input class="form-check-input" type="radio" name="tenor" id="tenor1" value="12" checked>
                                 <label class="form-check-label">
-                                    6 Bulan
+                                    12 Bulan
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="tenor" id="tenor2" value="12">
+                                <input class="form-check-input" type="radio" name="tenor" id="tenor2" value="24">
                                 <label class="form-check-label">
-                                    12 Bulan
+                                    24 Bulan
                                 </label>
                             </div>
                             <?= form_error('tenor', '<small class="text-danger pl-3">', '</small>'); ?>
