@@ -109,22 +109,5 @@ class Cron extends CI_Controller
         $this->email->message($message);
 
         $this->email->send();
-        /*if ($this->email->send()) {
-            $this->session->set_flashdata('sendmail', '
-                <div class="alert alert-info" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                    <h4>info :</h4> cek inbox email atau folder spam
-                </div>');
-        } else {
-            $this->session->set_flashdata('sendmail', '
-                <div class="alert alert-warning" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                    <h4>warning :</h4> ' . show_error($this->email->print_debugger()) . '
-                </div>');
-        }*/
     }
 }

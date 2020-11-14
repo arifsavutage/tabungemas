@@ -709,7 +709,14 @@ class Member extends CI_Controller
             redirect(base_url());
         } else {
 
+            $detailjaringan = $this->model_jaringan->ambilPosJar($id);
+
             $data = [
+                'mylevel'   => $detailjaringan['pos_level'],
+                'bonusreferal' => $this->model_jaringan->potensiBonusReferal($id, $detailjaringan['pos_jar']),
+                'bonuspoin' => $this->model_jaringan->potensiBonusPoin($id, $detailjaringan['pos_jar']),
+                'reward'   => $this->model_payout->getById(2),
+                'detail'   => $this->model_tedagt->getAccountById($id),
                 'referals'  => $this->model_jaringan->daftarReferalId($id),
                 'page' => 'pages/admin/member_daftar_referal_admin'
             ];
@@ -718,6 +725,110 @@ class Member extends CI_Controller
         }
     }
 
+    public function reward($page = null, $nom = null, $hadiah_id = null)
+    {
+        $id = $this->session->userdata('id');
+
+        $ceksisapoin = $this->db->get_where('tb_transbon_poin', ['idted' => $id])->num_rows();
+        if ($ceksisapoin > 0) {
+            //ambil sisa poin terakhir
+            $poinakhir = $this->db->get_where('tb_transbon_poin', ['idted' => $id])->row()->poin_stock;
+        } else {
+            $poinakhir = 0;
+        }
+
+        if ($page == null) {
+            $detailjaringan = $this->model_jaringan->ambilPosJar($id);
+
+            $hadiahpoin = $this->db->get('tb_hadiah_poin')->result_array();
+            $data = [
+                'mylevel'   => $detailjaringan['pos_level'],
+                'bonusreferal' => $this->model_jaringan->potensiBonusReferal($id, $detailjaringan['pos_jar']),
+                'bonuspoin' => $this->model_jaringan->potensiBonusPoin($id, $detailjaringan['pos_jar']),
+                'reward'   => $this->model_payout->getById(2),
+                'detail'   => $this->model_tedagt->getAccountById($id),
+                'referals'  => $this->model_jaringan->daftarReferalId($id),
+                'hadiahpoin' => $hadiahpoin,
+                'sisapoin' => $poinakhir,
+                'page' => 'pages/member/member_reward'
+            ];
+        } else if ($page == 'widraw' && $nom != null) {
+            $detailjaringan = $this->model_jaringan->ambilPosJar($id);
+            $saldo_uang = $this->model_transaksi->getLastTranById($id, 'uang');
+
+            $new_saldo = $saldo_uang['saldo'] + $nom;
+            $data_saldo = [
+                'tgl' => date('Y-m-d'),
+                'idted' => "$id",
+                'uraian' => 'widraw reward referal',
+                'masuk' => $nom,
+                'keluar' => 0,
+                'saldo' => $new_saldo,
+                'jenis' => 'uang'
+            ];
+
+            $this->model_transaksi->save($data_saldo);
+
+            //update referal_status to 1
+            $this->db->set('referal_status', 1);
+            $this->db->where("pos_jar LIKE '" . $detailjaringan['pos_jar'] . "%'");
+            $this->db->where("idagt != '$id'");
+            $this->db->update('tb_jaringan');
+
+            $this->session->set_flashdata('info', '<div class="alert alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>Success, </h4> widraw reward sebesar <strong>Rp. ' . number_format($nom, 0, '.', ',') . '</strong> telah berhasil, silahkan cek wallet Anda
+                </div>');
+
+            redirect(base_url() . 'index.php/member/reward');
+        } else if ($page == 'tukar_poin' && $nom != null && $hadiah_id !== null) {
+
+            $detailjaringan = $this->model_jaringan->ambilPosJar($id);
+            $detail_hadiah = $this->db->get_where('tb_hadiah_poin', ['id' => $hadiah_id])->row();
+
+            $sisapoin = $nom - $detail_hadiah->target_poin;
+
+            $data_hadiah = [
+                'tgl_klaim' => date('Y-m-d'),
+                'idted' => $id,
+                'hadiah_id' => $hadiah_id,
+                'poin_in' => $nom,
+                'poin_out' => $detail_hadiah->target_poin,
+                'poin_stock' => $sisapoin
+            ];
+
+            $this->db->insert('tb_transbon_poin', $data_hadiah);
+
+            //update poin_status to 1
+            $this->db->set('poin_status', 1);
+            $this->db->where("pos_jar LIKE '" . $detailjaringan['pos_jar'] . "%'");
+            $this->db->where("idagt != '$id'");
+            $this->db->update('tb_jaringan');
+
+            //kirim ke email admin
+            $detail_member = $this->model_tedagt->getAccountById($id);
+            $to         = "info@tabungemas.com";
+            $cc         = "susie@tabungemas.com";
+            $subject    = "Tukar poin an. $detail_member[nama_lengkap]";
+            $message    = $this->load->view('email/tukar_poin', $detail_hadiah, true);
+
+            $this->_sendmail($to, $cc, $subject, $message);
+
+            $this->session->set_flashdata('info', '<div class="alert alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4>Success, </h4> poin reward sebanyak <strong>' . number_format($nom, 0, '.', ',') . ' poin</strong> telah berhasil, silahkan konfirmasi ke Admin
+                </div>');
+
+            redirect(base_url() . 'index.php/member/reward');
+        }
+
+
+        $this->load->view('dashboard', $data);
+    }
     public function upgrade($id = null)
     {
         $id = $this->session->userdata('id');
@@ -771,5 +882,30 @@ class Member extends CI_Controller
             $encode = json_encode($data, JSON_PRETTY_PRINT);
             echo $encode;
         }
+    }
+
+    private function _sendmail($to, $cc = null, $subject, $message)
+    {
+
+        //konfigurasi
+
+        $config        = array(
+
+            'mailtype'   => 'html',
+            'charset'    => 'iso-8859-1',
+            'wordwrap'   => true
+        );
+
+        //$this->load->library('email');
+        $this->email->initialize($config);
+
+        $this->email->set_newline("\r\n");
+        $this->email->from('noreply@tabungemas.com', 'no-reply');
+        $this->email->to($to);
+        $cc == null ? $this->email->cc($cc) : "";
+        $this->email->subject($subject);
+        $this->email->message($message);
+
+        $this->email->send();
     }
 }

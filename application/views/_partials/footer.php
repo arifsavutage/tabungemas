@@ -202,6 +202,11 @@
 </script>
 <script>
     $(document).ready(function() {
+        $('.example1').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function() {
         $('#examples').DataTable({
             "order": [
                 //angka adalah nomor kolom
@@ -332,6 +337,12 @@
                 format: 'YYYY-MM-DD'
             }
         });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        'use strict';
+        $('.editor').trumbowyg();
     });
 </script>
 </body>

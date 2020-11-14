@@ -32,7 +32,7 @@
                                 <tr>
                                     <td scope="row"><?= $no; ?></td>
                                     <td><?= $detail['idted']; ?></td>
-                                    <td><?= date('d-m-Y', strtotime($detail['tgl_gabung'])); ?></td>
+                                    <td><?= date('d/m/Y', strtotime($detail['tgl_gabung'])); ?></td>
                                     <td><?= ucwords($detail['nama_lengkap']); ?></td>
                                     <td><?= $detail['nohp']; ?></td>
                                     <!--<td><?= $detail['email']; ?></td>-->
@@ -48,7 +48,7 @@
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop<?= $no; ?>">
                                                     <a class="dropdown-item" href="<?= base_url() . "index.php/member/profil_anggota/$detail[idted]"; ?>">Profil Anggota</a>
-                                                    <a class="dropdown-item" href="<?= base_url() . "index.php/member/daftar_referal_member/$detail[idted]"; ?>">Daftar Referal</a>
+                                                    <a class="dropdown-item" href="<?= base_url() . "index.php/member/daftar_referal_member/$detail[idted]"; ?>">Info Bonus & Referal</a>
                                                     <a class="dropdown-item" href="<?= base_url() . "index.php/member/update_pass_anggota/$detail[idted]"; ?>">Ubah Password</a>
                                                     <a class="dropdown-item" href="<?= base_url() . "index.php/transaksi/beli_emas_admin/$detail[idted]" ?>">Beli Emas</a>
                                                     <a class="dropdown-item" href="<?= base_url() . "index.php/transaksi/deposit_admin/$detail[idted]"; ?>">Deposit</a>
