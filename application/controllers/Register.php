@@ -88,7 +88,7 @@ class Register extends CI_Controller
                 }
 
                 $newdownline = $updatejar['jml_downline'] + 1;
-                $newposjar  = $updatejar['pos_jar'] . "" . $newdownline;
+                $newposjar  = $updatejar['pos_jar'] . "." . $newdownline;
                 $newposlvl  = $updatejar['pos_level'] + 1;
 
                 $datajar    = [
