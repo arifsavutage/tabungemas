@@ -2011,6 +2011,18 @@ class Transaksi extends CI_Controller
         $this->load->view('dashboard', $data);
     }
 
+    public function detail_transfer_profit_emas($periode)
+    {
+        $periode = str_replace("_", " ", $periode);
+        $data = [
+            'data' => $this->model_titipan->transferProfitEmas($periode),
+            'page' => 'pages/admin/widraw_titipan_emas_detail_transfer_emas'
+        ];
+
+        //echo $this->db->last_query();
+        $this->load->view('dashboard', $data);
+    }
+
     public function transfer_profit_titipan($periode)
     {
         $periode = str_replace("_", " ", $periode);
@@ -2030,10 +2042,17 @@ class Transaksi extends CI_Controller
             $profitgr   = $row['gram'] * ($row['jmlprofit'] / 100);
 
             //save ke histori / nambah saldo
-            $ambilsaldo = $this->model_transaksi->getLastTranById($row['idted'], 'uang');
-            $saldo      = $ambilsaldo['saldo'] + $row['nominal'];
+            //$ambilsaldo = $this->model_transaksi->getLastTranById($row['idted'], 'uang');
+            //$saldo      = $ambilsaldo['saldo'] + $row['nominal'];
 
-            $data_in = [
+            /**
+             * Ubah profit ke emas tgl 30 Nov 2020
+             * 
+             */
+            $ambilsaldo = $this->model_transaksi->getLastTranById($row['idted'], 'emas');
+            $saldo      = $ambilsaldo['saldo'] + $profitgr;
+
+            /*$data_in = [
                 'tgl'   => date('Y-m-d'),
                 'idted' => $row['idted'],
                 'uraian' => 'profit titipan emas periode ' . $periode,
@@ -2041,12 +2060,23 @@ class Transaksi extends CI_Controller
                 'keluar' => 0,
                 'saldo' => $saldo,
                 'jenis' => 'uang'
+            ];*/
+
+            //profit emas
+            $data_in = [
+                'tgl'   => date('Y-m-d'),
+                'idted' => $row['idted'],
+                'uraian' => 'profit titipan emas periode ' . $periode,
+                'masuk' => $profitgr,
+                'keluar' => 0,
+                'saldo' => $saldo,
+                'jenis' => 'emas'
             ];
             $this->model_transaksi->save($data_in);
 
             //simpan pesan untuk agt yg profitnya ke wallet
-            $pesansms = "Ttl profit titipan emas bln " . $row['periode'] . " adl " . $row['jmlprofit'] . "% / $profitgr gr, 
-                senilai Rp " . number_format($row['nominal'], 0, ',', '.') . " tlh ditbh ke wallet,-. Tks";
+            $pesansms = "Total profit titipan emas bln " . $row['periode'] . " adl " . $row['jmlprofit'] . "% / $profitgr gr, 
+                telah ditambah ke saldo tab. emas,-. Tks";
 
             $datasmswallet  = [
                 'idted' => $row['idted'],
@@ -2060,7 +2090,7 @@ class Transaksi extends CI_Controller
             //melakukan potongan saldo uang krn widraw / trf
             //yang di transfer adalah profit di atas 100.000
 
-            if ($row['nominal'] >= 100000) {
+            /*if ($row['nominal'] >= 100000) {
 
                 //ambil biaya admin
                 $by_admin    = $this->model_uang->getValueById(1);
@@ -2112,7 +2142,7 @@ class Transaksi extends CI_Controller
 
                     $this->model_smsinfo->save($datasmswallet);
                 }
-            }
+            }*/
         }
 
         //is_transfer set to 1

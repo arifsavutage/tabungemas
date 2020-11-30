@@ -42,8 +42,8 @@
                                 <th>Nama Anggota</th>
                                 <th>Tenor</th>
                                 <th>Jml. Gr</th>
-                                <th>Harga</th>
-                                <th>Jml. Uang</th>
+                                <!--<th>Harga</th>
+                                <th>Jml. Uang</th>-->
                                 <th>Status</th>
                                 <th><i class="fas fa-cog"></i></th>
                             </tr>
@@ -68,8 +68,8 @@
                                     <td><?= ucwords(strtolower($row['nama_lengkap'])); ?></td>
                                     <td><?= $row['tenor']; ?></td>
                                     <td><?= $row['gram']; ?></td>
-                                    <td><?= number_format($row['harga_ikut'], 0, ',', '.'); ?></td>
-                                    <td><?= number_format($row['jml_uang'], 0, ',', '.'); ?></td>
+                                    <!--<td><?= number_format($row['harga_ikut'], 0, ',', '.'); ?></td>
+                                    <td><?= number_format($row['jml_uang'], 0, ',', '.'); ?></td>-->
                                     <td><?= $status; ?></td>
                                     <td>
                                         <?php

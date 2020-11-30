@@ -54,10 +54,10 @@
                                     <th>Tgl. Berakhir</th>
                                     <th>Tenor</th>
                                     <th>Jml. Gr</th>
-                                    <th>Harga</th>
+                                    <!--<th>Harga</th>-->
                                     <th>Profit %</th>
                                     <th>Profit Gr</th>
-                                    <th>Profit Rp</th>
+                                    <!--<th>Profit Rp</th>-->
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -78,10 +78,10 @@
                                     <td>$report[tgl_berakhir]</td>
                                     <td>$report[tenor]</td>
                                     <td>$report[gram]</td>
-                                    <td>" . number_format($report['harga_ikut'], 0, '.', ',') . "</td>
+                                    <!--<td>" . number_format($report['harga_ikut'], 0, '.', ',') . "</td>-->
                                     <td>" . number_format($report['jmlprofit'], 3, '.', ',') . "</td>
                                     <td>$profitgr gr</td>
-                                    <td>" . number_format($profitcuan, 0, '.', ',') . "</td>
+                                    <!--<td>" . number_format($profitcuan, 0, '.', ',') . "</td>-->
                                     <td>$report[status]</td>
                                 </tr>
                                 ";

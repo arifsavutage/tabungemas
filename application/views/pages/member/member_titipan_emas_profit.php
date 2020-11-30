@@ -22,14 +22,15 @@
                 <p class="text-white">
                     <span class="mr-3"><i class="fa fa-clock-o" style="font-size: 1rem !important;"></i> <?= $baris['tenor'] . " bln"; ?></span>
                     <span class="mr-3"><i class="fa fa-balance-scale" style="font-size: 1rem !important;"></i> <?= $baris['gram'] . " gr"; ?></span>
-                    <span class="mr-3"><i class="fa fa-money" style="font-size: 1rem !important;"></i> <?= number_format($baris['harga_ikut'], 0, ',', '.') . " IDR"; ?></span>
+                    <!--<span class="mr-3"><i class="fa fa-money" style="font-size: 1rem !important;"></i> <?= number_format($baris['harga_ikut'], 0, ',', '.') . " IDR"; ?></span>-->
                     <span><i class="fa fa-check-square-o" style="font-size: 1rem !important;"></i> <?= $label ?></span>
                 </p>
-                <h1 class="m-b-20 text-white counter">Rp. <?= number_format($profit_uang, 0, '.', ',') ?></h1>
+                <!--<h1 class="m-b-20 text-white counter">Rp. <?= number_format($profit_uang, 0, '.', ',') ?></h1>-->
+                <h1 class="m-b-20 text-white counter"><i class="fa fa-balance-scale" style="font-size: 2rem !important;"></i> <?= $profit_gr . " gr"; ?></h1>
                 <p class="text-white">
                     <span class="mr-2">Profit:</span>
                     <span class="mr-2"><?= $baris['totalpersen']; ?> <i class="fa fa-percent" style="font-size: 1rem !important;"></i></span>
-                    <span><i class="fa fa-balance-scale" style="font-size: 1rem !important;"></i> <?= $profit_gr . " gr"; ?></span>
+                    <!--<span><i class="fa fa-balance-scale" style="font-size: 1rem !important;"></i> <?= $profit_gr . " gr"; ?></span>-->
                 </p>
             </div>
         </div>

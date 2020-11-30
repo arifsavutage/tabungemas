@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 15 Nov 2020 pada 11.01
+-- Waktu pembuatan: 29 Nov 2020 pada 11.02
 -- Versi server: 10.3.27-MariaDB
 -- Versi PHP: 7.3.6
 
@@ -119,7 +119,7 @@ INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `noktp`, `nohp`
 ('01.00029', '2019-12-09', 'Kukuh Saryanto', '', '089658970103', '', 'kukuhsaryanto2105@gmail.com', '$2y$10$hfbtMoz/6Q9sbvOV8SxF9u95Q7083xnE42Jzigb8jy547uckpNpbO', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00030', '2019-12-16', 'Susila Widodo B.Sc', '', '081220007663', '', 'denbagussusilo4@gmail.com', '$2y$10$Slc.vh8k.fYb9cWlH6ctIOPriQNBXPmRd/z44KQ43.cwLZ.BHJMhK', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00031', '2019-12-19', 'Arwani', '', '082244083915', 'Jl. Mangga dalam no. 16C, RT/RW 06/02, Srondol Wetan, Banyumanik, Semarang ', 'arwani0709@gmail.com', '$2y$10$ZQvQLQ5kaCvJe1XinQoNuetEhVh83by9k0UpJxRB.eGUfw9DdnO2a', 3, 'noimage.jpg', 'noimage.jpg', '0095345617', 'BCA', '', 'noimage.jpg', 'agen', 1, '', '', '', ''),
-('01.00032', '2019-12-24', 'Wisnu Tri Hanggoro', '', '081391158191', 'Jl. Sinoman Tempel III/225b?\r\nSidorejo Lor, Salatiga', 'wisnuhanggoro@gmail.com', '$2y$10$ia7PAvgYfRChXpXWsdMaj.68bqiVtZMDb6NcoHx8wabxSl106KahS', 3, 'noimage.jpg', 'noimage.jpg', '0553033162', 'BNI 1946', '', '01_00032.png', 'agen', 1, '', '', '', ''),
+('01.00032', '2019-12-24', 'Wisnu Tri Hanggoro', '', '081391158191', 'Jl. Sinoman Tempel III/225b?\r\nSidorejo Lor, Salatiga', 'wisnuhanggoro@gmail.com', '$2y$10$bEVzhcYNW3Mnjml4yczoVed4yO0ulStTlhrK/1xP5z37NWmOXV0y6', 3, 'noimage.jpg', 'noimage.jpg', '0553033162', 'BNI 1946', '', '01_00032.png', 'agen', 1, '', '', '', ''),
 ('01.00033', '2019-12-25', 'Muhammad Ichsan Wijayanto', '', '089680381557', 'Jl. P. Diponegoro Gang Keling 1 no. 9 kalongan purwodadi grobogan', 'mi.wijayanto@gmail.com', '$2y$10$JbTeIVhGe0Zd.SN6Wx8/YuInYG.zRD/e8vwJrxbOQudU/tMImZuEq', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'agen', 1, '', '', '', ''),
 ('01.00034', '2020-01-06', 'Titut Purwati', '', '081804005003', '', 'tutwati@gmail.com', '$2y$10$hqNeY.2fIc1qQ7UOcBpknut8BBmlxRiK.qnldwllJSjiPrjIFYCJy', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'agen', 1, '', '', '', ''),
 ('01.00035', '2020-01-08', 'Gerosima Fridolin Rizky Widya Santosa', '', '082143115638', '', 'gerosimafrws@gmail.com', '$2y$10$r/.bGiaHCuhgcCDx5DRyq.wG.p4s74rC4k5J/Yb.XzEuyFGaVYwDW', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
@@ -182,7 +182,7 @@ INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `noktp`, `nohp`
 ('01.00092', '2020-09-04', 'Alifvia Budi Hidayati', '3322067005950001', '08812478394', 'Perum tapen permai blok G no 12 rt 05 rw 11 kecamatan tuntang kabupaten semarang', 'alifiafia942@gmail.com', '$2y$10$HQKVjTo62QNJTquMx74ViuOo0egwKlftFLXVb6u3vwXM.IBl5E.q2', 3, 'noimage.jpg', 'noimage.jpg', '0131380754', 'BCA', 'Alifvia budi hidayati', '01_00092.jpg', 'basic', 1, 'ifa indah setyaningrum', '', 'saudara', '085866252361'),
 ('01.00093', '2020-09-04', 'Maya Savitri', '33741156108100006', '081227003181', 'Jalan serasi blok C no 25, graha estetika Semarang', 'mayasavitri16@gmail.com', '$2y$10$gSiP3ytURhNTbPztIKIMZutU6wU7v0kRBqEzISDd5qTAtDrCqiswu', 3, 'noimage.jpg', 'noimage.jpg', '2520690894', 'BCA', 'Maya savitri', 'noimage.jpg', 'basic', 1, 'mutya intan shakila', '', 'anak', '081326638475'),
 ('01.00094', '2020-09-04', 'Zunsyika Zahra Zatira', '3471086806970004', '081335623997', 'jatisawit rt /rw 019/044 balecatur gamping kab sleman', 'zunsyikazahrazatira@gmail.com', '$2y$10$K0KxOpJpxiiTMNBJTmPXTeJKKe8xE6LJNYktZ9NjEQBR3tuNZ/YkW', 3, 'noimage.jpg', 'noimage.jpg', '\'90013386284', 'BTPN', 'zunsyika zahra zatira', 'noimage.jpg', 'basic', 1, 'sugiarti', '3404014907680001', 'ortu', '0811251610'),
-('01.00095', '2020-09-12', 'Roy Siegfried', '3374012901020001', '081329276426', '', 'victoriayahut69@gmail.com', '$2y$10$S.28VHm..V/b64M68eO9VO7pttj6ShQF6sdkc10IVN3NrcngZJ/Da', 4, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
+('01.00095', '2020-09-12', 'Roy Siegfried', '3374012901020001', '081329276426', '', 'victoriayahut69@gmail.com', '$2y$10$S.28VHm..V/b64M68eO9VO7pttj6ShQF6sdkc10IVN3NrcngZJ/Da', 4, 'noimage.jpg', 'noimage.jpg', '7830489015', 'BCA', 'Roy Siegfried', 'noimage.jpg', 'basic', 1, 'roy siegfried', '', 'saudara', '081329276426'),
 ('01.00096', '2020-09-12', 'Ryan Adhyatma', '3322180402900001', '081371819161', '', 'adhyatma.ryan21@gmail.com', '$2y$10$UWeVgkR9v.uLYGWsz8MigeAWLNjlD0JdpLngjA/Y998c9HFQp3bKK', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00097', '2020-09-14', 'Heru Wahyono', '3374131008750006', '085740536475', '', 'herupenxy1@gmail.com', '$2y$10$CfzavSnzaW.zIV2AO12UZes9wzFXAZLxhJ8sbrowX0fcMsgExwMSK', 4, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00098', '2020-09-17', 'AGUNG WIDIASTRO', '3515082910800003', '+12107809363', '', 'agungwidiastro80@gmail.com', '$2y$10$ph9CBdUEPQIxtrKuRBJNCOwwCSZxutnjqx5gkF38mvcOAV1IU1aEm', 3, 'ktp_01_00098.jpg', 'noimage.jpg', '', '', '', '01_00098.jpg', 'basic', 1, '', '', '', ''),
@@ -232,8 +232,8 @@ CREATE TABLE `tb_bank` (
 --
 
 INSERT INTO `tb_bank` (`id`, `nm_bank`, `norek`, `an`) VALUES
-(2, 'BRI', '3036 0104 1826 532', 'Susiloningsih'),
-(3, 'BCA', '803 051 7131', 'Susiloningsih');
+(3, 'BCA', '803 051 7131', 'Susiloningsih'),
+(4, 'BRI', '0325-01-001542-56-4', 'Koperasi Mobile Emas Asia');
 
 -- --------------------------------------------------------
 
@@ -527,7 +527,10 @@ INSERT INTO `tb_history` (`idx`, `tgl`, `idted`, `tujuan_jual`, `ket`, `nominal_
 (122, '2020-10-16 15:06:09', '01.00095', '', 'pembelian emas ', 250000, 0.249, 1),
 (123, '2020-11-03 07:26:57', '01.00042', '', 'pembelian emas ', 108000, 0.109, 1),
 (124, '2020-11-03 07:27:50', '01.00042', '', 'pembelian emas ', 50000, 0.05, 1),
-(125, '2020-11-11 10:56:01', '01.00095', '', 'pembelian emas ', 100000, 0.104, 1);
+(125, '2020-11-11 10:56:01', '01.00095', '', 'pembelian emas ', 100000, 0.104, 1),
+(127, '2020-11-22 06:12:08', '01.00095', '', 'pembelian emas ', 100000, 0, 0),
+(128, '2020-11-23 03:17:38', '01.00095', 'TED', 'jual emas ', 399500, 0.47, 0),
+(129, '2020-11-28 09:30:52', '01.00095', 'TED', 'jual emas ', 413000, 0.5, 0);
 
 -- --------------------------------------------------------
 
@@ -1857,46 +1860,46 @@ INSERT INTO `tb_sms_info` (`id`, `idted`, `nohp`, `pesan`, `is_sent`) VALUES
 (105, '01.00060', '085876100940', 'Ttl profit titipan emas bln 09 2020 adl 0.5% / 0.01 gr, \r\n                senilai Rp 9.290 tlh ditbh ke wallet,-. Tks', 1),
 (106, '01.00098', '+12107809363', 'Ttl profit titipan emas bln 09 2020 adl 0.25% / 0.005 gr, \r\n                senilai Rp 4.660 tlh ditbh ke wallet,-. Tks', 1),
 (107, '01.00008', '085727611329', 'Ttl profit titipan emas bln 09 2020 adl 0.25% / 0.005 gr, \r\n                senilai Rp 4.630 tlh ditbh ke wallet,-. Tks', 1),
-(108, '01.00053', '0811251610', 'Ttl profit titipan emas bln 10 2020 adl 0.25% / 0.005 gr, \r\n                senilai Rp 4.494 tlh ditbh ke wallet,-. Tks', 0),
-(109, '01.00053', '0811251610', 'Ttl profit titipan emas bln 10 2020 adl 0.55% / 0.022 gr, \r\n                senilai Rp 19.309 tlh ditbh ke wallet,-. Tks', 0),
-(110, '01.00025', '082230854065', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.1 gr, \r\n                senilai Rp 88.979 tlh ditbh ke wallet,-. Tks', 0),
-(111, '01.00003', '082136368828', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 17.796 tlh ditbh ke wallet,-. Tks', 0),
-(112, '01.00003', '082136368828', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 17.796 tlh ditbh ke wallet,-. Tks', 0),
-(113, '01.00001', '081327479067', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.04 gr, \r\n                senilai Rp 35.592 tlh ditbh ke wallet,-. Tks', 0),
-(114, '01.00009', '081325123353', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 16.595 tlh ditbh ke wallet,-. Tks', 0),
-(115, '01.00027', '085101995521', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.12 gr, \r\n                senilai Rp 102.114 tlh ditbh ke wallet,-. Tks', 0),
-(116, '01.00027', '085101995521', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.12 gr, \r\n                tlh ditrf ke rek BTPN An. Sri susanti sebesar Rp 92.114,-. Tks', 0),
-(117, '01.00062', '085101292189', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 17.019 tlh ditbh ke wallet,-. Tks', 0),
-(118, '01.00023', '081327405100', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 17.019 tlh ditbh ke wallet,-. Tks', 0),
-(119, '01.00011', '081325469975', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.12 gr, \r\n                senilai Rp 102.114 tlh ditbh ke wallet,-. Tks', 0),
-(120, '01.00011', '081325469975', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.12 gr, \r\n                tlh ditrf ke rek BCA  An. Ummy Mubarokah sebesar Rp 92.114,-. Tks', 0),
-(121, '01.00063', '085950726801', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 17.332 tlh ditbh ke wallet,-. Tks', 0),
-(122, '01.00065', '081325453388', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.7 gr, \r\n                senilai Rp 609.436 tlh ditbh ke wallet,-. Tks', 0),
-(123, '01.00065', '081325453388', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.7 gr, \r\n                tlh ditrf ke rek BTPN An. SRI SUSANTI sebesar Rp 599.436,-. Tks', 0),
-(124, '01.00027', '085101995521', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.7 gr, \r\n                senilai Rp 609.436 tlh ditbh ke wallet,-. Tks', 0),
-(125, '01.00027', '085101995521', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.7 gr, \r\n                tlh ditrf ke rek BTPN An. Sri susanti sebesar Rp 599.436,-. Tks', 0),
-(126, '01.00028', '081326627170', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.5 gr, \r\n                senilai Rp 444.897 tlh ditbh ke wallet,-. Tks', 0),
-(127, '01.00028', '081326627170', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.5 gr, \r\n                tlh ditrf ke rek BRI An. Ari  wuryantini   sebesar Rp 434.897,-. Tks', 0),
-(128, '01.00066', '085726841990', 'Ttl profit titipan emas bln 10 2020 adl 1% / 1 gr, \r\n                senilai Rp 902.911 tlh ditbh ke wallet,-. Tks', 0),
-(129, '01.00066', '085726841990', 'Ttl profit titipan emas bln 10 2020 adl 1% / 1 gr, \r\n                tlh ditrf ke rek BCA An. Aditya Cipta P sebesar Rp 892.911,-. Tks', 0),
-(130, '01.00066', '085726841990', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.66 gr, \r\n                senilai Rp 595.921 tlh ditbh ke wallet,-. Tks', 0),
-(131, '01.00066', '085726841990', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.66 gr, \r\n                tlh ditrf ke rek BCA An. Aditya Cipta P sebesar Rp 585.921,-. Tks', 0),
-(132, '01.00011', '081325469975', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 18.260 tlh ditbh ke wallet,-. Tks', 0),
-(133, '01.00071', '081575012844', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.5 gr, \r\n                senilai Rp 463.500 tlh ditbh ke wallet,-. Tks', 0),
-(134, '01.00071', '081575012844', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.5 gr, \r\n                tlh ditrf ke rek BNI An. Adyatma Gusti Pandya sebesar Rp 453.500,-. Tks', 0),
-(135, '01.00083', '082133232909', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 18.380 tlh ditbh ke wallet,-. Tks', 0),
-(136, '01.00088', '083163397270', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 18.200 tlh ditbh ke wallet,-. Tks', 0),
-(137, '01.00009', '081325123353', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 18.460 tlh ditbh ke wallet,-. Tks', 0),
-(138, '01.00054', '085713893698', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 18.420 tlh ditbh ke wallet,-. Tks', 0),
-(139, '01.00051', '082299413996', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.06 gr, \r\n                senilai Rp 55.260 tlh ditbh ke wallet,-. Tks', 0),
-(140, '01.00094', '081335623997', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 18.400 tlh ditbh ke wallet,-. Tks', 0),
-(141, '01.00042', '085740601703', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 18.540 tlh ditbh ke wallet,-. Tks', 0),
-(142, '01.00052', '081575886727', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 18.540 tlh ditbh ke wallet,-. Tks', 0),
-(143, '01.00060', '085876100940', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 18.580 tlh ditbh ke wallet,-. Tks', 0),
-(144, '01.00098', '+12107809363', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 18.640 tlh ditbh ke wallet,-. Tks', 0),
-(145, '01.00008', '085727611329', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 18.520 tlh ditbh ke wallet,-. Tks', 0),
-(146, '01.00054', '085713893698', 'Ttl profit titipan emas bln 10 2020 adl 0.25% / 0.005 gr, \r\n                senilai Rp 4.500 tlh ditbh ke wallet,-. Tks', 0),
-(147, '01.00053', '0811251610', 'Ttl profit titipan emas bln 10 2020 adl 0.25% / 0.015 gr, \r\n                senilai Rp 13.560 tlh ditbh ke wallet,-. Tks', 0);
+(108, '01.00053', '0811251610', 'Ttl profit titipan emas bln 10 2020 adl 0.25% / 0.005 gr, \r\n                senilai Rp 4.494 tlh ditbh ke wallet,-. Tks', 1),
+(109, '01.00053', '0811251610', 'Ttl profit titipan emas bln 10 2020 adl 0.55% / 0.022 gr, \r\n                senilai Rp 19.309 tlh ditbh ke wallet,-. Tks', 1),
+(110, '01.00025', '082230854065', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.1 gr, \r\n                senilai Rp 88.979 tlh ditbh ke wallet,-. Tks', 1),
+(111, '01.00003', '082136368828', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 17.796 tlh ditbh ke wallet,-. Tks', 1),
+(112, '01.00003', '082136368828', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 17.796 tlh ditbh ke wallet,-. Tks', 1),
+(113, '01.00001', '081327479067', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.04 gr, \r\n                senilai Rp 35.592 tlh ditbh ke wallet,-. Tks', 1),
+(114, '01.00009', '081325123353', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 16.595 tlh ditbh ke wallet,-. Tks', 1),
+(115, '01.00027', '085101995521', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.12 gr, \r\n                senilai Rp 102.114 tlh ditbh ke wallet,-. Tks', 1),
+(116, '01.00027', '085101995521', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.12 gr, \r\n                tlh ditrf ke rek BTPN An. Sri susanti sebesar Rp 92.114,-. Tks', 1),
+(117, '01.00062', '085101292189', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 17.019 tlh ditbh ke wallet,-. Tks', 1),
+(118, '01.00023', '081327405100', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 17.019 tlh ditbh ke wallet,-. Tks', 1),
+(119, '01.00011', '081325469975', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.12 gr, \r\n                senilai Rp 102.114 tlh ditbh ke wallet,-. Tks', 1),
+(120, '01.00011', '081325469975', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.12 gr, \r\n                tlh ditrf ke rek BCA  An. Ummy Mubarokah sebesar Rp 92.114,-. Tks', 1),
+(121, '01.00063', '085950726801', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 17.332 tlh ditbh ke wallet,-. Tks', 1),
+(122, '01.00065', '081325453388', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.7 gr, \r\n                senilai Rp 609.436 tlh ditbh ke wallet,-. Tks', 1),
+(123, '01.00065', '081325453388', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.7 gr, \r\n                tlh ditrf ke rek BTPN An. SRI SUSANTI sebesar Rp 599.436,-. Tks', 1),
+(124, '01.00027', '085101995521', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.7 gr, \r\n                senilai Rp 609.436 tlh ditbh ke wallet,-. Tks', 1),
+(125, '01.00027', '085101995521', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.7 gr, \r\n                tlh ditrf ke rek BTPN An. Sri susanti sebesar Rp 599.436,-. Tks', 1),
+(126, '01.00028', '081326627170', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.5 gr, \r\n                senilai Rp 444.897 tlh ditbh ke wallet,-. Tks', 1),
+(127, '01.00028', '081326627170', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.5 gr, \r\n                tlh ditrf ke rek BRI An. Ari  wuryantini   sebesar Rp 434.897,-. Tks', 1),
+(128, '01.00066', '085726841990', 'Ttl profit titipan emas bln 10 2020 adl 1% / 1 gr, \r\n                senilai Rp 902.911 tlh ditbh ke wallet,-. Tks', 1),
+(129, '01.00066', '085726841990', 'Ttl profit titipan emas bln 10 2020 adl 1% / 1 gr, \r\n                tlh ditrf ke rek BCA An. Aditya Cipta P sebesar Rp 892.911,-. Tks', 1),
+(130, '01.00066', '085726841990', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.66 gr, \r\n                senilai Rp 595.921 tlh ditbh ke wallet,-. Tks', 1),
+(131, '01.00066', '085726841990', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.66 gr, \r\n                tlh ditrf ke rek BCA An. Aditya Cipta P sebesar Rp 585.921,-. Tks', 1),
+(132, '01.00011', '081325469975', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 18.260 tlh ditbh ke wallet,-. Tks', 1),
+(133, '01.00071', '081575012844', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.5 gr, \r\n                senilai Rp 463.500 tlh ditbh ke wallet,-. Tks', 1),
+(134, '01.00071', '081575012844', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.5 gr, \r\n                tlh ditrf ke rek BNI An. Adyatma Gusti Pandya sebesar Rp 453.500,-. Tks', 1),
+(135, '01.00083', '082133232909', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 18.380 tlh ditbh ke wallet,-. Tks', 1),
+(136, '01.00088', '083163397270', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 18.200 tlh ditbh ke wallet,-. Tks', 1),
+(137, '01.00009', '081325123353', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 18.460 tlh ditbh ke wallet,-. Tks', 1),
+(138, '01.00054', '085713893698', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 18.420 tlh ditbh ke wallet,-. Tks', 1),
+(139, '01.00051', '082299413996', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.06 gr, \r\n                senilai Rp 55.260 tlh ditbh ke wallet,-. Tks', 1),
+(140, '01.00094', '081335623997', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 18.400 tlh ditbh ke wallet,-. Tks', 1),
+(141, '01.00042', '085740601703', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 18.540 tlh ditbh ke wallet,-. Tks', 1),
+(142, '01.00052', '081575886727', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 18.540 tlh ditbh ke wallet,-. Tks', 1),
+(143, '01.00060', '085876100940', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 18.580 tlh ditbh ke wallet,-. Tks', 1),
+(144, '01.00098', '+12107809363', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 18.640 tlh ditbh ke wallet,-. Tks', 1),
+(145, '01.00008', '085727611329', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 18.520 tlh ditbh ke wallet,-. Tks', 1),
+(146, '01.00054', '085713893698', 'Ttl profit titipan emas bln 10 2020 adl 0.25% / 0.005 gr, \r\n                senilai Rp 4.500 tlh ditbh ke wallet,-. Tks', 1),
+(147, '01.00053', '0811251610', 'Ttl profit titipan emas bln 10 2020 adl 0.25% / 0.015 gr, \r\n                senilai Rp 13.560 tlh ditbh ke wallet,-. Tks', 1);
 
 -- --------------------------------------------------------
 
@@ -2488,7 +2491,63 @@ INSERT INTO `tb_titipan_emas_detail` (`idx`, `id_titipan`, `periode`, `profit_pe
 (533, 34, '2020-11-09', 0.07, 0),
 (534, 35, '2020-11-09', 0.07, 0),
 (535, 36, '2020-11-09', 0.07, 0),
-(536, 37, '2020-11-09', 0.07, 0);
+(536, 37, '2020-11-09', 0.07, 0),
+(537, 10, '2020-11-16', 0.15, 0),
+(538, 11, '2020-11-16', 0.15, 0),
+(539, 12, '2020-11-16', 0.15, 0),
+(540, 13, '2020-11-16', 0.15, 0),
+(541, 14, '2020-11-16', 0.15, 0),
+(542, 15, '2020-11-16', 0.15, 0),
+(543, 16, '2020-11-16', 0.15, 0),
+(544, 17, '2020-11-16', 0.15, 0),
+(545, 18, '2020-11-16', 0.15, 0),
+(546, 19, '2020-11-16', 0.15, 0),
+(547, 20, '2020-11-16', 0.15, 0),
+(548, 21, '2020-11-16', 0.15, 0),
+(549, 22, '2020-11-16', 0.15, 0),
+(550, 23, '2020-11-16', 0.15, 0),
+(551, 24, '2020-11-16', 0.15, 0),
+(552, 25, '2020-11-16', 0.15, 0),
+(553, 26, '2020-11-16', 0.15, 0),
+(554, 27, '2020-11-16', 0.15, 0),
+(555, 28, '2020-11-16', 0.15, 0),
+(556, 29, '2020-11-16', 0.15, 0),
+(557, 30, '2020-11-16', 0.15, 0),
+(558, 31, '2020-11-16', 0.15, 0),
+(559, 32, '2020-11-16', 0.15, 0),
+(560, 33, '2020-11-16', 0.15, 0),
+(561, 34, '2020-11-16', 0.15, 0),
+(562, 35, '2020-11-16', 0.15, 0),
+(563, 36, '2020-11-16', 0.15, 0),
+(564, 37, '2020-11-16', 0.15, 0),
+(565, 10, '2020-11-23', 0.1, 0),
+(566, 11, '2020-11-23', 0.1, 0),
+(567, 12, '2020-11-23', 0.1, 0),
+(568, 13, '2020-11-23', 0.1, 0),
+(569, 14, '2020-11-23', 0.1, 0),
+(570, 15, '2020-11-23', 0.1, 0),
+(571, 16, '2020-11-23', 0.1, 0),
+(572, 17, '2020-11-23', 0.1, 0),
+(573, 18, '2020-11-23', 0.1, 0),
+(574, 19, '2020-11-23', 0.1, 0),
+(575, 20, '2020-11-23', 0.1, 0),
+(576, 21, '2020-11-23', 0.1, 0),
+(577, 22, '2020-11-23', 0.1, 0),
+(578, 23, '2020-11-23', 0.1, 0),
+(579, 24, '2020-11-23', 0.1, 0),
+(580, 25, '2020-11-23', 0.1, 0),
+(581, 26, '2020-11-23', 0.1, 0),
+(582, 27, '2020-11-23', 0.1, 0),
+(583, 28, '2020-11-23', 0.1, 0),
+(584, 29, '2020-11-23', 0.1, 0),
+(585, 30, '2020-11-23', 0.1, 0),
+(586, 31, '2020-11-23', 0.1, 0),
+(587, 32, '2020-11-23', 0.1, 0),
+(588, 33, '2020-11-23', 0.1, 0),
+(589, 34, '2020-11-23', 0.1, 0),
+(590, 35, '2020-11-23', 0.1, 0),
+(591, 36, '2020-11-23', 0.1, 0),
+(592, 37, '2020-11-23', 0.1, 0);
 
 -- --------------------------------------------------------
 
@@ -3279,7 +3338,15 @@ INSERT INTO `tb_transaksi` (`id`, `tgl`, `idted`, `uraian`, `masuk`, `keluar`, `
 (603, '2020-11-05', '01.00066', 'deposit', 585921, 0, 6664740, 'uang'),
 (604, '2020-11-10', '01.00033', 'deposit', 8535, 0, 9194, 'uang'),
 (605, '2020-11-11', '01.00095', 'beli emas', 0.104, 0, 1.303, 'emas'),
-(606, '2020-11-15', '01.00003', 'widraw reward referal', 792500, 0, 864367, 'uang');
+(606, '2020-11-15', '01.00003', 'widraw reward referal', 792500, 0, 864367, 'uang'),
+(607, '2020-11-17', '01.00032', 'trf. dari ID 01.00003 ', 1, 0, 1.782, 'emas'),
+(608, '2020-11-17', '01.00003', 'transfer emas ke  01.00032', 0, 1, 3.472, 'emas'),
+(609, '2020-11-23', '01.00095', 'pencairan jual emas', 399500, 0, 399500, 'uang'),
+(610, '2020-11-23', '01.00095', 'jual emas', 0, 0.47, 0.833, 'emas'),
+(611, '2020-11-23', '01.00095', 'tarik wallet, trf. tgl 2020-11-23', 0, 379500, 20000, 'uang'),
+(612, '2020-11-23', '01.00095', 'adm tarik wallet, trf. tgl 2020-11-23', 0, 10000, 20000, 'uang'),
+(613, '2020-11-28', '01.00095', 'pencairan jual emas', 413000, 0, 433000, 'uang'),
+(614, '2020-11-28', '01.00095', 'jual emas', 0, 0.5, 0.333, 'emas');
 
 -- --------------------------------------------------------
 
@@ -3523,7 +3590,10 @@ INSERT INTO `tb_widraw` (`idx`, `tgl_pengajuan`, `idted`, `nominal`, `biaya_adm`
 (3, '2020-04-15', '01.00007', 300000, 10000, 'Bank Rakyat Indonesia BRI', '111001002375536', 'Dwi sunu raharjo', 1, '2020-04-16'),
 (5, '2020-04-16', '01.00003', 20000, 10000, 'BRI', '303601041826532', 'susiloningsih', 1, '2020-04-16'),
 (8, '2020-09-23', '01.00011', 180000, 10000, 'BCA ', '0130639798', 'Ummy Mubarokah', 1, '2020-09-25'),
-(11, '2020-10-02', '01.00011', 1800000, 10000, 'BCA ', '0130639798', 'Ummy Mubarokah', 1, '2020-10-03');
+(11, '2020-10-02', '01.00011', 1800000, 10000, 'BCA ', '0130639798', 'Ummy Mubarokah', 1, '2020-10-03'),
+(12, '2020-11-23', '01.00095', 389500, 10000, 'BCA', '7830489015', 'Roy Siegfried', 1, '2020-11-23'),
+(13, '2020-11-28', '01.00095', 420000, 10000, 'BCA', '7830489015', 'Roy Siegfried', 0, '0000-00-00'),
+(14, '2020-11-28', '01.00095', 420000, 10000, 'BCA', '7830489015', 'Roy Siegfried', 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -4058,7 +4128,91 @@ INSERT INTO `t_update_ubs` (`IDX`, `UPDATE_AT`, `HRG_BELI`, `HRG_JUAL`) VALUES
 (537, '2020-11-14 20:00:02', '1,003,652', '858,000'),
 (538, '2020-11-15 00:00:03', '1,003,652', '858,000'),
 (539, '2020-11-15 04:00:04', '1,003,652', '858,000'),
-(540, '2020-11-15 08:00:05', '1,003,652', '858,000');
+(540, '2020-11-15 08:00:05', '1,003,652', '858,000'),
+(541, '2020-11-15 12:00:04', '1,003,652', '858,000'),
+(542, '2020-11-15 16:00:03', '1,003,652', '858,000'),
+(543, '2020-11-15 20:00:02', '1,003,652', '858,000'),
+(544, '2020-11-16 00:00:05', '1,003,652', '858,000'),
+(545, '2020-11-16 04:00:03', '1,003,652', '858,000'),
+(546, '2020-11-16 08:00:04', '1,003,652', '858,000'),
+(547, '2020-11-16 12:00:03', '1,004,964', '864,000'),
+(548, '2020-11-16 16:00:03', '1,004,964', '864,000'),
+(549, '2020-11-16 20:00:05', '1,004,964', '864,000'),
+(550, '2020-11-17 00:00:04', '1,004,964', '864,000'),
+(551, '2020-11-17 04:00:03', '1,004,964', '864,000'),
+(552, '2020-11-17 08:00:04', '1,004,964', '864,000'),
+(553, '2020-11-17 12:00:03', '1,002,946', '859,000'),
+(554, '2020-11-17 16:00:02', '1,002,946', '859,000'),
+(555, '2020-11-17 20:00:03', '1,002,946', '859,000'),
+(556, '2020-11-18 00:00:03', '1,002,946', '859,000'),
+(557, '2020-11-18 04:00:04', '1,002,946', '859,000'),
+(558, '2020-11-18 08:00:05', '1,002,946', '859,000'),
+(559, '2020-11-18 12:00:05', '999,919', '853,000'),
+(560, '2020-11-18 16:00:04', '999,919', '853,000'),
+(561, '2020-11-18 20:00:04', '999,919', '853,000'),
+(562, '2020-11-19 00:00:04', '999,919', '853,000'),
+(563, '2020-11-19 04:00:03', '999,919', '853,000'),
+(564, '2020-11-19 08:00:03', '999,919', '853,000'),
+(565, '2020-11-19 12:00:05', '997,901', '850,000'),
+(566, '2020-11-19 16:00:05', '997,901', '850,000'),
+(567, '2020-11-19 20:00:02', '997,901', '850,000'),
+(568, '2020-11-20 00:00:04', '997,901', '850,000'),
+(569, '2020-11-20 04:00:04', '997,901', '850,000'),
+(570, '2020-11-20 08:00:05', '997,901', '850,000'),
+(571, '2020-11-20 12:00:05', '997,901', '850,000'),
+(572, '2020-11-20 16:00:09', '997,901', '850,000'),
+(573, '2020-11-20 20:00:02', '997,901', '850,000'),
+(574, '2020-11-21 00:00:03', '997,901', '850,000'),
+(575, '2020-11-21 04:00:03', '997,901', '850,000'),
+(576, '2020-11-21 08:00:04', '997,901', '850,000'),
+(577, '2020-11-21 12:00:03', '997,901', '850,000'),
+(578, '2020-11-21 16:00:04', '997,901', '850,000'),
+(579, '2020-11-21 20:00:03', '997,901', '850,000'),
+(580, '2020-11-22 00:00:05', '997,901', '850,000'),
+(581, '2020-11-22 04:00:04', '997,901', '850,000'),
+(582, '2020-11-22 08:00:04', '997,901', '850,000'),
+(583, '2020-11-22 12:00:04', '997,901', '850,000'),
+(584, '2020-11-22 16:00:05', '997,901', '850,000'),
+(585, '2020-11-22 20:00:03', '997,901', '850,000'),
+(586, '2020-11-23 00:00:05', '997,901', '850,000'),
+(587, '2020-11-23 04:00:04', '997,901', '850,000'),
+(588, '2020-11-23 08:00:04', '997,901', '850,000'),
+(589, '2020-11-23 12:00:06', '996,892', '856,000'),
+(590, '2020-11-23 16:00:04', '996,892', '856,000'),
+(591, '2020-11-23 20:00:06', '996,892', '856,000'),
+(592, '2020-11-24 00:00:06', '996,892', '856,000'),
+(593, '2020-11-24 04:00:03', '996,892', '856,000'),
+(594, '2020-11-24 08:00:04', '996,892', '856,000'),
+(595, '2020-11-24 12:00:05', '979,739', '839,000'),
+(596, '2020-11-24 16:00:05', '979,739', '839,000'),
+(597, '2020-11-24 20:00:03', '979,739', '839,000'),
+(598, '2020-11-25 00:00:04', '979,739', '839,000'),
+(599, '2020-11-25 04:00:03', '979,739', '839,000'),
+(600, '2020-11-25 08:00:04', '979,739', '839,000'),
+(601, '2020-11-25 12:00:08', '979,739', '829,000'),
+(602, '2020-11-25 16:00:05', '971,163', '829,000'),
+(603, '2020-11-25 20:00:03', '971,163', '829,000'),
+(604, '2020-11-26 00:00:05', '971,163', '829,000'),
+(605, '2020-11-26 04:00:04', '971,163', '829,000'),
+(606, '2020-11-26 08:00:03', '971,163', '829,000'),
+(607, '2020-11-26 12:00:06', '967,127', '829,000'),
+(608, '2020-11-26 16:00:05', '967,127', '829,000'),
+(609, '2020-11-26 20:00:04', '967,127', '829,000'),
+(610, '2020-11-27 00:00:03', '967,127', '829,000'),
+(611, '2020-11-27 04:00:03', '967,127', '829,000'),
+(612, '2020-11-27 08:00:04', '967,127', '829,000'),
+(613, '2020-11-27 12:00:06', '967,631', '826,000'),
+(614, '2020-11-27 16:00:03', '967,631', '826,000'),
+(615, '2020-11-27 20:00:06', '967,631', '826,000'),
+(616, '2020-11-28 00:00:05', '967,631', '826,000'),
+(617, '2020-11-28 04:00:03', '967,631', '826,000'),
+(618, '2020-11-28 08:00:04', '967,631', '826,000'),
+(619, '2020-11-28 12:00:04', '967,631', '826,000'),
+(620, '2020-11-28 16:00:06', '967,631', '826,000'),
+(621, '2020-11-28 20:00:03', '967,631', '826,000'),
+(622, '2020-11-29 00:00:03', '967,631', '826,000'),
+(623, '2020-11-29 04:00:05', '967,631', '826,000'),
+(624, '2020-11-29 08:00:05', '967,631', '826,000');
 
 --
 -- Indexes for dumped tables
@@ -4240,7 +4394,7 @@ ALTER TABLE `tb_agt_tmp`
 -- AUTO_INCREMENT untuk tabel `tb_bank`
 --
 ALTER TABLE `tb_bank`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_biaya_cetak`
@@ -4270,7 +4424,7 @@ ALTER TABLE `tb_hadiah_poin`
 -- AUTO_INCREMENT untuk tabel `tb_history`
 --
 ALTER TABLE `tb_history`
-  MODIFY `idx` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `idx` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_jaringan`
@@ -4306,7 +4460,7 @@ ALTER TABLE `tb_titipan_emas`
 -- AUTO_INCREMENT untuk tabel `tb_titipan_emas_detail`
 --
 ALTER TABLE `tb_titipan_emas_detail`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=537;
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=593;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_titipan_emas_transfer`
@@ -4318,7 +4472,7 @@ ALTER TABLE `tb_titipan_emas_transfer`
 -- AUTO_INCREMENT untuk tabel `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=607;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=615;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_transbon_poin`
@@ -4366,13 +4520,13 @@ ALTER TABLE `tb_verifikasi_email`
 -- AUTO_INCREMENT untuk tabel `tb_widraw`
 --
 ALTER TABLE `tb_widraw`
-  MODIFY `idx` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idx` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_update_ubs`
 --
 ALTER TABLE `t_update_ubs`
-  MODIFY `IDX` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=541;
+  MODIFY `IDX` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=625;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

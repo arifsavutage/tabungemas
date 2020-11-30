@@ -228,16 +228,43 @@
             dom: 'Bfrtip',
             buttons: [{
                     extend: 'excelHtml5',
-                    title: judul
+                    title: judul,
+                    orientation: 'landscape',
+                    pageSize: 'A4'
                 },
                 {
                     extend: 'pdfHtml5',
-                    title: judul
+                    title: judul,
+                    orientation: 'landscape',
+                    pageSize: 'A4'
                 }
             ]
         });
     });
 </script>
+
+<script>
+    $(document).ready(function() {
+        var judul = $('#judul-berkas').val();
+        $('#exportl').DataTable({
+            dom: 'Bfrtip',
+            buttons: [{
+                    extend: 'excelHtml5',
+                    title: judul,
+                    orientation: 'landscape',
+                    pageSize: 'A4'
+                },
+                {
+                    extend: 'pdfHtml5',
+                    title: judul,
+                    orientation: 'landscape',
+                    pageSize: 'A4'
+                }
+            ]
+        });
+    });
+</script>
+
 <script>
     $(function() {
         $('input[name="tgllahir"]').daterangepicker({

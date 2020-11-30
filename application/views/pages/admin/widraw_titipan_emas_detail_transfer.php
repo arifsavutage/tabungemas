@@ -11,13 +11,18 @@
                 }
 
                 $per    = str_replace("_", " ", $this->uri->segment(3));
+
+                //get bulan ini
+                $bln_ini = date('Y-m-d');
+                $pergantian = '2020-10-31';
                 ?>
                 <a href="<?= base_url('index.php/transaksi/titipan_emas_widraw_report'); ?>" class="btn btn-primary">Kembali</a>
                 <br />
                 <br />
+
                 <div class="table-responsive">
                     <input type="hidden" name="judul-berkas" id="judul-berkas" value="Daftar Transfer Profit Titipan Emas Periode <?= $per ?>">
-                    <table class="table" id="export">
+                    <table class="table" id="exportl">
                         <thead>
                             <tr>
                                 <th>No.</th>
@@ -83,6 +88,7 @@
                         </tbody>
                     </table>
                 </div>
+
             </div>
         </div>
     </div>

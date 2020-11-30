@@ -6,6 +6,7 @@
             </div>
             <div class="card-body">
                 <a href="<?= base_url('index.php/transaksi/daftar_titipan_emas'); ?>" class="btn btn-primary mb-4">Kembali</a>
+                <a href="<?= base_url('index.php/transaksi/titipan_emas_widraw_report'); ?>" class="btn btn-danger mb-4">Daftar Laporan</a>
                 <?php
                 if ($this->session->flashdata('info')) {
                     echo $this->session->flashdata('info');
@@ -49,7 +50,6 @@
                             </div>
                         </div>
                     </div>
-                    <a href="<?= base_url('index.php/transaksi/titipan_emas_widraw_report'); ?>" class="btn btn-success">Daftar Laporan</a>
                     <button type="submit" class="btn btn-primary float-right">Buat Laporan</button>
 
                 </form>

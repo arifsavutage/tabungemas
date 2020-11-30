@@ -84,6 +84,10 @@ class Member extends CI_Controller
         }
     }
 
+    public function coba_qrcode()
+    {
+    }
+
     public function edit_profile($id = null)
     {
         $id = $this->session->userdata('id');

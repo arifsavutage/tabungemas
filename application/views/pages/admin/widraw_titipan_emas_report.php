@@ -61,7 +61,18 @@
                                     <td><?= $status; ?></td>
                                     <td>
                                         <?= $button ?>
-                                        <a href="<?= base_url('index.php/transaksi/detail_transfer_profit/') . "$p"; ?>" class="btn btn-info btn-sm" title="daftar anggota"><i class="fas fa-file"></i></a>
+
+                                        <?php
+                                        if ($row['tgl_trf'] > '2020-11-30') {
+                                        ?>
+                                            <a href="<?= base_url('index.php/transaksi/detail_transfer_profit_emas/') . "$p"; ?>" class="btn btn-danger btn-sm" title="daftar anggota"><i class="fas fa-file"></i></a>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <a href="<?= base_url('index.php/transaksi/detail_transfer_profit/') . "$p"; ?>" class="btn btn-info btn-sm" title="daftar anggota"><i class="fas fa-file"></i></a>
+                                        <?php
+                                        }
+                                        ?>
                                         <?= $batal ?>
                                         <script>
                                             function batalin() {
