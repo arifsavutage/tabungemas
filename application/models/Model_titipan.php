@@ -169,9 +169,9 @@ SELECT tb_titipan_emas.idted, tb_agt_ted.nama_lengkap, tb_titipan_emas.tgl_ikut,
         $this->db->select("`id`, `tgl`, tb_transaksi.`idted`, tb_agt_ted.nama_lengkap, `uraian`, `masuk`, `keluar`, `saldo`, tb_transaksi.`jenis`");
         $this->db->from('tb_transaksi');
         $this->db->join('tb_agt_ted', 'tb_agt_ted.idted = tb_transaksi.idted', 'left');
-        $this->db->where("date_format(`tgl`, '%m %Y') = '$periode'");
+        //$this->db->where("date_format(`tgl`, '%m %Y') = '$periode'");
         $this->db->where("tb_transaksi.`jenis` = 'emas'");
-        $this->db->where("uraian LIKE 'profit%'");
+        $this->db->where("uraian LIKE '%profit titipan emas periode $periode%'");
         return $this->db->get()->result_array();
     }
 }
