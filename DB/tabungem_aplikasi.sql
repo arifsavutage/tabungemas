@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 02 Des 2020 pada 10.27
+-- Waktu pembuatan: 02 Des 2020 pada 21.33
 -- Versi server: 10.3.27-MariaDB
 -- Versi PHP: 7.3.6
 
@@ -340,7 +340,7 @@ CREATE TABLE `tb_deposit` (
   `nom_deposit` int(11) NOT NULL,
   `banktrf` int(2) NOT NULL,
   `status` enum('aproved','tunggu') NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tb_deposit`
@@ -348,13 +348,13 @@ CREATE TABLE `tb_deposit` (
 
 INSERT INTO `tb_deposit` (`idx`, `tgl_deposit`, `idted`, `nom_deposit`, `banktrf`, `status`) VALUES
 (1, '2020-01-04 01:32:43', '01.00001', 50000, 2, 'aproved'),
-(16, '2020-08-02 16:00:00', '01.00052', 44666, 2, 'aproved'),
-(7, '2020-06-12 07:39:50', '01.00053', 144818, 2, 'aproved'),
 (5, '2020-06-02 09:31:59', '01.00025', 88979, 2, 'aproved'),
+(7, '2020-06-12 07:39:50', '01.00053', 144818, 2, 'aproved'),
 (8, '2020-06-13 02:46:54', '01.00042', 141642, 2, 'aproved'),
 (9, '2020-06-16 05:15:12', '01.00025', 177959, 2, 'aproved'),
-(17, '2020-08-02 16:00:00', '01.00052', 100946, 2, 'aproved'),
 (15, '2020-07-31 09:49:30', '01.00069', 50000, 2, 'aproved'),
+(16, '2020-08-02 16:00:00', '01.00052', 44666, 2, 'aproved'),
+(17, '2020-08-02 16:00:00', '01.00052', 100946, 2, 'aproved'),
 (18, '2020-08-02 16:00:00', '01.00042', 70573, 2, 'aproved'),
 (19, '2020-08-02 16:00:00', '01.00052', 70573, 2, 'aproved'),
 (20, '2020-08-02 16:00:00', '01.00053', 71008, 2, 'aproved'),
@@ -366,10 +366,10 @@ INSERT INTO `tb_deposit` (`idx`, `tgl_deposit`, `idted`, `nom_deposit`, `banktrf
 (26, '2020-08-02 16:00:00', '01.00027', 76585, 2, 'aproved'),
 (27, '2020-08-02 16:00:00', '01.00062', 12764, 2, 'aproved'),
 (28, '2020-08-02 16:00:00', '01.00023', 12764, 2, 'aproved'),
-(34, '2020-08-03 15:13:15', '01.00066', 407145, 3, 'aproved'),
 (33, '2020-08-03 15:11:56', '01.00066', 622038, 3, 'aproved'),
-(39, '2020-09-05 08:19:42', '01.00066', 1062658, 3, 'aproved'),
+(34, '2020-08-03 15:13:15', '01.00066', 407145, 3, 'aproved'),
 (38, '2020-09-05 08:18:22', '01.00066', 1615240, 3, 'aproved'),
+(39, '2020-09-05 08:19:42', '01.00066', 1062658, 3, 'aproved'),
 (41, '2020-10-07 07:07:29', '01.00066', 892911, 3, 'aproved'),
 (42, '2020-10-07 07:08:28', '01.00066', 585921, 3, 'aproved'),
 (43, '2020-11-05 04:27:41', '01.00066', 892911, 3, 'aproved'),
@@ -537,7 +537,6 @@ INSERT INTO `tb_history` (`idx`, `tgl`, `idted`, `tujuan_jual`, `ket`, `nominal_
 (128, '2020-11-23 03:17:38', '01.00095', 'TED', 'jual emas ', 399500, 0.47, 0),
 (129, '2020-11-28 09:30:52', '01.00095', 'TED', 'jual emas ', 413000, 0.5, 0),
 (130, '2020-11-30 07:58:24', '01.00003', '', 'pembelian emas ', 100000, 0.11, 1),
-(131, '2020-11-30 08:14:18', '01.00108', '', 'pembelian emas ', 10000, 0.011, 0),
 (132, '2020-11-30 10:27:41', '01.00084', '', 'pembelian emas ', 1000000, 1.097, 0);
 
 -- --------------------------------------------------------
@@ -1963,62 +1962,34 @@ INSERT INTO `tb_sms_info` (`id`, `idted`, `nohp`, `pesan`, `is_sent`) VALUES
 (145, '01.00008', '085727611329', 'Ttl profit titipan emas bln 10 2020 adl 1% / 0.02 gr, \r\n                senilai Rp 18.520 tlh ditbh ke wallet,-. Tks', 1),
 (146, '01.00054', '085713893698', 'Ttl profit titipan emas bln 10 2020 adl 0.25% / 0.005 gr, \r\n                senilai Rp 4.500 tlh ditbh ke wallet,-. Tks', 1),
 (147, '01.00053', '0811251610', 'Ttl profit titipan emas bln 10 2020 adl 0.25% / 0.015 gr, \r\n                senilai Rp 13.560 tlh ditbh ke wallet,-. Tks', 1),
-(148, '01.00001', '081327479067', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0228 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(149, '01.00009', '081325123353', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(150, '01.00027', '085101995521', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0684 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(151, '01.00062', '085101292189', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(152, '01.00023', '081327405100', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(153, '01.00011', '081325469975', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0684 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(154, '01.00063', '085950726801', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(155, '01.00065', '081325453388', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.399 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(156, '01.00027', '085101995521', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.399 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(157, '01.00028', '081326627170', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.285 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(158, '01.00066', '085726841990', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.57 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(159, '01.00066', '085726841990', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.3762 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(160, '01.00011', '081325469975', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(161, '01.00071', '081575012844', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.285 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(162, '01.00083', '082133232909', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(163, '01.00088', '083163397270', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(164, '01.00009', '081325123353', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(165, '01.00054', '085713893698', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(166, '01.00051', '082299413996', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0342 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(167, '01.00094', '081335623997', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(168, '01.00042', '085740601703', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(169, '01.00052', '081575886727', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(170, '01.00060', '085876100940', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(171, '01.00098', '+12107809363', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(172, '01.00008', '085727611329', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(173, '01.00054', '085713893698', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(174, '01.00053', '0811251610', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0342 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(175, '01.00025', '082230854065', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.057 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(176, '01.00001', '081327479067', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0228 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(177, '01.00009', '081325123353', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(178, '01.00027', '085101995521', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0684 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(179, '01.00062', '085101292189', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(180, '01.00023', '081327405100', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(181, '01.00011', '081325469975', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0684 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(182, '01.00063', '085950726801', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(183, '01.00065', '081325453388', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.399 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(184, '01.00027', '085101995521', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.399 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(185, '01.00028', '081326627170', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.285 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(186, '01.00066', '085726841990', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.57 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(187, '01.00066', '085726841990', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.3762 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(188, '01.00011', '081325469975', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(189, '01.00071', '081575012844', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.285 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(190, '01.00083', '082133232909', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(191, '01.00088', '083163397270', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(192, '01.00009', '081325123353', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(193, '01.00054', '085713893698', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(194, '01.00051', '082299413996', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0342 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(195, '01.00094', '081335623997', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(196, '01.00042', '085740601703', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(197, '01.00052', '081575886727', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(198, '01.00060', '085876100940', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(199, '01.00098', '+12107809363', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(200, '01.00008', '085727611329', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(201, '01.00054', '085713893698', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(202, '01.00053', '0811251610', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0342 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0),
-(203, '01.00025', '082230854065', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.057 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 0);
+(0, '01.00025', '082230854065', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.057 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00053', '0811251610', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0342 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00054', '085713893698', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00008', '085727611329', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00098', '+12107809363', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00060', '085876100940', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00052', '081575886727', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00042', '085740601703', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00094', '081335623997', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00051', '082299413996', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0342 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00054', '085713893698', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00009', '081325123353', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00088', '083163397270', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00083', '082133232909', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00071', '081575012844', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.285 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00011', '081325469975', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00066', '085726841990', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.3762 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00066', '085726841990', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.57 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00028', '081326627170', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.285 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00027', '085101995521', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.399 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00065', '081325453388', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.399 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00063', '085950726801', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00011', '081325469975', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0684 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00023', '081327405100', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00062', '085101292189', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00027', '085101995521', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0684 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00009', '081325123353', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0114 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1),
+(0, '01.00001', '081327479067', 'Total profit titipan emas bln 11 2020 adl 0.57% / 0.0228 gr, \r\n                telah ditambah ke saldo tab. emas,-. Tks', 1);
 
 -- --------------------------------------------------------
 
@@ -2885,35 +2856,7 @@ INSERT INTO `tb_titipan_emas_transfer` (`id`, `periode`, `tgl_trf`, `idted`, `no
 (255, '11 2020', '2020-12-02', '01.00008', '085727611329', 'BRI', '303201021584536', 'Eko nur prasetyo', 10556, 926000, 2, 0.57, 1),
 (256, '11 2020', '2020-12-02', '01.00054', '085713893698', 'BCA', '7830017954', 'Muhammad Badruz zaman', 10260, 900000, 2, 0.57, 1),
 (257, '11 2020', '2020-12-02', '01.00053', '0811251610', 'Mandiri', '1370004061814', 'sugiharti', 30917, 904000, 6, 0.57, 1),
-(258, '11 2020', '2020-12-02', '01.00025', '082230854065', 'Bank Jateng', '3021211841', 'Amelia Nadia Rahma', 51243, 899000, 10, 0.57, 1),
-(259, '11 2020', '2020-12-01', '01.00001', '081327479067', 'BCA', '12312388857', 'koperasi mmas', 20287, 889794, 4, 0.57, 1),
-(260, '11 2020', '2020-12-01', '01.00009', '081325123353', 'BCA', '8030322925', '', 9459, 829758, 2, 0.57, 1),
-(261, '11 2020', '2020-12-01', '01.00027', '085101995521', 'BTPN', '0408.1.000168', 'Sri susanti', 58205, 850947, 12, 0.57, 1),
-(262, '11 2020', '2020-12-01', '01.00062', '085101292189', 'BTPN', '0408.1.000168', 'SRI SUSANTI', 9701, 850947, 2, 0.57, 1),
-(263, '11 2020', '2020-12-01', '01.00023', '081327405100', '', '', '', 9701, 850947, 2, 0.57, 1),
-(264, '11 2020', '2020-12-01', '01.00011', '081325469975', 'BCA ', '0130639798', 'Ummy Mubarokah', 58205, 850947, 12, 0.57, 1),
-(265, '11 2020', '2020-12-01', '01.00063', '085950726801', '', '', '', 9879, 866587, 2, 0.57, 1),
-(266, '11 2020', '2020-12-01', '01.00065', '081325453388', 'BTPN', '04081000168', 'SRI SUSANTI', 347379, 870623, 70, 0.57, 1),
-(267, '11 2020', '2020-12-01', '01.00027', '085101995521', 'BTPN', '0408.1.000168', 'Sri susanti', 347379, 870623, 70, 0.57, 1),
-(268, '11 2020', '2020-12-01', '01.00028', '081326627170', 'BRI', ' 3405  -   01-    016327 -  53 -  8', 'Ari  wuryantini  ', 253591, 889794, 50, 0.57, 1),
-(269, '11 2020', '2020-12-01', '01.00066', '085726841990', 'BCA', '0091324902', 'Aditya Cipta P', 514659, 902911, 100, 0.57, 1),
-(270, '11 2020', '2020-12-01', '01.00066', '085726841990', 'BCA', '0091324902', 'Aditya Cipta P', 339675, 902911, 66, 0.57, 1),
-(271, '11 2020', '2020-12-01', '01.00011', '081325469975', 'BCA ', '0130639798', 'Ummy Mubarokah', 10408, 913001, 2, 0.57, 1),
-(272, '11 2020', '2020-12-01', '01.00071', '081575012844', 'BNI', '0728242081', 'Adyatma Gusti Pandya', 264195, 927000, 50, 0.57, 1),
-(273, '11 2020', '2020-12-01', '01.00083', '082133232909', '', '', '', 10477, 919000, 2, 0.57, 1),
-(274, '11 2020', '2020-12-01', '01.00088', '083163397270', '', '', '', 10374, 910000, 2, 0.57, 1),
-(275, '11 2020', '2020-12-01', '01.00009', '081325123353', 'BCA', '8030322925', '', 10522, 923000, 2, 0.57, 1),
-(276, '11 2020', '2020-12-01', '01.00054', '085713893698', 'BCA', '7830017954', 'Muhammad Badruz zaman', 10499, 921000, 2, 0.57, 1),
-(277, '11 2020', '2020-12-01', '01.00051', '082299413996', 'BCA', '2465191960', 'Sudarto', 31498, 921000, 6, 0.57, 1),
-(278, '11 2020', '2020-12-01', '01.00094', '081335623997', 'BTPN', '\'90013386284', 'zunsyika zahra zatira', 10488, 920000, 2, 0.57, 1),
-(279, '11 2020', '2020-12-01', '01.00042', '085740601703', '', '', '', 10568, 927000, 2, 0.57, 1),
-(280, '11 2020', '2020-12-01', '01.00052', '081575886727', 'BCA', '2380885592', 'Dwi ratnawati', 10568, 927000, 2, 0.57, 1),
-(281, '11 2020', '2020-12-01', '01.00060', '085876100940', 'BRI', '100601002755535', 'HARYONO', 10591, 929000, 2, 0.57, 1),
-(282, '11 2020', '2020-12-01', '01.00098', '+12107809363', '', '', '', 10625, 932000, 2, 0.57, 1),
-(283, '11 2020', '2020-12-01', '01.00008', '085727611329', 'BRI', '303201021584536', 'Eko nur prasetyo', 10556, 926000, 2, 0.57, 1),
-(284, '11 2020', '2020-12-01', '01.00054', '085713893698', 'BCA', '7830017954', 'Muhammad Badruz zaman', 10260, 900000, 2, 0.57, 1),
-(285, '11 2020', '2020-12-01', '01.00053', '0811251610', 'Mandiri', '1370004061814', 'sugiharti', 30917, 904000, 6, 0.57, 1),
-(286, '11 2020', '2020-12-01', '01.00025', '082230854065', 'Bank Jateng', '3021211841', 'Amelia Nadia Rahma', 51243, 899000, 10, 0.57, 1);
+(258, '11 2020', '2020-12-02', '01.00025', '082230854065', 'Bank Jateng', '3021211841', 'Amelia Nadia Rahma', 51243, 899000, 10, 0.57, 1);
 
 -- --------------------------------------------------------
 
@@ -3556,63 +3499,35 @@ INSERT INTO `tb_transaksi` (`id`, `tgl`, `idted`, `uraian`, `masuk`, `keluar`, `
 (618, '2020-11-30', '01.00003', 'beli emas', 0.11, 0, 3.582, 'emas'),
 (619, '2020-11-30', '01.00107', 'simp. pokok & simp. wajib', 0, 0, 0, 'emas'),
 (620, '2020-11-30', '01.00108', 'simp. pokok & simp. wajib', 0, 0, 0, 'emas'),
-(621, '2020-12-01', '01.00001', 'profit titipan emas periode 11 2020', 0.0228, 0, 95.3218, 'emas'),
-(622, '2020-12-01', '01.00009', 'profit titipan emas periode 11 2020', 0.0114, 0, 1.4484, 'emas'),
-(623, '2020-12-01', '01.00027', 'profit titipan emas periode 11 2020', 0.0684, 0, 0.1414, 'emas'),
-(624, '2020-12-01', '01.00062', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0374, 'emas'),
-(625, '2020-12-01', '01.00023', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0424, 'emas'),
-(626, '2020-12-01', '01.00011', 'profit titipan emas periode 11 2020', 0.0684, 0, 1.2254, 'emas'),
-(627, '2020-12-01', '01.00063', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.3434, 'emas'),
-(628, '2020-12-01', '01.00065', 'profit titipan emas periode 11 2020', 0.399, 0, 0.423, 'emas'),
-(629, '2020-12-01', '01.00027', 'profit titipan emas periode 11 2020', 0.399, 0, 0.5404, 'emas'),
-(630, '2020-12-01', '01.00028', 'profit titipan emas periode 11 2020', 0.285, 0, 0.591, 'emas'),
-(631, '2020-12-01', '01.00066', 'profit titipan emas periode 11 2020', 0.57, 0, 0.722, 'emas'),
-(632, '2020-12-01', '01.00066', 'profit titipan emas periode 11 2020', 0.3762, 0, 1.0982, 'emas'),
-(633, '2020-12-01', '01.00011', 'profit titipan emas periode 11 2020', 0.0114, 0, 1.2368, 'emas'),
-(634, '2020-12-01', '01.00071', 'profit titipan emas periode 11 2020', 0.285, 0, 0.306, 'emas'),
-(635, '2020-12-01', '01.00083', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0584, 'emas'),
-(636, '2020-12-01', '01.00088', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0754, 'emas'),
-(637, '2020-12-01', '01.00009', 'profit titipan emas periode 11 2020', 0.0114, 0, 1.4598, 'emas'),
-(638, '2020-12-01', '01.00054', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0744, 'emas'),
-(639, '2020-12-01', '01.00051', 'profit titipan emas periode 11 2020', 0.0342, 0, 1.0042, 'emas'),
-(640, '2020-12-01', '01.00094', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0474, 'emas'),
-(641, '2020-12-01', '01.00042', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.3334, 'emas'),
-(642, '2020-12-01', '01.00052', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0504, 'emas'),
-(643, '2020-12-01', '01.00060', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0454, 'emas'),
-(644, '2020-12-01', '01.00098', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0344, 'emas'),
-(645, '2020-12-01', '01.00008', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0314, 'emas'),
-(646, '2020-12-01', '01.00054', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0858, 'emas'),
-(647, '2020-12-01', '01.00053', 'profit titipan emas periode 11 2020', 0.0342, 0, 0.0792, 'emas'),
-(648, '2020-12-01', '01.00025', 'profit titipan emas periode 11 2020', 0.057, 0, 0.092, 'emas'),
-(649, '2020-12-01', '01.00001', 'profit titipan emas periode 11 2020', 0.0228, 0, 95.3446, 'emas'),
-(650, '2020-12-01', '01.00009', 'profit titipan emas periode 11 2020', 0.0114, 0, 1.4712, 'emas'),
-(651, '2020-12-01', '01.00027', 'profit titipan emas periode 11 2020', 0.0684, 0, 0.6088, 'emas'),
-(652, '2020-12-01', '01.00062', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0488, 'emas'),
-(653, '2020-12-01', '01.00023', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0538, 'emas'),
-(654, '2020-12-01', '01.00011', 'profit titipan emas periode 11 2020', 0.0684, 0, 1.3052, 'emas'),
-(655, '2020-12-01', '01.00063', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.3548, 'emas'),
-(656, '2020-12-01', '01.00065', 'profit titipan emas periode 11 2020', 0.399, 0, 0.822, 'emas'),
-(657, '2020-12-01', '01.00027', 'profit titipan emas periode 11 2020', 0.399, 0, 1.0078, 'emas'),
-(658, '2020-12-01', '01.00028', 'profit titipan emas periode 11 2020', 0.285, 0, 0.876, 'emas'),
-(659, '2020-12-01', '01.00066', 'profit titipan emas periode 11 2020', 0.57, 0, 1.6682, 'emas'),
-(660, '2020-12-01', '01.00066', 'profit titipan emas periode 11 2020', 0.3762, 0, 2.0444, 'emas'),
-(661, '2020-12-01', '01.00011', 'profit titipan emas periode 11 2020', 0.0114, 0, 1.3166, 'emas'),
-(662, '2020-12-01', '01.00071', 'profit titipan emas periode 11 2020', 0.285, 0, 0.591, 'emas'),
-(663, '2020-12-01', '01.00083', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0698, 'emas'),
-(664, '2020-12-01', '01.00088', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0868, 'emas'),
-(665, '2020-12-01', '01.00009', 'profit titipan emas periode 11 2020', 0.0114, 0, 1.4826, 'emas'),
-(666, '2020-12-01', '01.00054', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0972, 'emas'),
-(667, '2020-12-01', '01.00051', 'profit titipan emas periode 11 2020', 0.0342, 0, 1.0384, 'emas'),
-(668, '2020-12-01', '01.00094', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0588, 'emas'),
-(669, '2020-12-01', '01.00042', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.3448, 'emas'),
-(670, '2020-12-01', '01.00052', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0618, 'emas'),
-(671, '2020-12-01', '01.00060', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0568, 'emas'),
-(672, '2020-12-01', '01.00098', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0458, 'emas'),
-(673, '2020-12-01', '01.00008', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0428, 'emas'),
-(674, '2020-12-01', '01.00054', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.1086, 'emas'),
-(675, '2020-12-01', '01.00053', 'profit titipan emas periode 11 2020', 0.0342, 0, 0.1134, 'emas'),
-(676, '2020-12-01', '01.00025', 'profit titipan emas periode 11 2020', 0.057, 0, 0.149, 'emas'),
-(677, '2020-12-01', '01.00109', 'simp. pokok & simp. wajib', 0, 0, 0, 'emas');
+(621, '2020-12-02', '01.00001', 'profit titipan emas periode 11 2020', 0.0228, 0, 953.218, 'emas'),
+(622, '2020-12-02', '01.00009', 'profit titipan emas periode 11 2020', 0.0114, 0, 14.484, 'emas'),
+(623, '2020-12-02', '01.00027', 'profit titipan emas periode 11 2020', 0.0684, 0, 0.1414, 'emas'),
+(624, '2020-12-02', '01.00062', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0374, 'emas'),
+(625, '2020-12-02', '01.00023', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0424, 'emas'),
+(626, '2020-12-02', '01.00011', 'profit titipan emas periode 11 2020', 0.0684, 0, 12.254, 'emas'),
+(627, '2020-12-02', '01.00063', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.3434, 'emas'),
+(628, '2020-12-02', '01.00065', 'profit titipan emas periode 11 2020', 0.399, 0, 0.423, 'emas'),
+(629, '2020-12-02', '01.00027', 'profit titipan emas periode 11 2020', 0.399, 0, 0.472, 'emas'),
+(630, '2020-12-02', '01.00028', 'profit titipan emas periode 11 2020', 0.285, 0, 0.591, 'emas'),
+(631, '2020-12-02', '01.00066', 'profit titipan emas periode 11 2020', 0.57, 0, 0.722, 'emas'),
+(632, '2020-12-02', '01.00066', 'profit titipan emas periode 11 2020', 0.3762, 0, 0.5282, 'emas'),
+(633, '2020-12-02', '01.00011', 'profit titipan emas periode 11 2020', 0.0114, 0, 11.684, 'emas'),
+(634, '2020-12-02', '01.00071', 'profit titipan emas periode 11 2020', 0.285, 0, 0.306, 'emas'),
+(635, '2020-12-02', '01.00083', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0584, 'emas'),
+(636, '2020-12-02', '01.00088', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0754, 'emas'),
+(637, '2020-12-02', '01.00009', 'profit titipan emas periode 11 2020', 0.0114, 0, 14.484, 'emas'),
+(638, '2020-12-02', '01.00054', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0744, 'emas'),
+(639, '2020-12-02', '01.00051', 'profit titipan emas periode 11 2020', 0.0342, 0, 10.042, 'emas'),
+(640, '2020-12-02', '01.00094', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0474, 'emas'),
+(641, '2020-12-02', '01.00042', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.3334, 'emas'),
+(642, '2020-12-02', '01.00052', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0504, 'emas'),
+(643, '2020-12-02', '01.00060', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0454, 'emas'),
+(644, '2020-12-02', '01.00098', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0344, 'emas'),
+(645, '2020-12-02', '01.00008', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0314, 'emas'),
+(646, '2020-12-02', '01.00054', 'profit titipan emas periode 11 2020', 0.0114, 0, 0.0744, 'emas'),
+(647, '2020-12-02', '01.00053', 'profit titipan emas periode 11 2020', 0.0342, 0, 0.0792, 'emas'),
+(648, '2020-12-02', '01.00025', 'profit titipan emas periode 11 2020', 0.057, 0, 0.092, 'emas'),
+(649, '2020-12-02', '01.00055', 'beli emas', 0.703, 0, 1.031, 'emas');
 
 -- --------------------------------------------------------
 
@@ -4497,7 +4412,8 @@ INSERT INTO `t_update_ubs` (`IDX`, `UPDATE_AT`, `HRG_BELI`, `HRG_JUAL`) VALUES
 (639, '2020-12-01 20:00:03', '952,496', '811,000'),
 (640, '2020-12-02 00:00:04', '952,496', '811,000'),
 (641, '2020-12-02 04:00:03', '952,496', '811,000'),
-(642, '2020-12-02 08:00:05', '952,496', '811,000');
+(642, '2020-12-02 08:00:05', '952,496', '811,000'),
+(643, '2020-12-02 21:00:54', '964,100', '825,000');
 
 --
 -- Indexes for dumped tables
@@ -4558,12 +4474,6 @@ ALTER TABLE `tb_hadiah_poin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tb_history`
---
-ALTER TABLE `tb_history`
-  ADD PRIMARY KEY (`idx`);
-
---
 -- Indeks untuk tabel `tb_jaringan`
 --
 ALTER TABLE `tb_jaringan`
@@ -4579,12 +4489,6 @@ ALTER TABLE `tb_payout`
 -- Indeks untuk tabel `tb_payout_trans`
 --
 ALTER TABLE `tb_payout_trans`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `tb_sms_info`
---
-ALTER TABLE `tb_sms_info`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -4609,12 +4513,6 @@ ALTER TABLE `tb_titipan_emas_transfer`
 -- Indeks untuk tabel `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `tb_transbon_poin`
---
-ALTER TABLE `tb_transbon_poin`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -4670,46 +4568,10 @@ ALTER TABLE `t_update_ubs`
 --
 
 --
--- AUTO_INCREMENT untuk tabel `tb_agt_tmp`
---
-ALTER TABLE `tb_agt_tmp`
-  MODIFY `idtmp` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
-
---
--- AUTO_INCREMENT untuk tabel `tb_bank`
---
-ALTER TABLE `tb_bank`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT untuk tabel `tb_biaya_cetak`
---
-ALTER TABLE `tb_biaya_cetak`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT untuk tabel `tb_bonus`
---
-ALTER TABLE `tb_bonus`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
 -- AUTO_INCREMENT untuk tabel `tb_deposit`
 --
 ALTER TABLE `tb_deposit`
   MODIFY `idx` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
-
---
--- AUTO_INCREMENT untuk tabel `tb_hadiah_poin`
---
-ALTER TABLE `tb_hadiah_poin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT untuk tabel `tb_history`
---
-ALTER TABLE `tb_history`
-  MODIFY `idx` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_jaringan`
@@ -4730,12 +4592,6 @@ ALTER TABLE `tb_payout_trans`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1075;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_sms_info`
---
-ALTER TABLE `tb_sms_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=204;
-
---
 -- AUTO_INCREMENT untuk tabel `tb_titipan_emas`
 --
 ALTER TABLE `tb_titipan_emas`
@@ -4751,19 +4607,13 @@ ALTER TABLE `tb_titipan_emas_detail`
 -- AUTO_INCREMENT untuk tabel `tb_titipan_emas_transfer`
 --
 ALTER TABLE `tb_titipan_emas_transfer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=287;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=259;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=678;
-
---
--- AUTO_INCREMENT untuk tabel `tb_transbon_poin`
---
-ALTER TABLE `tb_transbon_poin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=650;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user`
@@ -4811,7 +4661,7 @@ ALTER TABLE `tb_widraw`
 -- AUTO_INCREMENT untuk tabel `t_update_ubs`
 --
 ALTER TABLE `t_update_ubs`
-  MODIFY `IDX` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=643;
+  MODIFY `IDX` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=644;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
