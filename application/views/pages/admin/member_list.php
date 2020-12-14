@@ -20,7 +20,7 @@
                                 <th>Tgl. Daftar</th>
                                 <th>Nama Lengkap</th>
                                 <th>No. HP</th>
-                                <!--<th>Email</th>-->
+                                <th>Email</th>
                                 <th><i class="fas fa-sitemap"></i></th>
                             </tr>
                         </thead>
@@ -35,7 +35,7 @@
                                     <td><?= date('d/m/Y', strtotime($detail['tgl_gabung'])); ?></td>
                                     <td><?= ucwords($detail['nama_lengkap']); ?></td>
                                     <td><?= $detail['nohp']; ?></td>
-                                    <!--<td><?= $detail['email']; ?></td>-->
+                                    <td><?= strtolower($detail['email']); ?></td>
                                     <td>
                                         <!--
                                         <a href="<?= base_url() . "index.php/member/profil_anggota/$detail[idted]"; ?>" class="btn btn-primary btn-sm" title="Lihat Profil" role="button"><i class="fas fa-user"></i></a>
