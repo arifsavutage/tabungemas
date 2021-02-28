@@ -6,6 +6,7 @@ class Register extends CI_Controller
     function __construct()
     {
         parent::__construct();
+
         $this->load->model('model_tedagt');
         $this->load->model('model_jaringan');
         $this->load->model('model_verifikasi');
