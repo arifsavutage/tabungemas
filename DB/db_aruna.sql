@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Feb 2021 pada 13.27
+-- Waktu pembuatan: 04 Mar 2021 pada 14.38
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.0
 
@@ -324,11 +324,11 @@ CREATE TABLE `tb_bonus` (
 --
 
 INSERT INTO `tb_bonus` (`id`, `registrasi`, `referal`, `royalti`, `royalti_target`, `gram_pokok`, `selisih_jual`, `selisih_beli`, `by_adm_master`) VALUES
-(1, 200000, 15000, 10000, 10, 1, 0, 40000, 10000),
-(2, 179000, 4500, 9000, 15, 0, 0, 0, 0),
-(3, 21000, 3000, 6000, 20, 0, 0, 0, 0),
-(4, 0, 2500, 5000, 30, 0, 0, 0, 0),
-(5, 0, 1500, 4000, 25, 0, 0, 0, 0),
+(1, 200000, 15000, 5000, 3, 1, 0, 40000, 10000),
+(2, 179000, 4500, 7000, 7, 0, 0, 0, 0),
+(3, 21000, 3000, 8000, 9, 0, 0, 0, 0),
+(4, 0, 2500, 0, 0, 0, 0, 0, 0),
+(5, 0, 1500, 0, 0, 0, 0, 0, 0),
 (6, 0, 1000, 0, 0, 0, 0, 0, 0),
 (7, 0, 500, 0, 0, 0, 0, 0, 0),
 (8, 0, 500, 0, 0, 0, 0, 0, 0),
@@ -3849,7 +3849,9 @@ INSERT INTO `tb_user_menu` (`id`, `title`, `url`, `icon`, `parent_menu`, `is_act
 (52, 'Menu Wallet', '#', 'fas_fa-wallet', 0, 1),
 (53, 'Menu Premium', '#', 'fas_fa-medal', 0, 1),
 (54, 'Hadiah Reward Poin', 'pengaturan/hadiah_reward_poin', '', 12, 1),
-(55, 'Menu Reward', 'member/reward', '', 53, 1);
+(55, 'Menu Reward', 'member/reward', '', 53, 1),
+(56, 'Informasi lain', '#', 'fas_fa-info-circle', 0, 1),
+(58, 'Tentang Rewards', 'member/tentang_reward', '', 56, 1);
 
 -- --------------------------------------------------------
 
@@ -3886,7 +3888,8 @@ INSERT INTO `tb_user_menu_access` (`id`, `role_id`, `menu_id`) VALUES
 (16, 5, 51),
 (17, 3, 52),
 (18, 3, 53),
-(19, 4, 52);
+(19, 4, 52),
+(20, 3, 56);
 
 -- --------------------------------------------------------
 
@@ -5126,13 +5129,13 @@ ALTER TABLE `tb_user_dashboard`
 -- AUTO_INCREMENT untuk tabel `tb_user_menu`
 --
 ALTER TABLE `tb_user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user_menu_access`
 --
 ALTER TABLE `tb_user_menu_access`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user_role`

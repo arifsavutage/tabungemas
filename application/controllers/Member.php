@@ -38,6 +38,16 @@ class Member extends CI_Controller
         $this->load->view('dashboard', $data);
     }
 
+    public function tentang_reward()
+    {
+        $data = [
+            'reward' => $this->model_uang->getAll(),
+            'page' => 'pages/member/info_reward',
+        ];
+
+        $this->load->view('dashboard', $data);
+    }
+
     public function delRegistration($id = null)
     {
         if ($id == null) {
