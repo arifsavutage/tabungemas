@@ -5,6 +5,11 @@ class Model_payout extends CI_Model
 {
     private $_table = "tb_payout";
 
+    public function save($data)
+    {
+        $this->db->insert($this->_table, $data);
+    }
+
     public function getAll()
     {
         $this->db->order_by('id', 'ASC');
@@ -25,5 +30,11 @@ class Model_payout extends CI_Model
     {
         $this->db->where_in('id', $array);
         return $this->db->get($this->_table)->result_array();
+    }
+
+    public function delete($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete($this->_table);
     }
 }

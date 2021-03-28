@@ -139,7 +139,7 @@ class Register extends CI_Controller
             $hargaemasbarucuy = $inemas - $vselisih['selisih_beli'];
 
             //perhitungan simpanan wajib berbentuk gramasi emas
-            $emaspokok = $nomvar['registrasi'] / $hargaemasbarucuy;
+            /*$emaspokok = $nomvar['registrasi'] / $hargaemasbarucuy;
 
             $dt_trans   = [
                 'tgl'   => date('Y-m-d'),
@@ -148,6 +148,17 @@ class Register extends CI_Controller
                 'masuk' => number_format($emaspokok, 4, '.', ''),
                 'keluar' => 0,
                 'saldo' => number_format($emaspokok, 4, '.', ''),
+                'jenis' => 'emas'
+            ];*/
+
+            //perubahan member baru tidak dapat emas mengendap sebagai simp pokok & wajib
+            $dt_trans   = [
+                'tgl'   => date('Y-m-d'),
+                'idted' => "$newid",
+                'uraian' => "emas awal",
+                'masuk' => 0,
+                'keluar' => 0,
+                'saldo' => 0,
                 'jenis' => 'emas'
             ];
 

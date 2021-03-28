@@ -727,7 +727,7 @@ class Member extends CI_Controller
 
             $data = [
                 'mylevel'   => $detailjaringan['pos_level'],
-                'bonusreferal' => $this->model_jaringan->potensiBonusReferal($id, $detailjaringan['pos_jar']),
+                'bonusreferal' => $this->model_jaringan->potensiBonusPoin($id, $detailjaringan['pos_jar']),
                 'bonuspoin' => $this->model_jaringan->potensiBonusPoin($id, $detailjaringan['pos_jar']),
                 'reward'   => $this->model_payout->getById(2),
                 'detail'   => $this->model_tedagt->getAccountById($id),

@@ -2171,6 +2171,55 @@ class Transaksi extends CI_Controller
         $this->load->view('dashboard', $data);
     }
 
+    public function add_payout()
+    {
+        $post_data = [
+            'nama_payout'   => $this->input->post('nama'),
+            'nominal'       => $this->input->post('nominal')
+        ];
+
+        $this->model_payout->save($post_data);
+
+        //penghitungan biaya registrasi keanggotaan
+        $pays = $this->model_payout->getAll();
+
+        $premium    = 0;
+        $basic      = 0;
+        foreach ($pays as $pay) {
+            $premium += $pay['nominal'];
+
+            if ($pay['id'] == 9 || $pay['id'] == 10) {
+                $basic += $pay['nominal'];
+            }
+        }
+
+        //update nominal registrasi premium
+        $nom_premium = [
+            'id'    => 1,
+            'registrasi' => $premium
+        ];
+
+        $this->model_uang->update($nom_premium);
+
+        //update nominal registrasi basic
+        $nom_basic = [
+            'id'    => 3,
+            'registrasi' => $basic
+        ];
+
+        $this->model_uang->update($nom_basic);
+
+        $this->session->set_flashdata('info', '
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+            <h4>SUCCESS: </h4> Tambah payout berhasil ...
+        </div>');
+
+        redirect(base_url() . 'index.php/transaksi/view_payout');
+    }
+
     public function edit_payout($id = null)
     {
 
@@ -2236,6 +2285,55 @@ class Transaksi extends CI_Controller
 
             //echo $this->db->last_query();
             $this->load->view('dashboard', $data);
+        }
+    }
+
+    public function hapus_payout($id = null)
+    {
+        if ($id == null) {
+            redirect(base_url());
+        } else {
+            //hapus
+            $this->model_payout->delete($id);
+
+            //penghitungan biaya registrasi keanggotaan
+            $pays = $this->model_payout->getAll();
+
+            $premium    = 0;
+            $basic      = 0;
+            foreach ($pays as $pay) {
+                $premium += $pay['nominal'];
+
+                if ($pay['id'] == 9 || $pay['id'] == 10) {
+                    $basic += $pay['nominal'];
+                }
+            }
+
+            //update nominal registrasi premium
+            $nom_premium = [
+                'id'    => 1,
+                'registrasi' => $premium
+            ];
+
+            $this->model_uang->update($nom_premium);
+
+            //update nominal registrasi basic
+            $nom_basic = [
+                'id'    => 3,
+                'registrasi' => $basic
+            ];
+
+            $this->model_uang->update($nom_basic);
+
+            $this->session->set_flashdata('info', '
+            <div class="alert alert-success" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4>SUCCESS: </h4> Update berhasil ...
+            </div>');
+
+            redirect(base_url() . 'index.php/transaksi/view_payout');
         }
     }
 
