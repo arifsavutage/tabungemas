@@ -27,7 +27,10 @@
             endif;
             ?>
             <h2 class="sr-only">Login Form</h2>
-            <div class="illustration"><i class="icon ion-ios-navigate"></i></div>
+            <div class="illustration">
+                <!--<i class="icon ion-ios-navigate"></i>-->
+                <img class="img-fluid" width="90" src="<?= base_url('assets/images/logo-190x190.png') ?>" />
+            </div>
             <div class="form-group">
                 <input class="form-control" type="email" name="email" value="<?= set_value('email'); ?>" placeholder="Email">
                 <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>

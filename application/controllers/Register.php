@@ -370,7 +370,7 @@ class Register extends CI_Controller
                 }
             }
         } else {
-            $this->load->view('pages/register');
+            $this->load->view('pages/register-new');
         }
     }
 
