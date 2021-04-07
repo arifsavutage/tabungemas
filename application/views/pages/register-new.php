@@ -34,7 +34,7 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <form name="register" method="post" action="">
+                        <form name="register" method="post" action="" target="_parent">
                             <?php
                             if ($this->session->userdata('refid') != null) {
                                 $refid  = $this->session->userdata('refid');

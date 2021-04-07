@@ -31,7 +31,7 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <form name="login" method="post" action="<?= base_url() . "index.php/auth" ?>">
+                        <form name="login" method="post" action="<?= base_url() . "index.php/auth" ?>" target="_parent">
                             <div class="form-group"><label>Email</label><input class="form-control" name="email" value="<?= set_value('email'); ?>" type="text" placeholder="Masukkan email"></div>
                             <div class="form-group" id="show_hide_password"><label>Password</label><input class="form-control" name="password" type="password" placeholder="Masukkan password"></div>
                             <div class="form-group form-check">
