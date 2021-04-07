@@ -165,4 +165,117 @@ class Pengaturan extends CI_Controller
             $this->load->view('dashboard', $data);
         }
     }
+
+    public function biaya_cetak($page = null, $id = null)
+    {
+        $this->load->model('Model_biayacetak');
+        if ($page == null) {
+            $data = [
+                'biaya' => $this->Model_biayacetak->getAll(),
+                'page'  => 'pages/admin/biaya_cetak_list'
+            ];
+
+            $this->load->view('dashboard', $data);
+        } else {
+            switch ($page) {
+                case 'add':
+
+                    $this->form_validation->set_rules('jml_gram', 'Jumlah Gram', 'trim|required');
+                    $this->form_validation->set_rules('biaya', 'Biaya Cetak', 'trim|required');
+
+                    $this->form_validation->set_message('required', 'tidak boleh kosong');
+
+                    if ($this->form_validation->run()) {
+                        $gram   = $this->input->post('jml_gram');
+                        $biaya  = $this->input->post('biaya');
+                        $ket    = $this->input->post('ket');
+
+                        $data_in = [
+                            'jml_gram'  => $gram,
+                            'biaya' => $biaya,
+                            'ket' => $ket
+                        ];
+
+                        $this->Model_biayacetak->save($data_in);
+
+                        $this->session->set_flashdata('info', ' <div class="alert alert-success" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4>SUCCESS: </h4> Tambah biaya cetak berhasil ...
+                        </div>');
+
+                        redirect(base_url('index.php/pengaturan/biaya_cetak'));
+                    }
+
+                    $data = [
+                        'title' => 'Tambah Biaya Cetak',
+                        'idx'   => set_value('idx'),
+                        'jml_gram' => set_value('jml_gram'),
+                        'biaya' => set_value('biaya'),
+                        'ket' => set_value('ket'),
+                        'page'  => 'pages/admin/biaya_cetak_form'
+                    ];
+
+                    $this->load->view('dashboard', $data);
+                    break;
+                case 'edit':
+                    if ($id == null) {
+                        $this->session->set_flashdata('info', ' <div class="alert alert-warning" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4>WARNING: </h4> Data tidak ditemukan ...
+                        </div>');
+
+                        redirect(base_url('index.php/pengaturan/biaya_cetak'));
+                    } else {
+
+                        $this->form_validation->set_rules('jml_gram', 'Jumlah Gram', 'trim|required');
+                        $this->form_validation->set_rules('biaya', 'Biaya Cetak', 'trim|required');
+
+                        $this->form_validation->set_message('required', 'tidak boleh kosong');
+
+                        if ($this->form_validation->run()) {
+                            $id     = $this->input->post('idx');
+                            $gram   = $this->input->post('jml_gram');
+                            $biaya  = $this->input->post('biaya');
+                            $ket    = $this->input->post('ket');
+
+                            $data_up = [
+                                'jml_gram'  => $gram,
+                                'biaya' => $biaya,
+                                'ket' => $ket
+                            ];
+
+                            $this->Model_biayacetak->update($id, $data_up);
+
+                            $this->session->set_flashdata('info', ' <div class="alert alert-success" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4>SUCCESS: </h4> Ubah biaya cetak berhasil ...
+                        </div>');
+
+                            redirect(base_url('index.php/pengaturan/biaya_cetak'));
+                        }
+
+                        $detail = $this->Model_biayacetak->get_by_id($id);
+                        //print_r(var_dump($detail));
+                        $data = [
+                            'title' => 'Ubah Biaya Cetak',
+                            'idx'   => set_value('idx', $detail->idx),
+                            'jml_gram' => set_value('jml_gram', $detail->jml_gram),
+                            'biaya' => set_value('biaya', $detail->biaya),
+                            'ket' => set_value('ket', $detail->ket),
+                            'page'  => 'pages/admin/biaya_cetak_form'
+                        ];
+
+                        $this->load->view('dashboard', $data);
+                    }
+
+                    break;
+            }
+        }
+    }
 }

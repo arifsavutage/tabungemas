@@ -32,16 +32,18 @@
                                     <tr>
                                         <th>Gram</th>
                                         <th>Biaya</th>
+                                        <th>Keterangan</th>
                                         <th>Pilih</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                     foreach ($biaya as $row) :
-                                        ?>
+                                    ?>
                                         <tr>
                                             <td><?= $row['jml_gram']; ?></td>
                                             <td><?= number_format($row['biaya'], 0, ',', '.'); ?></td>
+                                            <td><?= ucwords(strtolower($row['ket'])); ?></td>
                                             <td>
                                                 <input type="radio" name="pilih" value="<?= $row['biaya'] . "-" . $row['jml_gram']; ?>" required />
                                             </td>

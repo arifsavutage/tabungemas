@@ -731,6 +731,7 @@ class Transaksi extends CI_Controller
     public function tarik_fisik_emas($id = null)
     {
         $id = $this->session->userdata('id');
+
         if ($id == null) {
             redirect(base_url());
         } else {
@@ -751,7 +752,7 @@ class Transaksi extends CI_Controller
 
                 $jml = $saldo -  $xpilih[1];
 
-                if (($$xpilih[1] > $saldo) || ($jml < $pokok)) {
+                if (($xpilih[1] > $saldo) || ($jml < $pokok)) {
                     $this->session->set_flashdata('info', '<div class="alert alert-warning" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">×</span>
@@ -762,17 +763,39 @@ class Transaksi extends CI_Controller
                     redirect(base_url() . 'index.php/transaksi/tarik_fisik_emas/' . $id);
                 } else {
 
+                    /**
+                     * pajak tanpa kirim NPWP 0,9%
+                     * pajak dengan kirim NPWP 0,4%
+                     * cetak = ((harga + biaya cetak) x gram)+pajak+materai
+                     */
+
+                    $harga_emas = $this->model_emas->getLastUpdate();
+                    $xhrg_beli  = explode(',', $harga_emas['HRG_BELI']);
+                    $nhrg_beli  = implode("", $xhrg_beli);
+                    $by_admin   = $this->model_uang->getValueById(1);
+                    $by_cetak   = ((($nhrg_beli - $by_admin['selisih_beli']) + $xpilih[0]) * $xpilih[1]);
+                    //$by_cetak   = $xpilih[0] * $xpilih[1];
+                    $by_cetak_k = $by_cetak + (0.009 * $by_cetak) + 12000 + $by_admin['by_adm_master'];
+
+                    /*
+                    echo "hrg beli = $nhrg_beli <br />";
+                    echo "$by_cetak + " . (0.009 * $by_cetak) . " + 12000 + " . $by_admin['by_adm_master'];
+                    */
+
                     $data = [
                         'idted' => $idted,
                         'ket' => $ket,
-                        'nominal_uang' => $xpilih[0],
+                        'nominal_uang' => $by_cetak_k,
                         'nominal_gram' => $xpilih[1],
                         'status' => $status
                     ];
                     $this->model_history->save($data);
 
-                    $data['bank'] = $this->model_bank->getAll();
+                    $data['banks'] = $this->model_bank->getAll();
+
                     $anggota = $this->model_tedagt->getAccountById($id);
+                    $data['nama'] = ucwords(strtolower($anggota['nama_lengkap']));
+
                     //kirim ke email
                     $to      = $anggota['email'];
                     $subject = "Invoice Tarik Fisik";
@@ -780,6 +803,7 @@ class Transaksi extends CI_Controller
                     $attach  = "";
 
                     $this->_sendmail($to, $subject, $message, $attach);
+                    //echo $message;
 
                     $this->session->set_flashdata('info', '<div class="alert alert-success" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">

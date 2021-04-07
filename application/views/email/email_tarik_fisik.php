@@ -26,7 +26,7 @@
                             <h3 style="color:#5f1d80;border-bottom: thin solid #cccccc;border-collapse: collapse;padding-bottom:30px;">Hallo, <?= $nama; ?></h3>
 
                             <p style="margin-bottom:50px;color:#6e6e6e;">Anggota Tabung Emas Yth,
-                                Silahkan transfer tarik fisik emas sebesar <strong>Rp. <?= number_format($nominal_uang, 0, ',', '.'); ?></strong> ke nomor rekening yang tertera di bawah untuk penarikan fisik sebesar <strong> <?= $nominal_gram; ?> gram</strong>,
+                                Silahkan transfer biaya tarik fisik emas sebesar <strong>Rp. <?= number_format($nominal_uang, 0, ',', '.'); ?></strong> ke nomor rekening yang tertera di bawah untuk penarikan fisik sebesar <strong> <?= $nominal_gram; ?> gram</strong>,
                                 dan konfirmasi pembayaran Anda dengan mengirimkan bukti transfer ke <strong>billing@tabungemas.com</strong> dengan mengisi subjek email dengan <strong>Konfirmasi tarik fisik emas [no_id_Anda]</strong>.
                             </p>
 
@@ -40,13 +40,17 @@
                                     <th>No. Rek</th>
                                     <th>An.</th>
                                 </tr>
-
-                                <tr>
-                                    <th><?= $bank['nm_bank']; ?></th>
-                                    <th><?= $bank['norek']; ?></th>
-                                    <th><?= $bank['an']; ?></th>
-                                </tr>
-
+                                <?php
+                                foreach ($banks as $bank) :
+                                ?>
+                                    <tr>
+                                        <th><?= $bank['nm_bank']; ?></th>
+                                        <th><?= $bank['norek']; ?></th>
+                                        <th><?= $bank['an']; ?></th>
+                                    </tr>
+                                <?php
+                                endforeach;
+                                ?>
                             </table>
 
                             <p style="margin-top:65px;color:#6e6e6e;">
