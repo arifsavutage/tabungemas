@@ -5,7 +5,7 @@
                 <h3><?= $title ?></h3>
             </div>
             <div class="card-body">
-                <form name="addbiayacetak" action="" method="post">
+                <form name="addbiayacetak" action="<?= base_url($action) ?>" method="post">
                     <div class="form-group">
                         <label>Jumlah Gram <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" name="jml_gram" value="<?= $jml_gram ?>" />
@@ -26,7 +26,7 @@
                     <input type="hidden" name="idx" value="<?= $idx ?>" />
 
                     <div class="form-group">
-                        <a href="<?= base_url('index.php/pengaturan/hadiah_reward_poin'); ?>" class="btn btn-secondary">Batal</a>
+                        <a href="<?= base_url('index.php/pengaturan/biaya_cetak/'); ?>" class="btn btn-secondary">Batal</a>
                         <button class="btn btn-primary" type="submit">Simpan</button>
                     </div>
                 </form>

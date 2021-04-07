@@ -7,6 +7,7 @@ class Pengaturan extends CI_Controller
     {
         parent::__construct();
         $this->load->model('model_bank');
+        $this->load->model('Model_biayacetak');
 
         not_login();
     }
@@ -168,7 +169,6 @@ class Pengaturan extends CI_Controller
 
     public function biaya_cetak($page = null, $id = null)
     {
-        $this->load->model('Model_biayacetak');
         if ($page == null) {
             $data = [
                 'biaya' => $this->Model_biayacetak->getAll(),
@@ -179,36 +179,8 @@ class Pengaturan extends CI_Controller
         } else {
             switch ($page) {
                 case 'add':
-
-                    $this->form_validation->set_rules('jml_gram', 'Jumlah Gram', 'trim|required');
-                    $this->form_validation->set_rules('biaya', 'Biaya Cetak', 'trim|required');
-
-                    $this->form_validation->set_message('required', 'tidak boleh kosong');
-
-                    if ($this->form_validation->run()) {
-                        $gram   = $this->input->post('jml_gram');
-                        $biaya  = $this->input->post('biaya');
-                        $ket    = $this->input->post('ket');
-
-                        $data_in = [
-                            'jml_gram'  => $gram,
-                            'biaya' => $biaya,
-                            'ket' => $ket
-                        ];
-
-                        $this->Model_biayacetak->save($data_in);
-
-                        $this->session->set_flashdata('info', ' <div class="alert alert-success" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                            <h4>SUCCESS: </h4> Tambah biaya cetak berhasil ...
-                        </div>');
-
-                        redirect(base_url('index.php/pengaturan/biaya_cetak'));
-                    }
-
                     $data = [
+                        'action' => 'index.php/pengaturan/biaya_cetak_add',
                         'title' => 'Tambah Biaya Cetak',
                         'idx'   => set_value('idx'),
                         'jml_gram' => set_value('jml_gram'),
@@ -230,39 +202,10 @@ class Pengaturan extends CI_Controller
 
                         redirect(base_url('index.php/pengaturan/biaya_cetak'));
                     } else {
-
-                        $this->form_validation->set_rules('jml_gram', 'Jumlah Gram', 'trim|required');
-                        $this->form_validation->set_rules('biaya', 'Biaya Cetak', 'trim|required');
-
-                        $this->form_validation->set_message('required', 'tidak boleh kosong');
-
-                        if ($this->form_validation->run()) {
-                            $id     = $this->input->post('idx');
-                            $gram   = $this->input->post('jml_gram');
-                            $biaya  = $this->input->post('biaya');
-                            $ket    = $this->input->post('ket');
-
-                            $data_up = [
-                                'jml_gram'  => $gram,
-                                'biaya' => $biaya,
-                                'ket' => $ket
-                            ];
-
-                            $this->Model_biayacetak->update($id, $data_up);
-
-                            $this->session->set_flashdata('info', ' <div class="alert alert-success" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                            <h4>SUCCESS: </h4> Ubah biaya cetak berhasil ...
-                        </div>');
-
-                            redirect(base_url('index.php/pengaturan/biaya_cetak'));
-                        }
-
                         $detail = $this->Model_biayacetak->get_by_id($id);
                         //print_r(var_dump($detail));
                         $data = [
+                            'action' => 'index.php/pengaturan/biaya_cetak_edit',
                             'title' => 'Ubah Biaya Cetak',
                             'idx'   => set_value('idx', $detail->idx),
                             'jml_gram' => set_value('jml_gram', $detail->jml_gram),
@@ -276,6 +219,69 @@ class Pengaturan extends CI_Controller
 
                     break;
             }
+        }
+    }
+
+    public function biaya_cetak_add()
+    {
+        $this->form_validation->set_rules('jml_gram', 'Jumlah Gram', 'trim|required');
+        $this->form_validation->set_rules('biaya', 'Biaya Cetak', 'trim|required');
+
+        $this->form_validation->set_message('required', 'tidak boleh kosong');
+
+        if ($this->form_validation->run()) {
+            $gram   = $this->input->post('jml_gram');
+            $biaya  = $this->input->post('biaya');
+            $ket    = $this->input->post('ket');
+
+            $data_in = [
+                'jml_gram'  => $gram,
+                'biaya' => $biaya,
+                'ket' => $ket
+            ];
+
+            $this->Model_biayacetak->save($data_in);
+
+            $this->session->set_flashdata('info', ' <div class="alert alert-success" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4>SUCCESS: </h4> Tambah biaya cetak berhasil ...
+            </div>');
+
+            redirect(base_url('index.php/pengaturan/biaya_cetak'));
+        }
+    }
+
+    public function biaya_cetak_edit()
+    {
+        $this->form_validation->set_rules('jml_gram', 'Jumlah Gram', 'trim|required');
+        $this->form_validation->set_rules('biaya', 'Biaya Cetak', 'trim|required');
+
+        $this->form_validation->set_message('required', 'tidak boleh kosong');
+
+        if ($this->form_validation->run()) {
+            $id     = $this->input->post('idx');
+            $gram   = $this->input->post('jml_gram');
+            $biaya  = $this->input->post('biaya');
+            $ket    = $this->input->post('ket');
+
+            $data_up = [
+                'jml_gram'  => $gram,
+                'biaya' => $biaya,
+                'ket' => $ket
+            ];
+
+            $this->Model_biayacetak->update($id, $data_up);
+
+            $this->session->set_flashdata('info', ' <div class="alert alert-success" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4>SUCCESS: </h4> Ubah biaya cetak berhasil ...
+            </div>');
+
+            redirect(base_url('index.php/pengaturan/biaya_cetak'));
         }
     }
 }

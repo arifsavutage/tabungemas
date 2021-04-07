@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 07 Apr 2021 pada 17.07
+-- Waktu pembuatan: 07 Apr 2021 pada 21.43
 -- Versi server: 10.3.28-MariaDB
 -- Versi PHP: 7.3.27
 
@@ -298,23 +298,24 @@ INSERT INTO `tb_bank` (`id`, `nm_bank`, `norek`, `an`) VALUES
 CREATE TABLE `tb_biaya_cetak` (
   `idx` int(11) NOT NULL,
   `jml_gram` int(11) NOT NULL,
-  `biaya` int(11) NOT NULL
+  `biaya` int(11) NOT NULL,
+  `ket` varchar(200) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tb_biaya_cetak`
 --
 
-INSERT INTO `tb_biaya_cetak` (`idx`, `jml_gram`, `biaya`) VALUES
-(1, 1, 41750),
-(2, 2, 38250),
-(3, 3, 35000),
-(4, 4, 33000),
-(5, 5, 31750),
-(6, 10, 27250),
-(7, 25, 21000),
-(8, 50, 18000),
-(9, 100, 17000);
+INSERT INTO `tb_biaya_cetak` (`idx`, `jml_gram`, `biaya`, `ket`) VALUES
+(1, 1, 51750, 'UBS'),
+(2, 2, 48250, 'UBS'),
+(3, 3, 45000, 'UBS'),
+(4, 4, 43000, 'UBS'),
+(5, 5, 41750, 'UBS'),
+(6, 10, 37250, 'UBS'),
+(7, 25, 31000, 'UBS'),
+(8, 50, 28000, 'UBS'),
+(9, 100, 27000, 'UBS');
 
 -- --------------------------------------------------------
 
