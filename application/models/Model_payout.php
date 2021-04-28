@@ -37,4 +37,10 @@ class Model_payout extends CI_Model
         $this->db->where('id', $id);
         $this->db->delete($this->_table);
     }
+
+    public function get_where_in($str_arr)
+    {
+        $this->db->where_in('id', $str_arr);
+        return $this->db->get($this->_table)->result();
+    }
 }

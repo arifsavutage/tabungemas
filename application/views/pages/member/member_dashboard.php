@@ -124,6 +124,28 @@
                         }
                         ?>
                         <?php
+                        //Ambil info Reward
+                        $idagt = $this->session->userdata('id');
+                        $this->db->where('idagt', $idagt);
+                        $this->db->where('is_widraw', 0);
+                        $data_reaward = $this->db->get('pendapatan_bonus')->row();
+                        if ($data_reaward != null) {
+                            $total_reward = $data_reaward->bon_referal + $data_reaward->bon_royalti;
+                        ?>
+                            <div class="row">
+                                <div class="col-xs-4 col-md-6 col-lg-6 col-xl-6">
+                                    <div class="card-box noradius noborder bg-danger">
+                                        <i class="fa fa-money float-right text-white"></i>
+                                        <h6 class="text-white text-uppercase m-b-20">Info Reward Periode <?= date('M Y', strtotime($data_reaward->periode)) ?></h6>
+                                        <h1 class="m-b-20 text-white counter">Rp. <?= number_format($total_reward, 0, ',', '.'); ?></h1>
+                                        <a href="" class="btn btn-sm btn-warning mt-3">Pindah Ke Wallet</a>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php
+                        }
+
+
                         foreach ($jual_id as $rowid) :
                             $totalbyr = $rowid['nominal_gram'] * $rowid['nominal_uang'];
                         ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 07 Apr 2021 pada 21.43
+-- Waktu pembuatan: 28 Apr 2021 pada 13.17
 -- Versi server: 10.3.28-MariaDB
 -- Versi PHP: 7.3.27
 
@@ -45,6 +45,63 @@ INSERT INTO `api_user` (`id`, `email`, `api_key`, `hit`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `pendapatan_bonus`
+--
+
+CREATE TABLE `pendapatan_bonus` (
+  `id` int(11) NOT NULL,
+  `periode` date NOT NULL,
+  `idagt` varchar(8) NOT NULL,
+  `bon_referal` int(11) NOT NULL,
+  `bon_royalti` int(11) NOT NULL,
+  `is_widraw` int(1) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `pendapatan_bonus`
+--
+
+INSERT INTO `pendapatan_bonus` (`id`, `periode`, `idagt`, `bon_referal`, `bon_royalti`, `is_widraw`) VALUES
+(1, '2021-04-28', '01.00001', 359000, 147778, 0),
+(2, '2021-04-28', '01.00002', 447500, 0, 0),
+(3, '2021-04-28', '01.00003', 1021500, 3325000, 0),
+(4, '2021-04-28', '01.00004', 136500, 147778, 0),
+(5, '2021-04-28', '01.00005', 33000, 0, 0),
+(6, '2021-04-28', '01.00006', 60000, 147778, 0),
+(7, '2021-04-28', '01.00007', 193500, 0, 0),
+(8, '2021-04-28', '01.00009', 135000, 147778, 0),
+(9, '2021-04-28', '01.00010', 97500, 147778, 0),
+(10, '2021-04-28', '01.00011', 15000, 0, 0),
+(11, '2021-04-28', '01.00013', 24000, 0, 0),
+(12, '2021-04-28', '01.00016', 279000, 1995000, 0),
+(13, '2021-04-28', '01.00025', 15000, 0, 0),
+(14, '2021-04-28', '01.00026', 54000, 147778, 0),
+(15, '2021-04-28', '01.00027', 30000, 0, 0),
+(16, '2021-04-28', '01.00034', 15000, 0, 0),
+(17, '2021-04-28', '01.00036', 15000, 0, 0),
+(18, '2021-04-28', '01.00042', 15000, 0, 0),
+(19, '2021-04-28', '01.00050', 15000, 0, 0),
+(20, '2021-04-28', '01.00052', 15000, 0, 0),
+(21, '2021-04-28', '01.00053', 30000, 0, 0),
+(22, '2021-04-28', '01.00054', 19500, 0, 0),
+(23, '2021-04-28', '01.00055', 15000, 0, 0),
+(24, '2021-04-28', '01.00064', 129000, 147778, 0),
+(25, '2021-04-28', '01.00067', 45000, 147778, 0),
+(26, '2021-04-28', '01.00073', 54000, 147778, 0),
+(27, '2021-04-28', '01.00075', 15000, 0, 0),
+(28, '2021-04-28', '01.00084', 15000, 0, 0),
+(29, '2021-04-28', '01.00089', 15000, 0, 0),
+(30, '2021-04-28', '01.00093', 30000, 0, 0),
+(31, '2021-04-28', '01.00104', 15000, 0, 0),
+(32, '2021-04-28', '01.00108', 30000, 0, 0),
+(33, '2021-04-28', '01.00117', 15000, 0, 0),
+(34, '2021-04-28', '01.00119', 19500, 0, 0),
+(35, '2021-04-28', '01.00121', 15000, 0, 0),
+(36, '2021-04-28', '01.00132', 30000, 0, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tb_agt_koperasi`
 --
 
@@ -72,6 +129,19 @@ CREATE TABLE `tb_agt_koperasi` (
   `email` varchar(200) NOT NULL,
   `foto` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_agt_paket`
+--
+
+CREATE TABLE `tb_agt_paket` (
+  `id` int(11) NOT NULL,
+  `nama_paket` varchar(100) NOT NULL,
+  `payout_id` longtext NOT NULL,
+  `is_active` int(1) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -108,19 +178,19 @@ CREATE TABLE `tb_agt_ted` (
 --
 
 INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `noktp`, `nohp`, `alamat`, `email`, `password`, `role_id`, `scan_ktp`, `scan_npwp`, `norek`, `bank`, `an`, `foto_profil`, `jenis`, `aktif`, `nmwaris`, `ktpwaris`, `hubwaris`, `hpwaris`) VALUES
-('01.00001', '2019-10-28', 'Susiloningsih 1', '', '081327479067', 'koperasi mmas', 'info@tabungemas.com', '$2y$10$hB9tnstKdUyRzYNB.1BLG.ebZagjf/Yvo4KUt3RaKEsGGcUf0SunC', 3, 'noimage.jpg', 'noimage.jpg', '12312388857', 'BCA', 'koperasi mmas', '01_00001.png', 'agen', 1, '', '', '', ''),
+('01.00001', '2019-10-28', 'Susiloningsih 1', '', '081327479067', 'koperasi mmas', 'info@tabungemas.com', '$2y$10$M/Y3u5gHRgK/uhdvqdra0.kTFWGG29FJBRrYXPDLcHT/WqJFsyUji', 3, 'noimage.jpg', 'noimage.jpg', '12312388857', 'BCA', 'koperasi mmas', '01_00001.png', 'agen', 1, '', '', '', ''),
 ('01.00002', '2019-11-05', 'Purnomo', '', '0812524426', '', 'ciptoted@tabungemas.com', '$2y$10$6DxFsdIch.NTEpDIeuQFMOqiV4GGqbMdYApfZlZ.0.0JCXhmN7Yfm', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'agen', 1, '', '', '', ''),
 ('01.00003', '2019-11-05', 'Susiloningsih', '', '082136368828', 'Jl kanfer raya P-1', 'kopikukopika@gmail.com', '$2y$10$cAaU.F7VzfoYKTNJyNfG5OUEEAM1JhMKYVrlr6rQSHPXr4kMAP6T.', 3, 'ktp_01_00003.jpg', 'npwp_01_00003.jpg', '8030517131', 'BCA', 'susiloningsih', '01_00003.jpg', 'agen', 1, 'sumarni', '', 'ortu', '+62 822-4216-9246'),
-('01.00004', '2019-11-05', 'Cipto Purnomo', '', '081225230626', 'Jl truntum VI no 11 Tlogosari kulon pedurungan semarang', 'ciptopurnomo@tabungemas.com', '$2y$10$ITr2hGKEcpKGhklx0i96Je1Jiw7l9.PtjDoyX/fgIaPpiLvvfhxYC', 3, 'noimage.jpg', 'noimage.jpg', '0094680561', 'BCA', 'Cipto purnomo', 'noimage.jpg', 'agen', 1, 'rasendria fico purnomo', '', 'anak', '082228101815'),
+('01.00004', '2019-11-05', 'Cipto Purnomo', '', '081225230626', 'Jl truntum VI no 11 Tlogosari kulon pedurungan semarang', 'ciptopurnomo@tabungemas.com', '$2y$10$y03ujYQgg.A3psWc7vBU2eeYgxgFVsxRnuGE/iEEHTfqLU3ywyxm2', 3, 'noimage.jpg', 'noimage.jpg', '0094680561', 'BCA', 'Cipto purnomo', 'noimage.jpg', 'agen', 1, 'rasendria fico purnomo', '', 'anak', '082228101815'),
 ('01.00005', '2019-11-05', 'Ariandaru Kusuma Yudha', '', '08112888470', '', 'kog434@gmail.com', '$2y$10$5.xTy9I9FNrQbL/pcquw7Ohch95yyBJ15smAAHkdQcrlr.KsrQLA6', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'agen', 1, '', '', '', ''),
 ('01.00006', '2019-11-05', 'Muhammad Irfan Muammar', '', '082127055238', 'Jl pangeran panjunan rt1/rw1 desa Cisaat kecamatan Dukupuntang kabupaten Cirebon', 'irfanmuammar007@gmail.com', '$2y$10$h.mIK.JBj5B9RCyBAzN9C.XT0HMBCCrMWo4sKhe10akouejlcB9mm', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', '01_00006.jpg', 'agen', 1, '', '', '', ''),
-('01.00007', '2019-11-05', 'Dwi Sunu Raharjo', '', '085866139850', 'Jomblang legok rt 05 rw 02 semarang 50256', 'sunjoxang@gmail.com', '$2y$10$WNm2C8U2hwQzKySAvrSzD..cB6wwQqq8kDMk/L4422FYOVugtuqlC', 3, 'noimage.jpg', 'noimage.jpg', '111001002375536', 'Bank Rakyat Indonesia BRI', 'Dwi sunu raharjo', '01_00007.jpg', 'agen', 1, '', '', '', ''),
+('01.00007', '2019-11-05', 'Dwi Sunu Raharjo', '', '085866139850', 'Jomblang legok rt 05 rw 02 semarang 50256', 'sunjoxang@gmail.com', '$2y$10$fDMYCWhx6nfX..7JUd3Yj.7owBuXo1dVHqpmjihQf2zCOppR9vB1W', 3, 'noimage.jpg', 'noimage.jpg', '111001002375536', 'Bank Rakyat Indonesia BRI', 'Dwi sunu raharjo', '01_00007.jpg', 'agen', 1, '', '', '', ''),
 ('01.00008', '2019-11-05', 'Eko Nur Prasetyo, Spt. Msi', '', '085727611329', 'Tegalsari barat 3 rt 01 rw 11 no 11', 'ekonurprasetyo1984@gmail.com', '$2y$10$hV6X2hJZTS/b/K1sINy92eB118PMkCh5NhjtQ9OrsI7PF0mevWZrO', 3, 'noimage.jpg', 'noimage.jpg', '303201021584536', 'BRI', 'Eko nur prasetyo', 'noimage.jpg', 'agen', 1, 'nafila adelina putri prasetyo', '', 'anak', '087834777465'),
 ('01.00009', '2019-11-05', 'Yayan Supardi', '', '081325123353', 'Slukatan RT 07/ RW 02', 'yayansupardi46@gmail.com', '$2y$10$YcHqODIqfKEPAR5ft.rjBuxhkouFu0FdJug.eTTObm/sNsm.ZarYa', 3, 'noimage.jpg', 'noimage.jpg', '8030322925', 'BCA', '', '01_00009.jpg', 'agen', 1, '', '', '', ''),
 ('01.00010', '2019-11-05', 'Sudarto', '', '085747410593', 'jl kradenan lama no 7 RT 08 RW 05 Kelurahan Sukorejo Kecamatan Gunungpati Semarang', 'sudartosw@gmail.com', '$2y$10$CH2eYl2j98pxhBSCAXTff.oldpRTes0wzvJNLd9cBCSnPIzn130oC', 3, 'noimage.jpg', 'noimage.jpg', '2465191960', 'BCA', '', 'noimage.jpg', 'agen', 1, '', '', '', ''),
 ('01.00011', '2019-11-05', 'Ummy Mubarokah', '', '081325469975', 'Jalan Pemotongan no.1245 Salatiga ', 'ummyrobaei@yahoo.com', '$2y$10$5hgNcGga7G3islwWJF5q4O0023mukbssefEwuTQjOOZBdqYbYBgEO', 3, 'noimage.jpg', 'noimage.jpg', '0130639798', 'BCA ', 'Ummy Mubarokah', '01_00011.jpg', 'agen', 1, 'haydar salam jaffar robaei', '', 'anak', '0821-9948-7341'),
 ('01.00012', '2019-11-06', 'Thoriq Diaz Pahlevi Daeng Matarane', '', '085799448908', '', 'thoriqdiaz07@gmail.com', '$2y$10$d0WYOlqAc07qfrj2bmzB.eJM6BDMWRsy4TUO9p.AK2270/s9jiC3q', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
-('01.00013', '2019-11-10', 'Fatmasari', '', '081325374500', '', 'fsari.chani@gmail.com', '$2y$10$ZID/5ylgGg4/wb9WKrzUj.Hs1/6fjeyTSorOFsDeRjL4nv4kkP.u.', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'agen', 1, '', '', '', ''),
+('01.00013', '2019-11-10', 'Fatmasari', '', '081325374500', '', 'fsari.chani@gmail.com', '$2y$10$5tBHjmYZPeJr3SyyKv25suxD1UaEIEA5mnwkOGdQmH16sUAJU4XD6', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'agen', 1, '', '', '', ''),
 ('01.00014', '2019-11-11', 'Arief Nurcahyo', '', '081355236115', '', 'riefrief1135@gmail.com', '$2y$10$P2I0JSbQwVmP1LaZxWWX2u9SiG8nxWUQvhVmMIMqdHyoNrVm9BrE.', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'agen', 1, '', '', '', ''),
 ('01.00015', '2019-11-11', 'Juniar Arif Wicaksono', '', '081390559997', 'Dusun Gentan Lor Rt. 04 Rw. 03, Kec. Boja, Kab. Kendal', 'arifsavutage@gmail.com', '$2y$10$ca0pp55yIoQa7ktPaU20nOlApQit2dmHalQkGlaL1bX/ZYB6k/bZO', 3, 'noimage.jpg', 'noimage.jpg', '333 222 111 22', 'Bank Toyib', 'Juniar Arif Wicaksono', '01_00015.jpg', 'agen', 1, 'dian ayu afriyanti', '', 'istri', '08512345678'),
 ('01.00016', '2019-11-13', 'Sri Rahayu Puji Astuti', '', '082134707576', '', 'hildasabrinadyra@gmail.com', '$2y$10$jHNtzJehQgYiuF9Khk6mxOVIlbjADZADRZDuunbeaL/v6nPshbsWi', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'agen', 1, '', '', '', ''),
@@ -135,7 +205,7 @@ INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `noktp`, `nohp`
 ('01.00025', '2019-12-05', 'Amelia Nadia Rahma', '', '082230854065', 'Kradenan Lama Rt 8 Rw 5, Sukorejo, Gunungpati, Semarang', 'amelianadiar@gmail.com', '$2y$10$K7iM9pRUnseeTLGOdBVXleU.j5m82ulkJhOC2r97iuGbBVlyCexJC', 3, 'noimage.jpg', 'noimage.jpg', '3021211841', 'Bank Jateng', 'Amelia Nadia Rahma', 'noimage.jpg', 'agen', 1, 'tri nurdyastuti', '', 'ortu', '082230854065'),
 ('01.00026', '2019-12-06', 'Hilda Sabrina Dyra Permata Hatti Mama', '', '0895396248408', '', 'hildasabrinadyra@gmail.com', '$2y$10$K9PXNd9Qdt5J.QrD4guKWua5v1DDwuLhmAD/5BE9iDSIBdlhiuB/u', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00027', '2019-12-08', 'Sri Susanti', '', '085101995521', 'Jl. Arumanis Barat No. 17 Semarang', 'srisusantihasta@gmail.com', '$2y$10$zebC05vZXCM2AmlvrGZGU.0Wd1Yrc7itUE.jaNCELy1kuxFOG4Yey', 3, 'noimage.jpg', 'noimage.jpg', '1360016448059', 'Mandiri', 'ANDRE WIRADIKUSUMA', 'noimage.jpg', 'agen', 1, 'andre', 'xxxxxxxxxxxxxxxxxx', 'anak', 'xxxxxxxxxxxxxxxxx'),
-('01.00028', '2019-12-08', 'Ari Wuryantini', '', '081326627170', 'demaan  rt  01  rw  07   jepara', 'kosbuwarto@gmail.com', '$2y$10$YPDNuMz8U1snE3Z68/v5r.BQQUZB8sDgRJLLAYYmCyR3KIo0tB4t.', 3, 'noimage.jpg', 'noimage.jpg', ' 3405  -   01-    016327 -  53 -  8', 'BRI', 'Ari  wuryantini  ', 'noimage.jpg', 'basic', 1, 'xxxxxxxxxxx', 'xxxxxxxxxxxxxxxxxx', 'anak', 'xxxxxxxxxxxxxxxxx'),
+('01.00028', '2019-12-08', 'Ari Wuryantini', '', '081326627170', 'demaan  rt  01  rw  07   jepara', 'kosbuwarto@gmail.com', '$2y$10$eiXP4WyPr7zNgMrng1ND.e2yLap/ZWg8ZuCb/n5a1B9SgksmOcqai', 3, 'noimage.jpg', 'noimage.jpg', ' 3405  -   01-    016327 -  53 -  8', 'BRI', 'Ari  wuryantini  ', 'noimage.jpg', 'basic', 1, 'xxxxxxxxxxx', 'xxxxxxxxxxxxxxxxxx', 'anak', 'xxxxxxxxxxxxxxxxx'),
 ('01.00029', '2019-12-09', 'Kukuh Saryanto', '', '089658970103', '', 'kukuhsaryanto2105@gmail.com', '$2y$10$hfbtMoz/6Q9sbvOV8SxF9u95Q7083xnE42Jzigb8jy547uckpNpbO', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00030', '2019-12-16', 'Susila Widodo B.Sc', '', '081220007663', '', 'denbagussusilo4@gmail.com', '$2y$10$Slc.vh8k.fYb9cWlH6ctIOPriQNBXPmRd/z44KQ43.cwLZ.BHJMhK', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00031', '2019-12-19', 'Arwani', '', '082244083915', 'Jl. Mangga dalam no. 16C, RT/RW 06/02, Srondol Wetan, Banyumanik, Semarang ', 'arwani0709@gmail.com', '$2y$10$ZQvQLQ5kaCvJe1XinQoNuetEhVh83by9k0UpJxRB.eGUfw9DdnO2a', 3, 'noimage.jpg', 'noimage.jpg', '0095345617', 'BCA', '', 'noimage.jpg', 'agen', 1, '', '', '', ''),
@@ -180,13 +250,13 @@ INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `noktp`, `nohp`
 ('01.00070', '2020-07-29', 'Dini Andriani', '', '085226252490', '', 'Dandriani54@gmail.com', '$2y$10$pfdVxrT0jSdiEpUPRLfHQO1MiQ6ViWN.qpty.qZVlqLrc1WJLthYy', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00071', '2020-08-03', 'Adyatma Gusti Pandya', '3374120702000002', '081575012844', 'Kradenan lama no 7', 'adyatmagp@gmail.com', '$2y$10$PM14rZ1Gdic0r4iEdSTBFebP9mVzkZL/MaQMLJJ5hx6YZXCS3SAji', 3, 'noimage.jpg', 'noimage.jpg', '0728242081', 'BNI', 'Adyatma Gusti Pandya', 'noimage.jpg', 'basic', 1, 'tri nurdyastuti', '', 'ortu', '081575012844'),
 ('01.00072', '2020-08-04', 'Ida Susana', '3373044410640001', '081325922899', 'Jl Suropati no 528 togaten RT 04 RW 05', 'susanaida1964@gmail.com', '$2y$10$lihSTLdUJNokeqWeo3HpKehD8a3BEYDX08Z80cFKDwroQJUB2qHg.', 3, 'noimage.jpg', 'noimage.jpg', '0747460049', 'BNI', 'Ida susana', 'noimage.jpg', 'basic', 1, 'haris indrapratama', '', 'anak', '08112900488'),
-('01.00073', '2020-08-05', 'Fajar Marantika Wahyuningtyas', '33740654078850003', '081229533263', 'Singojayan RT 01/RW 01, Tingkir Tengah, Tingkir, Salatiga', 'marantika8185@gmail.com', '$2y$10$dP2Chn/267s3IE8xvov2t.akvHjilL5ZFELr5GbwTBKych79HuB7O', 3, 'noimage.jpg', 'noimage.jpg', '0131293975', 'BCA', 'Fajar Marantika Wahyuningtyas', '01_00073.jpg', 'basic', 1, 'nimas ayu regina larasati', '111111111111', 'anak', '+62 812-2948-3238'),
+('01.00073', '2020-08-05', 'Fajar Marantika Wahyuningtyas', '33740654078850003', '081229533263', 'Singojayan RT 01/RW 01, Tingkir Tengah, Tingkir, Salatiga', 'marantika8185@gmail.com', '$2y$10$Udqh8PmHzGBvlAhIcOyMH.LPG33CquoTK5O6M1Exi37Jk8xXGzxCC', 3, 'noimage.jpg', 'noimage.jpg', '0131293975', 'BCA', 'Fajar Marantika Wahyuningtyas', '01_00073.jpg', 'basic', 1, 'nimas ayu regina larasati', '111111111111', 'anak', '+62 812-2948-3238'),
 ('01.00074', '2020-08-05', 'Sudjarwoko', '3374061212590007', '085702891905', 'Kawung 2 no. 49, Tlogosari, Pedurungan, Semarang', 'masraja8185@gmail.com', '$2y$10$0W67PYZzxWqoSPY1U31VU.7OxAMhIbnfmZdOHzs7y7Ec5gdy5NuJO', 4, 'noimage.jpg', 'noimage.jpg', '3057002947', 'Bank Jateng', 'Sudjarwoko', 'noimage.jpg', 'basic', 1, 'andin widyatmoko', 'xxxxxxxxxxxxxxxxxx', 'anak', '085866939988'),
 ('01.00075', '2020-08-08', 'SALEkTAH', '3374085206780002', '088221149278', 'Jl tandang selatan no 26\r\nRT 3 RW 10\r\nKelurahan Jomblang\r\nKecamatan candisari\r\nSemarang\r\n', 'quelsalekta2014@gmail.com', '$2y$10$qvJP.WuMRReh6.C6zf2pWu2j.NF8UtrbHm7HL9o1Pmq.62IQMW526', 4, 'noimage.jpg', 'noimage.jpg', '111001004381533', 'BRI', 'SALEkTAH', 'noimage.jpg', 'basic', 1, 'aisyah angelika ', '', 'anak', '+62 895-4151-12715'),
 ('01.00076', '2020-08-12', 'Intarti', '3374114204770007', '081229094484', 'Karangrejo V gang 5C no 8', 'wrkopitumbas@gmail.com', '$2y$10$tM4XmTCQX4Cqyuz6QDitZOipbMIno7GGJ58BjgmSzUsLu8PniGXJe', 4, 'noimage.jpg', 'noimage.jpg', '8030432232', 'BCA', 'Intarti', 'noimage.jpg', 'basic', 1, 'putri', '', 'anak', '0895422571079'),
 ('01.00077', '2020-08-17', 'EMHA SAIFUL MUJAB', '3306163011770005', '085228827622', '', 'emha5758oke@gmail.com', '$2y$10$BZLFXs38v/S1kudynveUiOdNuRe0K8cdVzSXwZcHbC0iGQRxzbSDy', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00078', '2020-08-18', 'Aulia Nur', '3374105611860003', '085294778830', '', 'aulia.ainaz@gmail.com', '$2y$10$p6rpQLyKRIoaIkG8G6DvCuzdG6GntnKdneHFeQzBjmbAm3z73.gyy', 4, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
-('01.00079', '2020-08-20', 'Dewi Febri Rusdiantika', '3573014202900003', '081215708300', '', 'rusdiantika90@gmail.com', '$2y$10$c7Ho2LfQgbh9HSlrO3BRyOiEsAk15YaYaWupSvIppvd.GUf27FQ06', 4, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
+('01.00079', '2020-08-20', 'Dewi Febri Rusdiantika', '3573014202900003', '081215708300', '', 'rusdiantika90@gmail.com', '$2y$10$amkjBxukGjXUg/0eHs5VZ.MWXkkF.0HGFlZYywa0d9m9/c7NW57uS', 4, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00080', '2020-08-20', 'EMI WARDATI, S.E.', '3471085205620001', '082231847089', 'suryodiningratan mj2/773 rt 39 rw 11 suryodiningratan mantrijeron yogjakarta', 'emi.wardati@gmail.com', '$2y$10$NlK1NvrznXe1.byCl80TRO/V.ex4kZffzt4P.NCSBzZNBKEjRx6Ta', 4, 'noimage.jpg', 'noimage.jpg', '0124458187', 'BNI', 'Emi W qq Muh Farras Alfitra ', 'noimage.jpg', 'basic', 1, 'muhammad farras alfitra ', '111111111', 'anak', '081393726795'),
 ('01.00081', '2020-08-22', 'SUPRIYONO', '3371011803580003', '085868086488', 'perum tuk songo blok c-5/78 cacaban magelang tengah', 'yono78204@gmail.com', '$2y$10$7YBy8s.RCAbvIgFxXuC2buxRMbsS87vu68vDBTlotOXSXbhIicSE.', 3, 'noimage.jpg', 'noimage.jpg', '308001022315539', 'BRI', 'supriyono', 'noimage.jpg', 'basic', 1, 'widya adri utami', 'xxxxxxxxxxxx', 'anak', '085642060604'),
 ('01.00082', '2020-08-22', 'Suprihati', '3373016507840002', '085866709264', 'Jl,raya blotongan rt3 rw4 salatiga ', 'cakrawati99@gmail.com', '$2y$10$Ag97e4r42dVYxUjWIs3UkeCB4A.3knUzel5k3ObDNXWU83id8iNh6', 3, 'noimage.jpg', 'noimage.jpg', '603901015159538', 'BRI', 'Suprihati', 'noimage.jpg', 'basic', 1, 'nur santi cakrawati', '', 'anak', '085727420459'),
@@ -205,13 +275,13 @@ INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `noktp`, `nohp`
 ('01.00095', '2020-09-12', 'Roy Siegfried', '3374012901020001', '081329276426', '', 'victoriayahut69@gmail.com', '$2y$10$S.28VHm..V/b64M68eO9VO7pttj6ShQF6sdkc10IVN3NrcngZJ/Da', 4, 'noimage.jpg', 'noimage.jpg', '7830489015', 'BCA', 'Roy Siegfried', 'noimage.jpg', 'basic', 1, 'roy siegfried', '', 'saudara', '081329276426'),
 ('01.00096', '2020-09-12', 'Ryan Adhyatma', '3322180402900001', '081371819161', '', 'adhyatma.ryan21@gmail.com', '$2y$10$UWeVgkR9v.uLYGWsz8MigeAWLNjlD0JdpLngjA/Y998c9HFQp3bKK', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00097', '2020-09-14', 'Heru Wahyono', '3374131008750006', '085740536475', '', 'herupenxy1@gmail.com', '$2y$10$CfzavSnzaW.zIV2AO12UZes9wzFXAZLxhJ8sbrowX0fcMsgExwMSK', 4, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
-('01.00098', '2020-09-17', 'AGUNG WIDIASTRO', '3515082910800003', '+12107809363', '', 'agungwidiastro80@gmail.com', '$2y$10$ph9CBdUEPQIxtrKuRBJNCOwwCSZxutnjqx5gkF38mvcOAV1IU1aEm', 3, 'ktp_01_00098.jpg', 'noimage.jpg', '', '', '', '01_00098.jpg', 'basic', 1, '', '', '', ''),
+('01.00098', '2020-09-17', 'AGUNG WIDIASTRO', '3515082910800003', '+12628652704', '', 'agungwidiastro80@gmail.com', '$2y$10$ph9CBdUEPQIxtrKuRBJNCOwwCSZxutnjqx5gkF38mvcOAV1IU1aEm', 3, 'ktp_01_00098.jpg', 'noimage.jpg', '', '', '', '01_00098.jpg', 'basic', 1, 'agung widiastro', '111111111', 'anak', '+12628652704'),
 ('01.00099', '2020-09-19', 'Purwadi', '6201020808710003', '081351844986', '', 'ud.rizqibarokah@gmail.com', '$2y$10$aj7WaupAXlJ9zJCsoZQN4eJxQfzqGgZ90doaxr3nmkJPTTYQDe1L.', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00100', '2020-09-27', 'WORO ENDANG SRI RAHAYU', '3374114610690004', '08112990610', '', 'woroendang1@gmail.com', '$2y$10$OgMOf3o0eaiJkbpSHNZnO.h9HFNao6uMN1tjCxih4vIWDsrGaWWxy', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00101', '2020-09-28', 'Ninik Muryanti', '3310024210820001', '08157797694', '', 'ninikmuryanti63@gmail.com', '$2y$10$cy9gsechjCCYVOcmnLJJqujQaDO.qi.cy2YkTzP0Sf77dB5anBF1m', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00102', '2020-09-28', 'Suharni', '3374114908680004', '08122857251', '', 'harnirda@gmail.com', '$2y$10$Lyye9hH/0MjaHubmHqZx1.05wlvMBtkNzm2oxZCLelNoFnXyuSEJy', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00103', '2020-10-10', 'PITAR RIA BRILIYANTI', '3374115710820002', '081228572525', '', 'Pitarria@gmail.com', '$2y$10$MH2S2uM.oqWuC3528g6biey7YmhnCB15LJvkuLPMzpjmVnueBKxSK', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
-('01.00104', '2020-10-15', 'INFIJARUN NI\'AM', '3321011907910003', '081226072828', '', 'niaminfijarun@gmail.com', '$2y$10$jXeXSdKts7cuzWhAdyM85e8gdnZSsuydVW6cWQTBIpPIdX5JU1Zcu', 3, 'ktp_01_00104.jpg', 'noimage.jpg', '', '', '', '01_00104.jpg', 'basic', 1, '', '', '', ''),
+('01.00104', '2020-10-15', 'INFIJARUN NI\'AM', '3321011907910003', '081226072828', '', 'niaminfijarun@gmail.com', '$2y$10$BkSOjZX5/28hpDbBPkCip.HoMfqLeV9Bidem77twalOMKq.o.8Uyq', 3, 'ktp_01_00104.jpg', 'noimage.jpg', '', '', '', '01_00104.jpg', 'basic', 1, '', '', '', ''),
 ('01.00105', '2020-11-29', 'R.A. RENI ANGGRAHENI, SH', '3374066710680002', '082134889663', '', 'Renyanggraheni70@gmail.com', '$2y$10$uPT6ovfCWSovLIdhfgwiX.IGbHFyOw/ayBrvFHgdPUTyAWBhMvhiu', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00106', '2020-11-29', 'Nunung Fitriani ', '3374116803790002', '081393129965', '', 'kokonik992@gmail.com', '$2y$10$oO1u.K0WTcDUplf2FVAxvet8aLQ2LCXVD6.cjaHo8UCC9Fcg0Yi0S', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00107', '2020-11-30', 'Anindita Neng Puspa Dwi Ayuningrum', '3373025405970001', '08886851948', 'Jl. Kantil Sari No. 26 RT 03/02 karangduwet Salatiga', 'aninditaneng97@gmail.com', '$2y$10$5LybVnw0uJMqtVl7m2egD.f0DnBgqYpa10HpPrcYsMUmPMFkB6H.6', 3, 'noimage.jpg', 'noimage.jpg', '0843783286', 'BNI Syariah', 'Anindita Neng Puspa Dwi Ayuningrum', '01_00107.jpeg', 'basic', 1, 'moh. agung budiarta', '', 'anak', '085759061131'),
@@ -237,7 +307,11 @@ INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `noktp`, `nohp`
 ('01.00127', '2021-03-16', 'MAMAT RAHMAT', '3322182403730001', '+6281226136799', '', 'royrahmat03@gmail.com', '$2y$10$yr2GbmMkEH/PEBfbfagtJ.xwN6GLR5kvVkV7NK.65tYmVBw0cfjlS', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
 ('01.00128', '2021-03-22', 'Fajar Alfauzan', '6408040106990003', '082352757781', '', 'fajaralfauzan169@gmail.com', '$2y$10$XDhPcEfSEx6mU8c9lj4n7uQZW3r4LBZ1FWKYJYVNjZakH4VYUUOKa', 3, 'ktp_01_00128.png', 'noimage.jpg', '', '', '', '01_00128.jpg', 'basic', 1, '', '', '', ''),
 ('01.00129', '2021-03-23', 'Bram Ardhiantoro', '3374112905890001', '085334656561', '', 'bramtrevis@ymail.com', '$2y$10$r/JdklzlJzY3CHWATtI2bu3K9jheh.RJAwO8vz48NKSB2I2U09tQu', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
-('01.00130', '2021-03-31', 'Gerosima Fridolin Rizky Widya Santosa', '3374084503920003', '085725699542', '', 'gerosimafrws@gmail.com', '$2y$10$ZW4qIQkrZt96NnjW5BXjOOvegbRt34ZBcg552MhOvCL9uh32DR6WS', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', '');
+('01.00130', '2021-03-31', 'Gerosima Fridolin Rizky Widya Santosa', '3374084503920003', '085725699542', '', 'gerosimafrws@gmail.com', '$2y$10$ZW4qIQkrZt96NnjW5BXjOOvegbRt34ZBcg552MhOvCL9uh32DR6WS', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
+('01.00131', '2021-04-18', 'DARIYAH', '3321015708810006', '085842645699', '', 'fazayitno81@g.mail.com', '$2y$10$I001qRHGx5FU6dV1N5bmK.BT8I0E4BhfUPWex.cfbSWclBMVfL0su', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', ''),
+('01.00132', '2021-04-27', 'Njoo Boen Hoa Novita Irawati', '3374036511740002', '+6282225938475', 'Jl murti maya p 274', 'pru.novitairawati@gmail.com', '$2y$10$KS.YuQZiYu48ORFBeIclK.pUPrcsvr.wq6wUTFnGZjMEcHQ3yOD6q', 3, 'noimage.jpg', 'noimage.jpg', '2465223683', 'BCA', 'Njoo Boen Hoa Novita Irawati', 'noimage.jpg', 'basic', 1, 'bernadus axel putera susanto', '', 'anak', '+6282225938475'),
+('01.00133', '2021-04-27', 'EVA DWIYÀNTI', '3374076501780003', '083108167999 ', 'Pondok bukit Agung blok O no 14 sumur boto Semarang ', 'evadwiyanti.com@gmail.com', '$2y$10$mTSBhH8xokIRBCccLTUCZuerIMGOCm8F6LVppqo1rHzVIddFrkWv.', 3, 'noimage.jpg', 'noimage.jpg', '2520236859 ', 'Bca ', 'Eva Dwiyanti ', 'noimage.jpg', 'basic', 1, '0', '', 'anak', '083108167999 '),
+('01.00134', '2021-04-27', 'Bernadet Martini', '3374086202670004', '081390879211', '', 'titinbernadeth@yahoo.com', '$2y$10$BASyFqcQSFiRCmILBeUc8.tFeCtn1P2x5dMspbD9MRyZ0f/4iTEMm', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 'basic', 1, '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -266,7 +340,8 @@ CREATE TABLE `tb_agt_tmp` (
 
 INSERT INTO `tb_agt_tmp` (`idtmp`, `tgl_daftar`, `nm_tmp`, `role_id`, `nohp_tmp`, `email_tmp`, `ktp_tmp`, `password_tmp`, `idreferal`, `nominal`, `konfirm_status`, `token`) VALUES
 (17, '2021-01-16', 'NUR ROFIQ', 3, '081215602684', 'syarofiq24@gmail.com', '3323072303010002', '$2y$10$FLalMlrC6Q7nvywVBIf1LeSifBs6XTqtc6VlSHQieV.wPtssBxGWe', '01.00003', 200132, 0, 'm47tyWiVKZEoRh5G'),
-(18, '2021-02-16', 'aldy pratama', 3, '089377388220', 'doangfb@gmail.com', '0892233244498777', '$2y$10$xCsJ1KJUMDKUoYN.j/92ruSCLehmswWQG8Kk6sp/ZIOZ41BIrNZMi', '01.00003', 200332, 0, 'nBJZ1sA40bOWDcKU');
+(18, '2021-02-16', 'aldy pratama', 3, '089377388220', 'doangfb@gmail.com', '0892233244498777', '$2y$10$xCsJ1KJUMDKUoYN.j/92ruSCLehmswWQG8Kk6sp/ZIOZ41BIrNZMi', '01.00003', 200332, 0, 'nBJZ1sA40bOWDcKU'),
+(30, '2021-04-27', 'Eko Susanto', 3, '08562833478', 'Ekosusanto3434@gmail.com', '3374060602710002', '$2y$10$LPjJUQtfAWpFQ1GYV1Qa3eZLCMd812fxs486OEu1WTop7yrQGACjK', '01.00133', 200331, 0, 'rFYwaDiqV7ykETjc');
 
 -- --------------------------------------------------------
 
@@ -315,7 +390,14 @@ INSERT INTO `tb_biaya_cetak` (`idx`, `jml_gram`, `biaya`, `ket`) VALUES
 (6, 10, 37250, 'UBS'),
 (7, 25, 31000, 'UBS'),
 (8, 50, 28000, 'UBS'),
-(9, 100, 27000, 'UBS');
+(9, 100, 27000, 'UBS'),
+(10, 0, 1977000, 'UBS Premium 0.1'),
+(11, 0, 1222000, 'UBS Premium 0.2'),
+(12, 1, 759000, 'UBS Premium 0.5'),
+(13, 1, 502000, 'UBS Premium 1'),
+(14, 2, 91250, 'UBS Premium 2'),
+(15, 5, 77850, 'UBS Premium 5'),
+(16, 10, 72250, 'UBS Premium 10');
 
 -- --------------------------------------------------------
 
@@ -586,7 +668,12 @@ INSERT INTO `tb_history` (`idx`, `tgl`, `idted`, `tujuan_jual`, `ket`, `nominal_
 (131, '2021-02-19 03:48:17', '01.00065', 'TED', 'jual emas ', 696000, 0.87, 0),
 (132, '2021-03-08 12:58:59', '01.00055', 'TED', 'jual emas ', 791722, 1.006, 0),
 (133, '2021-04-07 02:27:24', '01.00027', 'TED', 'jual emas ', 809000, 1, 0),
-(134, '2021-04-07 02:30:29', '01.00027', 'TED', 'jual emas ', 687650, 0.85, 0);
+(134, '2021-04-07 02:30:29', '01.00027', 'TED', 'jual emas ', 687650, 0.85, 0),
+(135, '2021-04-12 13:24:55', '01.00129', '', 'pembelian emas ', 22500, 0.026, 1),
+(136, '2021-04-14 04:21:30', '01.00007', '', 'pembelian emas ', 27000, 0.031, 1),
+(137, '2021-04-17 04:21:38', '01.00104', '', 'pembelian emas ', 10000, 0.011, 0),
+(138, '2021-04-17 12:58:49', '01.00003', '', 'pembelian emas ', 10000, 0.011, 1),
+(139, '2021-04-27 05:20:44', '01.00028', 'TED', 'jual emas ', 1164800, 1.4, 0);
 
 -- --------------------------------------------------------
 
@@ -613,135 +700,139 @@ CREATE TABLE `tb_jaringan` (
 
 INSERT INTO `tb_jaringan` (`id`, `idagt`, `idreferal`, `idupline`, `jml_downline`, `pos_jar`, `pos_level`, `tgl_proses`, `referal_status`, `poin_status`) VALUES
 (1, '01.00001', '0', '0', 3, '1', 1, '2019-10-28', 1, 1),
-(2, '01.00002', '01.00001', '01.00001', 1, '1.1', 2, '0000-00-00', 0, 0),
-(3, '01.00003', '01.00002', '01.00002', 47, '1.1.1', 3, '0000-00-00', 0, 0),
-(4, '01.00004', '01.00003', '01.00003', 7, '1.1.1.1', 4, '0000-00-00', 1, 0),
-(5, '01.00005', '01.00004', '01.00004', 1, '1.1.1.1.1', 5, '0000-00-00', 1, 0),
-(6, '01.00006', '01.00005', '01.00005', 4, '1.1.1.1.1.1', 6, '0000-00-00', 1, 0),
-(7, '01.00007', '01.00003', '01.00003', 1, '1.1.1.2', 4, '0000-00-00', 1, 0),
-(8, '01.00008', '01.00007', '01.00007', 0, '1.1.1.2.1', 5, '0000-00-00', 1, 0),
-(9, '01.00009', '01.00003', '01.00003', 6, '1.1.1.3', 4, '0000-00-00', 1, 0),
-(10, '01.00010', '01.00003', '01.00003', 5, '1.1.1.4', 4, '0000-00-00', 1, 0),
-(11, '01.00011', '01.00003', '01.00003', 1, '1.1.1.5', 4, '0000-00-00', 1, 0),
-(12, '01.00012', '01.00011', '01.00011', 0, '1.1.1.5.1', 5, '0000-00-00', 1, 0),
-(13, '01.00013', '01.00003', '01.00003', 0, '1.1.1.6', 4, '0000-00-00', 1, 0),
-(14, '01.00014', '01.00003', '01.00003', 0, '1.1.1.7', 4, '0000-00-00', 1, 0),
-(15, '01.00015', '01.00001', '01.00001', 0, '1.2', 2, '0000-00-00', 0, 0),
-(16, '01.00016', '01.00003', '01.00003', 14, '1.1.1.8', 4, '0000-00-00', 1, 0),
-(17, '01.00017', '01.00004', '01.00004', 0, '1.1.1.1.2', 5, '0000-00-00', 1, 0),
-(18, '01.00018', '01.00003', '01.00003', 0, '1.1.1.9', 4, '0000-00-00', 1, 0),
-(19, '01.00019', '01.00006', '01.00006', 0, '1.1.1.1.1.1.1', 7, '0000-00-00', 1, 0),
-(20, '01.00020', '01.00006', '01.00006', 0, '1.1.1.1.1.1.2', 7, '0000-00-00', 1, 0),
-(21, '01.00021', '01.00006', '01.00006', 0, '1.1.1.1.1.1.3', 7, '0000-00-00', 1, 0),
-(22, '01.00022', '01.00006', '01.00006', 0, '1.1.1.1.1.1.4', 7, '0000-00-00', 1, 0),
-(23, '01.00023', '01.00001', '01.00001', 0, '1.3', 2, '0000-00-00', 0, 0),
-(24, '01.00024', '01.00016', '01.00016', 0, '1.1.1.8.1', 5, '0000-00-00', 1, 0),
-(25, '01.00025', '01.00010', '01.00010', 1, '1.1.1.4.1', 5, '0000-00-00', 1, 0),
-(26, '01.00026', '01.00016', '01.00016', 3, '1.1.1.8.2', 5, '0000-00-00', 1, 0),
-(27, '01.00027', '01.00010', '01.00010', 2, '1.1.1.4.2', 5, '0000-00-00', 1, 0),
-(28, '01.00028', '01.00010', '01.00010', 0, '1.1.1.4.3', 5, '0000-00-00', 1, 0),
-(29, '01.00029', '01.00003', '01.00003', 0, '1.1.1.10', 4, '0000-00-00', 1, 0),
-(30, '01.00030', '01.00016', '01.00016', 0, '1.1.1.8.3', 5, '0000-00-00', 1, 0),
-(31, '01.00031', '01.00003', '01.00003', 0, '1.1.1.11', 4, '0000-00-00', 1, 0),
-(32, '01.00032', '01.00016', '01.00016', 0, '1.1.1.8.4', 5, '0000-00-00', 1, 0),
-(33, '01.00033', '01.00003', '01.00003', 0, '1.1.1.12', 4, '0000-00-00', 1, 0),
-(34, '01.00034', '01.00026', '01.00026', 1, '1.1.1.8.2.1', 6, '0000-00-00', 1, 0),
-(35, '01.00035', '01.00003', '01.00003', 0, '1.1.1.13', 4, '0000-00-00', 1, 0),
-(36, '01.00036', '01.00026', '01.00026', 1, '1.1.1.8.2.2', 6, '0000-00-00', 1, 0),
-(37, '01.00037', '01.00026', '01.00026', 0, '1.1.1.8.2.3', 6, '0000-00-00', 1, 0),
-(38, '01.00038', '01.00034', '01.00034', 0, '1.1.1.8.2.1.1', 7, '0000-00-00', 1, 0),
-(39, '01.00039', '01.00036', '01.00036', 0, '1.1.1.8.2.2.1', 7, '0000-00-00', 1, 0),
-(40, '01.00040', '01.00003', '01.00003', 0, '1.1.1.14', 4, '0000-00-00', 1, 0),
-(41, '01.00041', '01.00003', '01.00003', 0, '1.1.1.15', 4, '0000-00-00', 1, 0),
-(42, '01.00042', '01.00003', '01.00003', 1, '1.1.1.16', 4, '0000-00-00', 1, 0),
-(43, '01.00043', '01.00003', '01.00003', 0, '1.1.1.17', 4, '0000-00-00', 1, 0),
-(44, '01.00044', '01.00003', '01.00003', 0, '1.1.1.18', 4, '0000-00-00', 1, 0),
-(45, '01.00045', '01.00003', '01.00003', 0, '1.1.1.19', 4, '0000-00-00', 1, 0),
-(46, '01.00046', '01.00003', '01.00003', 0, '1.1.1.20', 4, '0000-00-00', 1, 0),
-(47, '01.00047', '01.00003', '01.00003', 0, '1.1.1.21', 4, '0000-00-00', 1, 0),
-(48, '01.00048', '01.00003', '01.00003', 0, '1.1.1.22', 4, '0000-00-00', 1, 0),
-(49, '01.00049', '01.00016', '01.00016', 0, '1.1.1.8.5', 5, '0000-00-00', 1, 0),
-(50, '01.00050', '01.00003', '01.00003', 1, '1.1.1.23', 4, '0000-00-00', 1, 0),
-(51, '01.00051', '01.00010', '01.00010', 0, '1.1.1.4.4', 5, '0000-00-00', 1, 0),
-(52, '01.00052', '01.00003', '01.00003', 1, '1.1.1.24', 4, '0000-00-00', 1, 0),
-(53, '01.00053', '01.00010', '01.00010', 2, '1.1.1.4.5', 5, '0000-00-00', 1, 0),
-(54, '01.00054', '01.00003', '01.00003', 1, '1.1.1.25', 4, '0000-00-00', 1, 0),
-(55, '01.00055', '01.00054', '01.00054', 1, '1.1.1.25.1', 5, '0000-00-00', 1, 0),
-(56, '01.00056', '01.00009', '01.00009', 0, '1.1.1.3.1', 5, '0000-00-00', 1, 0),
-(57, '01.00057', '01.00009', '01.00009', 0, '1.1.1.3.2', 5, '0000-00-00', 1, 0),
-(58, '01.00058', '01.00004', '01.00004', 0, '1.1.1.1.3', 5, '0000-00-00', 1, 0),
-(59, '01.00059', '01.00004', '01.00004', 0, '1.1.1.1.4', 5, '0000-00-00', 1, 0),
-(60, '01.00060', '01.00055', '01.00055', 0, '1.1.1.25.1.1', 6, '0000-00-00', 1, 0),
-(61, '01.00061', '01.00004', '01.00004', 0, '1.1.1.1.5', 5, '0000-00-00', 1, 0),
-(62, '01.00062', '01.00027', '01.00027', 0, '1.1.1.4.2.1', 6, '0000-00-00', 1, 0),
-(63, '01.00063', '01.00009', '01.00009', 0, '1.1.1.3.3', 5, '0000-00-00', 1, 0),
-(64, '01.00064', '01.00003', '01.00003', 8, '1.1.1.26', 4, '0000-00-00', 1, 0),
-(65, '01.00065', '01.00027', '01.00027', 0, '1.1.1.4.2.2', 6, '0000-00-00', 1, 0),
-(66, '01.00066', '01.00004', '01.00004', 0, '1.1.1.1.6', 5, '0000-00-00', 1, 0),
-(67, '01.00067', '01.00016', '01.00016', 3, '1.1.1.8.6', 5, '0000-00-00', 1, 0),
-(68, '01.00068', '01.00067', '01.00067', 0, '1.1.1.8.6.1', 6, '0000-00-00', 1, 0),
-(69, '01.00069', '01.00042', '01.00042', 0, '1.1.1.16.1', 5, '0000-00-00', 1, 0),
-(70, '01.00070', '01.00003', '01.00003', 0, '1.1.1.27', 4, '0000-00-00', 1, 0),
-(71, '01.00071', '01.00025', '01.00025', 0, '1.1.1.4.1.1', 6, '0000-00-00', 1, 0),
-(72, '01.00072', '01.00067', '01.00067', 0, '1.1.1.8.6.2', 6, '0000-00-00', 1, 0),
-(73, '01.00073', '01.00016', '01.00016', 3, '1.1.1.8.7', 5, '0000-00-00', 1, 0),
-(74, '01.00074', '01.00073', '01.00073', 0, '1.1.1.8.7.1', 6, '0000-00-00', 1, 0),
-(75, '01.00075', '01.00064', '01.00064', 1, '1.1.1.26.1', 5, '0000-00-00', 1, 0),
-(76, '01.00076', '01.00003', '01.00003', 0, '1.1.1.28', 4, '0000-00-00', 1, 0),
-(77, '01.00077', '01.00003', '01.00003', 0, '1.1.1.29', 4, '0000-00-00', 1, 0),
-(78, '01.00078', '01.00003', '01.00003', 0, '1.1.1.30', 4, '0000-00-00', 1, 0),
-(79, '01.00079', '01.00003', '01.00003', 0, '1.1.1.31', 4, '0000-00-00', 1, 0),
-(80, '01.00080', '01.00053', '01.00053', 0, '1.1.1.4.5.1', 6, '0000-00-00', 1, 0),
-(81, '01.00081', '01.00067', '01.00067', 0, '1.1.1.8.6.3', 6, '0000-00-00', 1, 0),
-(82, '01.00082', '01.00016', '01.00016', 0, '1.1.1.8.8', 5, '0000-00-00', 1, 0),
-(83, '01.00083', '01.00075', '01.00075', 0, '1.1.1.26.1.1', 6, '0000-00-00', 1, 0),
-(84, '01.00084', '01.00073', '01.00073', 1, '1.1.1.8.7.3', 6, '0000-00-00', 1, 0),
-(85, '01.00085', '01.00003', '01.00003', 0, '1.1.1.32', 4, '0000-00-00', 1, 0),
-(86, '01.00086', '01.00064', '01.00064', 0, '1.1.1.26.2', 5, '0000-00-00', 1, 0),
-(87, '01.00087', '01.00004', '01.00004', 0, '1.1.1.1.7', 5, '0000-00-00', 1, 0),
-(88, '01.00088', '01.00064', '01.00064', 0, '1.1.1.26.3', 5, '0000-00-00', 1, 0),
-(89, '01.00089', '01.00073', '01.00073', 1, '1.1.1.8.7.2', 6, '0000-00-00', 1, 0),
-(90, '01.00090', '01.00052', '01.00052', 0, '1.1.1.24.1', 5, '0000-00-00', 1, 0),
-(91, '01.00091', '01.00084', '01.00084', 0, '1.1.1.8.7.3.1', 7, '0000-00-00', 1, 0),
-(92, '01.00092', '01.00089', '01.00089', 0, '1.1.1.8.7.2.1', 7, '0000-00-00', 1, 0),
-(93, '01.00093', '01.00003', '01.00003', 2, '1.1.1.33', 4, '0000-00-00', 1, 0),
-(94, '01.00094', '01.00053', '01.00053', 0, '1.1.1.4.5.2', 6, '0000-00-00', 1, 0),
-(95, '01.00095', '01.00064', '01.00064', 0, '1.1.1.26.4', 5, '0000-00-00', 1, 0),
-(96, '01.00096', '01.00093', '01.00093', 0, '1.1.1.33.1', 5, '0000-00-00', 1, 0),
-(97, '01.00097', '01.00064', '01.00064', 0, '1.1.1.26.5', 5, '0000-00-00', 1, 0),
-(98, '01.00098', '01.00009', '01.00009', 0, '1.1.1.3.4', 5, '0000-00-00', 1, 0),
-(99, '01.00099', '01.00003', '01.00003', 0, '1.1.1.34', 4, '0000-00-00', 1, 0),
-(100, '01.00100', '01.00003', '01.00003', 0, '1.1.1.35', 4, '0000-00-00', 1, 0),
-(101, '01.00101', '01.00003', '01.00003', 0, '1.1.1.36', 4, '0000-00-00', 1, 0),
-(102, '01.00102', '01.00009', '01.00009', 0, '1.1.1.3.5', 5, '0000-00-00', 1, 0),
-(103, '01.00103', '01.00093', '01.00093', 0, '1.1.1.33.2', 5, '0000-00-00', 1, 0),
-(104, '01.00104', '01.00003', '01.00003', 0, '1.1.1.37', 4, '0000-00-00', 1, 0),
-(105, '01.00105', '01.00003', '01.00003', 0, '1.1.1.38', 4, '0000-00-00', 1, 0),
-(106, '01.00106', '01.00009', '01.00009', 0, '1.1.1.3.6', 5, '0000-00-00', 1, 0),
-(107, '01.00107', '01.00016', '01.00016', 0, '1.1.1.8.9', 5, '0000-00-00', 1, 0),
-(108, '01.00108', '01.00016', '01.00016', 2, '1.1.1.8.10', 5, '0000-00-00', 1, 0),
-(109, '01.00109', '01.00108', '01.00108', 0, '1.1.1.8.10.1', 6, '0000-00-00', 1, 0),
-(110, '01.00110', '01.00016', '01.00016', 0, '1.1.1.8.11', 5, '0000-00-00', 1, 0),
-(111, '01.00111', '01.00003', '01.00003', 0, '1.1.1.39', 4, '0000-00-00', 1, 0),
-(112, '01.00112', '01.00016', '01.00016', 0, '1.1.1.8.12', 5, '0000-00-00', 1, 0),
-(113, '01.00113', '01.00064', '01.00064', 0, '1.1.1.26.6', 5, '0000-00-00', 1, 0),
-(114, '01.00114', '01.00003', '01.00003', 0, '1.1.1.40', 4, '0000-00-00', 1, 0),
-(115, '01.00115', '01.00003', '01.00003', 0, '1.1.1.41', 4, '0000-00-00', 1, 0),
-(116, '01.00116', '01.00050', '01.00050', 0, '1.1.1.23.1', 5, '0000-00-00', 1, 0),
-(117, '01.00117', '01.00064', '01.00064', 1, '1.1.1.26.7', 5, '0000-00-00', 1, 0),
-(118, '01.00118', '01.00117', '01.00117', 0, '1.1.1.26.7.1', 6, '0000-00-00', 1, 0),
-(119, '01.00119', '01.00016', '01.00016', 1, '1.1.1.8.13', 5, '0000-00-00', 1, 0),
-(120, '01.00120', '01.00016', '01.00016', 0, '1.1.1.8.14', 5, '0000-00-00', 1, 0),
-(121, '01.00121', '01.00119', '01.00119', 1, '1.1.1.8.13.1', 6, '0000-00-00', 1, 0),
-(122, '01.00122', '01.00121', '01.00121', 0, '1.1.1.8.13.1.1', 7, '0000-00-00', 1, 0),
-(123, '01.00123', '01.00003', '01.00003', 0, '1.1.1.42', 4, '0000-00-00', 1, 0),
-(124, '01.00124', '01.00108', '01.00108', 0, '1.1.1.8.10.2', 6, '0000-00-00', 1, 0),
-(125, '01.00125', '01.00003', '01.00003', 0, '1.1.1.43', 4, '0000-00-00', 0, 0),
-(126, '01.00126', '01.00003', '01.00003', 0, '1.1.1.44', 4, '0000-00-00', 0, 0),
-(127, '01.00127', '01.00003', '01.00003', 0, '1.1.1.45', 4, '0000-00-00', 0, 0),
-(128, '01.00128', '01.00003', '01.00003', 0, '1.1.1.46', 4, '0000-00-00', 0, 0),
-(129, '01.00129', '01.00003', '01.00003', 0, '1.1.1.47', 4, '0000-00-00', 0, 0),
-(130, '01.00130', '01.00064', '01.00064', 0, '1.1.1.26.8', 5, '0000-00-00', 0, 0);
+(2, '01.00002', '01.00001', '01.00001', 1, '1.1', 2, '2021-04-28', 0, 0),
+(3, '01.00003', '01.00002', '01.00002', 47, '1.1.1', 3, '2021-04-28', 0, 0),
+(4, '01.00004', '01.00003', '01.00003', 7, '1.1.1.1', 4, '2021-04-28', 1, 0),
+(5, '01.00005', '01.00004', '01.00004', 1, '1.1.1.1.1', 5, '2021-04-28', 1, 0),
+(6, '01.00006', '01.00005', '01.00005', 4, '1.1.1.1.1.1', 6, '2021-04-28', 1, 0),
+(7, '01.00007', '01.00003', '01.00003', 1, '1.1.1.2', 4, '2021-04-28', 1, 0),
+(8, '01.00008', '01.00007', '01.00007', 0, '1.1.1.2.1', 5, '2021-04-28', 1, 0),
+(9, '01.00009', '01.00003', '01.00003', 6, '1.1.1.3', 4, '2021-04-28', 1, 0),
+(10, '01.00010', '01.00003', '01.00003', 5, '1.1.1.4', 4, '2021-04-28', 1, 0),
+(11, '01.00011', '01.00003', '01.00003', 1, '1.1.1.5', 4, '2021-04-28', 1, 0),
+(12, '01.00012', '01.00011', '01.00011', 0, '1.1.1.5.1', 5, '2021-04-28', 1, 0),
+(13, '01.00013', '01.00003', '01.00003', 1, '1.1.1.6', 4, '2021-04-28', 1, 0),
+(14, '01.00014', '01.00003', '01.00003', 0, '1.1.1.7', 4, '2021-04-28', 1, 0),
+(15, '01.00015', '01.00001', '01.00001', 0, '1.2', 2, '2021-04-28', 0, 0),
+(16, '01.00016', '01.00003', '01.00003', 14, '1.1.1.8', 4, '2021-04-28', 1, 0),
+(17, '01.00017', '01.00004', '01.00004', 0, '1.1.1.1.2', 5, '2021-04-28', 1, 0),
+(18, '01.00018', '01.00003', '01.00003', 0, '1.1.1.9', 4, '2021-04-28', 1, 0),
+(19, '01.00019', '01.00006', '01.00006', 0, '1.1.1.1.1.1.1', 7, '2021-04-28', 1, 0),
+(20, '01.00020', '01.00006', '01.00006', 0, '1.1.1.1.1.1.2', 7, '2021-04-28', 1, 0),
+(21, '01.00021', '01.00006', '01.00006', 0, '1.1.1.1.1.1.3', 7, '2021-04-28', 1, 0),
+(22, '01.00022', '01.00006', '01.00006', 0, '1.1.1.1.1.1.4', 7, '2021-04-28', 1, 0),
+(23, '01.00023', '01.00001', '01.00001', 0, '1.3', 2, '2021-04-28', 0, 0),
+(24, '01.00024', '01.00016', '01.00016', 0, '1.1.1.8.1', 5, '2021-04-28', 1, 0),
+(25, '01.00025', '01.00010', '01.00010', 1, '1.1.1.4.1', 5, '2021-04-28', 1, 0),
+(26, '01.00026', '01.00016', '01.00016', 3, '1.1.1.8.2', 5, '2021-04-28', 1, 0),
+(27, '01.00027', '01.00010', '01.00010', 2, '1.1.1.4.2', 5, '2021-04-28', 1, 0),
+(28, '01.00028', '01.00010', '01.00010', 0, '1.1.1.4.3', 5, '2021-04-28', 1, 0),
+(29, '01.00029', '01.00003', '01.00003', 0, '1.1.1.10', 4, '2021-04-28', 1, 0),
+(30, '01.00030', '01.00016', '01.00016', 0, '1.1.1.8.3', 5, '2021-04-28', 1, 0),
+(31, '01.00031', '01.00003', '01.00003', 0, '1.1.1.11', 4, '2021-04-28', 1, 0),
+(32, '01.00032', '01.00016', '01.00016', 0, '1.1.1.8.4', 5, '2021-04-28', 1, 0),
+(33, '01.00033', '01.00003', '01.00003', 0, '1.1.1.12', 4, '2021-04-28', 1, 0),
+(34, '01.00034', '01.00026', '01.00026', 1, '1.1.1.8.2.1', 6, '2021-04-28', 1, 0),
+(35, '01.00035', '01.00003', '01.00003', 0, '1.1.1.13', 4, '2021-04-28', 1, 0),
+(36, '01.00036', '01.00026', '01.00026', 1, '1.1.1.8.2.2', 6, '2021-04-28', 1, 0),
+(37, '01.00037', '01.00026', '01.00026', 0, '1.1.1.8.2.3', 6, '2021-04-28', 1, 0),
+(38, '01.00038', '01.00034', '01.00034', 0, '1.1.1.8.2.1.1', 7, '2021-04-28', 1, 0),
+(39, '01.00039', '01.00036', '01.00036', 0, '1.1.1.8.2.2.1', 7, '2021-04-28', 1, 0),
+(40, '01.00040', '01.00003', '01.00003', 0, '1.1.1.14', 4, '2021-04-28', 1, 0),
+(41, '01.00041', '01.00003', '01.00003', 0, '1.1.1.15', 4, '2021-04-28', 1, 0),
+(42, '01.00042', '01.00003', '01.00003', 1, '1.1.1.16', 4, '2021-04-28', 1, 0),
+(43, '01.00043', '01.00003', '01.00003', 0, '1.1.1.17', 4, '2021-04-28', 1, 0),
+(44, '01.00044', '01.00003', '01.00003', 0, '1.1.1.18', 4, '2021-04-28', 1, 0),
+(45, '01.00045', '01.00003', '01.00003', 0, '1.1.1.19', 4, '2021-04-28', 1, 0),
+(46, '01.00046', '01.00003', '01.00003', 0, '1.1.1.20', 4, '2021-04-28', 1, 0),
+(47, '01.00047', '01.00003', '01.00003', 0, '1.1.1.21', 4, '2021-04-28', 1, 0),
+(48, '01.00048', '01.00003', '01.00003', 0, '1.1.1.22', 4, '2021-04-28', 1, 0),
+(49, '01.00049', '01.00016', '01.00016', 0, '1.1.1.8.5', 5, '2021-04-28', 1, 0),
+(50, '01.00050', '01.00003', '01.00003', 1, '1.1.1.23', 4, '2021-04-28', 1, 0),
+(51, '01.00051', '01.00010', '01.00010', 0, '1.1.1.4.4', 5, '2021-04-28', 1, 0),
+(52, '01.00052', '01.00003', '01.00003', 1, '1.1.1.24', 4, '2021-04-28', 1, 0),
+(53, '01.00053', '01.00010', '01.00010', 2, '1.1.1.4.5', 5, '2021-04-28', 1, 0),
+(54, '01.00054', '01.00003', '01.00003', 1, '1.1.1.25', 4, '2021-04-28', 1, 0),
+(55, '01.00055', '01.00054', '01.00054', 1, '1.1.1.25.1', 5, '2021-04-28', 1, 0),
+(56, '01.00056', '01.00009', '01.00009', 0, '1.1.1.3.1', 5, '2021-04-28', 1, 0),
+(57, '01.00057', '01.00009', '01.00009', 0, '1.1.1.3.2', 5, '2021-04-28', 1, 0),
+(58, '01.00058', '01.00004', '01.00004', 0, '1.1.1.1.3', 5, '2021-04-28', 1, 0),
+(59, '01.00059', '01.00004', '01.00004', 0, '1.1.1.1.4', 5, '2021-04-28', 1, 0),
+(60, '01.00060', '01.00055', '01.00055', 0, '1.1.1.25.1.1', 6, '2021-04-28', 1, 0),
+(61, '01.00061', '01.00004', '01.00004', 0, '1.1.1.1.5', 5, '2021-04-28', 1, 0),
+(62, '01.00062', '01.00027', '01.00027', 0, '1.1.1.4.2.1', 6, '2021-04-28', 1, 0),
+(63, '01.00063', '01.00009', '01.00009', 0, '1.1.1.3.3', 5, '2021-04-28', 1, 0),
+(64, '01.00064', '01.00003', '01.00003', 8, '1.1.1.26', 4, '2021-04-28', 1, 0),
+(65, '01.00065', '01.00027', '01.00027', 0, '1.1.1.4.2.2', 6, '2021-04-28', 1, 0),
+(66, '01.00066', '01.00004', '01.00004', 0, '1.1.1.1.6', 5, '2021-04-28', 1, 0),
+(67, '01.00067', '01.00016', '01.00016', 3, '1.1.1.8.6', 5, '2021-04-28', 1, 0),
+(68, '01.00068', '01.00067', '01.00067', 0, '1.1.1.8.6.1', 6, '2021-04-28', 1, 0),
+(69, '01.00069', '01.00042', '01.00042', 0, '1.1.1.16.1', 5, '2021-04-28', 1, 0),
+(70, '01.00070', '01.00003', '01.00003', 0, '1.1.1.27', 4, '2021-04-28', 1, 0),
+(71, '01.00071', '01.00025', '01.00025', 0, '1.1.1.4.1.1', 6, '2021-04-28', 1, 0),
+(72, '01.00072', '01.00067', '01.00067', 0, '1.1.1.8.6.2', 6, '2021-04-28', 1, 0),
+(73, '01.00073', '01.00016', '01.00016', 3, '1.1.1.8.7', 5, '2021-04-28', 1, 0),
+(74, '01.00074', '01.00073', '01.00073', 0, '1.1.1.8.7.1', 6, '2021-04-28', 1, 0),
+(75, '01.00075', '01.00064', '01.00064', 1, '1.1.1.26.1', 5, '2021-04-28', 1, 0),
+(76, '01.00076', '01.00003', '01.00003', 0, '1.1.1.28', 4, '2021-04-28', 1, 0),
+(77, '01.00077', '01.00003', '01.00003', 0, '1.1.1.29', 4, '2021-04-28', 1, 0),
+(78, '01.00078', '01.00003', '01.00003', 0, '1.1.1.30', 4, '2021-04-28', 1, 0),
+(79, '01.00079', '01.00003', '01.00003', 0, '1.1.1.31', 4, '2021-04-28', 1, 0),
+(80, '01.00080', '01.00053', '01.00053', 0, '1.1.1.4.5.1', 6, '2021-04-28', 1, 0),
+(81, '01.00081', '01.00067', '01.00067', 0, '1.1.1.8.6.3', 6, '2021-04-28', 1, 0),
+(82, '01.00082', '01.00016', '01.00016', 0, '1.1.1.8.8', 5, '2021-04-28', 1, 0),
+(83, '01.00083', '01.00075', '01.00075', 0, '1.1.1.26.1.1', 6, '2021-04-28', 1, 0),
+(84, '01.00084', '01.00073', '01.00073', 1, '1.1.1.8.7.3', 6, '2021-04-28', 1, 0),
+(85, '01.00085', '01.00003', '01.00003', 0, '1.1.1.32', 4, '2021-04-28', 1, 0),
+(86, '01.00086', '01.00064', '01.00064', 0, '1.1.1.26.2', 5, '2021-04-28', 1, 0),
+(87, '01.00087', '01.00004', '01.00004', 0, '1.1.1.1.7', 5, '2021-04-28', 1, 0),
+(88, '01.00088', '01.00064', '01.00064', 0, '1.1.1.26.3', 5, '2021-04-28', 1, 0),
+(89, '01.00089', '01.00073', '01.00073', 1, '1.1.1.8.7.2', 6, '2021-04-28', 1, 0),
+(90, '01.00090', '01.00052', '01.00052', 0, '1.1.1.24.1', 5, '2021-04-28', 1, 0),
+(91, '01.00091', '01.00084', '01.00084', 0, '1.1.1.8.7.3.1', 7, '2021-04-28', 1, 0),
+(92, '01.00092', '01.00089', '01.00089', 0, '1.1.1.8.7.2.1', 7, '2021-04-28', 1, 0),
+(93, '01.00093', '01.00003', '01.00003', 2, '1.1.1.33', 4, '2021-04-28', 1, 0),
+(94, '01.00094', '01.00053', '01.00053', 0, '1.1.1.4.5.2', 6, '2021-04-28', 1, 0),
+(95, '01.00095', '01.00064', '01.00064', 0, '1.1.1.26.4', 5, '2021-04-28', 1, 0),
+(96, '01.00096', '01.00093', '01.00093', 0, '1.1.1.33.1', 5, '2021-04-28', 1, 0),
+(97, '01.00097', '01.00064', '01.00064', 0, '1.1.1.26.5', 5, '2021-04-28', 1, 0),
+(98, '01.00098', '01.00009', '01.00009', 0, '1.1.1.3.4', 5, '2021-04-28', 1, 0),
+(99, '01.00099', '01.00003', '01.00003', 0, '1.1.1.34', 4, '2021-04-28', 1, 0),
+(100, '01.00100', '01.00003', '01.00003', 0, '1.1.1.35', 4, '2021-04-28', 1, 0),
+(101, '01.00101', '01.00003', '01.00003', 0, '1.1.1.36', 4, '2021-04-28', 1, 0),
+(102, '01.00102', '01.00009', '01.00009', 0, '1.1.1.3.5', 5, '2021-04-28', 1, 0),
+(103, '01.00103', '01.00093', '01.00093', 0, '1.1.1.33.2', 5, '2021-04-28', 1, 0),
+(104, '01.00104', '01.00003', '01.00003', 1, '1.1.1.37', 4, '2021-04-28', 1, 0),
+(105, '01.00105', '01.00003', '01.00003', 0, '1.1.1.38', 4, '2021-04-28', 1, 0),
+(106, '01.00106', '01.00009', '01.00009', 0, '1.1.1.3.6', 5, '2021-04-28', 1, 0),
+(107, '01.00107', '01.00016', '01.00016', 0, '1.1.1.8.9', 5, '2021-04-28', 1, 0),
+(108, '01.00108', '01.00016', '01.00016', 2, '1.1.1.8.10', 5, '2021-04-28', 1, 0),
+(109, '01.00109', '01.00108', '01.00108', 0, '1.1.1.8.10.1', 6, '2021-04-28', 1, 0),
+(110, '01.00110', '01.00016', '01.00016', 0, '1.1.1.8.11', 5, '2021-04-28', 1, 0),
+(111, '01.00111', '01.00003', '01.00003', 0, '1.1.1.39', 4, '2021-04-28', 1, 0),
+(112, '01.00112', '01.00016', '01.00016', 0, '1.1.1.8.12', 5, '2021-04-28', 1, 0),
+(113, '01.00113', '01.00064', '01.00064', 0, '1.1.1.26.6', 5, '2021-04-28', 1, 0),
+(114, '01.00114', '01.00003', '01.00003', 0, '1.1.1.40', 4, '2021-04-28', 1, 0),
+(115, '01.00115', '01.00003', '01.00003', 0, '1.1.1.41', 4, '2021-04-28', 1, 0),
+(116, '01.00116', '01.00050', '01.00050', 0, '1.1.1.23.1', 5, '2021-04-28', 1, 0),
+(117, '01.00117', '01.00064', '01.00064', 1, '1.1.1.26.7', 5, '2021-04-28', 1, 0),
+(118, '01.00118', '01.00117', '01.00117', 0, '1.1.1.26.7.1', 6, '2021-04-28', 1, 0),
+(119, '01.00119', '01.00016', '01.00016', 1, '1.1.1.8.13', 5, '2021-04-28', 1, 0),
+(120, '01.00120', '01.00016', '01.00016', 0, '1.1.1.8.14', 5, '2021-04-28', 1, 0),
+(121, '01.00121', '01.00119', '01.00119', 1, '1.1.1.8.13.1', 6, '2021-04-28', 1, 0),
+(122, '01.00122', '01.00121', '01.00121', 0, '1.1.1.8.13.1.1', 7, '2021-04-28', 1, 0),
+(123, '01.00123', '01.00003', '01.00003', 0, '1.1.1.42', 4, '2021-04-28', 1, 0),
+(124, '01.00124', '01.00108', '01.00108', 0, '1.1.1.8.10.2', 6, '2021-04-28', 1, 0),
+(125, '01.00125', '01.00003', '01.00003', 0, '1.1.1.43', 4, '2021-04-28', 0, 0),
+(126, '01.00126', '01.00003', '01.00003', 0, '1.1.1.44', 4, '2021-04-28', 0, 0),
+(127, '01.00127', '01.00003', '01.00003', 0, '1.1.1.45', 4, '2021-04-28', 0, 0),
+(128, '01.00128', '01.00003', '01.00003', 0, '1.1.1.46', 4, '2021-04-28', 0, 0),
+(129, '01.00129', '01.00003', '01.00003', 0, '1.1.1.47', 4, '2021-04-28', 0, 0),
+(130, '01.00130', '01.00064', '01.00064', 0, '1.1.1.26.8', 5, '2021-04-28', 0, 0),
+(131, '01.00131', '01.00104', '01.00104', 0, '1.1.1.37.1', 5, '2021-04-28', 0, 0),
+(132, '01.00132', '01.00013', '01.00013', 2, '1.1.1.6.1', 5, '2021-04-28', 0, 0),
+(133, '01.00133', '01.00132', '01.00132', 0, '1.1.1.6.1.1', 6, '2021-04-28', 0, 0),
+(134, '01.00134', '01.00132', '01.00132', 0, '1.1.1.6.1.2', 6, '2021-04-28', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -761,13 +852,13 @@ CREATE TABLE `tb_payout` (
 
 INSERT INTO `tb_payout` (`id`, `nama_payout`, `nominal`) VALUES
 (1, 'refferal', 31500),
-(2, 'reward', 54000),
-(3, 'investor', 20000),
+(2, 'poin', 24000),
+(3, 'investor', 4500),
 (4, 'cabang', 10000),
-(5, 'pinjeman', 25000),
-(6, 'marketing', 10000),
-(7, 'admin', 14000),
-(8, 'cadangan', 14500),
+(5, 'royalti', 50000),
+(6, 'marketing', 35000),
+(7, 'sosial', 10000),
+(8, 'cadangan', 14000),
 (9, 'simpanan wajib', 12000),
 (10, 'simpanan pokok', 9000);
 
@@ -2074,7 +2165,47 @@ INSERT INTO `tb_payout_trans` (`id`, `idted`, `payout_id`, `nominal`, `tgl_trans
 (1281, '01.00130', 7, 14000, '2021-03-31 18:52:35'),
 (1282, '01.00130', 8, 14500, '2021-03-31 18:52:35'),
 (1283, '01.00130', 9, 12000, '2021-03-31 18:52:35'),
-(1284, '01.00130', 10, 9000, '2021-03-31 18:52:35');
+(1284, '01.00130', 10, 9000, '2021-03-31 18:52:35'),
+(1285, '01.00131', 1, 31500, '2021-04-18 09:46:40'),
+(1286, '01.00131', 2, 24000, '2021-04-18 09:46:40'),
+(1287, '01.00131', 3, 4500, '2021-04-18 09:46:40'),
+(1288, '01.00131', 4, 10000, '2021-04-18 09:46:40'),
+(1289, '01.00131', 5, 50000, '2021-04-18 09:46:40'),
+(1290, '01.00131', 6, 35000, '2021-04-18 09:46:40'),
+(1291, '01.00131', 7, 10000, '2021-04-18 09:46:40'),
+(1292, '01.00131', 8, 14000, '2021-04-18 09:46:40'),
+(1293, '01.00131', 9, 12000, '2021-04-18 09:46:40'),
+(1294, '01.00131', 10, 9000, '2021-04-18 09:46:40'),
+(1295, '01.00132', 1, 31500, '2021-04-27 20:28:09'),
+(1296, '01.00132', 2, 24000, '2021-04-27 20:28:09'),
+(1297, '01.00132', 3, 4500, '2021-04-27 20:28:09'),
+(1298, '01.00132', 4, 10000, '2021-04-27 20:28:09'),
+(1299, '01.00132', 5, 50000, '2021-04-27 20:28:09'),
+(1300, '01.00132', 6, 35000, '2021-04-27 20:28:09'),
+(1301, '01.00132', 7, 10000, '2021-04-27 20:28:09'),
+(1302, '01.00132', 8, 14000, '2021-04-27 20:28:09'),
+(1303, '01.00132', 9, 12000, '2021-04-27 20:28:09'),
+(1304, '01.00132', 10, 9000, '2021-04-27 20:28:09'),
+(1305, '01.00133', 1, 31500, '2021-04-27 20:38:14'),
+(1306, '01.00133', 2, 24000, '2021-04-27 20:38:14'),
+(1307, '01.00133', 3, 4500, '2021-04-27 20:38:14'),
+(1308, '01.00133', 4, 10000, '2021-04-27 20:38:14'),
+(1309, '01.00133', 5, 50000, '2021-04-27 20:38:14'),
+(1310, '01.00133', 6, 35000, '2021-04-27 20:38:14'),
+(1311, '01.00133', 7, 10000, '2021-04-27 20:38:14'),
+(1312, '01.00133', 8, 14000, '2021-04-27 20:38:14'),
+(1313, '01.00133', 9, 12000, '2021-04-27 20:38:14'),
+(1314, '01.00133', 10, 9000, '2021-04-27 20:38:14'),
+(1315, '01.00134', 1, 31500, '2021-04-27 20:56:37'),
+(1316, '01.00134', 2, 24000, '2021-04-27 20:56:37'),
+(1317, '01.00134', 3, 4500, '2021-04-27 20:56:37'),
+(1318, '01.00134', 4, 10000, '2021-04-27 20:56:37'),
+(1319, '01.00134', 5, 50000, '2021-04-27 20:56:37'),
+(1320, '01.00134', 6, 35000, '2021-04-27 20:56:37'),
+(1321, '01.00134', 7, 10000, '2021-04-27 20:56:37'),
+(1322, '01.00134', 8, 14000, '2021-04-27 20:56:37'),
+(1323, '01.00134', 9, 12000, '2021-04-27 20:56:37'),
+(1324, '01.00134', 10, 9000, '2021-04-27 20:56:37');
 
 -- --------------------------------------------------------
 
@@ -4578,7 +4709,20 @@ INSERT INTO `tb_transaksi` (`id`, `tgl`, `idted`, `uraian`, `masuk`, `keluar`, `
 (868, '2021-04-07', '01.00027', 'pencairan jual emas', 809000, 0, 885585, 'uang'),
 (869, '2021-04-07', '01.00027', 'jual emas', 0, 1, 0.9029, 'emas'),
 (870, '2021-04-07', '01.00027', 'pencairan jual emas', 687650, 0, 1573240, 'uang'),
-(871, '2021-04-07', '01.00027', 'jual emas', 0, 0.85, 0.0529, 'emas');
+(871, '2021-04-07', '01.00027', 'jual emas', 0, 0.85, 0.0529, 'emas'),
+(872, '2021-04-12', '01.00129', 'beli emas', 0.026, 0, 0.0504, 'emas'),
+(873, '2021-04-07', '01.00027', 'tarik wallet, trf. tgl 2021-04-13', 0, 1485000, 88240, 'uang'),
+(874, '2021-04-07', '01.00027', 'adm tarik wallet, trf. tgl 2021-04-13', 0, 15000, 88240, 'uang'),
+(875, '2021-04-14', '01.00007', 'bayar beli emas 0.031 gr', 0, 27000, 520, 'uang'),
+(876, '2021-04-14', '01.00007', 'beli emas', 0.031, 0, 0.171, 'emas'),
+(877, '2021-04-17', '01.00003', 'bayar beli emas 0.011 gr', 0, 10000, 888867, 'uang'),
+(878, '2021-04-17', '01.00003', 'beli emas', 0.011, 0, 5.593, 'emas'),
+(879, '2021-04-18', '01.00131', 'emas awal', 0, 0, 0, 'emas'),
+(880, '2021-04-27', '01.00028', 'pencairan jual emas', 1164800, 0, 1164800, 'uang'),
+(881, '2021-04-27', '01.00028', 'jual emas', 0, 1.4, 0.0635, 'emas'),
+(882, '2021-04-27', '01.00132', 'emas awal', 0, 0, 0, 'emas'),
+(883, '2021-04-27', '01.00133', 'emas awal', 0, 0, 0, 'emas'),
+(884, '2021-04-27', '01.00134', 'emas awal', 0, 0, 0, 'emas');
 
 -- --------------------------------------------------------
 
@@ -4720,7 +4864,8 @@ INSERT INTO `tb_user_menu` (`id`, `title`, `url`, `icon`, `parent_menu`, `is_act
 (55, 'Menu Reward', 'member/reward', '', 53, 0),
 (56, 'Informasi Lain', '#', 'fas_fa-info-circle', 0, 1),
 (57, 'Tentang Rewards', 'member/tentang_reward', '', 56, 1),
-(58, 'Biaya Cetak', 'pengaturan/biaya_cetak', '', 12, 1);
+(58, 'Biaya Cetak', 'pengaturan/biaya_cetak', '', 12, 1),
+(59, 'Paket Keanggotaan', 'member/paket', '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -4833,9 +4978,8 @@ INSERT INTO `tb_widraw` (`idx`, `tgl_pengajuan`, `idted`, `nominal`, `biaya_adm`
 (19, '2020-12-25', '01.00095', 290000, 10000, 'BCA', '7830489015', 'Roy Siegfried', 1, '2021-01-10'),
 (20, '2021-03-05', '01.00065', 696000, 10000, 'Mandiri', '1360016448059', 'ANDRE WIRADIKUSUMA', 1, '2021-03-12'),
 (22, '2021-03-08', '01.00055', 791722, 10000, 'BRI', '060901011057503', 'Mohamad Nahrudin', 1, '2021-03-12'),
-(30, '2021-04-07', '01.00027', 1500000, 15000, 'Mandiri', '1360016448059', 'ANDRE WIRADIKUSUMA', 0, '0000-00-00'),
-(31, '2021-04-07', '01.00027', 1500000, 15000, 'Mandiri', '1360016448059', 'ANDRE WIRADIKUSUMA', 0, '0000-00-00'),
-(32, '2021-04-07', '01.00027', 1500000, 15000, 'Mandiri', '1360016448059', 'ANDRE WIRADIKUSUMA', 0, '0000-00-00');
+(30, '2021-04-07', '01.00027', 1500000, 15000, 'Mandiri', '1360016448059', 'ANDRE WIRADIKUSUMA', 1, '2021-04-13'),
+(33, '2021-04-27', '01.00028', 1164800, 15000, 'BRI', ' 3405  -   01-    016327 -  53 -  8', 'Ari  wuryantini  ', 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -6181,7 +6325,73 @@ INSERT INTO `t_update_ubs` (`IDX`, `UPDATE_AT`, `HRG_BELI`, `HRG_JUAL`) VALUES
 (1347, '2021-04-06 04:00:03', '897,000', '810,000'),
 (1348, '2021-04-06 08:00:01', '897,000', '810,000'),
 (1349, '2021-04-07 04:00:04', '900,000', '809,000'),
-(1350, '2021-04-07 08:00:03', '900,000', '809,000');
+(1350, '2021-04-07 08:00:03', '900,000', '809,000'),
+(1351, '2021-04-08 04:00:02', '900,000', '813,000'),
+(1352, '2021-04-08 08:00:02', '900,000', '813,000'),
+(1353, '2021-04-09 04:00:02', '900,000', '811,000'),
+(1354, '2021-04-09 08:00:03', '900,000', '811,000'),
+(1355, '2021-04-10 04:00:03', '906,000', '822,000'),
+(1356, '2021-04-10 08:00:03', '906,000', '822,000'),
+(1357, '2021-04-10 12:00:03', '906,000', '822,000'),
+(1358, '2021-04-10 16:00:04', '906,000', '822,000'),
+(1359, '2021-04-10 20:00:02', '906,000', '822,000'),
+(1360, '2021-04-11 00:00:03', '906,000', '822,000'),
+(1361, '2021-04-11 04:00:04', '906,000', '822,000'),
+(1362, '2021-04-11 08:00:04', '906,000', '822,000'),
+(1363, '2021-04-11 12:00:04', '906,000', '822,000'),
+(1364, '2021-04-11 16:00:03', '906,000', '822,000'),
+(1365, '2021-04-11 20:00:03', '906,000', '822,000'),
+(1366, '2021-04-12 00:00:05', '906,000', '822,000'),
+(1367, '2021-04-12 04:00:03', '906,000', '822,000'),
+(1368, '2021-04-12 08:00:03', '906,000', '822,000'),
+(1369, '2021-04-13 04:00:03', '904,000', '817,000'),
+(1370, '2021-04-13 08:00:03', '904,000', '817,000'),
+(1371, '2021-04-14 04:00:03', '907,000', '815,000'),
+(1372, '2021-04-14 08:00:04', '907,000', '815,000'),
+(1373, '2021-04-15 04:00:02', '910,000', '823,000'),
+(1374, '2021-04-15 08:00:04', '910,000', '823,000'),
+(1375, '2021-04-16 04:00:03', '909,000', '818,000'),
+(1376, '2021-04-16 08:00:02', '909,000', '818,000'),
+(1377, '2021-04-17 04:00:03', '917,000', '831,000'),
+(1378, '2021-04-17 08:00:05', '917,000', '831,000'),
+(1379, '2021-04-17 12:00:04', '917,000', '831,000'),
+(1380, '2021-04-17 16:00:04', '917,000', '831,000'),
+(1381, '2021-04-17 20:00:04', '917,000', '831,000'),
+(1382, '2021-04-18 00:00:04', '917,000', '831,000'),
+(1383, '2021-04-18 04:00:04', '917,000', '831,000'),
+(1384, '2021-04-18 08:00:05', '917,000', '831,000'),
+(1385, '2021-04-18 12:00:03', '917,000', '831,000'),
+(1386, '2021-04-18 16:00:04', '917,000', '831,000'),
+(1387, '2021-04-18 20:00:03', '917,000', '831,000'),
+(1388, '2021-04-19 00:00:04', '917,000', '831,000'),
+(1389, '2021-04-19 04:00:02', '917,000', '831,000'),
+(1390, '2021-04-19 08:00:05', '917,000', '831,000'),
+(1391, '2021-04-20 04:00:02', '922,000', '836,000'),
+(1392, '2021-04-20 08:00:04', '922,000', '836,000'),
+(1393, '2021-04-21 04:00:02', '921,000', '830,000'),
+(1394, '2021-04-21 08:00:04', '921,000', '830,000'),
+(1395, '2021-04-22 04:00:03', '922,000', '829,000'),
+(1396, '2021-04-22 08:00:04', '922,000', '829,000'),
+(1397, '2021-04-23 04:00:03', '927,000', '839,000'),
+(1398, '2021-04-23 08:00:02', '927,000', '839,000'),
+(1399, '2021-04-24 04:00:03', '926,000', '834,000'),
+(1400, '2021-04-24 08:00:03', '926,000', '834,000'),
+(1401, '2021-04-24 12:00:03', '926,000', '834,000'),
+(1402, '2021-04-24 16:00:02', '926,000', '834,000'),
+(1403, '2021-04-24 20:00:03', '926,000', '834,000'),
+(1404, '2021-04-25 00:00:05', '926,000', '834,000'),
+(1405, '2021-04-25 04:00:03', '926,000', '834,000'),
+(1406, '2021-04-25 08:00:05', '926,000', '834,000'),
+(1407, '2021-04-25 12:00:03', '926,000', '834,000'),
+(1408, '2021-04-25 16:00:03', '926,000', '834,000'),
+(1409, '2021-04-25 20:00:02', '926,000', '834,000'),
+(1410, '2021-04-26 00:00:01', '926,000', '834,000'),
+(1411, '2021-04-26 04:00:02', '926,000', '834,000'),
+(1412, '2021-04-26 08:00:02', '926,000', '834,000'),
+(1413, '2021-04-27 04:00:03', '920,000', '832,000'),
+(1414, '2021-04-27 08:00:01', '920,000', '832,000'),
+(1415, '2021-04-28 04:00:03', '917,000', '830,000'),
+(1416, '2021-04-28 08:00:05', '917,000', '830,000');
 
 --
 -- Indexes for dumped tables
@@ -6194,10 +6404,22 @@ ALTER TABLE `api_user`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `pendapatan_bonus`
+--
+ALTER TABLE `pendapatan_bonus`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `tb_agt_koperasi`
 --
 ALTER TABLE `tb_agt_koperasi`
   ADD PRIMARY KEY (`idanggota`);
+
+--
+-- Indeks untuk tabel `tb_agt_paket`
+--
+ALTER TABLE `tb_agt_paket`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `tb_agt_ted`
@@ -6366,10 +6588,22 @@ ALTER TABLE `api_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT untuk tabel `pendapatan_bonus`
+--
+ALTER TABLE `pendapatan_bonus`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_agt_paket`
+--
+ALTER TABLE `tb_agt_paket`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT untuk tabel `tb_agt_tmp`
 --
 ALTER TABLE `tb_agt_tmp`
-  MODIFY `idtmp` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `idtmp` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_bank`
@@ -6381,7 +6615,7 @@ ALTER TABLE `tb_bank`
 -- AUTO_INCREMENT untuk tabel `tb_biaya_cetak`
 --
 ALTER TABLE `tb_biaya_cetak`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_bonus`
@@ -6405,13 +6639,13 @@ ALTER TABLE `tb_hadiah_poin`
 -- AUTO_INCREMENT untuk tabel `tb_history`
 --
 ALTER TABLE `tb_history`
-  MODIFY `idx` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+  MODIFY `idx` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_jaringan`
 --
 ALTER TABLE `tb_jaringan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_payout`
@@ -6423,7 +6657,7 @@ ALTER TABLE `tb_payout`
 -- AUTO_INCREMENT untuk tabel `tb_payout_trans`
 --
 ALTER TABLE `tb_payout_trans`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1285;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1325;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_sms_info`
@@ -6453,7 +6687,7 @@ ALTER TABLE `tb_titipan_emas_transfer`
 -- AUTO_INCREMENT untuk tabel `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=872;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=885;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_transbon_poin`
@@ -6477,7 +6711,7 @@ ALTER TABLE `tb_user_dashboard`
 -- AUTO_INCREMENT untuk tabel `tb_user_menu`
 --
 ALTER TABLE `tb_user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user_menu_access`
@@ -6501,13 +6735,13 @@ ALTER TABLE `tb_verifikasi_email`
 -- AUTO_INCREMENT untuk tabel `tb_widraw`
 --
 ALTER TABLE `tb_widraw`
-  MODIFY `idx` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `idx` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT untuk tabel `t_update_ubs`
 --
 ALTER TABLE `t_update_ubs`
-  MODIFY `IDX` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1351;
+  MODIFY `IDX` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1417;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

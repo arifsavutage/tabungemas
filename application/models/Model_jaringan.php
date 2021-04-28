@@ -34,9 +34,14 @@ class Model_jaringan extends CI_Model
 
     public function potensiBonusPoin($idted, $posjar)
     {
-        /*SELECT COUNT(poin_status) as jml_potensi, pos_level FROM `tb_jaringan` 
-        WHERE `pos_jar`  LIKE '111%' AND idagt != '01.00003' 
-        AND poin_status = 0 GROUP BY pos_level*/
+        /*SELECT COUNT(poin_status) as jml_potensi, pos_level
+            FROM `tb_jaringan` 
+            WHERE
+            `pos_jar`  LIKE '1.1.1%'
+            AND idagt != '01.00003' 
+            AND poin_status = 0
+            GROUP BY pos_level
+            ORDER BY pos_level ASC*/
 
         $this->db->select("COUNT(poin_status) AS jml_potensi, pos_level, tgl_proses");
         $this->db->from($this->_table);
@@ -50,24 +55,27 @@ class Model_jaringan extends CI_Model
 
     public function potensiBonusReferal($idted, $posjar)
     {
-        /*SELECT COUNT(referal_status) as jml_potensi, pos_level FROM `tb_jaringan` 
-        WHERE `pos_jar`  LIKE '111%' AND idagt != '01.00003' 
-        AND referal_status = 0 GROUP BY pos_level*/
+        /*SELECT COUNT(poin_status) as jml_potensi, pos_level
+            FROM `tb_jaringan` 
+            WHERE
+            `pos_jar`  LIKE '1.1.1%'
+            AND idagt != '01.00003' 
+            AND poin_status = 0
+            GROUP BY pos_level
+            ORDER BY pos_level ASC
+            LIMIT 10*/
 
-        $query = $this->db->query("SELECT COUNT(referal_status) as jml_potensi, pos_level FROM `tb_jaringan` 
-        WHERE `pos_jar`  LIKE '$posjar%' AND idagt != '$idted' 
-        AND referal_status = 0 GROUP BY pos_level");
+        //Limit 10 untuk membatasi kedalaman 10 level
 
-        return $query->result_array();
-
-        /*$this->db->select("COUNT(referal_status) AS jml_potensi, pos_level, tgl_proses");
+        $this->db->select("COUNT(poin_status) AS jml_potensi, pos_level, tgl_proses");
         $this->db->from($this->_table);
         $this->db->where("pos_jar LIKE '$posjar%'");
         $this->db->where("idagt != '$idted'");
-        $this->db->where('referal_status = 0');
+        $this->db->where('poin_status', 0);
         $this->db->group_by("pos_level");
         $this->db->order_by('pos_level', 'ASC');
-        return $this->db->get()->result_array();*/
+        $this->db->limit(10);
+        return $this->db->get()->result_array();
     }
 
     public function myReferalId($idted)
@@ -110,5 +118,56 @@ class Model_jaringan extends CI_Model
         ");
 
         return $query->result_array();
+    }
+
+    //untuk perhitungan bonus
+
+    /** Cek anggota yang sudah punya downline */
+    public function cek_downline_agt()
+    {
+        $this->db->where('jml_downline > 0');
+        return $this->db->get($this->_table);
+    }
+
+    public function cek_downline_by_limit($limit)
+    {
+        $query = $this->db->query("SELECT id, idagt, idreferal, idupline, jml_downline, pos_jar, pos_level, tgl_proses, referal_status, poin_status FROM tb_jaringan WHERE jml_downline > 0 limit " . $limit . ",1");
+        return $query->row();
+    }
+
+    public function cek_qualified_tiga()
+    {
+        $this->db->where("jml_downline BETWEEN 3 AND 9");
+        return $this->db->get($this->_table);
+    }
+
+    public function cek_qualified_tujuh()
+    {
+        $this->db->where("jml_downline BETWEEN 10 AND 18");
+        return $this->db->get($this->_table);
+    }
+
+    public function cek_qualified_sembilan()
+    {
+        $this->db->where("jml_downline >= 19");
+        return $this->db->get($this->_table);
+    }
+
+    public function qualified_tiga_by_limit($limit)
+    {
+        $query = $this->db->query("SELECT id, idagt, idreferal, idupline, jml_downline, pos_jar, pos_level, tgl_proses, referal_status, poin_status FROM tb_jaringan WHERE jml_downline BETWEEN 3 AND 9 LIMIT " . $limit . ",1");
+        return $query->row();
+    }
+
+    public function qualified_tujuh_by_limit($limit)
+    {
+        $query = $this->db->query("SELECT id, idagt, idreferal, idupline, jml_downline, pos_jar, pos_level, tgl_proses, referal_status, poin_status FROM tb_jaringan WHERE jml_downline BETWEEN 10 AND 18 LIMIT " . $limit . ",1");
+        return $query->row();
+    }
+
+    public function qualified_sembilan_by_limit($limit)
+    {
+        $query = $this->db->query("SELECT id, idagt, idreferal, idupline, jml_downline, pos_jar, pos_level, tgl_proses, referal_status, poin_status FROM tb_jaringan WHERE jml_downline >= 19 LIMIT " . $limit . ",1");
+        return $query->row();
     }
 }

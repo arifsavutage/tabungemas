@@ -14,6 +14,7 @@ class Member extends CI_Controller
         $this->load->model('model_emas');
         $this->load->model('model_uang');
         $this->load->model('model_payout');
+        $this->load->model('model_paket_anggota');
 
         not_login();
     }
@@ -33,6 +34,48 @@ class Member extends CI_Controller
         $data   = [
             'page'  => 'pages/admin/member_list',
             'list'  => $this->model_tedagt->getAll()->result_array()
+        ];
+
+        $this->load->view('dashboard', $data);
+    }
+
+    public function paket()
+    {
+        $data = [
+            'page' => 'pages/admin/member_paket_list',
+            'pakets' => $this->model_paket_anggota->get_all()
+        ];
+
+        $this->load->view('dashboard', $data);
+    }
+
+    public function paket_create()
+    {
+        $this->form_validation->set_rules('namapaket', 'Nama Paket', 'trim|required');
+
+        if ($this->form_validation->run()) {
+            $namapaket = $this->input->post('namapaket');
+            $payout = $this->input->post('py');
+
+            //echo $namapaket . "<br />";
+            $json = json_encode($payout);
+            //print_r(var_dump($json));
+
+            $data = [
+                'nama_paket' => ucwords(strtolower($namapaket)),
+                'payout_id'  => $json,
+                'is_active'  => 1
+            ];
+
+            $this->model_paket_anggota->save($data);
+
+            $this->session->set_flashdata('info', 'Penambahan paket berhasil');
+            redirect(base_url('index.php/member/paket'));
+        }
+
+        $data = [
+            'page' => 'pages/admin/member_paket_form',
+            'payouts' => $this->model_payout->getAll()
         ];
 
         $this->load->view('dashboard', $data);
@@ -727,7 +770,7 @@ class Member extends CI_Controller
 
             $data = [
                 'mylevel'   => $detailjaringan['pos_level'],
-                'bonusreferal' => $this->model_jaringan->potensiBonusPoin($id, $detailjaringan['pos_jar']),
+                'bonusreferal' => $this->model_jaringan->potensiBonusReferal($id, $detailjaringan['pos_jar']),
                 'bonuspoin' => $this->model_jaringan->potensiBonusPoin($id, $detailjaringan['pos_jar']),
                 'reward'   => $this->model_payout->getById(2),
                 'detail'   => $this->model_tedagt->getAccountById($id),
