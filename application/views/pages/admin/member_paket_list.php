@@ -9,8 +9,8 @@
                 if ($this->session->flashdata('info')) {
                     echo $this->session->flashdata('info');
                 }
-                ?>
-
+                ?><br />
+                <a href="<?= base_url('index.php/member/paket_create') ?>" class="btn btn-secondary mb-2 mt-1">Tambah Paket</a>
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
@@ -19,6 +19,7 @@
                                 <th>Nama Paket</th>
                                 <th>Payout</th>
                                 <th>Status</th>
+                                <th><i class="fas fa-cog"></i></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,13 +38,15 @@
                                         $data = $this->model_payout->get_where_in($json);
                                         $ass = json_encode($data, true);
                                         //print_r(var_dump($ass));
-
+                                        echo "<ul>";
                                         for ($j = 0; $j < count($data); $j++) {
-                                            echo $data[$j]->nama_payout . "<br/>";
+                                            echo "<li>" . $data[$j]->nama_payout . "</li>";
                                         }
+                                        echo "</ul>";
                                         ?>
                                     </td>
-                                    <td><?= $pkt->is_active ?></td>
+                                    <td><?= $pkt->is_active == 0 ? '<span class="badge badge-danger">non active</span>' : '<span class="badge badge-success">active</span>' ?></td>
+                                    <td><?= $pkt->is_active == 0 ? '<a href="' . base_url('index.php/member/paket_status/1/' . $pkt->id) . '" class="btn btn-sm btn-success" title="menghidupkan paket">On</a>' : '<a href="' . base_url('index.php/member/paket_status/0/' . $pkt->id) . '" class="btn btn-sm btn-danger" title="mematikan paket">Off</a>' ?></td>
                                 </tr>
                             <?php
                                 $i++;

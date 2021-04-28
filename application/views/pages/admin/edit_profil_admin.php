@@ -17,6 +17,12 @@
                         <input type="text" class="form-control" id="noktp" name="noktp" value="<?= $detail['noktp'] ?>">
                         <input type="hidden" name="idted" value="<?= $detail['idted']; ?>" />
                     </div>
+
+                    <div class="form-group">
+                        <label for="nama_lengkap">Nama Anggota</label>
+                        <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" value="<?= $detail['nama_lengkap'] ?>">
+                    </div>
+
                     <div class="form-group">
                         <label for="nohp">No. Handphone</label>
                         <input type="text" class="form-control" id="nohp" name="nohp" value="<?= $detail['nohp'] ?>">

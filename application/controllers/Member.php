@@ -81,6 +81,17 @@ class Member extends CI_Controller
         $this->load->view('dashboard', $data);
     }
 
+    public function paket_status($status, $id)
+    {
+        $data = [
+            'is_active' => $status
+        ];
+        $this->model_paket_anggota->update($id, $data);
+
+        $this->session->set_flashdata('info', 'Perubahan berhasil');
+        redirect(base_url('index.php/member/paket'));
+    }
+
     public function tentang_reward()
     {
         $data = [
@@ -233,6 +244,7 @@ class Member extends CI_Controller
 
             if ($this->form_validation->run()) {
                 $idted  = $this->input->post('idted');
+                $nama_lengkap  = $this->input->post('nama_lengkap');
                 $noktp  = $this->input->post('noktp');
                 $nohp   = $this->input->post('nohp');
                 $alamat = $this->input->post('alamat');
@@ -247,6 +259,7 @@ class Member extends CI_Controller
 
                 $data = [
                     'idted' => "$idted",
+                    'nama_lengkap' => ucwords(strtolower($nama_lengkap)),
                     'noktp'  => "$noktp",
                     'nohp'  => "$nohp",
                     'alamat' => "$alamat",
