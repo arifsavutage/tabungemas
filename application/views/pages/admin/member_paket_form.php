@@ -11,10 +11,24 @@
                 }
                 ?>
                 <form name="addpaket" action="" method="post" data-parsley-validate novalidate>
-                    <div class="form-group">
-                        <label for="namapaket">Nama Paket<span class="text-danger">*</span></label>
-                        <input type="text" name="namapaket" data-parsley-trigger="change" required placeholder="Isi nama paket" class="form-control" id="namapaket">
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="namapaket">Nama Paket<span class="text-danger">*</span></label>
+                            <input type="text" name="namapaket" data-parsley-trigger="change" required placeholder="Isi nama paket" class="form-control" id="namapaket">
+                        </div>
+                        <div class="form-group col">
+                            <label for="role_id">Role Menu<span class="text-danger">*</span></label>
+                            <select class="form-control" name="role_id">
+                                <option value="">: Pilih Role Menu</option>
+                                <?php
+                                foreach ($roles as $role) {
+                                    echo '<option value="' . $role->id . '">' . $role->role_name . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
                     </div>
+
 
                     <div class="table-responsive">
                         <table class="table table-dashboard">

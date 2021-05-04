@@ -52,10 +52,12 @@ class Member extends CI_Controller
     public function paket_create()
     {
         $this->form_validation->set_rules('namapaket', 'Nama Paket', 'trim|required');
+        $this->form_validation->set_rules('role_id', 'Role Menu', 'required');
 
         if ($this->form_validation->run()) {
             $namapaket = $this->input->post('namapaket');
             $payout = $this->input->post('py');
+            $role_id = $this->input->post('role_id');
 
             //echo $namapaket . "<br />";
             $json = json_encode($payout);
@@ -64,6 +66,7 @@ class Member extends CI_Controller
             $data = [
                 'nama_paket' => ucwords(strtolower($namapaket)),
                 'payout_id'  => $json,
+                'role_id'    => $role_id,
                 'is_active'  => 1
             ];
 
@@ -73,9 +76,13 @@ class Member extends CI_Controller
             redirect(base_url('index.php/member/paket'));
         }
 
+        $arr_role = ['1', '2', '5', '6'];
+        $this->db->where_not_in('id', $arr_role);
+        $role = $this->db->get('tb_user_role')->result();
         $data = [
             'page' => 'pages/admin/member_paket_form',
-            'payouts' => $this->model_payout->getAll()
+            'payouts' => $this->model_payout->getAll(),
+            'roles'  => $role
         ];
 
         $this->load->view('dashboard', $data);

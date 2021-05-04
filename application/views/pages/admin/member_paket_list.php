@@ -1,5 +1,5 @@
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-6 offset-xl-3">
+<div class="row justify-content-md-center">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
         <div class="card mb-3">
             <div class="card-header">
                 <h3>Member paket</h3>
@@ -18,6 +18,7 @@
                                 <th>No.</th>
                                 <th>Nama Paket</th>
                                 <th>Payout</th>
+                                <th>Role Menu</th>
                                 <th>Status</th>
                                 <th><i class="fas fa-cog"></i></th>
                             </tr>
@@ -44,6 +45,13 @@
                                         }
                                         echo "</ul>";
                                         ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                        $this->db->where('id', $pkt->role_id);
+                                        $role = $this->db->get('tb_user_role')->row();
+                                        ?>
+                                        <span class="badge badge-secondary"><?= $role->role_name ?></span>
                                     </td>
                                     <td><?= $pkt->is_active == 0 ? '<span class="badge badge-danger">non active</span>' : '<span class="badge badge-success">active</span>' ?></td>
                                     <td><?= $pkt->is_active == 0 ? '<a href="' . base_url('index.php/member/paket_status/1/' . $pkt->id) . '" class="btn btn-sm btn-success" title="menghidupkan paket">On</a>' : '<a href="' . base_url('index.php/member/paket_status/0/' . $pkt->id) . '" class="btn btn-sm btn-danger" title="mematikan paket">Off</a>' ?></td>

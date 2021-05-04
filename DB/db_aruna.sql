@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Apr 2021 pada 08.10
+-- Waktu pembuatan: 04 Bulan Mei 2021 pada 16.59
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.0
 
@@ -65,7 +65,7 @@ INSERT INTO `pendapatan_bonus` (`id`, `periode`, `idagt`, `bon_referal`, `bon_ro
 (1, '2021-04-30', '01.00001', 288000, 143333, 0),
 (2, '2021-04-30', '01.00001', 288000, 143333, 0),
 (3, '2021-04-30', '01.00002', 350500, 0, 0),
-(4, '2021-04-30', '01.00003', 777500, 3225000, 0),
+(4, '2021-04-30', '01.00003', 777500, 3225000, 1),
 (5, '2021-04-30', '01.00004', 121500, 143333, 0),
 (6, '2021-04-30', '01.00005', 33000, 0, 0),
 (7, '2021-04-30', '01.00006', 60000, 143333, 0),
@@ -136,6 +136,7 @@ CREATE TABLE `tb_agt_paket` (
   `id` int(11) NOT NULL,
   `nama_paket` varchar(100) NOT NULL,
   `payout_id` longtext NOT NULL,
+  `role_id` int(11) NOT NULL,
   `is_active` int(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -143,11 +144,12 @@ CREATE TABLE `tb_agt_paket` (
 -- Dumping data untuk tabel `tb_agt_paket`
 --
 
-INSERT INTO `tb_agt_paket` (`id`, `nama_paket`, `payout_id`, `is_active`) VALUES
-(1, 'Premium', '[\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"8\",\"9\",\"10\"]', 1),
-(2, 'Basic 179', '[\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"8\"]', 0),
-(3, 'Basic 21', '[\"9\",\"10\"]', 0),
-(4, 'Basic', '[\"1\",\"9\",\"10\"]', 1);
+INSERT INTO `tb_agt_paket` (`id`, `nama_paket`, `payout_id`, `role_id`, `is_active`) VALUES
+(1, 'Premium', '[\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"8\",\"9\",\"10\"]', 3, 1),
+(2, 'Basic 179', '[\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"8\"]', 3, 0),
+(3, 'Basic 21', '[\"9\",\"10\"]', 4, 0),
+(4, 'Basic', '[\"1\",\"9\",\"10\"]', 4, 1),
+(5, 'Bonus Murah', '[\"1\",\"2\",\"5\",\"9\",\"10\"]', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -317,7 +319,8 @@ INSERT INTO `tb_agt_ted` (`idted`, `tgl_gabung`, `nama_lengkap`, `noktp`, `nohp`
 ('01.00131', '2021-04-18', 'DARIYAH', '3321015708810006', '085842645699', '', 'fazayitno81@g.mail.com', '$2y$10$I001qRHGx5FU6dV1N5bmK.BT8I0E4BhfUPWex.cfbSWclBMVfL0su', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 1, 1, '', '', '', ''),
 ('01.00132', '2021-04-27', 'Njoo Boen Hoa Novita Irawati', '3374036511740002', '+6282225938475', 'Jl murti maya p 274', 'pru.novitairawati@gmail.com', '$2y$10$KS.YuQZiYu48ORFBeIclK.pUPrcsvr.wq6wUTFnGZjMEcHQ3yOD6q', 3, 'noimage.jpg', 'noimage.jpg', '2465223683', 'BCA', 'Njoo Boen Hoa Novita Irawati', 'noimage.jpg', 1, 1, 'bernadus axel putera susanto', '', 'anak', '+6282225938475'),
 ('01.00133', '2021-04-27', 'EVA DWIYÀNTI', '3374076501780003', '083108167999 ', 'Pondok bukit Agung blok O no 14 sumur boto Semarang ', 'evadwiyanti.com@gmail.com', '$2y$10$mTSBhH8xokIRBCccLTUCZuerIMGOCm8F6LVppqo1rHzVIddFrkWv.', 3, 'noimage.jpg', 'noimage.jpg', '2520236859 ', 'Bca ', 'Eva Dwiyanti ', 'noimage.jpg', 1, 1, '0', '', 'anak', '083108167999 '),
-('01.00134', '2021-04-27', 'Bernadet Martini', '3374086202670004', '081390879211', '', 'titinbernadeth@yahoo.com', '$2y$10$BASyFqcQSFiRCmILBeUc8.tFeCtn1P2x5dMspbD9MRyZ0f/4iTEMm', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 1, 1, '', '', '', '');
+('01.00134', '2021-04-27', 'Bernadet Martini', '3374086202670004', '081390879211', '', 'titinbernadeth@yahoo.com', '$2y$10$BASyFqcQSFiRCmILBeUc8.tFeCtn1P2x5dMspbD9MRyZ0f/4iTEMm', 3, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 1, 1, '', '', '', ''),
+('01.00135', '2021-05-04', 'Primus Prayoga', '3324040510880003', '081390559997', '', 'primus@gmail.com', '$2y$10$oYhWM4988AZeYpDC9Nx.teGbq3MSSb.SQSFBSjGrMFF5oHfsoYa4.', 4, 'noimage.jpg', 'noimage.jpg', '', '', '', 'noimage.jpg', 4, 1, '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -330,6 +333,7 @@ CREATE TABLE `tb_agt_tmp` (
   `tgl_daftar` date NOT NULL,
   `nm_tmp` varchar(150) NOT NULL,
   `role_id` int(1) NOT NULL,
+  `jenis` int(2) NOT NULL,
   `nohp_tmp` varchar(20) NOT NULL,
   `email_tmp` varchar(100) NOT NULL,
   `ktp_tmp` text NOT NULL,
@@ -344,10 +348,8 @@ CREATE TABLE `tb_agt_tmp` (
 -- Dumping data untuk tabel `tb_agt_tmp`
 --
 
-INSERT INTO `tb_agt_tmp` (`idtmp`, `tgl_daftar`, `nm_tmp`, `role_id`, `nohp_tmp`, `email_tmp`, `ktp_tmp`, `password_tmp`, `idreferal`, `nominal`, `konfirm_status`, `token`) VALUES
-(17, '2021-01-16', 'NUR ROFIQ', 3, '081215602684', 'syarofiq24@gmail.com', '3323072303010002', '$2y$10$FLalMlrC6Q7nvywVBIf1LeSifBs6XTqtc6VlSHQieV.wPtssBxGWe', '01.00003', 200132, 0, 'm47tyWiVKZEoRh5G'),
-(18, '2021-02-16', 'aldy pratama', 3, '089377388220', 'doangfb@gmail.com', '0892233244498777', '$2y$10$xCsJ1KJUMDKUoYN.j/92ruSCLehmswWQG8Kk6sp/ZIOZ41BIrNZMi', '01.00003', 200332, 0, 'nBJZ1sA40bOWDcKU'),
-(30, '2021-04-27', 'Eko Susanto', 3, '08562833478', 'Ekosusanto3434@gmail.com', '3374060602710002', '$2y$10$LPjJUQtfAWpFQ1GYV1Qa3eZLCMd812fxs486OEu1WTop7yrQGACjK', '01.00133', 200331, 0, 'rFYwaDiqV7ykETjc');
+INSERT INTO `tb_agt_tmp` (`idtmp`, `tgl_daftar`, `nm_tmp`, `role_id`, `jenis`, `nohp_tmp`, `email_tmp`, `ktp_tmp`, `password_tmp`, `idreferal`, `nominal`, `konfirm_status`, `token`) VALUES
+(2, '2021-05-04', 'Yoga Musthofa', 3, 1, '081390559998', 'yoga.musthofa@gmail.com', '3324040510880004', '$2y$10$2iWzqKdLrQsY/DdAeVEtf.ScoLgGxZc9Z9RZGIKVrw1qhYjd206vu', '01.00015', 200232, 0, 'MgORDNA07lsTC92V');
 
 -- --------------------------------------------------------
 
@@ -719,7 +721,7 @@ INSERT INTO `tb_jaringan` (`id`, `idagt`, `idreferal`, `idupline`, `jml_downline
 (12, '01.00012', '01.00011', '01.00011', 0, '1.1.1.5.1', 5, '2021-04-30', 1, 0),
 (13, '01.00013', '01.00003', '01.00003', 1, '1.1.1.6', 4, '2021-04-30', 1, 0),
 (14, '01.00014', '01.00003', '01.00003', 0, '1.1.1.7', 4, '2021-04-30', 1, 0),
-(15, '01.00015', '01.00001', '01.00001', 0, '1.2', 2, '2021-04-30', 0, 0),
+(15, '01.00015', '01.00001', '01.00001', 1, '1.2', 2, '2021-04-30', 0, 0),
 (16, '01.00016', '01.00003', '01.00003', 14, '1.1.1.8', 4, '2021-04-30', 1, 0),
 (17, '01.00017', '01.00004', '01.00004', 0, '1.1.1.1.2', 5, '2021-04-30', 1, 0),
 (18, '01.00018', '01.00003', '01.00003', 0, '1.1.1.9', 4, '2021-04-30', 1, 0),
@@ -834,7 +836,8 @@ INSERT INTO `tb_jaringan` (`id`, `idagt`, `idreferal`, `idupline`, `jml_downline
 (131, '01.00131', '01.00104', '01.00104', 0, '1.1.1.37.1', 5, '2021-04-30', 0, 0),
 (132, '01.00132', '01.00013', '01.00013', 2, '1.1.1.6.1', 5, '2021-04-30', 0, 0),
 (133, '01.00133', '01.00132', '01.00132', 0, '1.1.1.6.1.1', 6, '2021-04-30', 0, 0),
-(134, '01.00134', '01.00132', '01.00132', 0, '1.1.1.6.1.2', 6, '2021-04-30', 0, 0);
+(134, '01.00134', '01.00132', '01.00132', 0, '1.1.1.6.1.2', 6, '2021-04-30', 0, 0),
+(135, '01.00135', '01.00015', '01.00015', 0, '1.2.1', 3, '0000-00-00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -2207,7 +2210,10 @@ INSERT INTO `tb_payout_trans` (`id`, `idted`, `payout_id`, `nominal`, `tgl_trans
 (1321, '01.00134', 7, 10000, '2021-04-27 20:56:37'),
 (1322, '01.00134', 8, 14000, '2021-04-27 20:56:37'),
 (1323, '01.00134', 9, 12000, '2021-04-27 20:56:37'),
-(1324, '01.00134', 10, 9000, '2021-04-27 20:56:37');
+(1324, '01.00134', 10, 9000, '2021-04-27 20:56:37'),
+(1325, '01.00135', 1, 31500, '2021-05-04 21:19:10'),
+(1326, '01.00135', 9, 12000, '2021-05-04 21:19:10'),
+(1327, '01.00135', 10, 9000, '2021-05-04 21:19:10');
 
 -- --------------------------------------------------------
 
@@ -4724,7 +4730,9 @@ INSERT INTO `tb_transaksi` (`id`, `tgl`, `idted`, `uraian`, `masuk`, `keluar`, `
 (881, '2021-04-27', '01.00028', 'jual emas', 0, 1.4, 0.0635, 'emas'),
 (882, '2021-04-27', '01.00132', 'emas awal', 0, 0, 0, 'emas'),
 (883, '2021-04-27', '01.00133', 'emas awal', 0, 0, 0, 'emas'),
-(884, '2021-04-27', '01.00134', 'emas awal', 0, 0, 0, 'emas');
+(884, '2021-04-27', '01.00134', 'emas awal', 0, 0, 0, 'emas'),
+(886, '2021-05-03', '01.00003', 'reward Apr 2021', 4002500, 0, 4891370, 'uang'),
+(887, '2021-05-04', '01.00135', 'emas awal', 0, 0, 0, 'emas');
 
 -- --------------------------------------------------------
 
@@ -6601,13 +6609,13 @@ ALTER TABLE `pendapatan_bonus`
 -- AUTO_INCREMENT untuk tabel `tb_agt_paket`
 --
 ALTER TABLE `tb_agt_paket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_agt_tmp`
 --
 ALTER TABLE `tb_agt_tmp`
-  MODIFY `idtmp` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `idtmp` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_bank`
@@ -6649,7 +6657,7 @@ ALTER TABLE `tb_history`
 -- AUTO_INCREMENT untuk tabel `tb_jaringan`
 --
 ALTER TABLE `tb_jaringan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_payout`
@@ -6661,7 +6669,7 @@ ALTER TABLE `tb_payout`
 -- AUTO_INCREMENT untuk tabel `tb_payout_trans`
 --
 ALTER TABLE `tb_payout_trans`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1325;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1328;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_sms_info`
@@ -6691,7 +6699,7 @@ ALTER TABLE `tb_titipan_emas_transfer`
 -- AUTO_INCREMENT untuk tabel `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=885;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=888;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_transbon_poin`
