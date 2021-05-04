@@ -55,25 +55,29 @@ class Model_jaringan extends CI_Model
 
     public function potensiBonusReferal($idted, $posjar)
     {
-        /*SELECT COUNT(poin_status) as jml_potensi, pos_level
-            FROM `tb_jaringan` 
+        /*SELECT COUNT(tb_jaringan.id) as jml_potensi, tb_jaringan.pos_level, tb_agt_ted.jenis
+            FROM `tb_jaringan`
+            LEFT JOIN tb_agt_ted ON tb_agt_ted.idted = tb_jaringan.idagt
             WHERE
-            `pos_jar`  LIKE '1.1.1%'
-            AND idagt != '01.00003' 
-            AND poin_status = 0
-            GROUP BY pos_level
-            ORDER BY pos_level ASC
+            tb_jaringan.`pos_jar`  LIKE '1.1.1.%'
+            AND tb_jaringan.idagt != '01.00003' 
+            AND tb_jaringan.tgl_proses = '0000-00-00'
+            AND tb_agt_ted.jenis = 1 OR tb_agt_ted.jenis = 2
+            GROUP BY tb_jaringan.pos_level
+            ORDER BY tb_jaringan.pos_level ASC
             LIMIT 10*/
 
         //Limit 10 untuk membatasi kedalaman 10 level
 
-        $this->db->select("COUNT(poin_status) AS jml_potensi, pos_level, tgl_proses");
+        $this->db->select("COUNT(tb_jaringan.id) as jml_potensi, tb_jaringan.pos_level, tb_agt_ted.jenis");
         $this->db->from($this->_table);
-        $this->db->where("pos_jar LIKE '$posjar%'");
-        $this->db->where("idagt != '$idted'");
-        $this->db->where('poin_status', 0);
-        $this->db->group_by("pos_level");
-        $this->db->order_by('pos_level', 'ASC');
+        $this->db->join('tb_agt_ted', 'tb_agt_ted.idted = tb_jaringan.idagt', 'left');
+        $this->db->where("tb_jaringan.pos_jar LIKE '$posjar.%'");
+        $this->db->where("tb_jaringan.idagt != '$idted'");
+        $this->db->where("tb_jaringan.tgl_proses = '0000-00-00'");
+        $this->db->where('tb_agt_ted.jenis IN (1,2)');
+        $this->db->group_by("tb_jaringan.pos_level");
+        $this->db->order_by('tb_jaringan.pos_level', 'ASC');
         $this->db->limit(10);
         return $this->db->get()->result_array();
     }
@@ -125,31 +129,66 @@ class Model_jaringan extends CI_Model
     /** Cek anggota yang sudah punya downline */
     public function cek_downline_agt()
     {
-        $this->db->where('jml_downline > 0');
+        $this->db->select("tb_jaringan.`id`, tb_jaringan.`idagt`, tb_jaringan.`idreferal`, tb_jaringan.`idupline`, tb_jaringan.`jml_downline`, tb_jaringan.`pos_jar`, tb_jaringan.`pos_level`, tb_agt_ted.jenis");
+        $this->db->join('tb_agt_ted', 'tb_agt_ted.idted = tb_jaringan.idagt', 'left');
+        $this->db->where('tb_jaringan.jml_downline > 0');
+        $this->db->where('tb_agt_ted.jenis != 3');
         return $this->db->get($this->_table);
     }
 
     public function cek_downline_by_limit($limit)
     {
-        $query = $this->db->query("SELECT id, idagt, idreferal, idupline, jml_downline, pos_jar, pos_level, tgl_proses, referal_status, poin_status FROM tb_jaringan WHERE jml_downline > 0 limit " . $limit . ",1");
+        $query = $this->db->query("SELECT tb_jaringan.`id`, tb_jaringan.`idagt`, tb_jaringan.`idreferal`, tb_jaringan.`idupline`, tb_jaringan.`jml_downline`, tb_jaringan.`pos_jar`, tb_jaringan.`pos_level`, tb_agt_ted.jenis
+        FROM tb_jaringan
+        LEFT JOIN tb_agt_ted ON tb_agt_ted.idted = tb_jaringan.idagt
+        WHERE
+        tb_jaringan.jml_downline > 0
+        AND
+        tb_agt_ted.jenis != 3
+        LIMIT " . $limit . ",1");
+        return $query->row();
+    }
+
+    public function potensi_refferal()
+    {
+        $query = $this->db->query("SELECT tb_jaringan.`id`, tb_jaringan.`idagt`, tb_jaringan.`idreferal`, tb_jaringan.`idupline`, tb_jaringan.`jml_downline`, tb_jaringan.`pos_jar`, tb_jaringan.`pos_level`, tb_agt_ted.jenis
+        FROM tb_jaringan
+        LEFT JOIN tb_agt_ted ON tb_agt_ted.idted = tb_jaringan.idagt
+        WHERE
+        tb_jaringan.jml_downline > 0
+        AND
+        tb_agt_ted.jenis IN (1,2)");
+        return $query;
+    }
+
+    public function potensi_refferal_by_limit($limit)
+    {
+        $query = $this->db->query("SELECT tb_jaringan.`id`, tb_jaringan.`idagt`, tb_jaringan.`idreferal`, tb_jaringan.`idupline`, tb_jaringan.`jml_downline`, tb_jaringan.`pos_jar`, tb_jaringan.`pos_level`, tb_agt_ted.jenis
+        FROM tb_jaringan
+        LEFT JOIN tb_agt_ted ON tb_agt_ted.idted = tb_jaringan.idagt
+        WHERE
+        tb_jaringan.jml_downline > 0
+        AND
+        tb_agt_ted.jenis IN (1,2)
+        LIMIT " . $limit . ",1");
         return $query->row();
     }
 
     public function cek_qualified_tiga()
     {
-        $this->db->where("jml_downline BETWEEN 3 AND 9");
+        $this->db->where("tb_jaringan.jml_downline BETWEEN 3 AND 9");
         return $this->db->get($this->_table);
     }
 
     public function cek_qualified_tujuh()
     {
-        $this->db->where("jml_downline BETWEEN 10 AND 18");
+        $this->db->where("tb_jaringan.jml_downline BETWEEN 10 AND 18");
         return $this->db->get($this->_table);
     }
 
     public function cek_qualified_sembilan()
     {
-        $this->db->where("jml_downline >= 19");
+        $this->db->where("tb_jaringan.jml_downline >= 19");
         return $this->db->get($this->_table);
     }
 

@@ -68,12 +68,15 @@
                                 <select name="jenis" class="form-control select-text-custom">
                                     <option value="">: Pilih Keanggotaan</option>
                                     <?php
-                                    //menampilkan paket keanggotaan
-                                    $this->db->where('id IN (3)');
+                                    //menampilkan paket keanggotaan (script lama)
+                                    /*$this->db->where('id IN (3)');
                                     $roles = $this->db->get('tb_user_role')->result_array();
 
                                     foreach ($roles as $role) {
                                         echo "<option value='$role[id]'>" . ucwords($role['role_name']) . "</option>";
+                                    }*/
+                                    foreach ($pakets as $pkt) {
+                                        echo "<option value='$pkt->id'>" . ucwords($pkt->nama_paket) . "</option>";
                                     }
                                     ?>
                                 </select>

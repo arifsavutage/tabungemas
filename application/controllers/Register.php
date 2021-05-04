@@ -17,6 +17,7 @@ class Register extends CI_Controller
         $this->load->model('model_bank');
         $this->load->model('model_emas');
         $this->load->model('model_payout');
+        $this->load->model('model_paket_anggota');
     }
 
     public function index()
@@ -35,6 +36,7 @@ class Register extends CI_Controller
         $nameregis  = ucwords(strtolower($this->input->post('nama')));
         $idtmp      = $this->input->post('idtmp');
         $role_id    = $this->input->post('role');
+        $jenis      = $this->input->post('jenis');
         $ktp        = $this->input->post('noktp');
 
         if (!empty($refid)) {
@@ -110,7 +112,7 @@ class Register extends CI_Controller
             $jaringan->save($datajar);
 
             //get payout by role_id
-            $getpayout  = $this->db->get_where('tb_user_role', ['id' => $role_id])->row()->payout_id;
+            /*$getpayout  = $this->db->get_where('tb_user_role', ['id' => $role_id])->row()->payout_id;
             $json   = json_decode($getpayout, true);
 
             $xx = 1;
@@ -125,9 +127,32 @@ class Register extends CI_Controller
 
                 $this->db->insert('tb_payout_trans', $data_payout);
                 $xx++;
-            }
+            }*/
 
             //print_r(var_dump($json));
+
+            //ambil jenis paket untuk mendapatkan payout berdasar id
+            $jenis_mem = $this->input->post('jenis');
+            $detail_paket = $this->model_paket_anggota->get_by_id($jenis_mem);
+
+            $json = json_decode($detail_paket->payout_id, true);
+
+            $data = $this->model_payout->get_where_in($json);
+            //$ass = json_encode($data, true);
+            //print_r(var_dump($ass));
+
+            $nominalx = 0;
+            for ($j = 0; $j < count($data); $j++) {
+                $nominalx = $data[$j]->nominal;
+
+                $data_payout    = [
+                    'idted'     => $newid,
+                    'payout_id' => $data[$j]->id,
+                    'nominal'   => $nominalx
+                ];
+
+                $this->db->insert('tb_payout_trans', $data_payout);
+            }
 
             //ambil nominal uang untuk pembanding dengan harga beli emas terbaru
             $nomvar  = $this->model_uang->getValueById(3);
@@ -264,23 +289,44 @@ class Register extends CI_Controller
                                 $ref  = "01.00001";
                             }
 
-                            //get jenis membership
-                            $mem_ship = $this->db->get_where('tb_user_role', ['id' => $jenis_mem])->row_array();
+                            //get jenis membership (script lama)
+                            /*$mem_ship = $this->db->get_where('tb_user_role', ['id' => $jenis_mem])->row_array();
 
                             if ($mem_ship['role_name'] == 'premium') {
                                 $regis_fee = 1;
                             } else if ($mem_ship['role_name'] == 'basic') {
                                 $regis_fee = 3;
                             }
-
                             $nominalregis   = $this->model_uang->getValueById($regis_fee);
 
                             $randnom    = "";
                             for ($i = 0; $i < 3; $i++) {
                                 $randnom  .= rand(1, 3);
                             }
-
                             $nomtransfer    = $nominalregis['registrasi'] + $randnom;
+                            */
+
+                            //ambil jenis paket untuk mendapatkan payout berdasar id
+                            $detail_paket = $this->model_paket_anggota->get_by_id($jenis_mem);
+
+                            $json = json_decode($detail_paket->payout_id, true);
+
+                            $data = $this->model_payout->get_where_in($json);
+                            //$ass = json_encode($data, true);
+                            //print_r(var_dump($ass));
+
+                            $regis_fee = 0;
+                            for ($j = 0; $j < count($data); $j++) {
+                                $regis_fee += $data[$j]->nominal;
+                            }
+
+                            //tambah 3 angka random
+                            $randnom    = "";
+                            for ($i = 0; $i < 3; $i++) {
+                                $randnom  .= rand(1, 3);
+                            }
+
+                            $nomtransfer    = $regis_fee + $randnom;
 
                             //prepare send mail
                             $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -290,7 +336,8 @@ class Register extends CI_Controller
                                 'referal'   => "$ref",
                                 'nominal'   => $nomtransfer,
                                 'status'    => 0,
-                                'token'     => $token
+                                'token'     => $token,
+                                'role_id'   => $detail_paket->role_id
                             ];
 
                             //save to tmp data
@@ -308,22 +355,22 @@ class Register extends CI_Controller
                             $this->mailVerifikasi($dataemail);
 
                             $this->session->set_flashdata('info', '
-                        <div class="alert alert-success" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                            <h4>success :</h4> Registrasi berhasil.. 
-                        </div>');
+                            <div class="alert alert-success" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <h4>success :</h4> Registrasi berhasil.. 
+                            </div>');
 
                             redirect(base_url() . 'index.php/register/new_member');
                         } else {
                             $this->session->set_flashdata('info', '
-                        <div class="alert alert-warning" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                            <h4>Maaf, </h4> Email sudah terdaftar ...
-                        </div>');
+                            <div class="alert alert-warning" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <h4>Maaf, </h4> Email sudah terdaftar ...
+                            </div>');
 
                             redirect(base_url() . 'index.php/register/new_member');
                         }
@@ -370,7 +417,8 @@ class Register extends CI_Controller
                 }
             }
         } else {
-            $this->load->view('pages/register-new');
+            $data['pakets'] = $this->model_paket_anggota->get_all_active();
+            $this->load->view('pages/register-new', $data);
         }
     }
 
@@ -491,6 +539,7 @@ class Register extends CI_Controller
         $attach1     = "";
         $attach2     = "";
 
+        //echo $message;
         $this->_sendmail($to, $subject, $message, $attach1, $attach2);
     }
 

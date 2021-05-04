@@ -18,7 +18,7 @@
                                 <th>Tgl. Daftar</th>
                                 <th>Nama Lengkap</th>
                                 <th>KTP</th>
-                                <th>Keanggotaan</th>
+                                <th>Paket</th>
                                 <th>No. HP</th>
                                 <th>Email</th>
                                 <th>ID Referal</th>
@@ -43,21 +43,7 @@
                                     <td><?= date('Y-m-d', strtotime($detail['tgl_daftar'])); ?></td>
                                     <td><?= ucwords($detail['nm_tmp']); ?></td>
                                     <td><?= $detail['ktp_tmp']; ?></td>
-                                    <td>
-                                        <?php
-                                        $this->db->select('tb_user_role.role_name as memship, tb_user_role.id');
-                                        $this->db->join('tb_agt_tmp', 'tb_agt_tmp.role_id = tb_user_role.id', 'right');
-                                        $mem_ship_tmp = $this->db->get_where('tb_user_role', ['id' => $detail['role_id']])->row_array();
-
-                                        if ($mem_ship_tmp['id'] == 3) {
-                                            echo '<span class="badge badge-danger">' . ucwords($mem_ship_tmp['memship']) . '</span>';
-                                            //echo $detail['role_id'];
-                                        } else if ($mem_ship_tmp['id'] == 4) {
-                                            echo '<span class="badge badge-success">' . ucwords($mem_ship_tmp['memship']) . '</span>';
-                                            //echo $detail['role_id'];
-                                        }
-                                        ?>
-                                    </td>
+                                    <td><?= '<span class="badge badge-secondary">' . ucwords($detail['nama_paket']) . '</span>' ?></td>
                                     <td><?= $detail['nohp_tmp']; ?></td>
                                     <td><?= $detail['email_tmp']; ?></td>
                                     <td>
@@ -144,7 +130,7 @@
                                     <td><?= $label; ?></td>
                                     <td>
                                         <!-- Button trigger modal -->
-                                        <a role="button" href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addToJar<?= $no; ?>" title="Tambah ke jaringan">
+                                        <a role="button" href="#" class="btn btn-primary btn-sm mr-1" data-toggle="modal" data-target="#addToJar<?= $no; ?>" title="Tambah ke jaringan">
                                             <i class="fas fa-user-check"></i>
                                         </a>
 
@@ -184,6 +170,7 @@
                                                                         <input type="hidden" name="password" value="<?= $detail['password_tmp']; ?>" />
                                                                         <input type="hidden" name="idtmp" value="<?= $detail['idtmp']; ?>" />
                                                                         <input type="hidden" name="role" value="<?= $detail['role_id']; ?>" />
+                                                                        <input type="hidden" name="jenis" value="<?= $detail['jenis']; ?>" />
                                                                     </div>
 
                                                                 </div>

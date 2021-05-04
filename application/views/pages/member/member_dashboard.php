@@ -130,25 +130,34 @@
                         $this->db->where('is_widraw', 0);
                         $data_reaward = $this->db->get('pendapatan_bonus')->row();
                         if ($data_reaward != null) {
-                            $total_reward = $data_reaward->bon_referal + $data_reaward->bon_royalti;
+                            if ($data_reaward->is_widraw == 0) {
+                                $periode = $data_reaward->periode;
+                                $total_reward = $data_reaward->bon_referal + $data_reaward->bon_royalti;
                         ?>
-                            <div class="row">
-                                <div class="col-xs-4 col-md-6 col-lg-6 col-xl-6">
-                                    <div class="card-box noradius noborder bg-danger">
-                                        <i class="fa fa-money float-right text-white"></i>
-                                        <h6 class="text-white text-uppercase m-b-20">Info Reward Periode <?= date('M Y', strtotime($data_reaward->periode)) ?></h6>
-                                        <h1 class="m-b-20 text-white counter">Rp. <?= number_format($total_reward, 0, ',', '.'); ?></h1>
-                                        <a href="" class="btn btn-sm btn-warning mt-3">Pindah Ke Wallet</a>
+                                <div class="row">
+                                    <div class="col-xs-4 col-md-6 col-lg-6 col-xl-6">
+                                        <div class="card-box noradius noborder bg-danger">
+                                            <i class="fa fa-money float-right text-white"></i>
+                                            <h6 class="text-white text-uppercase m-b-20">Info Reward Periode <?= date('M Y', strtotime($data_reaward->periode)) ?></h6>
+                                            <h4 class="m-b-20 text-white counter">Rp. <?= number_format($total_reward, 0, ',', '.'); ?></h4>
+                                            <form name="addbonus" method="post" action="<?= base_url('index.php/transaksi/bonus_to_wallet') ?>">
+                                                <input name="reward" type="hidden" value="<?= $total_reward ?>" />
+                                                <input name="idagt" type="hidden" value="<?= $idagt ?>" />
+                                                <input name="periode" type="hidden" value="<?= $periode ?>" />
+
+                                                <button type="submit" class="btn btn-sm btn-warning mt-3">Pindah Ke Wallet</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        <?php
+                            <?php
+                            }
                         }
 
 
                         foreach ($jual_id as $rowid) :
                             $totalbyr = $rowid['nominal_gram'] * $rowid['nominal_uang'];
-                        ?>
+                            ?>
                             <div class="row">
                                 <div class="col-sm-12 col-md-6">
                                     <div class="alert alert-info" role="alert">

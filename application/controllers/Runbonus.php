@@ -13,12 +13,16 @@ class Runbonus extends CI_Controller
     public function index()
     {
         $periode = date('Y-m-d');
+        //hitiung pendaftar
+        $query = $this->db->query("SELECT * FROM `tb_jaringan` WHERE `tgl_proses` = '0000-00-00'");
+        $jml_pendaftar = $query->num_rows();
 
-        //cek anggota yng sudah punya downline
-        $jml_anggota  = $this->model_jaringan->cek_downline_agt()->num_rows();
+        //Jml anggota potensi refferal
+        $jml_anggota  = $this->model_jaringan->potensi_refferal()->num_rows();
         $sess = [
             'periode'   => $periode,
-            'jml_anggota' => $jml_anggota
+            'jml_anggota' => $jml_anggota,
+            'pendaftar' => $jml_pendaftar
         ];
         $this->session->set_userdata($sess);
 
@@ -31,7 +35,7 @@ class Runbonus extends CI_Controller
 
         $periode = $this->session->userdata('periode');
         $jml = $this->session->userdata('jml_anggota');
-        $data = $this->model_jaringan->cek_downline_by_limit($limit);
+        $data = $this->model_jaringan->potensi_refferal_by_limit($limit);
 
         //echo $data->idagt;
         $insert = [
@@ -58,9 +62,10 @@ class Runbonus extends CI_Controller
         // hitung bonus referral
         $periode = $this->session->userdata('periode');
         $jml = $this->session->userdata('jml_anggota');
-        $data = $this->model_jaringan->cek_downline_by_limit($limit);
+        $data = $this->model_jaringan->potensi_refferal_by_limit($limit);
 
         echo $data->idagt . "<br />";
+
         //ambil nilai bonus
         $bon_ref = $this->model_jaringan->potensiBonusReferal($data->idagt, $data->pos_jar);
 
@@ -97,10 +102,7 @@ class Runbonus extends CI_Controller
 
     public function keempat()
     {
-        //hitiung bonus royalti untuk qualified 3
-        $query = $this->db->query("SELECT * FROM `tb_jaringan` WHERE `tgl_proses` = '0000-00-00'");
-        $jml_pendaftar = $query->num_rows();
-
+        //data jumlah yang qualified Royalti
         $q_3 = $this->model_jaringan->cek_qualified_tiga()->num_rows();
         $q_7 = $this->model_jaringan->cek_qualified_tujuh()->num_rows();
         $q_9 = $this->model_jaringan->cek_qualified_sembilan()->num_rows();
@@ -109,14 +111,14 @@ class Runbonus extends CI_Controller
             'q_3' => $q_3,
             'q_7' => $q_7,
             'q_9' => $q_9,
-            'pendaftar' => $jml_pendaftar
         ];
 
         $this->session->set_userdata($data_q);
-        echo '<script>window.location.assign("' . base_url('index.php/runbonus/kelima/3/0') . '");</script>';
+        //echo '<script>window.location.assign("' . base_url('index.php/runbonus/kelima/3/0') . '");</script>';
+        echo '<script>window.location.assign("' . base_url('index.php/runbonus/ketujuh') . '");</script>';
     }
 
-    public function kelima($qualified_ke, $limit)
+    /*public function kelima($qualified_ke, $limit)
     {
         $new_agt = $this->session->userdata('pendaftar');
         $periode = $this->session->userdata('periode');
@@ -179,7 +181,7 @@ class Runbonus extends CI_Controller
                 echo '<script>window.location.assign("' . base_url('index.php/runbonus/kelima/9/' . $limit) . '");</script>';
             }
         }
-    }
+    }*/
 
     public function keenam()
     {
@@ -190,5 +192,120 @@ class Runbonus extends CI_Controller
         $this->db->update('tb_jaringan', $data);
 
         echo "Finish";
+    }
+
+    public function ketujuh()
+    {
+        //hitung real downline, dikurangi paket yg tdk masuk hitungan royalti
+        $query = $this->db->query("SELECT tb_jaringan.`id`, tb_jaringan.`idagt`, tb_jaringan.`idreferal`, tb_jaringan.`idupline`, tb_jaringan.`jml_downline`, tb_jaringan.`pos_jar`, tb_jaringan.`pos_level`, tb_agt_ted.jenis
+        FROM tb_jaringan
+        LEFT JOIN tb_agt_ted ON tb_agt_ted.idted = tb_jaringan.idagt
+        WHERE
+        tb_jaringan.jml_downline > 0
+        AND
+        tb_agt_ted.jenis != 3");
+        $data_h = $query->result();
+
+
+        $qualified = array();
+        foreach ($data_h as $data) {
+            //hitung untuk qualified royalti
+            $query = $this->db->query("SELECT tb_jaringan.idagt,tb_jaringan.idreferal, tb_jaringan.idupline,tb_jaringan.pos_jar, tb_agt_ted.jenis
+                FROM `tb_jaringan`
+                LEFT JOIN tb_agt_ted ON tb_agt_ted.idted = tb_jaringan.idagt
+                WHERE
+                tb_jaringan.idreferal = $data->idagt AND tb_agt_ted.jenis != 3");
+            $jml_downline_real = $query->num_rows();
+
+            if ($jml_downline_real >= 3) {
+                $x = array('idagt' => $data->idagt, 'downline' => $jml_downline_real);
+                array_push($qualified, $x);
+            }
+        }
+
+
+        $data_q = [
+            'qualified' => $qualified
+        ];
+
+        $this->session->set_userdata($data_q);
+        echo '<script>window.location.assign("' . base_url('index.php/runbonus/kedelapan') . '");</script>';
+    }
+
+    public function kedelapan($limit = 0)
+    {
+        $periode = $this->session->userdata('periode');
+        $new_agt = $this->session->userdata('pendaftar');
+        $qualified = $this->session->userdata('qualified');
+        $jml = count($qualified);
+
+        //print_r(var_dump($qualified));
+
+        /*echo "<h1>Daftar qualified</h1><br/>";
+        for ($i = 0; $i < count($qualified); $i++) {
+            echo "Id :" . $qualified[$i]['idagt'] . "<br/>";
+            echo "downline :" . $qualified[$i]['downline'] . "<br/><hr/>";
+        }*/
+
+        echo "<h1>Daftar qualified</h1><br/>";
+        echo "Id :" . $qualified[$limit]['idagt'] . "<br/>";
+        echo "downline :" . $qualified[$limit]['downline'] . "<br/><hr/>";
+
+        $idagt    = $qualified[$limit]['idagt'];
+        $downline = $qualified[$limit]['downline'];
+
+        //cek apakah id sudah terdaftar di pendapatan_bonus
+        $this->db->where('idagt', $idagt);
+        $this->db->where('periode', $periode);
+        $cek = $this->db->get('pendapatan_bonus')->num_rows();
+
+        if ($cek == 0) {
+            $insert = [
+                'periode' => $periode,
+                'idagt' => $idagt,
+                'bon_referal' => 0,
+                'bon_royalti' => 0,
+                'is_widraw' => 0
+            ];
+
+            $this->db->insert('pendapatan_bonus', $insert);
+        }
+
+        if ($downline >= 3 and $downline <= 9) {
+            $this->db->where('royalti_target', 3);
+            $nilai = $this->db->get('tb_bonus')->row();
+
+            $qualified = $this->session->userdata('q_3');
+
+            $royalti = ($new_agt * $nilai->royalti) / $qualified;
+
+            $this->db->query("UPDATE `pendapatan_bonus` SET `bon_royalti` = bon_royalti + $royalti WHERE `periode` = '$periode'  AND `idagt` = '$idagt'");
+        } else if ($downline >= 10 and $downline <= 18) {
+            $this->db->where('royalti_target', 7);
+            $nilai = $this->db->get('tb_bonus')->row();
+
+            $qualified = $this->session->userdata('q_7');
+
+            $royalti = ($new_agt * $nilai->royalti) / $qualified;
+
+            $this->db->query("UPDATE `pendapatan_bonus` SET `bon_royalti` = bon_royalti + $royalti WHERE `periode` = '$periode'  AND `idagt` = '$idagt'");
+        } else if ($downline >= 19) {
+            $this->db->where('royalti_target', 9);
+            $nilai = $this->db->get('tb_bonus')->row();
+
+            $qualified = $this->session->userdata('q_9');
+
+            $royalti = ($new_agt * $nilai->royalti) / $qualified;
+
+            $this->db->query("UPDATE `pendapatan_bonus` SET `bon_royalti` = bon_royalti + $royalti WHERE `periode` = '$periode'  AND `idagt` = '$idagt'");
+        }
+
+        $limit = $limit + 1;
+        if ($limit == $jml) {
+
+            echo '<script>window.location.assign("' . base_url('index.php/runbonus/keenam') . '");</script>';
+        } else {
+            echo '<script>window.location.assign("' . base_url('index.php/runbonus/kedelapan/' . $limit) . '");</script>';
+        }
     }
 }

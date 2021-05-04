@@ -728,6 +728,51 @@ class Transaksi extends CI_Controller
         $this->load->view('dashboard', $data);
     }
 
+    public function bonus_to_wallet()
+    {
+        $this->form_validation->set_rules('reward', 'reward', 'required');
+        $this->form_validation->set_rules('idagt', 'idagt', 'required');
+
+        if ($this->form_validation->run()) {
+            $uang = $this->input->post('reward');
+            $idted = $this->input->post('idagt');
+            $tgl_bonus = $this->input->post('periode');
+            $periode = date('M Y', strtotime($tgl_bonus));
+
+            $saldo_uang = $this->model_transaksi->getLastTranById($idted, 'uang');
+
+            $new_saldo = $saldo_uang['saldo'] + $uang;
+            $data_saldo = [
+                'tgl' => date('Y-m-d'),
+                'idted' => "$idted",
+                'uraian' => 'reward ' . $periode,
+                'masuk' => $uang,
+                'keluar' => 0,
+                'saldo' => $new_saldo,
+                'jenis' => 'uang'
+            ];
+
+            $this->model_transaksi->save($data_saldo);
+
+            //update
+            $data_update = [
+                'is_widraw' => 1
+            ];
+
+            $this->db->where('idagt', $idted);
+            $this->db->where('periode', date('Y-m-d', strtotime($tgl_bonus)));
+            $this->db->update('pendapatan_bonus', $data_update);
+
+            $this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Ok</strong> reward sudah masuk ke wallet.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>');
+            redirect(base_url());
+        }
+    }
+
     public function tarik_fisik_emas($id = null)
     {
         $id = $this->session->userdata('id');

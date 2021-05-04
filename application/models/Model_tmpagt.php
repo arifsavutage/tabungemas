@@ -8,7 +8,7 @@ class Model_tmpagt extends CI_Model
 
     public $tgl_daftar;
     public $nm_tmp;
-    public $role_id;
+    public $jenis;
     public $nohp_tmp;
     public $email_tmp;
     public $ktp_tmp;
@@ -72,8 +72,9 @@ class Model_tmpagt extends CI_Model
         $post = $this->input->post();
 
         $this->tgl_daftar   = date('Y-m-d');
-        $this->nm_tmp       = $post['nama'];
-        $this->role_id      = $post['jenis'];
+        $this->nm_tmp       = ucwords(strtolower($post['nama']));
+        $this->jenis        = $post['jenis'];
+        $this->role_id      = $data['role_id'];
         $this->nohp_tmp     = $post['nohp'];
         $this->email_tmp    = $post['email'];
         $this->ktp_tmp      = $post['ktp'];
@@ -93,10 +94,10 @@ class Model_tmpagt extends CI_Model
 
     public function getRelationAll()
     {
-        $this->db->select('tb_agt_tmp.*, tb_agt_ted.idted, tb_agt_ted.`nama_lengkap`, tb_agt_ted.`nohp`, tb_agt_ted.`alamat`, tb_agt_ted.`email`, tb_agt_ted.`role_id` AS roleref, tb_agt_ted.`foto_profil`, role_name, payout_id');
+        $this->db->select('tb_agt_tmp.*, tb_agt_ted.idted, tb_agt_ted.`nama_lengkap`, tb_agt_ted.`nohp`, tb_agt_ted.`alamat`, tb_agt_ted.`email`, tb_agt_ted.`role_id` AS roleref, tb_agt_ted.`foto_profil`, tb_agt_paket.nama_paket, tb_agt_paket.payout_id');
         $this->db->from($this->_table);
         $this->db->join('tb_agt_ted', 'tb_agt_ted.idted = tb_agt_tmp.idreferal');
-        $this->db->join('tb_user_role', 'tb_user_role.id = tb_agt_tmp.role_id');
+        $this->db->join('tb_agt_paket', 'tb_agt_paket.id = tb_agt_tmp.jenis');
         return $this->db->get()->result_array();
     }
 

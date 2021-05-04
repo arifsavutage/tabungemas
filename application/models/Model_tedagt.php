@@ -17,6 +17,7 @@ class Model_tedagt extends CI_Model
     public $scan_ktp;
     public $scan_npwp;
     public $foto_profil;
+    public $jenis;
     public $aktif;
 
     public function rules()
@@ -121,6 +122,7 @@ class Model_tedagt extends CI_Model
             $this->scan_ktp     = "noimage.jpg";
             $this->scan_npwp    = "noimage.jpg";
             $this->foto_profil  = "noimage.jpg";
+            $this->jenis        = $post['jenis'];
             $this->aktif        = 1;
 
             $this->db->insert($this->_table, $this);
