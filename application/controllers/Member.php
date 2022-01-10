@@ -248,6 +248,7 @@ class Member extends CI_Controller
             $this->form_validation->set_rules('nmwaris', 'Nama Waris', 'required');
             $this->form_validation->set_rules('hubwaris', 'Hubungan Waris', 'required');
             $this->form_validation->set_rules('hpwaris', 'No. HP Waris', 'required');
+            $this->form_validation->set_rules('email', 'E-mail', 'required|valid_email');
 
             if ($this->form_validation->run()) {
                 $idted  = $this->input->post('idted');
@@ -258,6 +259,7 @@ class Member extends CI_Controller
                 $norek  = $this->input->post('norek');
                 $bank   = $this->input->post('bank');
                 $an     = $this->input->post('an');
+                $email  = $this->input->post('email');
 
                 $nmwaris    = strtolower($this->input->post('nmwaris'));
                 $ktpwaris   = $this->input->post('ktpwaris');
@@ -268,6 +270,7 @@ class Member extends CI_Controller
                     'idted' => "$idted",
                     'nama_lengkap' => ucwords(strtolower($nama_lengkap)),
                     'noktp'  => "$noktp",
+                    'email' => $email,
                     'nohp'  => "$nohp",
                     'alamat' => "$alamat",
                     'norek ' => "$norek",

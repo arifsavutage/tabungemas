@@ -31,11 +31,15 @@
                             <select name="gramtrf" class="form-control">
                                 <option value="">: Pilih</option>
                                 <?php
-                                $i = 2;
-                                $emas   = 1000;
-                                while ($i <= $emas) {
+                                // $i = 2;
+                                // $emas   = 1000;
+                                // while ($i <= $emas) {
+                                //     echo "<option value='$i'>$i</option>";
+                                //     $i += 2;
+                                // }
+                                $emas = [25, 45, 85, 125];
+                                foreach ($emas as $i) {
                                     echo "<option value='$i'>$i</option>";
-                                    $i += 2;
                                 }
                                 ?>
                             </select>
@@ -46,7 +50,13 @@
                         <div class="form-group col-md-12">
                             <label for="tenor">Tenor</label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="tenor" id="tenor1" value="12" checked>
+                                <input class="form-check-input" type="radio" name="tenor" id="tenor3" value="6" checked>
+                                <label class="form-check-label">
+                                    6 Bulan
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="tenor" id="tenor1" value="12">
                                 <label class="form-check-label">
                                     12 Bulan
                                 </label>

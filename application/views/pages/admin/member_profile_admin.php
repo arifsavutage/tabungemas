@@ -84,7 +84,9 @@
                         <i class="fas fa-hand-holding-heart"></i> <?= $detail['ktpwaris'] . " | " . ucwords($detail['nmwaris']) . " | " . ucwords($detail['hubwaris']) . " | " . $detail['hpwaris']; ?>
                     </li>
                 </ul>
+                <!--
                 <?= $upgrade; ?>
+                -->
             </div>
         </div>
     </div>

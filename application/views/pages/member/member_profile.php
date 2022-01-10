@@ -17,11 +17,11 @@
                     <br />
                     <div class="text-center">
                         <?php
-                        $this->db->select('tb_user_role.role_name as memship, tb_user_role.id');
-                        $this->db->join('tb_agt_ted', 'tb_agt_ted.role_id = tb_user_role.id', 'right');
-                        $mem_ship = $this->db->get_where('tb_user_role', ['id' => $detail['role_id']])->row_array();
+                        $this->db->select('nama_paket');
+                        $this->db->join('tb_agt_ted', 'tb_agt_ted.jenis = tb_agt_paket.id', 'right');
+                        $mem_ship = $this->db->get_where('tb_agt_paket', ['id' => $detail['jenis']])->row_array();
 
-                        if ($mem_ship['id'] == 3) {
+                        /*if ($mem_ship['id'] == 3) {
                             //echo '<span class="badge badge-danger">' . ucwords($mem_ship_tmp['memship']) . '</span>';
                             //echo $detail['role_id'];
                             $keanggotaan    = ucwords($mem_ship['memship']);
@@ -33,17 +33,17 @@
                             $keanggotaan    = ucwords($mem_ship['memship']);
                             $class          = "badge-danger";
                             $upgrade        = "";
-                        }
+                        }*/
 
-                        /*if ($detail['jenis'] == 'basic') {
-                            $keanggotaan    = "Basic Anggota";
+                        if ($detail['jenis'] > 1) {
+                            $keanggotaan    = $mem_ship['nama_paket'];
                             $class          = "badge-info";
                             $upgrade        = '<a href="' . base_url('index.php/member/upgrade/') . '" class="btn btn-danger btn-block btn-lg mt-4">Upgrade to premium</a>';
                         } else {
-                            $keanggotaan    = "Agen TED";
+                            $keanggotaan    = $mem_ship['nama_paket'];
                             $class          = "badge-danger";
                             $upgrade        = "";
-                        }*/
+                        }
                         ?>
                         <h6><span class="badge <?= $class; ?>"><?= $keanggotaan; ?></span></h6>
                     </div>

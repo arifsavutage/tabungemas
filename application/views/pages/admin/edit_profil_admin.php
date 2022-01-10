@@ -28,6 +28,13 @@
                         <input type="text" class="form-control" id="nohp" name="nohp" value="<?= $detail['nohp'] ?>">
 
                     </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" class="form-control" id="email" name="email" value="<?= $detail['email'] ?>">
+                        <?php echo form_error('email', '<span class="text-danger"', '</span>') ?>
+                    </div>
+
                     <div class="form-group">
                         <label for="nohp">Alamat</label>
                         <textarea class="form-control" name="alamat"><?= $detail['alamat']; ?></textarea>
@@ -48,6 +55,7 @@
                     <div class="form-group">
                         <label for="nmwaris">Nama Ahli Waris</label>
                         <input type="text" class="form-control" id="nmwarisid" name="nmwaris" value="<?= ucwords($detail['nmwaris']) ?>" placeholder="Nama ahli waris" required="">
+                        <?php echo form_error('nmwaris', '<span class="text-danger"', '</span>') ?>
                     </div>
                     <div class="form-group">
                         <label for="ktpwaris">Ktp Ahli Waris</label>
@@ -66,10 +74,12 @@
                             }
                             ?>
                         </select>
+                        <?php echo form_error('hubwaris', '<span class="text-danger"', '</span>') ?>
                     </div>
                     <div class="form-group">
                         <label for="hpwaris">No. Hp</label>
                         <input type="text" class="form-control" id="hpwarisid" name="hpwaris" value="<?= $detail['hpwaris'] ?>" placeholder="No. kontak yang bisa dihubungi" required="">
+                        <?php echo form_error('hpwaris', '<span class="text-danger"', '</span>') ?>
                     </div>
                     <button type="submit" class="btn btn-secondary btn-lg btn-block">Edit</button>
 
